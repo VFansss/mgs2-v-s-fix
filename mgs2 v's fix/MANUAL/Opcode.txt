@@ -1,0 +1,268 @@
+/////////////////////////////////////////////////////////////////////////////////
+
+// Made by VFansss with much effort
+
+///
+////// 
+/////////
+////// NB: Ordered by Category
+///
+
+//  Resolution -> Controls -> Graphics -> Sound -> EXTRA OPCODE
+
+////// 
+--------- Resolution
+////// 
+
+Resolution
+0003  0500
+0004  0258
+Res in hex (width-heigth)
+
+---
+
+set graphic adapter
+
+0070  XXXXXXXX
+Name in hex. RIGHT padding of 0.
+
+---
+
+Window mode
+0001  0001 if enabled
+missing if not
+
+---
+
+32 bit z-buffer
+0005  0001 if enabled
+missing if not
+
+////// 
+--------- Controls
+////// 
+
+---------
+
+0060 0001 mouse = R stick
+missing if not
+
+---------
+
+0061 0001 first person mouse = R
+missing if not
+
+////// 
+--------- Graphics 
+//////
+
+Rendering size
+
+if low:
+
+0006 0200
+0007 0100
+
+if medium:
+
+0006 0400
+0007 0200
+
+if high:
+
+0006 0800
+0007 0400
+
+---------
+Shadow Detail
+
+if low (off)
+
+0031 0020
+0032 0020
+0040 MISSING
+
+if medium
+
+0031 0100
+0032 0100
+0040 0001
+
+if high
+
+0031 0200
+0032 0200
+0040 0001
+
+---------
+
+Model quality - MAX 2/4
+
+if low
+
+0010 MISSING
+0020 MISSING
+0021 MISSING
+
+if medium
+
+0010 0001
+0020 MISSING
+0021 MISSING
+
+if high (AVOID)
+
+0010 0001
+0020 0001
+0021 0001
+
+---------
+
+Rendering clearness
+
+if low
+
+0034 F000
+0035 F000
+
+if medium
+
+0034 7000
+0035 7000
+
+if high
+
+0034 MISSING
+0035 MISSING
+
+---------
+
+Crossfade
+
+if low
+
+0033 0007
+0047 MISSING
+
+if medium
+
+0033 0007
+0047 0001
+
+if high
+
+0033 MISSING
+0047 0001
+
+---------
+
+effect quantity
+
+if low
+
+0048 MISSING
+0049 MISSING
+
+if medium
+
+0048 0090
+0049 0090
+
+if high
+0048 0100
+0049 0100
+
+---------
+
+BunchOfCoolEffetcs (Focus-stealth-codec-vrmode)
+
+if disabled
+
+0041 MISSING
+0042 MISSING
+0043 MISSING
+
+004A MISSING
+
+if enabled
+
+0041 0001
+0042 0001
+0043 0001
+
+004A 0001
+
+---------
+
+Motion Blur
+
+if disabled
+
+0044 MISSING
+0045 MISSING
+
+if enabled
+
+0044 0001
+0045 0001
+
+////// 
+--------- Sound 
+//////
+
+Sound adapter
+
+0090 XXXXXXXX
+
+Name in hex. LEFT padding of 0.
+
+---------
+
+quality
+
+11KHZ
+
+009D MISSING
+
+22 KHZ
+009D 0001
+
+44 KHZ
+009D 0002
+
+---------
+
+SE
+
+if low
+009E MISSING
+
+if medium
+009E 0005
+
+if high
+009E 0009
+
+---------
+
+sound quality
+
+if low
+009F MISSING
+
+if medium
+009F 0001
+
+if high
+009F 0002
+
+////// 
+--------- Extra 
+//////
+
+Surplus Opcode
+I Don't know what they do
+
+0002 0001 (Maybe 32-bit resolution)
+0030 0004
+0046 0001
