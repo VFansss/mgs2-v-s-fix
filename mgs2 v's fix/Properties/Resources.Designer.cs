@@ -121,12 +121,32 @@ namespace mgs2_v_s_fix.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap otagif {
+            get {
+                object obj = ResourceManager.GetObject("otagif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Byte[].
         /// </summary>
         internal static byte[] WSF {
             get {
                 object obj = ResourceManager.GetObject("WSF", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Xbox_Controller_button_layout {
+            get {
+                object obj = ResourceManager.GetObject("Xbox_Controller_button_layout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

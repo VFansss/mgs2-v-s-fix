@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Drawing.Text;
+using System.IO;
+using System.Reflection;
 
 namespace mgs2_v_s_fix
 {
@@ -106,6 +108,21 @@ namespace mgs2_v_s_fix
             btn_settings.Visible = false;
             btn_saveSettings.Visible = true;
             tabControl1.Visible = true;
+            BackgroundImage = null;
+            otagif.Image = mgs2_v_s_fix.Properties.Resources.otagif;
+            otagif.Enabled = true;
+            otagif.Visible = true;
+
+
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "mgs2_v_s_fix.MANUAL.Credits.txt";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                tbx_About.Text = reader.ReadToEnd();
+            }
+
 
         }
 
@@ -124,6 +141,10 @@ namespace mgs2_v_s_fix
             btn_settings.Visible = true;
             btn_saveSettings.Visible = false;
             tabControl1.Visible = false;
+            this.BackgroundImage = mgs2_v_s_fix.Properties.Resources.background;
+            otagif.Image = null;
+            otagif.Enabled = false;
+            otagif.Visible = false;
 
         }
 
@@ -663,6 +684,10 @@ namespace mgs2_v_s_fix
             lbl_tooltip.Font = new Font(lbl_tooltip.Font, FontStyle.Regular);
         }
 
+        private void tbx_About_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
+        }
 
     //END CLASS
     }

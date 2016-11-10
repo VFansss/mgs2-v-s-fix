@@ -47,6 +47,7 @@
             this.txt_Width = new System.Windows.Forms.TextBox();
             this.lbl_des_00 = new System.Windows.Forms.Label();
             this.tab_Controls = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.chb_360Gamepad = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
@@ -102,11 +103,15 @@
             this.SE_medium = new System.Windows.Forms.RadioButton();
             this.SE_low = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
+            this.tab_About = new System.Windows.Forms.TabPage();
+            this.tbx_About = new System.Windows.Forms.RichTextBox();
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_saveSettings = new System.Windows.Forms.Button();
+            this.otagif = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tab_Graphics.SuspendLayout();
             this.pnl_EffectQuantity.SuspendLayout();
             this.pnl_CrossFade.SuspendLayout();
@@ -118,6 +123,8 @@
             this.pnl_Quality.SuspendLayout();
             this.pnl_SoundQuality.SuspendLayout();
             this.pnl_SE.SuspendLayout();
+            this.tab_About.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -170,6 +177,7 @@
             this.tabControl1.Controls.Add(this.tab_Controls);
             this.tabControl1.Controls.Add(this.tab_Graphics);
             this.tabControl1.Controls.Add(this.tab_Sound);
+            this.tabControl1.Controls.Add(this.tab_About);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabControl1.Location = new System.Drawing.Point(241, 22);
@@ -401,6 +409,7 @@
             // 
             // tab_Controls
             // 
+            this.tab_Controls.Controls.Add(this.pictureBox1);
             this.tab_Controls.Controls.Add(this.chb_360Gamepad);
             this.tab_Controls.Controls.Add(this.label12);
             this.tab_Controls.Location = new System.Drawing.Point(4, 32);
@@ -410,6 +419,16 @@
             this.tab_Controls.TabIndex = 1;
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::mgs2_v_s_fix.Properties.Resources.Xbox_Controller_button_layout;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 59);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(463, 257);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // chb_360Gamepad
             // 
@@ -424,7 +443,7 @@
             this.chb_360Gamepad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_360Gamepad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_360Gamepad.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_360Gamepad.Location = new System.Drawing.Point(261, 45);
+            this.chb_360Gamepad.Location = new System.Drawing.Point(263, 18);
             this.chb_360Gamepad.Name = "chb_360Gamepad";
             this.chb_360Gamepad.Size = new System.Drawing.Size(55, 26);
             this.chb_360Gamepad.TabIndex = 5;
@@ -438,7 +457,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label12.Location = new System.Drawing.Point(18, 44);
+            this.label12.Location = new System.Drawing.Point(20, 17);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(247, 26);
             this.label12.TabIndex = 4;
@@ -1354,6 +1373,30 @@
             this.label14.Text = "SE:";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // tab_About
+            // 
+            this.tab_About.BackColor = System.Drawing.Color.White;
+            this.tab_About.Controls.Add(this.tbx_About);
+            this.tab_About.Location = new System.Drawing.Point(4, 32);
+            this.tab_About.Name = "tab_About";
+            this.tab_About.Size = new System.Drawing.Size(475, 309);
+            this.tab_About.TabIndex = 4;
+            this.tab_About.Text = "About";
+            // 
+            // tbx_About
+            // 
+            this.tbx_About.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tbx_About.BackColor = System.Drawing.Color.White;
+            this.tbx_About.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbx_About.Location = new System.Drawing.Point(10, 12);
+            this.tbx_About.Name = "tbx_About";
+            this.tbx_About.ReadOnly = true;
+            this.tbx_About.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+            this.tbx_About.Size = new System.Drawing.Size(457, 282);
+            this.tbx_About.TabIndex = 1;
+            this.tbx_About.Text = "In my restless dreams ; I see that town...";
+            this.tbx_About.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.tbx_About_LinkClicked);
+            // 
             // btn_exit
             // 
             this.btn_exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -1399,6 +1442,18 @@
             this.btn_saveSettings.MouseEnter += new System.EventHandler(this.setNewColor);
             this.btn_saveSettings.MouseLeave += new System.EventHandler(this.setNewColor);
             // 
+            // otagif
+            // 
+            this.otagif.Enabled = false;
+            this.otagif.Image = global::mgs2_v_s_fix.Properties.Resources.otagif;
+            this.otagif.Location = new System.Drawing.Point(88, 71);
+            this.otagif.Name = "otagif";
+            this.otagif.Size = new System.Drawing.Size(64, 108);
+            this.otagif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.otagif.TabIndex = 5;
+            this.otagif.TabStop = false;
+            this.otagif.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1406,6 +1461,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::mgs2_v_s_fix.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(749, 379);
+            this.Controls.Add(this.otagif);
             this.Controls.Add(this.btn_saveSettings);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.tabControl1);
@@ -1415,12 +1471,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Metal Gear Solid 2 Substance V\'s Fix BETA";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Metal Gear Solid 2 Substance V\'s";
             this.tabControl1.ResumeLayout(false);
             this.tab_Resolution.ResumeLayout(false);
             this.tab_Resolution.PerformLayout();
             this.tab_Controls.ResumeLayout(false);
             this.tab_Controls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tab_Graphics.ResumeLayout(false);
             this.tab_Graphics.PerformLayout();
             this.pnl_EffectQuantity.ResumeLayout(false);
@@ -1443,6 +1501,8 @@
             this.pnl_SoundQuality.PerformLayout();
             this.pnl_SE.ResumeLayout(false);
             this.pnl_SE.PerformLayout();
+            this.tab_About.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1524,6 +1584,10 @@
         private System.Windows.Forms.CheckBox chb_LaptopMode;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbl_tooltip;
+        private System.Windows.Forms.PictureBox otagif;
+        private System.Windows.Forms.TabPage tab_About;
+        private System.Windows.Forms.RichTextBox tbx_About;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
