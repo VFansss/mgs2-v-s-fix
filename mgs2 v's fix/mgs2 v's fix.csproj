@@ -169,11 +169,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
+    <EmbeddedResource Include="PAPERS\Contacts.txt" />
+    <EmbeddedResource Include="PAPERS\Licence.txt" />
+    <Content Include="PAPERS\Opcode.txt" />
+    <EmbeddedResource Include="PAPERS\Regards.txt" />
+    <None Include="Resources\bg5.jpg" />
+    <None Include="Resources\bg4.jpg" />
+    <None Include="Resources\bg3.jpg" />
+    <None Include="Resources\bg2.jpg" />
+    <None Include="Resources\bg1.jpg" />
+    <EmbeddedResource Include="Resources\V_s_sweetFX.zip" />
     <None Include="Resources\Xbox_Controller_button_layout.jpg" />
-    <EmbeddedResource Include="MANUAL\Credits.txt" />
-    <Content Include="MANUAL\Opcode.txt" />
     <None Include="Resources\otagif.gif" />
-    <None Include="Resources\background.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
