@@ -30,8 +30,6 @@ namespace mgs2_v_s_fix
         }
 
         /// Main Menu Function
-        //////
-        ///////// 
 
         public static void startGame()
         {
@@ -51,8 +49,6 @@ namespace mgs2_v_s_fix
         }
 
         /// Settings Menu Function
-        //////
-        ///////// 
 
         public static void checkConfFileIntegrity()
         {
@@ -104,6 +100,7 @@ namespace mgs2_v_s_fix
 
         }
 
+                // I don't think these 2 need to be edited frequently
         public static void load_INI_SetTo_InternalConfig()
         {
 
@@ -184,6 +181,7 @@ namespace mgs2_v_s_fix
             return;
         }
 
+                // This...maybe
         internal static void load_InternalConfig_SetTo_MGS()
         {
             
@@ -207,6 +205,7 @@ namespace mgs2_v_s_fix
                 //--------- Resolution
                 ////// 
 
+                #region lot_of_things
                 // Width
 
                 hexString.Clear();
@@ -242,7 +241,7 @@ namespace mgs2_v_s_fix
                 if (Directory.Exists(Application.StartupPath + "\\scripts"))
                 {
                     Directory.Delete(Application.StartupPath + "\\scripts",true);
-                    File.Delete(Application.StartupPath + "\\d3d8.dll");
+                    File.Delete(Application.StartupPath + "\\winmmbase.dll");
                     File.Delete(Application.StartupPath + "\\dsound_x64.dll");  
                 }
 
@@ -262,6 +261,17 @@ namespace mgs2_v_s_fix
 
                     ws_ini.Write("Width", Ocelot.InternalConfiguration.Resolution["Width"], "MAIN");
                     ws_ini.Write("Height", Ocelot.InternalConfiguration.Resolution["Height"], "MAIN");
+
+                    if (Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"].Equals("true"))
+                    {
+                    ws_ini.Write("cutscenes_top_black_border","0", "MISC");
+                    ws_ini.Write("cutscenes_bottom_black_border","0", "MISC");
+                    }
+                    else
+                    {
+                    ws_ini.Write("cutscenes_top_black_border", "480", "MISC");
+                    ws_ini.Write("cutscenes_bottom_black_border", "480", "MISC");
+                    }
 
                 }
 
@@ -297,6 +307,7 @@ namespace mgs2_v_s_fix
 
                 // FIX FOR ATI/NVIDIA
 
+                #region TANTAROBA
                 using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
                 {
 
@@ -427,9 +438,14 @@ namespace mgs2_v_s_fix
                     // This will fix shadow/water bug for those has an Intel integrated gpu AND are on a laptop
                     // THAT BUG OCCUR EVEN IF GAME WILL RUN ON A DEDICATED GRAPHICS
 
+                    // NB: Incredibly, this patch doesn't need to be applied if SweetFX is used. Don't know why.
+
                     foreach (string vganame in vgaList)
                     {
-                        if ((Ocelot.InternalConfiguration.Resolution["LaptopMode"] == "true") && (vganame.Contains("Intel")))
+                        if ((Ocelot.InternalConfiguration.Resolution["LaptopMode"] == "true") &&
+                            (vganame.Contains("Intel"))&&
+                            (Ocelot.InternalConfiguration.Graphics["AA"] == "false")
+                            )
                         {
 
                             //Time to apply the fix
@@ -464,6 +480,8 @@ namespace mgs2_v_s_fix
 
                 }
 
+                #endregion 
+
                 // WindowMode
 
                 if(Ocelot.InternalConfiguration.Resolution["WindowMode"].Equals("true")){
@@ -472,21 +490,21 @@ namespace mgs2_v_s_fix
 
                 ini.WriteLine("0005" + "\t" + "0001");
 
+                #endregion
+
                 ////// 
                 //--------- Controls
                 ////// 
 
+                #region lot_of_things
                 // 360Gamepad
 
                 // 0: delete all (if present) existing 360Gamepad files
 
-                /*File.Delete(Application.StartupPath + "\\Dinput.dll");
+                File.Delete(Application.StartupPath + "\\Dinput.dll");
                 File.Delete(Application.StartupPath + "\\Dinput8.dll");
                 File.Delete(Application.StartupPath + "\\XInput1_3.dll");
-                File.Delete(Application.StartupPath + "\\XInputPlus.ini");*/
-                
-                // It copy only my custom config. Before this it need the original dll
-                //  from XInput Plus. Check github page for instruction
+                File.Delete(Application.StartupPath + "\\XInputPlus.ini");
 
                 if (Ocelot.InternalConfiguration.Controls["360Gamepad"].Equals("true"))
                 {
@@ -496,9 +514,13 @@ namespace mgs2_v_s_fix
 
                 }
 
+                #endregion
+
                 ////// 
                 //--------- Graphics
                 //////
+
+                #region lot_of_things
 
                 // ! Important thing !
                 //  These switch can be more optimized with clever use of 'break'
@@ -564,9 +586,9 @@ namespace mgs2_v_s_fix
 
                     case "high":
                         ini.WriteLine("0010" + "\t" + "0001");
-                        // Disabled cause they broke the graphics
-                        //ini.WriteLine("0020" + "\t" + "0001");
-                        //ini.WriteLine("0021" + "\t" + "0001");
+                        //NB: These 2 are dangerous on some config. Watch out.
+                        ini.WriteLine("0020" + "\t" + "0001");
+                        ini.WriteLine("0021" + "\t" + "0001");
                         break;
 
                 }
@@ -591,41 +613,28 @@ namespace mgs2_v_s_fix
 
                 }
 
-                // CrossFade
-
-                switch (Ocelot.InternalConfiguration.Graphics["CrossFade"])
-                {
-                    case "low":
-                        ini.WriteLine("0033" + "\t" + "0007");
-                        break;
-
-                    case "medium":
-                        ini.WriteLine("0033" + "\t" + "0007");
-                        ini.WriteLine("0047" + "\t" + "0001");
-                        break;
-
-                    case "high":
-                        ini.WriteLine("0047" + "\t" + "0001");
-                        break;
-
-                }
-
                 // EffectQuantity
 
                 switch (Ocelot.InternalConfiguration.Graphics["EffectQuantity"])
                 {
                     case "low":
-                        // Nothing
+                        // below is CrossFade opcode
+                        ini.WriteLine("0033" + "\t" + "0007");
                         break;
 
                     case "medium":
                         ini.WriteLine("0048" + "\t" + "0090");
                         ini.WriteLine("0049" + "\t" + "0090");
+                        // below are CrossFade opcode
+                        ini.WriteLine("0033" + "\t" + "0007");
+                        ini.WriteLine("0047" + "\t" + "0001");
                         break;
 
                     case "high":
                         ini.WriteLine("0048" + "\t" + "0100");
                         ini.WriteLine("0049" + "\t" + "0100");
+                        // below are CrossFade opcode
+                        ini.WriteLine("0047" + "\t" + "0001");
                         break;
 
                 }
@@ -649,9 +658,58 @@ namespace mgs2_v_s_fix
                 }
 
 
+                // AA
+
+                // 0: delete all (if present) existing SweetFX files/directory
+
+                if (Directory.Exists(Application.StartupPath + "\\SweetFX"))
+                {
+                    Directory.Delete(Application.StartupPath + "\\SweetFX", true);
+                }
+
+                File.Delete(Application.StartupPath + "\\SweetFX_settings.txt");
+                File.Delete(Application.StartupPath + "\\SweetFX_preset.txt");
+                File.Delete(Application.StartupPath + "\\enbconvertor.ini");
+                File.Delete(Application.StartupPath + "\\dxgi.dll");
+                File.Delete(Application.StartupPath + "\\d3d9.dll");
+                File.Delete(Application.StartupPath + "\\d3d8.dll");
+
+                if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("true"))
+                {
+
+                    // 1: V_s_sweetFX.zip must be extracted
+
+                    Unzip.UnZippa("V_s_sweetFX.zip");
+
+                    try {
+
+                        // 2: Trying to automatically apply the Windows XP SP3 Compatibility Mode
+
+                        string registry_path = "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\\";
+                        string game_exe_path = Application.StartupPath + "\\mgs2_sse.exe";
+                        Microsoft.Win32.RegistryKey key;
+
+                        key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(registry_path);
+
+                        key.SetValue(game_exe_path, "~ RUNASADMIN WINXPSP3", Microsoft.Win32.RegistryValueKind.String);
+                        key.Close();
+
+                    }
+
+                    catch
+                    {
+                       // BIG NOPE
+                    }
+
+                }
+
+                #endregion
+
                 ////// 
                 //--------- Sound
                 ////// 
+
+                #region lot_of_things
 
                 // SoundAdapterName
 
@@ -737,6 +795,38 @@ namespace mgs2_v_s_fix
 
                 }
 
+                // FixAfterPlaying
+
+                // If is set to FALSE it will sabotage automatical V's Fix opening after game quit
+
+                using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
+                {
+
+                    if (Ocelot.InternalConfiguration.Sound["FixAfterPlaying"].Equals("true"))
+                    {
+                     
+                        // Fix must be opened. Restoring original .exe condition
+
+                        // 2
+                        stream.Position = 0x60213E;
+                        stream.WriteByte(0x32);
+
+                    }
+
+                    else
+                    {
+                        // Broking game .exe
+
+                        // X
+                        stream.Position = 0x60213E;
+                        stream.WriteByte(0x58);
+                    }
+                    
+                }
+
+
+                #endregion
+
                 ////// 
                 //--------- Extra Opcode
                 ////// 
@@ -757,8 +847,6 @@ namespace mgs2_v_s_fix
         }
 
         /// Autoconfig
-        //////
-        /////////
 
         public static void startAutoconfig()
         {
@@ -820,6 +908,8 @@ namespace mgs2_v_s_fix
                 defaultConfig.Resolution["LaptopMode"] = "true";
             }
 
+            defaultConfig.Resolution["FullscreenCutscene"] = "false";
+
             // Controls
 
             defaultConfig.Controls["360Gamepad"] = "false";
@@ -828,12 +918,12 @@ namespace mgs2_v_s_fix
 
             defaultConfig.Graphics["RenderingSize"]="high";
             defaultConfig.Graphics["ShadowDetail"] = "high";
-            defaultConfig.Graphics["ModelQuality"] = "high";
+            defaultConfig.Graphics["ModelQuality"] = "medium";
             defaultConfig.Graphics["RenderingClearness"] = "high";
-            defaultConfig.Graphics["CrossFade"] = "high";
             defaultConfig.Graphics["EffectQuantity"] = "high";
             defaultConfig.Graphics["BunchOfCoolEffect"] = "true";
             defaultConfig.Graphics["MotionBlur"] = "true";
+            defaultConfig.Graphics["AA"] = "false";
 
             // Sound
 
@@ -841,6 +931,7 @@ namespace mgs2_v_s_fix
             defaultConfig.Sound["Quality"]="high";
             defaultConfig.Sound["SE"]="high";
             defaultConfig.Sound["SoundQuality"]="high";
+            defaultConfig.Sound["FixAfterPlaying"] = "true";
 
             InternalConfiguration = defaultConfig;
 

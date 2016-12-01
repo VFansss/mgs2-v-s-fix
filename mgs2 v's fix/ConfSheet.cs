@@ -25,7 +25,8 @@ namespace mgs2_v_s_fix
                 {"WideScreenFIX",null},
                 {"GraphicAdapterName",null},
                 {"WindowMode",null},
-                {"LaptopMode",null}
+                {"LaptopMode",null},
+                {"FullscreenCutscene",null}
 
              };
 
@@ -40,10 +41,10 @@ namespace mgs2_v_s_fix
                 {"ShadowDetail",null},
                 {"ModelQuality",null},
                 {"RenderingClearness",null},
-                {"CrossFade",null},
                 {"EffectQuantity",null},
                 {"BunchOfCoolEffect",null},
-                {"MotionBlur",null}
+                {"MotionBlur",null},
+                {"AA",null}
 
             };
 
@@ -52,7 +53,8 @@ namespace mgs2_v_s_fix
                 {"SoundAdapterName",null},
                 {"Quality",null},
                 {"SE",null},
-                {"SoundQuality",null}
+                {"SoundQuality",null},
+                {"FixAfterPlaying",null}
 
             };
 

@@ -24,8 +24,8 @@ namespace mgs2_v_s_fix
         private PrivateFontCollection fonts = new PrivateFontCollection();
         Font myFont;
 
-        // You can tell if settings panel is opened. Not used for now.
-        public bool settingMode;
+        // Remember current background image. Void repetition.
+        private int bg_number;
 
         public Form1()
         {
@@ -61,6 +61,10 @@ namespace mgs2_v_s_fix
 
             // Set up the ToolTip text for the Button and Checkbox.
             toolTip1.SetToolTip(this.lbl_tooltip, "It will avoid stretch ONLY (and I will repeat: ONLY!) on 16:9 or 16:10 resolution!");
+
+            // Background things
+
+            setNewBackground();
 
         }
 
@@ -102,8 +106,7 @@ namespace mgs2_v_s_fix
             // Transfering internal setting to graphic setupper
             load_InternalConfig_SetTo_SetupperConfig();
 
-            // Setting Mode
-            settingMode = true;
+            // Settings Mode
             btn_startGame.Visible = false;
             btn_settings.Visible = false;
             btn_saveSettings.Visible = true;
@@ -114,15 +117,9 @@ namespace mgs2_v_s_fix
             otagif.Visible = true;
 
 
+            // Filling 'About'
 
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "mgs2_v_s_fix.MANUAL.Credits.txt";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                tbx_About.Text = reader.ReadToEnd();
-            }
-
+            abt_Contacts.Checked = true;
 
         }
 
@@ -135,13 +132,14 @@ namespace mgs2_v_s_fix
 
             Ocelot.load_InternalConfig_SetTo_MGS();
 
-            // Setting Mode
-            settingMode = false;
+            // Settings Mode
             btn_startGame.Visible = true;
             btn_settings.Visible = true;
             btn_saveSettings.Visible = false;
             tabControl1.Visible = false;
-            this.BackgroundImage = mgs2_v_s_fix.Properties.Resources.background;
+
+            setNewBackground();
+
             otagif.Image = null;
             otagif.Enabled = false;
             otagif.Visible = false;
@@ -160,6 +158,7 @@ namespace mgs2_v_s_fix
 
             // Loading Resolution Settings
 
+            #region lot_of_things
             txt_Height.Text = Ocelot.InternalConfiguration.Resolution["Height"];
             txt_Width.Text = Ocelot.InternalConfiguration.Resolution["Width"];
 
@@ -230,7 +229,38 @@ namespace mgs2_v_s_fix
 
             }
 
+            // Just "FullscreenCutscene" things...
+            if (Ocelot.InternalConfiguration.Resolution["WideScreenFIX"] == "true")
+            {
+                lbl_FullscreenCutscene.Visible = true;
+                chb_FullscreenCutscene.Visible = true;
+
+                if (Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"] == "true")
+                { 
+                chb_FullscreenCutscene.Text = "ON";
+                chb_FullscreenCutscene.Checked = true;
+                }
+                else
+                {
+                chb_FullscreenCutscene.Text = "OFF";
+                chb_FullscreenCutscene.Checked = false;
+                }
+            }
+
+            else
+            {
+                lbl_FullscreenCutscene.Visible = false;
+                chb_FullscreenCutscene.Visible = false;
+                chb_FullscreenCutscene.Text = "OFF";
+                chb_FullscreenCutscene.Checked = false;
+
+            }
+
+            #endregion
+
             // Controls Settings
+
+            #region lot_of_things
 
             if (Ocelot.InternalConfiguration.Controls["360Gamepad"] == "true")
             {
@@ -244,9 +274,12 @@ namespace mgs2_v_s_fix
                 chb_360Gamepad.Checked = false;
             }
 
+            #endregion
+
             // Graphics Settings
 
-            foreach(Panel panel in tab_Graphics.Controls.OfType<Panel>()){
+            #region lot_of_things
+            foreach (Panel panel in tab_Graphics.Controls.OfType<Panel>()){
 
 
                 String key = panel.Name.Remove(0, 4);
@@ -291,7 +324,23 @@ namespace mgs2_v_s_fix
                 chb_MotionBlur.Checked = false;
             }
 
+            if (Ocelot.InternalConfiguration.Graphics["AA"] == "true")
+            {
+                chb_AA.Text = "ON";
+                chb_AA.Checked = true;
+            }
+
+            else
+            {
+                chb_AA.Text = "OFF";
+                chb_AA.Checked = false;
+            }
+
+            #endregion
+
             // Sound Settings
+
+            #region lot_of_things
 
             foreach (Panel panel in tab_Sound.Controls.OfType<Panel>())
             {
@@ -313,8 +362,6 @@ namespace mgs2_v_s_fix
 
             }
 
-            Console.WriteLine();
-
             lst_sound_list.Items.Clear();
 
             // GetSoundAdapterList non implemented (for now)
@@ -324,13 +371,28 @@ namespace mgs2_v_s_fix
 
             lst_sound_list.SelectedIndex = lst_sound_list.FindString("Primary");
 
-            
+            if (Ocelot.InternalConfiguration.Sound["FixAfterPlaying"] == "true")
+            {
+                chb_FixAfterPlaying.Text = "ON";
+                chb_FixAfterPlaying.Checked = true;
+            }
+
+            else
+            {
+                chb_FixAfterPlaying.Text = "OFF";
+                chb_FixAfterPlaying.Checked = false;
+            }
+
+            #endregion
+
         }
 
         public void load_SetupperConfig_SetTo_InternalConfig()
         {
 
             // Resolution Settings
+
+            #region lot_of_things
 
             Ocelot.InternalConfiguration.Resolution["Height"] = txt_Height.Text.Trim();
             Ocelot.InternalConfiguration.Resolution["Width"] = txt_Width.Text.Trim();
@@ -375,8 +437,31 @@ namespace mgs2_v_s_fix
 
             Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"] = lst_vga_list.SelectedItem.ToString();
 
+            if ((chb_WideScreenFIX.Checked == true) && (chb_FullscreenCutscene.Checked == true))
+            {
+
+                Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"] = "true";
+
+            }
+            else
+            {
+                Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"] = "false";
+            }
+
+            if (chb_FullscreenCutscene.Checked == true)
+            {
+                Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"] = "true";
+            }
+            else
+            {
+                Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"] = "false";
+            }
+
+            #endregion
 
             // Controls Settings
+
+            #region lot_of_things
 
             if (chb_360Gamepad.Checked == true)
             {
@@ -388,7 +473,11 @@ namespace mgs2_v_s_fix
                 Ocelot.InternalConfiguration.Controls["360Gamepad"] = "false";
             }
 
+            #endregion
+
             // Graphics Settings
+
+            #region lot_of_things
 
             foreach (Panel panel in tab_Graphics.Controls.OfType<Panel>())
             {
@@ -432,7 +521,22 @@ namespace mgs2_v_s_fix
                 Ocelot.InternalConfiguration.Graphics["MotionBlur"] = "false";
             }
 
+            if (chb_AA.Checked == true)
+            {
+                Ocelot.InternalConfiguration.Graphics["AA"] = "true";
+
+            }
+
+            else
+            {
+                Ocelot.InternalConfiguration.Graphics["AA"] = "false";
+            }
+
+            #endregion
+
             // Sound Settings
+
+            #region lot_of_things
 
             foreach (Panel panel in tab_Sound.Controls.OfType<Panel>())
             {
@@ -459,7 +563,23 @@ namespace mgs2_v_s_fix
 
             Ocelot.InternalConfiguration.Sound["SoundAdapterName"] = lst_sound_list.SelectedItem.ToString();
 
+            if (chb_FixAfterPlaying.Checked == true)
+            {
+
+                Ocelot.InternalConfiguration.Sound["FixAfterPlaying"] = "true";
+
+            }
+
+            else
+            {
+                Ocelot.InternalConfiguration.Sound["FixAfterPlaying"] = "false";
+            }
+
+
+            #endregion
+
             return;
+          
         }
 
         // Graphics Adjustment
@@ -521,8 +641,6 @@ namespace mgs2_v_s_fix
             // Don't put breakpoint in there otherwise button will never change
             //  color while debugging.
 
-            //TODO Change outer 'if' statement with a nice switch
-
             Object obj = sender;
             Type type = sender.GetType();
 
@@ -552,12 +670,18 @@ namespace mgs2_v_s_fix
                     //ForeColor is DarkOrange
                     chb.ForeColor = System.Drawing.Color.Black;
                     chb.Text = "OFF";
+
+                    if (chb.Name == "chb_LaptopMode") { chb.Text = "NO"; }
+
                 }
                 else
                 {
                     //ForeColor is Black OR SOME OTHER UNDEFINED COLOR
                     chb.ForeColor = System.Drawing.Color.DarkOrange;
                     chb.Text = "ON";
+
+                    if (chb.Name == "chb_LaptopMode") { chb.Text = "YUP"; }
+
                 }
 
             }
@@ -662,6 +786,8 @@ namespace mgs2_v_s_fix
                     chb_WideScreenFIX.Checked = false;
                 }
 
+                FullscreenCutscene_setVisibility(this,new MouseEventArgs(System.Windows.Forms.MouseButtons.None,1,1,1,1));
+
             }
         }
 
@@ -684,9 +810,107 @@ namespace mgs2_v_s_fix
             lbl_tooltip.Font = new Font(lbl_tooltip.Font, FontStyle.Regular);
         }
 
+        // About tab
+
         private void tbx_About_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(e.LinkText);
+        }
+
+        private void abt_CheckedChanged(object sender, EventArgs e)
+        {
+            setNewColor(sender, e);
+
+            RadioButton rdi = (RadioButton)sender;
+
+            loadTXT(rdi.Name.Substring(4));
+
+            return;
+
+        }
+
+        private void loadTXT(string NAMEFILE)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "mgs2_v_s_fix.PAPERS."+NAMEFILE+".txt";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                tbx_About.Text = reader.ReadToEnd();
+            }
+
+            tbx_About.SelectionStart = 0;
+            tbx_About.SelectionLength = 1;
+            tbx_About.ScrollToCaret();
+
+        }
+
+
+
+        // Exclusive toggle logic
+
+        private void FullscreenCutscene_setVisibility(object sender, MouseEventArgs e)
+        {
+
+            if (chb_WideScreenFIX.Checked == true)
+            {
+                lbl_FullscreenCutscene.Visible = true;
+                chb_FullscreenCutscene.Visible = true;
+            }
+
+            else
+            {
+                lbl_FullscreenCutscene.Visible = false;
+                chb_FullscreenCutscene.Visible = false;
+            }
+        }
+
+        private void chb_AA_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (chb_AA.Checked == true)
+            {
+
+                MessageBox.Show("Activating anti-aliasing require that game (mgs2_sse.exe) must run in WINDOWS XP SP3 compatibility mode.\n\nV's Fix will try to set it automatically but (like all things in life) may fail so check it out MANUALLY.\n\nRunning the game without XP compatibility may result in a BLACK SCREEN ON GAME STARTUP!\n\nAlso, it isn't compatible with 'High' model quality preset.", "Back to 2001!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (ModelQuality_high.Checked == true)
+                {
+                    ModelQuality_medium.Checked = true;
+                }
+
+            }
+
+        }
+
+        private void ModelQuality_high_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (ModelQuality_high.Checked == true)
+            {
+                chb_AA.Checked = false;
+            }
+
+        }
+
+        // Background chooser
+
+        private void setNewBackground()
+        {
+
+            Random rnd = new Random();
+            int ran_number = 0;
+
+            // From 1 to 5! 
+            
+            do {ran_number = rnd.Next(1, 6);}
+            while(!(ran_number!=bg_number));
+            
+            string resourceName = "bg"+ran_number;
+
+            bg_number = ran_number;
+            this.BackgroundImage = (System.Drawing.Image)mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
+
+            return;
         }
 
     //END CLASS

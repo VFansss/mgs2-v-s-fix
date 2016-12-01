@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
 
         // Target Required .net > 4.5
 
-        public static void UnZippa(string fileToUnzip, bool OW=false)
+        public static void UnZippa(string fileToUnzip, bool OverWrite=false)
         {
 
             // NB: Watch out for 'overwrite' optional parameter
@@ -46,14 +46,14 @@ namespace mgs2_v_s_fix
                 String path = ApplicationPath + "\\" + entry.FullName;
 
                 // entry (file or directory) already exist?
-                if (!File.Exists(path)||OW==true)
+                if (!File.Exists(path)||OverWrite==true)
                 {
 
                     if (!(entry.FullName.ToString().EndsWith("/")))
                     {
 
                         //it's a file
-                        entry.ExtractToFile(path,OW);
+                        entry.ExtractToFile(path,OverWrite);
                     }
 
                     else
