@@ -32,7 +32,7 @@ namespace mgs2_v_s_fix
 
             this.Controls = new Dictionary<string, string>
             {
-                {"360Gamepad",null}
+                {"XboxGamepad",null},
             };
 
             this.Graphics = new Dictionary<string, string>

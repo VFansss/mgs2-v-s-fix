@@ -63,7 +63,7 @@
     <ManifestKeyFile>mgs2 v%27s fix_ChiaveTemporanea.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -72,7 +72,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -169,6 +169,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
+    <None Include="Resources\ico4.ico" />
+    <None Include="Resources\ico3.ico" />
+    <None Include="Resources\ico2.ico" />
+    <None Include="Resources\ico1.ico" />
+    <None Include="Resources\ico12.ico" />
+    <None Include="Resources\ico11.ico" />
+    <None Include="Resources\ico10.ico" />
+    <None Include="Resources\ico9.ico" />
+    <None Include="Resources\ico8.ico" />
+    <None Include="Resources\ico7.ico" />
+    <None Include="Resources\ico6.ico" />
+    <None Include="Resources\ico5.ico" />
+    <None Include="Resources\XboxController_Layout_V.jpg" />
+    <None Include="Resources\XboxController_Layout_PS2.jpg" />
     <EmbeddedResource Include="PAPERS\Contacts.txt" />
     <EmbeddedResource Include="PAPERS\Licence.txt" />
     <Content Include="PAPERS\Opcode.txt" />
@@ -179,7 +193,8 @@
     <None Include="Resources\bg2.jpg" />
     <None Include="Resources\bg1.jpg" />
     <EmbeddedResource Include="Resources\V_s_sweetFX.zip" />
-    <None Include="Resources\Xbox_Controller_button_layout.jpg" />
+    <EmbeddedResource Include="Resources\XboxGamepad_PS2.zip" />
+    <EmbeddedResource Include="Resources\XboxGamepad_V.zip" />
     <None Include="Resources\otagif.gif" />
   </ItemGroup>
   <ItemGroup />

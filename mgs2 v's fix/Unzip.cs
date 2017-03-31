@@ -14,11 +14,6 @@ namespace mgs2_v_s_fix
 
         public static string ApplicationPath;
 
-        Unzip()
-        {
-
-        }
-
         // Homemade Unzipper
 
         // Target Required .net > 4.5

@@ -49,9 +49,12 @@
             this.txt_Width = new System.Windows.Forms.TextBox();
             this.lbl_des_00 = new System.Windows.Forms.Label();
             this.tab_Controls = new System.Windows.Forms.TabPage();
+            this.pnl_XboxGamepad = new System.Windows.Forms.Panel();
+            this.XboxGamepad_PS2 = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.XboxGamepad_V = new System.Windows.Forms.RadioButton();
+            this.XboxGamepad_NO = new System.Windows.Forms.RadioButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.chb_360Gamepad = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
             this.chb_AA = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -112,10 +115,14 @@
             this.tbx_About = new System.Windows.Forms.RichTextBox();
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_saveSettings = new System.Windows.Forms.Button();
+            this.lbl_debugMode = new System.Windows.Forms.Label();
             this.otagif = new System.Windows.Forms.PictureBox();
+            this.lbl_ManualLink = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
+            this.pnl_XboxGamepad.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tab_Graphics.SuspendLayout();
             this.pnl_EffectQuantity.SuspendLayout();
@@ -130,11 +137,11 @@
             this.tab_About.SuspendLayout();
             this.pnl_about.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
             // 
-            this.btn_startGame.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_startGame.BackColor = System.Drawing.Color.White;
             this.btn_startGame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_startGame.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -144,7 +151,7 @@
             this.btn_startGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_startGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_startGame.ForeColor = System.Drawing.Color.Black;
-            this.btn_startGame.Location = new System.Drawing.Point(39, 83);
+            this.btn_startGame.Location = new System.Drawing.Point(39, 56);
             this.btn_startGame.Name = "btn_startGame";
             this.btn_startGame.Size = new System.Drawing.Size(165, 39);
             this.btn_startGame.TabIndex = 0;
@@ -156,7 +163,6 @@
             // 
             // btn_settings
             // 
-            this.btn_settings.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_settings.BackColor = System.Drawing.Color.White;
             this.btn_settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_settings.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -166,7 +172,7 @@
             this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_settings.ForeColor = System.Drawing.Color.Black;
-            this.btn_settings.Location = new System.Drawing.Point(39, 152);
+            this.btn_settings.Location = new System.Drawing.Point(39, 125);
             this.btn_settings.Name = "btn_settings";
             this.btn_settings.Size = new System.Drawing.Size(165, 39);
             this.btn_settings.TabIndex = 1;
@@ -185,10 +191,10 @@
             this.tabControl1.Controls.Add(this.tab_About);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabControl1.Location = new System.Drawing.Point(241, 22);
+            this.tabControl1.Location = new System.Drawing.Point(234, 20);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(483, 357);
+            this.tabControl1.Size = new System.Drawing.Size(531, 365);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.Visible = false;
             // 
@@ -214,13 +220,13 @@
             this.tab_Resolution.Location = new System.Drawing.Point(4, 32);
             this.tab_Resolution.Name = "tab_Resolution";
             this.tab_Resolution.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Resolution.Size = new System.Drawing.Size(475, 321);
+            this.tab_Resolution.Size = new System.Drawing.Size(523, 329);
             this.tab_Resolution.TabIndex = 0;
             this.tab_Resolution.Text = "Resolution";
             // 
             // chb_FullscreenCutscene
             // 
-            this.chb_FullscreenCutscene.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chb_FullscreenCutscene.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chb_FullscreenCutscene.Appearance = System.Windows.Forms.Appearance.Button;
             this.chb_FullscreenCutscene.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chb_FullscreenCutscene.FlatAppearance.BorderSize = 0;
@@ -229,7 +235,7 @@
             this.chb_FullscreenCutscene.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_FullscreenCutscene.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_FullscreenCutscene.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FullscreenCutscene.Location = new System.Drawing.Point(208, 116);
+            this.chb_FullscreenCutscene.Location = new System.Drawing.Point(237, 114);
             this.chb_FullscreenCutscene.Name = "chb_FullscreenCutscene";
             this.chb_FullscreenCutscene.Size = new System.Drawing.Size(55, 26);
             this.chb_FullscreenCutscene.TabIndex = 11;
@@ -241,10 +247,10 @@
             // 
             // lbl_FullscreenCutscene
             // 
-            this.lbl_FullscreenCutscene.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_FullscreenCutscene.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_FullscreenCutscene.AutoSize = true;
             this.lbl_FullscreenCutscene.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FullscreenCutscene.Location = new System.Drawing.Point(67, 118);
+            this.lbl_FullscreenCutscene.Location = new System.Drawing.Point(96, 116);
             this.lbl_FullscreenCutscene.Name = "lbl_FullscreenCutscene";
             this.lbl_FullscreenCutscene.Size = new System.Drawing.Size(143, 19);
             this.lbl_FullscreenCutscene.TabIndex = 10;
@@ -253,11 +259,11 @@
             // 
             // lbl_tooltip
             // 
-            this.lbl_tooltip.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_tooltip.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_tooltip.AutoSize = true;
             this.lbl_tooltip.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_tooltip.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_tooltip.Location = new System.Drawing.Point(256, 88);
+            this.lbl_tooltip.Location = new System.Drawing.Point(285, 86);
             this.lbl_tooltip.Name = "lbl_tooltip";
             this.lbl_tooltip.Size = new System.Drawing.Size(44, 26);
             this.lbl_tooltip.TabIndex = 9;
@@ -268,7 +274,7 @@
             // 
             // chb_LaptopMode
             // 
-            this.chb_LaptopMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chb_LaptopMode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chb_LaptopMode.Appearance = System.Windows.Forms.Appearance.Button;
             this.chb_LaptopMode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chb_LaptopMode.FlatAppearance.BorderSize = 0;
@@ -277,7 +283,7 @@
             this.chb_LaptopMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_LaptopMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_LaptopMode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_LaptopMode.Location = new System.Drawing.Point(208, 200);
+            this.chb_LaptopMode.Location = new System.Drawing.Point(237, 198);
             this.chb_LaptopMode.Name = "chb_LaptopMode";
             this.chb_LaptopMode.Size = new System.Drawing.Size(55, 26);
             this.chb_LaptopMode.TabIndex = 8;
@@ -289,10 +295,10 @@
             // 
             // label8
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label8.Location = new System.Drawing.Point(37, 199);
+            this.label8.Location = new System.Drawing.Point(66, 197);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(183, 26);
             this.label8.TabIndex = 7;
@@ -301,7 +307,7 @@
             // 
             // chb_WindowMode
             // 
-            this.chb_WindowMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chb_WindowMode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chb_WindowMode.Appearance = System.Windows.Forms.Appearance.Button;
             this.chb_WindowMode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chb_WindowMode.FlatAppearance.BorderSize = 0;
@@ -310,7 +316,7 @@
             this.chb_WindowMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_WindowMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_WindowMode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_WindowMode.Location = new System.Drawing.Point(208, 156);
+            this.chb_WindowMode.Location = new System.Drawing.Point(237, 154);
             this.chb_WindowMode.Name = "chb_WindowMode";
             this.chb_WindowMode.Size = new System.Drawing.Size(55, 26);
             this.chb_WindowMode.TabIndex = 6;
@@ -322,10 +328,10 @@
             // 
             // lbl_des_03
             // 
-            this.lbl_des_03.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_des_03.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_03.AutoSize = true;
             this.lbl_des_03.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_03.Location = new System.Drawing.Point(47, 242);
+            this.lbl_des_03.Location = new System.Drawing.Point(76, 240);
             this.lbl_des_03.Name = "lbl_des_03";
             this.lbl_des_03.Size = new System.Drawing.Size(165, 26);
             this.lbl_des_03.TabIndex = 5;
@@ -334,13 +340,13 @@
             // 
             // lst_vga_list
             // 
-            this.lst_vga_list.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lst_vga_list.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lst_vga_list.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lst_vga_list.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lst_vga_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_vga_list.FormattingEnabled = true;
             this.lst_vga_list.ItemHeight = 18;
-            this.lst_vga_list.Location = new System.Drawing.Point(212, 248);
+            this.lst_vga_list.Location = new System.Drawing.Point(241, 246);
             this.lst_vga_list.Name = "lst_vga_list";
             this.lst_vga_list.Size = new System.Drawing.Size(245, 54);
             this.lst_vga_list.TabIndex = 4;
@@ -348,7 +354,7 @@
             // 
             // chb_WideScreenFIX
             // 
-            this.chb_WideScreenFIX.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chb_WideScreenFIX.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chb_WideScreenFIX.Appearance = System.Windows.Forms.Appearance.Button;
             this.chb_WideScreenFIX.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chb_WideScreenFIX.FlatAppearance.BorderSize = 0;
@@ -357,7 +363,7 @@
             this.chb_WideScreenFIX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_WideScreenFIX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_WideScreenFIX.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_WideScreenFIX.Location = new System.Drawing.Point(208, 88);
+            this.chb_WideScreenFIX.Location = new System.Drawing.Point(237, 86);
             this.chb_WideScreenFIX.Name = "chb_WideScreenFIX";
             this.chb_WideScreenFIX.Size = new System.Drawing.Size(55, 26);
             this.chb_WideScreenFIX.TabIndex = 1;
@@ -370,10 +376,10 @@
             // 
             // lbl_des_02
             // 
-            this.lbl_des_02.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_des_02.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_02.AutoSize = true;
             this.lbl_des_02.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_02.Location = new System.Drawing.Point(68, 155);
+            this.lbl_des_02.Location = new System.Drawing.Point(97, 153);
             this.lbl_des_02.Name = "lbl_des_02";
             this.lbl_des_02.Size = new System.Drawing.Size(145, 26);
             this.lbl_des_02.TabIndex = 0;
@@ -382,10 +388,10 @@
             // 
             // txt_Height
             // 
-            this.txt_Height.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txt_Height.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Height.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Height.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txt_Height.Location = new System.Drawing.Point(296, 47);
+            this.txt_Height.Location = new System.Drawing.Point(325, 45);
             this.txt_Height.MaxLength = 5;
             this.txt_Height.Name = "txt_Height";
             this.txt_Height.ShortcutsEnabled = false;
@@ -400,10 +406,10 @@
             // 
             // lbl_des_01
             // 
-            this.lbl_des_01.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_des_01.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_01.AutoSize = true;
             this.lbl_des_01.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_01.Location = new System.Drawing.Point(12, 87);
+            this.lbl_des_01.Location = new System.Drawing.Point(41, 85);
             this.lbl_des_01.Name = "lbl_des_01";
             this.lbl_des_01.Size = new System.Drawing.Size(201, 26);
             this.lbl_des_01.TabIndex = 0;
@@ -412,10 +418,10 @@
             // 
             // lbl_X
             // 
-            this.lbl_X.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_X.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_X.AutoSize = true;
             this.lbl_X.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_X.Location = new System.Drawing.Point(269, 42);
+            this.lbl_X.Location = new System.Drawing.Point(298, 40);
             this.lbl_X.Name = "lbl_X";
             this.lbl_X.Size = new System.Drawing.Size(21, 26);
             this.lbl_X.TabIndex = 2;
@@ -423,10 +429,10 @@
             // 
             // txt_Width
             // 
-            this.txt_Width.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txt_Width.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Width.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Width.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txt_Width.Location = new System.Drawing.Point(212, 47);
+            this.txt_Width.Location = new System.Drawing.Point(241, 45);
             this.txt_Width.MaxLength = 4;
             this.txt_Width.Name = "txt_Width";
             this.txt_Width.ShortcutsEnabled = false;
@@ -441,10 +447,10 @@
             // 
             // lbl_des_00
             // 
-            this.lbl_des_00.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_des_00.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_00.AutoSize = true;
             this.lbl_des_00.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_00.Location = new System.Drawing.Point(105, 42);
+            this.lbl_des_00.Location = new System.Drawing.Point(134, 40);
             this.lbl_des_00.Name = "lbl_des_00";
             this.lbl_des_00.Size = new System.Drawing.Size(108, 26);
             this.lbl_des_00.TabIndex = 0;
@@ -453,60 +459,120 @@
             // 
             // tab_Controls
             // 
+            this.tab_Controls.Controls.Add(this.pnl_XboxGamepad);
             this.tab_Controls.Controls.Add(this.pictureBox1);
-            this.tab_Controls.Controls.Add(this.chb_360Gamepad);
-            this.tab_Controls.Controls.Add(this.label12);
             this.tab_Controls.Location = new System.Drawing.Point(4, 32);
             this.tab_Controls.Name = "tab_Controls";
             this.tab_Controls.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Controls.Size = new System.Drawing.Size(475, 321);
+            this.tab_Controls.Size = new System.Drawing.Size(523, 329);
             this.tab_Controls.TabIndex = 1;
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
             // 
+            // pnl_XboxGamepad
+            // 
+            this.pnl_XboxGamepad.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_PS2);
+            this.pnl_XboxGamepad.Controls.Add(this.label10);
+            this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_V);
+            this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_NO);
+            this.pnl_XboxGamepad.Location = new System.Drawing.Point(33, 13);
+            this.pnl_XboxGamepad.Name = "pnl_XboxGamepad";
+            this.pnl_XboxGamepad.Size = new System.Drawing.Size(454, 32);
+            this.pnl_XboxGamepad.TabIndex = 7;
+            // 
+            // XboxGamepad_PS2
+            // 
+            this.XboxGamepad_PS2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.XboxGamepad_PS2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.XboxGamepad_PS2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.XboxGamepad_PS2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.XboxGamepad_PS2.FlatAppearance.BorderSize = 0;
+            this.XboxGamepad_PS2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.XboxGamepad_PS2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.XboxGamepad_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.XboxGamepad_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.XboxGamepad_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XboxGamepad_PS2.Location = new System.Drawing.Point(340, 4);
+            this.XboxGamepad_PS2.Name = "XboxGamepad_PS2";
+            this.XboxGamepad_PS2.Size = new System.Drawing.Size(92, 30);
+            this.XboxGamepad_PS2.TabIndex = 4;
+            this.XboxGamepad_PS2.TabStop = true;
+            this.XboxGamepad_PS2.Text = "PS2 Type";
+            this.XboxGamepad_PS2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.XboxGamepad_PS2.UseVisualStyleBackColor = false;
+            this.XboxGamepad_PS2.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.XboxGamepad_PS2.Click += new System.EventHandler(this.XboxGamepad_PS2_Click);
+            this.XboxGamepad_PS2.MouseHover += new System.EventHandler(this.XboxGamepad_PS2_MouseHover);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label10.Location = new System.Drawing.Point(33, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(147, 26);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Xbox Gamepad:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // XboxGamepad_V
+            // 
+            this.XboxGamepad_V.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.XboxGamepad_V.Appearance = System.Windows.Forms.Appearance.Button;
+            this.XboxGamepad_V.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.XboxGamepad_V.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.XboxGamepad_V.FlatAppearance.BorderSize = 0;
+            this.XboxGamepad_V.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.XboxGamepad_V.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.XboxGamepad_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.XboxGamepad_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.XboxGamepad_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XboxGamepad_V.Location = new System.Drawing.Point(245, 4);
+            this.XboxGamepad_V.Name = "XboxGamepad_V";
+            this.XboxGamepad_V.Size = new System.Drawing.Size(94, 30);
+            this.XboxGamepad_V.TabIndex = 1;
+            this.XboxGamepad_V.TabStop = true;
+            this.XboxGamepad_V.Text = "V\'s Type";
+            this.XboxGamepad_V.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.XboxGamepad_V.UseVisualStyleBackColor = false;
+            this.XboxGamepad_V.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.XboxGamepad_V.Click += new System.EventHandler(this.XboxGamepad_V_Click);
+            this.XboxGamepad_V.MouseHover += new System.EventHandler(this.XboxGamepad_V_MouseHover);
+            // 
+            // XboxGamepad_NO
+            // 
+            this.XboxGamepad_NO.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.XboxGamepad_NO.Appearance = System.Windows.Forms.Appearance.Button;
+            this.XboxGamepad_NO.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.XboxGamepad_NO.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.XboxGamepad_NO.FlatAppearance.BorderSize = 0;
+            this.XboxGamepad_NO.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.XboxGamepad_NO.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.XboxGamepad_NO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.XboxGamepad_NO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.XboxGamepad_NO.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XboxGamepad_NO.Location = new System.Drawing.Point(187, 4);
+            this.XboxGamepad_NO.Name = "XboxGamepad_NO";
+            this.XboxGamepad_NO.Size = new System.Drawing.Size(58, 30);
+            this.XboxGamepad_NO.TabIndex = 0;
+            this.XboxGamepad_NO.TabStop = true;
+            this.XboxGamepad_NO.Text = "NO";
+            this.XboxGamepad_NO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.XboxGamepad_NO.UseVisualStyleBackColor = false;
+            this.XboxGamepad_NO.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.XboxGamepad_NO.Click += new System.EventHandler(this.XboxGamepad_NO_Click);
+            // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pictureBox1.Image = global::mgs2_v_s_fix.Properties.Resources.Xbox_Controller_button_layout;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 67);
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 65);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(463, 257);
+            this.pictureBox1.Size = new System.Drawing.Size(516, 268);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
-            // 
-            // chb_360Gamepad
-            // 
-            this.chb_360Gamepad.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.chb_360Gamepad.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chb_360Gamepad.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chb_360Gamepad.FlatAppearance.BorderSize = 0;
-            this.chb_360Gamepad.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.chb_360Gamepad.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.chb_360Gamepad.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.chb_360Gamepad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chb_360Gamepad.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_360Gamepad.Location = new System.Drawing.Point(263, 22);
-            this.chb_360Gamepad.Name = "chb_360Gamepad";
-            this.chb_360Gamepad.Size = new System.Drawing.Size(55, 26);
-            this.chb_360Gamepad.TabIndex = 5;
-            this.chb_360Gamepad.TabStop = false;
-            this.chb_360Gamepad.Text = "XXX";
-            this.chb_360Gamepad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chb_360Gamepad.UseVisualStyleBackColor = true;
-            this.chb_360Gamepad.CheckedChanged += new System.EventHandler(this.setNewColor);
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label12.Location = new System.Drawing.Point(20, 21);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(247, 26);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "Enable Xbox 360 Gamepad:";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tab_Graphics
             // 
@@ -523,14 +589,14 @@
             this.tab_Graphics.Controls.Add(this.pnl_RenderingSize);
             this.tab_Graphics.Location = new System.Drawing.Point(4, 32);
             this.tab_Graphics.Name = "tab_Graphics";
-            this.tab_Graphics.Size = new System.Drawing.Size(475, 321);
+            this.tab_Graphics.Size = new System.Drawing.Size(523, 329);
             this.tab_Graphics.TabIndex = 2;
             this.tab_Graphics.Text = "Graphics";
             this.tab_Graphics.UseVisualStyleBackColor = true;
             // 
             // chb_AA
             // 
-            this.chb_AA.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chb_AA.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chb_AA.Appearance = System.Windows.Forms.Appearance.Button;
             this.chb_AA.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chb_AA.FlatAppearance.BorderSize = 0;
@@ -539,7 +605,7 @@
             this.chb_AA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_AA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_AA.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_AA.Location = new System.Drawing.Point(272, 222);
+            this.chb_AA.Location = new System.Drawing.Point(313, 226);
             this.chb_AA.Name = "chb_AA";
             this.chb_AA.Size = new System.Drawing.Size(55, 26);
             this.chb_AA.TabIndex = 15;
@@ -552,10 +618,10 @@
             // 
             // label9
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label9.Location = new System.Drawing.Point(83, 221);
+            this.label9.Location = new System.Drawing.Point(124, 225);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(193, 26);
             this.label9.TabIndex = 14;
@@ -564,7 +630,7 @@
             // 
             // chb_MotionBlur
             // 
-            this.chb_MotionBlur.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chb_MotionBlur.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chb_MotionBlur.Appearance = System.Windows.Forms.Appearance.Button;
             this.chb_MotionBlur.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chb_MotionBlur.FlatAppearance.BorderSize = 0;
@@ -573,7 +639,7 @@
             this.chb_MotionBlur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_MotionBlur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_MotionBlur.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_MotionBlur.Location = new System.Drawing.Point(272, 276);
+            this.chb_MotionBlur.Location = new System.Drawing.Point(313, 280);
             this.chb_MotionBlur.Name = "chb_MotionBlur";
             this.chb_MotionBlur.Size = new System.Drawing.Size(55, 26);
             this.chb_MotionBlur.TabIndex = 13;
@@ -585,10 +651,10 @@
             // 
             // label7
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label7.Location = new System.Drawing.Point(156, 275);
+            this.label7.Location = new System.Drawing.Point(197, 279);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 26);
             this.label7.TabIndex = 12;
@@ -597,7 +663,7 @@
             // 
             // chb_BunchOfCoolEffect
             // 
-            this.chb_BunchOfCoolEffect.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chb_BunchOfCoolEffect.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chb_BunchOfCoolEffect.Appearance = System.Windows.Forms.Appearance.Button;
             this.chb_BunchOfCoolEffect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chb_BunchOfCoolEffect.FlatAppearance.BorderSize = 0;
@@ -606,7 +672,7 @@
             this.chb_BunchOfCoolEffect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_BunchOfCoolEffect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_BunchOfCoolEffect.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(272, 250);
+            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(313, 254);
             this.chb_BunchOfCoolEffect.Name = "chb_BunchOfCoolEffect";
             this.chb_BunchOfCoolEffect.Size = new System.Drawing.Size(55, 26);
             this.chb_BunchOfCoolEffect.TabIndex = 11;
@@ -618,10 +684,10 @@
             // 
             // label11
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label11.Location = new System.Drawing.Point(121, 249);
+            this.label11.Location = new System.Drawing.Point(162, 253);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(155, 26);
             this.label11.TabIndex = 10;
@@ -630,12 +696,12 @@
             // 
             // pnl_EffectQuantity
             // 
-            this.pnl_EffectQuantity.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnl_EffectQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_high);
             this.pnl_EffectQuantity.Controls.Add(this.label5);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_medium);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_low);
-            this.pnl_EffectQuantity.Location = new System.Drawing.Point(24, 171);
+            this.pnl_EffectQuantity.Location = new System.Drawing.Point(45, 177);
             this.pnl_EffectQuantity.Name = "pnl_EffectQuantity";
             this.pnl_EffectQuantity.Size = new System.Drawing.Size(425, 32);
             this.pnl_EffectQuantity.TabIndex = 5;
@@ -717,12 +783,12 @@
             // 
             // pnl_RenderingClearness
             // 
-            this.pnl_RenderingClearness.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnl_RenderingClearness.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_high);
             this.pnl_RenderingClearness.Controls.Add(this.label3);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_medium);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_low);
-            this.pnl_RenderingClearness.Location = new System.Drawing.Point(24, 133);
+            this.pnl_RenderingClearness.Location = new System.Drawing.Point(45, 139);
             this.pnl_RenderingClearness.Name = "pnl_RenderingClearness";
             this.pnl_RenderingClearness.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingClearness.TabIndex = 5;
@@ -804,12 +870,12 @@
             // 
             // pnl_ModelQuality
             // 
-            this.pnl_ModelQuality.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnl_ModelQuality.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_high);
             this.pnl_ModelQuality.Controls.Add(this.label2);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_medium);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_low);
-            this.pnl_ModelQuality.Location = new System.Drawing.Point(24, 95);
+            this.pnl_ModelQuality.Location = new System.Drawing.Point(45, 101);
             this.pnl_ModelQuality.Name = "pnl_ModelQuality";
             this.pnl_ModelQuality.Size = new System.Drawing.Size(425, 32);
             this.pnl_ModelQuality.TabIndex = 5;
@@ -892,12 +958,12 @@
             // 
             // pnl_ShadowDetail
             // 
-            this.pnl_ShadowDetail.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnl_ShadowDetail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_high);
             this.pnl_ShadowDetail.Controls.Add(this.label1);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_medium);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_low);
-            this.pnl_ShadowDetail.Location = new System.Drawing.Point(24, 57);
+            this.pnl_ShadowDetail.Location = new System.Drawing.Point(45, 63);
             this.pnl_ShadowDetail.Name = "pnl_ShadowDetail";
             this.pnl_ShadowDetail.Size = new System.Drawing.Size(425, 32);
             this.pnl_ShadowDetail.TabIndex = 5;
@@ -982,12 +1048,12 @@
             // 
             // pnl_RenderingSize
             // 
-            this.pnl_RenderingSize.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnl_RenderingSize.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_high);
             this.pnl_RenderingSize.Controls.Add(this.lbl_descr);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_medium);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_low);
-            this.pnl_RenderingSize.Location = new System.Drawing.Point(24, 21);
+            this.pnl_RenderingSize.Location = new System.Drawing.Point(45, 27);
             this.pnl_RenderingSize.Name = "pnl_RenderingSize";
             this.pnl_RenderingSize.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingSize.TabIndex = 2;
@@ -1082,14 +1148,14 @@
             this.tab_Sound.Controls.Add(this.pnl_SE);
             this.tab_Sound.Location = new System.Drawing.Point(4, 32);
             this.tab_Sound.Name = "tab_Sound";
-            this.tab_Sound.Size = new System.Drawing.Size(475, 321);
+            this.tab_Sound.Size = new System.Drawing.Size(523, 329);
             this.tab_Sound.TabIndex = 3;
             this.tab_Sound.Text = "Other";
             this.tab_Sound.UseVisualStyleBackColor = true;
             // 
             // chb_FixAfterPlaying
             // 
-            this.chb_FixAfterPlaying.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chb_FixAfterPlaying.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chb_FixAfterPlaying.Appearance = System.Windows.Forms.Appearance.Button;
             this.chb_FixAfterPlaying.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chb_FixAfterPlaying.FlatAppearance.BorderSize = 0;
@@ -1098,7 +1164,7 @@
             this.chb_FixAfterPlaying.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_FixAfterPlaying.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_FixAfterPlaying.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(308, 29);
+            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(338, 30);
             this.chb_FixAfterPlaying.Name = "chb_FixAfterPlaying";
             this.chb_FixAfterPlaying.Size = new System.Drawing.Size(55, 26);
             this.chb_FixAfterPlaying.TabIndex = 13;
@@ -1110,10 +1176,10 @@
             // 
             // label4
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label4.Location = new System.Drawing.Point(67, 28);
+            this.label4.Location = new System.Drawing.Point(97, 29);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(235, 26);
             this.label4.TabIndex = 12;
@@ -1122,10 +1188,10 @@
             // 
             // label6
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label6.Location = new System.Drawing.Point(60, 235);
+            this.label6.Location = new System.Drawing.Point(90, 236);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 26);
             this.label6.TabIndex = 9;
@@ -1135,13 +1201,13 @@
             // 
             // lst_sound_list
             // 
-            this.lst_sound_list.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lst_sound_list.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lst_sound_list.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lst_sound_list.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lst_sound_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_sound_list.FormattingEnabled = true;
             this.lst_sound_list.ItemHeight = 18;
-            this.lst_sound_list.Location = new System.Drawing.Point(208, 240);
+            this.lst_sound_list.Location = new System.Drawing.Point(238, 241);
             this.lst_sound_list.Name = "lst_sound_list";
             this.lst_sound_list.Size = new System.Drawing.Size(245, 54);
             this.lst_sound_list.TabIndex = 8;
@@ -1150,12 +1216,12 @@
             // 
             // pnl_Quality
             // 
-            this.pnl_Quality.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnl_Quality.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_Quality.Controls.Add(this.Quality_high);
             this.pnl_Quality.Controls.Add(this.Quality_medium);
             this.pnl_Quality.Controls.Add(this.Quality_low);
             this.pnl_Quality.Controls.Add(this.label13);
-            this.pnl_Quality.Location = new System.Drawing.Point(24, 78);
+            this.pnl_Quality.Location = new System.Drawing.Point(54, 79);
             this.pnl_Quality.Name = "pnl_Quality";
             this.pnl_Quality.Size = new System.Drawing.Size(432, 32);
             this.pnl_Quality.TabIndex = 6;
@@ -1172,7 +1238,7 @@
             this.Quality_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Quality_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Quality_high.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quality_high.Location = new System.Drawing.Point(345, 1);
+            this.Quality_high.Location = new System.Drawing.Point(341, 1);
             this.Quality_high.Name = "Quality_high";
             this.Quality_high.Size = new System.Drawing.Size(70, 30);
             this.Quality_high.TabIndex = 13;
@@ -1216,7 +1282,7 @@
             this.Quality_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Quality_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Quality_low.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quality_low.Location = new System.Drawing.Point(177, 1);
+            this.Quality_low.Location = new System.Drawing.Point(182, 1);
             this.Quality_low.Margin = new System.Windows.Forms.Padding(0);
             this.Quality_low.Name = "Quality_low";
             this.Quality_low.Size = new System.Drawing.Size(65, 30);
@@ -1241,12 +1307,12 @@
             // 
             // pnl_SoundQuality
             // 
-            this.pnl_SoundQuality.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnl_SoundQuality.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_high);
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_medium);
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_low);
             this.pnl_SoundQuality.Controls.Add(this.label15);
-            this.pnl_SoundQuality.Location = new System.Drawing.Point(24, 180);
+            this.pnl_SoundQuality.Location = new System.Drawing.Point(54, 181);
             this.pnl_SoundQuality.Name = "pnl_SoundQuality";
             this.pnl_SoundQuality.Size = new System.Drawing.Size(432, 32);
             this.pnl_SoundQuality.TabIndex = 5;
@@ -1263,7 +1329,7 @@
             this.SoundQuality_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.SoundQuality_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SoundQuality_high.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoundQuality_high.Location = new System.Drawing.Point(345, 1);
+            this.SoundQuality_high.Location = new System.Drawing.Point(345, -1);
             this.SoundQuality_high.Name = "SoundQuality_high";
             this.SoundQuality_high.Size = new System.Drawing.Size(61, 30);
             this.SoundQuality_high.TabIndex = 19;
@@ -1285,7 +1351,7 @@
             this.SoundQuality_medium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.SoundQuality_medium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SoundQuality_medium.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoundQuality_medium.Location = new System.Drawing.Point(245, 1);
+            this.SoundQuality_medium.Location = new System.Drawing.Point(245, -1);
             this.SoundQuality_medium.Name = "SoundQuality_medium";
             this.SoundQuality_medium.Size = new System.Drawing.Size(94, 30);
             this.SoundQuality_medium.TabIndex = 18;
@@ -1307,7 +1373,7 @@
             this.SoundQuality_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.SoundQuality_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SoundQuality_low.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoundQuality_low.Location = new System.Drawing.Point(184, 1);
+            this.SoundQuality_low.Location = new System.Drawing.Point(184, -1);
             this.SoundQuality_low.Margin = new System.Windows.Forms.Padding(0);
             this.SoundQuality_low.Name = "SoundQuality_low";
             this.SoundQuality_low.Size = new System.Drawing.Size(58, 30);
@@ -1323,7 +1389,7 @@
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label15.Location = new System.Drawing.Point(13, 3);
+            this.label15.Location = new System.Drawing.Point(13, 1);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(168, 26);
             this.label15.TabIndex = 12;
@@ -1332,12 +1398,12 @@
             // 
             // pnl_SE
             // 
-            this.pnl_SE.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnl_SE.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_SE.Controls.Add(this.label14);
             this.pnl_SE.Controls.Add(this.SE_high);
             this.pnl_SE.Controls.Add(this.SE_medium);
             this.pnl_SE.Controls.Add(this.SE_low);
-            this.pnl_SE.Location = new System.Drawing.Point(3, 131);
+            this.pnl_SE.Location = new System.Drawing.Point(33, 132);
             this.pnl_SE.Name = "pnl_SE";
             this.pnl_SE.Size = new System.Drawing.Size(453, 32);
             this.pnl_SE.TabIndex = 3;
@@ -1428,17 +1494,17 @@
             this.tab_About.Controls.Add(this.tbx_About);
             this.tab_About.Location = new System.Drawing.Point(4, 32);
             this.tab_About.Name = "tab_About";
-            this.tab_About.Size = new System.Drawing.Size(475, 321);
+            this.tab_About.Size = new System.Drawing.Size(523, 329);
             this.tab_About.TabIndex = 4;
             this.tab_About.Text = "About";
             // 
             // pnl_about
             // 
-            this.pnl_about.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnl_about.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_about.Controls.Add(this.abt_Regards);
             this.pnl_about.Controls.Add(this.abt_Licence);
             this.pnl_about.Controls.Add(this.abt_Contacts);
-            this.pnl_about.Location = new System.Drawing.Point(10, 13);
+            this.pnl_about.Location = new System.Drawing.Point(46, 3);
             this.pnl_about.Name = "pnl_about";
             this.pnl_about.Size = new System.Drawing.Size(441, 48);
             this.pnl_about.TabIndex = 6;
@@ -1475,12 +1541,12 @@
             this.abt_Licence.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.abt_Licence.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.abt_Licence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abt_Licence.Location = new System.Drawing.Point(180, 9);
+            this.abt_Licence.Location = new System.Drawing.Point(170, 9);
             this.abt_Licence.Name = "abt_Licence";
-            this.abt_Licence.Size = new System.Drawing.Size(94, 30);
+            this.abt_Licence.Size = new System.Drawing.Size(104, 30);
             this.abt_Licence.TabIndex = 1;
             this.abt_Licence.TabStop = true;
-            this.abt_Licence.Text = "LICENCE";
+            this.abt_Licence.Text = "LICENSING";
             this.abt_Licence.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.abt_Licence.UseVisualStyleBackColor = true;
             this.abt_Licence.CheckedChanged += new System.EventHandler(this.abt_CheckedChanged);
@@ -1508,21 +1574,20 @@
             // 
             // tbx_About
             // 
-            this.tbx_About.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tbx_About.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbx_About.BackColor = System.Drawing.Color.White;
             this.tbx_About.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbx_About.Location = new System.Drawing.Point(10, 67);
             this.tbx_About.Name = "tbx_About";
             this.tbx_About.ReadOnly = true;
             this.tbx_About.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.tbx_About.Size = new System.Drawing.Size(457, 251);
+            this.tbx_About.Size = new System.Drawing.Size(512, 265);
             this.tbx_About.TabIndex = 1;
             this.tbx_About.Text = "In my restless dreams ; I see that town...";
             this.tbx_About.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.tbx_About_LinkClicked);
             // 
             // btn_exit
             // 
-            this.btn_exit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_exit.BackColor = System.Drawing.Color.White;
             this.btn_exit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_exit.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1532,7 +1597,7 @@
             this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_exit.ForeColor = System.Drawing.Color.Black;
-            this.btn_exit.Location = new System.Drawing.Point(39, 299);
+            this.btn_exit.Location = new System.Drawing.Point(39, 291);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(165, 39);
             this.btn_exit.TabIndex = 3;
@@ -1544,7 +1609,6 @@
             // 
             // btn_saveSettings
             // 
-            this.btn_saveSettings.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn_saveSettings.BackColor = System.Drawing.Color.White;
             this.btn_saveSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_saveSettings.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1554,7 +1618,7 @@
             this.btn_saveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_saveSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_saveSettings.ForeColor = System.Drawing.Color.Black;
-            this.btn_saveSettings.Location = new System.Drawing.Point(39, 226);
+            this.btn_saveSettings.Location = new System.Drawing.Point(39, 199);
             this.btn_saveSettings.Name = "btn_saveSettings";
             this.btn_saveSettings.Size = new System.Drawing.Size(165, 39);
             this.btn_saveSettings.TabIndex = 4;
@@ -1565,12 +1629,24 @@
             this.btn_saveSettings.MouseEnter += new System.EventHandler(this.setNewColor);
             this.btn_saveSettings.MouseLeave += new System.EventHandler(this.setNewColor);
             // 
+            // lbl_debugMode
+            // 
+            this.lbl_debugMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_debugMode.AutoSize = true;
+            this.lbl_debugMode.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_debugMode.ForeColor = System.Drawing.Color.Black;
+            this.lbl_debugMode.Location = new System.Drawing.Point(690, 4);
+            this.lbl_debugMode.Name = "lbl_debugMode";
+            this.lbl_debugMode.Size = new System.Drawing.Size(75, 15);
+            this.lbl_debugMode.TabIndex = 6;
+            this.lbl_debugMode.Text = "Debug Mode";
+            this.lbl_debugMode.Visible = false;
+            // 
             // otagif
             // 
-            this.otagif.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.otagif.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.otagif.Enabled = false;
-            this.otagif.Image = global::mgs2_v_s_fix.Properties.Resources.otagif;
-            this.otagif.Location = new System.Drawing.Point(88, 83);
+            this.otagif.Location = new System.Drawing.Point(88, 56);
             this.otagif.Name = "otagif";
             this.otagif.Size = new System.Drawing.Size(64, 108);
             this.otagif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1578,12 +1654,42 @@
             this.otagif.TabStop = false;
             this.otagif.Visible = false;
             // 
+            // lbl_ManualLink
+            // 
+            this.lbl_ManualLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_ManualLink.AutoSize = true;
+            this.lbl_ManualLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_ManualLink.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ManualLink.ForeColor = System.Drawing.Color.Black;
+            this.lbl_ManualLink.Location = new System.Drawing.Point(42, 366);
+            this.lbl_ManualLink.Margin = new System.Windows.Forms.Padding(0);
+            this.lbl_ManualLink.Name = "lbl_ManualLink";
+            this.lbl_ManualLink.Size = new System.Drawing.Size(65, 15);
+            this.lbl_ManualLink.TabIndex = 7;
+            this.lbl_ManualLink.Text = "[RUNTIME]";
+            this.lbl_ManualLink.Visible = false;
+            this.lbl_ManualLink.Click += new System.EventHandler(this.lbl_ManualLink_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox2.Location = new System.Drawing.Point(5, 355);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(749, 391);
+            this.ClientSize = new System.Drawing.Size(769, 391);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.lbl_ManualLink);
+            this.Controls.Add(this.lbl_debugMode);
             this.Controls.Add(this.otagif);
             this.Controls.Add(this.btn_saveSettings);
             this.Controls.Add(this.btn_exit);
@@ -1595,12 +1701,13 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Metal Gear Solid 2 Substance V\'s";
+            this.Text = "Metal Gear Solid 2 Substance V\'s Fix";
             this.tabControl1.ResumeLayout(false);
             this.tab_Resolution.ResumeLayout(false);
             this.tab_Resolution.PerformLayout();
             this.tab_Controls.ResumeLayout(false);
-            this.tab_Controls.PerformLayout();
+            this.pnl_XboxGamepad.ResumeLayout(false);
+            this.pnl_XboxGamepad.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tab_Graphics.ResumeLayout(false);
             this.tab_Graphics.PerformLayout();
@@ -1625,7 +1732,9 @@
             this.tab_About.ResumeLayout(false);
             this.pnl_about.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1673,8 +1782,6 @@
         private System.Windows.Forms.Button btn_saveSettings;
         private System.Windows.Forms.Label lbl_des_03;
         private System.Windows.Forms.CheckBox chb_WindowMode;
-        private System.Windows.Forms.CheckBox chb_360Gamepad;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel pnl_RenderingClearness;
         private System.Windows.Forms.RadioButton RenderingClearness_high;
         private System.Windows.Forms.Label label3;
@@ -1715,6 +1822,14 @@
         private System.Windows.Forms.RadioButton abt_Regards;
         private System.Windows.Forms.RadioButton abt_Licence;
         private System.Windows.Forms.RadioButton abt_Contacts;
+        private System.Windows.Forms.Panel pnl_XboxGamepad;
+        private System.Windows.Forms.RadioButton XboxGamepad_PS2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.RadioButton XboxGamepad_V;
+        private System.Windows.Forms.RadioButton XboxGamepad_NO;
+        private System.Windows.Forms.Label lbl_debugMode;
+        private System.Windows.Forms.Label lbl_ManualLink;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

@@ -24,8 +24,11 @@ namespace mgs2_v_s_fix
         private PrivateFontCollection fonts = new PrivateFontCollection();
         Font myFont;
 
-        // Remember current background image. Void repetition.
+        // Remember current background image. Aoid repetition.
         private int bg_number;
+
+        // Remember current icon image. Avoid repetition.
+        private int ico_number;
 
         public Form1()
         {
@@ -50,21 +53,30 @@ namespace mgs2_v_s_fix
 
             // Tooltip for WideScreenFIX
 
-            // Create the ToolTip and associate with the Form container.
+                // Create the ToolTip and associate with the Form container.
             ToolTip toolTip1 = new ToolTip();
 
-            // Set up the delays for the ToolTip.
+                // Set up the delays for the ToolTip.
             toolTip1.InitialDelay = 200;
             toolTip1.ReshowDelay = 200;
-            // Force the ToolTip text to be displayed whether or not the form is active.
+                // Force the ToolTip text to be displayed whether or not the form is active.
             toolTip1.ShowAlways = true;
 
-            // Set up the ToolTip text for the Button and Checkbox.
-            toolTip1.SetToolTip(this.lbl_tooltip, "It will avoid stretch ONLY (and I will repeat: ONLY!) on 16:9 or 16:10 resolution!");
+                // Set up the ToolTip text for the Button and Checkbox.
+            toolTip1.SetToolTip(this.lbl_tooltip, "It will avoid stretch ONLY on 16:9, 16:10 or 21:9 resolution!");
+
+            // SET DEBUG label on main menu 
+
+            if (Ocelot.debugMode)
+            {
+                this.lbl_debugMode.Visible = true;
+            }
 
             // Background things
 
             setNewBackground();
+
+            Ocelot.console("[+] Form1 constructor has done. Waiting user input.");
 
         }
 
@@ -73,10 +85,15 @@ namespace mgs2_v_s_fix
         private void btn_startGame_Click(object sender, EventArgs e)
         {
             Ocelot.startGame();
+
+            Ocelot.console("[+] Start game button pressed");
+
         }
 
         private void btn_settings_Click(object sender, EventArgs e)
         {
+
+            Ocelot.console("[ ] Settings button pressed");
 
             // Check if INI contain all field & uncompiled fields
 
@@ -89,7 +106,6 @@ namespace mgs2_v_s_fix
                 //  V's will understand best config
 
                 Ocelot.startAutoconfig();
-
 
             }
 
@@ -106,6 +122,8 @@ namespace mgs2_v_s_fix
             // Transfering internal setting to graphic setupper
             load_InternalConfig_SetTo_SetupperConfig();
 
+            Ocelot.console("[ ] Settings - settings fron internal config attached to settings");
+
             // Settings Mode
             btn_startGame.Visible = false;
             btn_settings.Visible = false;
@@ -115,16 +133,25 @@ namespace mgs2_v_s_fix
             otagif.Image = mgs2_v_s_fix.Properties.Resources.otagif;
             otagif.Enabled = true;
             otagif.Visible = true;
+            
 
+            setNewIcon();
+
+            lbl_ManualLink.Visible = true;
+            pictureBox2.Visible = true;
 
             // Filling 'About'
 
             abt_Contacts.Checked = true;
 
+            Ocelot.console("[+] Settings has been displayed.");
+
         }
 
         private void btn_saveSettings_Click(object sender, EventArgs e)
         {
+
+            Ocelot.console("[ ] Save button pressed");
 
             load_SetupperConfig_SetTo_InternalConfig();
 
@@ -144,14 +171,24 @@ namespace mgs2_v_s_fix
             otagif.Enabled = false;
             otagif.Visible = false;
 
+            pictureBox2.Visible = false;
+            lbl_ManualLink.Visible = false;
+
+            Ocelot.console("[+] Save has been saved (!)");
+
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+
+            Ocelot.console("[+] Exit button pressed");
+
         }
 
         // Internal Logic
+
+            /* this will edit setupper graphics and control based from properties inside InternalConfig */
 
         public void load_InternalConfig_SetTo_SetupperConfig()
         {
@@ -262,16 +299,45 @@ namespace mgs2_v_s_fix
 
             #region lot_of_things
 
-            if (Ocelot.InternalConfiguration.Controls["360Gamepad"] == "true")
+            foreach (Panel panel in tab_Controls.Controls.OfType<Panel>())
             {
-                chb_360Gamepad.Text = "ON";
-                chb_360Gamepad.Checked = true;
+
+                String key = panel.Name.Remove(0, 4);
+                // NB: 'key' local variable now contain name of the settings key (ie: "SoundQuality")
+
+
+                String value = Ocelot.InternalConfiguration.Controls[key];
+                // NB: 'value' contain value get from InternalSetting corresponding to the 'key' (ie: "high")
+
+                String rad_name = key + "_" + value;
+                // rad_name=SoundQuality_high
+                //  or rad_name=SoundQuality_medium
+                //   or rad_name=SoundQuality_low
+
+                RadioButton rad = (RadioButton)panel.Controls.Find(rad_name, true).GetValue(0);
+                rad.Checked = true;
+
             }
 
-            else
+            switch (Ocelot.InternalConfiguration.Controls["XboxGamepad"])
             {
-                chb_360Gamepad.Text = "OFF";
-                chb_360Gamepad.Checked = false;
+                case "V":
+
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_V;
+
+                    break;
+
+                case "PS2":
+
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_PS2;
+
+                    break;
+
+                default:
+
+                    pictureBox1.Image = null;
+
+                    break;
             }
 
             #endregion
@@ -385,7 +451,20 @@ namespace mgs2_v_s_fix
 
             #endregion
 
+
+            // Suggestion time!
+
+            if (Double.Parse(txt_Width.Text) == 1366 && Double.Parse(txt_Height.Text) == 768)
+            {
+                // A suggestion.
+
+                Ocelot.showMessage("laptop_res_suggestion");
+
+            }
+
         }
+
+            /* this will retrieve settings from setupper and storage in inside Ocelot.InternalConfiguration */
 
         public void load_SetupperConfig_SetTo_InternalConfig()
         {
@@ -463,16 +542,24 @@ namespace mgs2_v_s_fix
 
             #region lot_of_things
 
-            if (chb_360Gamepad.Checked == true)
+            foreach (Panel panel in tab_Controls.Controls.OfType<Panel>())
             {
-                
-                Ocelot.InternalConfiguration.Controls["360Gamepad"] = "true";
-            }
-            else
-            {
-                Ocelot.InternalConfiguration.Controls["360Gamepad"] = "false";
-            }
 
+
+                String key = panel.Name.Remove(0, 4);
+                // NB: 'key' local variable now contain name of the settings key (ie: "MotionBlur")
+
+                var checkedButton = panel.Controls.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.Checked);
+
+                string checkedButtonName = checkedButton.Name.ToString();
+
+                string value = checkedButtonName.Substring(checkedButtonName.IndexOf('_') + 1);
+                // NB: 'value' contain value get from SetupperConfig corresponding to the 'key' (ie: "high")
+
+                Ocelot.InternalConfiguration.Controls[key] = value;
+
+            }
             #endregion
 
             // Graphics Settings
@@ -773,10 +860,20 @@ namespace mgs2_v_s_fix
 
                 double rapporto = (Double.Parse(txt_Width.Text) / Double.Parse(txt_Height.Text));
 
+                if (Double.Parse(txt_Width.Text) == 1366 && Double.Parse(txt_Height.Text) == 768)
+                {
+                    // A suggestion.
+
+                    Ocelot.showMessage("laptop_res_suggestion");
+
+                }
+
                 // 1.6 -> 16:10
                 // 1.777... -> 16:9
+                // 2.333... -> 21:9
+                // 2.370period -> 21:9
 
-                if ((rapporto == 1.6d) || (rapporto == 1.7777777777777777d))
+                if ((rapporto == 1.6d) || (rapporto == 1.7777777777777777d) || (rapporto == 2.3333333333333333d) || (rapporto == 2.3703703703703703d))
                 {                 
                     chb_WideScreenFIX.Checked = true;
                 }
@@ -796,7 +893,7 @@ namespace mgs2_v_s_fix
         private void lbl_tooltip_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("It will avoid stretch ONLY (and I will repeat: ONLY!) on 16:9 or 16:10 resolution!", "Little explanation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Ocelot.showMessage("tip_aspect_ratio");
 
         }
 
@@ -845,8 +942,6 @@ namespace mgs2_v_s_fix
 
         }
 
-
-
         // Exclusive toggle logic
 
         private void FullscreenCutscene_setVisibility(object sender, MouseEventArgs e)
@@ -871,7 +966,8 @@ namespace mgs2_v_s_fix
             if (chb_AA.Checked == true)
             {
 
-                MessageBox.Show("Activating anti-aliasing require that game (mgs2_sse.exe) must run in WINDOWS XP SP3 compatibility mode.\n\nV's Fix will try to set it automatically but (like all things in life) may fail so check it out MANUALLY.\n\nRunning the game without XP compatibility may result in a BLACK SCREEN ON GAME STARTUP!\n\nAlso, it isn't compatible with 'High' model quality preset.", "Back to 2001!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Ocelot.showMessage("tip_AA");
+                
 
                 if (ModelQuality_high.Checked == true)
                 {
@@ -911,6 +1007,148 @@ namespace mgs2_v_s_fix
             this.BackgroundImage = (System.Drawing.Image)mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
 
             return;
+        }
+
+        private void setNewIcon()
+        {
+
+            Random rnd = new Random();
+            int ran_number = 0;
+
+            // From 1 to 12! 
+
+            do { ran_number = rnd.Next(1, 13); }
+            while (!(ran_number != ico_number));
+
+            string resourceName = "ico" + ran_number;
+
+            ico_number = ran_number;
+
+            Icon ohi = (Icon)mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
+
+            #region Changing label next to icon
+
+            string name = "";
+
+            switch (ico_number)
+            {
+                case 1:
+
+                    name = "Colonel";
+
+                    break;
+
+                case 2:
+
+                    name = "Emma";
+
+                    break;
+
+                case 3:
+
+                    name = "Fatman";
+
+                    break;
+
+                case 4:
+
+                    name = "Fortune";
+
+                    break;
+
+                case 5:
+
+                    name = "Ocelot";
+
+                    break;
+
+                case 6:
+
+                    name = "Olga";
+
+                    break;
+
+                case 7:
+
+                    name = "Otacon";
+
+                    break;
+
+                case 8:
+
+                    name = "Raiden";
+
+                    break;
+
+                case 9:
+
+                    name = "Rose";
+
+                    break;
+
+                case 10:
+
+                    name = "Snake";
+
+                    break;
+
+                case 11:
+
+                    name = "Solidus";
+
+                    break;
+
+                case 12:
+
+                    name = "Vamp";
+
+                    break;
+
+            }
+
+            lbl_ManualLink.Text = name + " says: read the manual!";
+
+            #endregion
+
+            this.pictureBox2.Image = ohi.ToBitmap();
+
+            return;
+            
+
+        }
+
+        // Controller Layout graphics switcher
+
+        private void XboxGamepad_V_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_V;
+        }
+
+        private void XboxGamepad_PS2_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_PS2;
+        }
+
+        private void XboxGamepad_V_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_V;
+        }
+
+        private void XboxGamepad_PS2_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_PS2;
+        }
+
+        private void XboxGamepad_NO_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = null;
+        }
+
+        // Go to manual link
+
+        private void lbl_ManualLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki");
         }
 
     //END CLASS
