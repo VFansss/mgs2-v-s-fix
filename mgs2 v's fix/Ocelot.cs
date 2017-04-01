@@ -903,14 +903,22 @@ namespace mgs2_v_s_fix
 
             double rapporto = (Double.Parse(defaultConfig.Resolution["Width"]) / Double.Parse(defaultConfig.Resolution["Height"]));
 
-            if ((rapporto == 1.6d) || (rapporto == 1.7777777777777777d))
-            {
+            // NB: This is replied in Form1.checkIfWSElegible
+
+            if (
+                (rapporto == 1.6d) ||
+                (rapporto == 1.7777777777777777d) ||
+                (rapporto == 1.7786458333333333d) ||
+                (rapporto == 2.3703703703703703d) ||
+                (rapporto == 2.3888888888888888d)
+                )
+            {   
                 defaultConfig.Resolution["WideScreenFIX"] = "true";
             }
             else
             {
                 defaultConfig.Resolution["WideScreenFIX"] = "false";
-            }         
+            };
 
             Ocelot.getGraphicsAdapterList();
 
@@ -1025,13 +1033,6 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                case "tip_aspect_ratio":
-
-                    MessageBox.Show("It will avoid stretch ONLY (and I will repeat: ONLY!) on 16:9 , 16:10 or 21:9 resolution!",
-                    "Little explanation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
                 case "tip_AA":
 
                     MessageBox.Show("Activating anti-aliasing require that game (mgs2_sse.exe) must run in WINDOWS XP SP3 compatibility mode.\n\nV's Fix will try to set it automatically but (like all things in life) may fail so check it out MANUALLY.\n\nRunning the game without XP compatibility may result in a BLACK SCREEN ON GAME STARTUP!\n\nAlso, it isn't compatible with 'High' model quality preset.",
@@ -1043,13 +1044,6 @@ namespace mgs2_v_s_fix
 
                     MessageBox.Show("Please be aware that since more VGA are installed on your system you have to be sure that executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!\n\nThis HAS to be done MANUALLY from your driver control panel!",
                     "More graphics adapter detected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
-                case "laptop_res_suggestion":
-
-                    MessageBox.Show("Probably you have a 1366*768 monitor. Good!\nBut if you want an advice: set game resolution to 1280*720 instead.\nThan you can use the widescreen fix and see the game much much better!",
-                    "Try this...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 

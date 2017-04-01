@@ -62,9 +62,6 @@ namespace mgs2_v_s_fix
                 // Force the ToolTip text to be displayed whether or not the form is active.
             toolTip1.ShowAlways = true;
 
-                // Set up the ToolTip text for the Button and Checkbox.
-            toolTip1.SetToolTip(this.lbl_tooltip, "It will avoid stretch ONLY on 16:9, 16:10 or 21:9 resolution!");
-
             // SET DEBUG label on main menu 
 
             if (Ocelot.debugMode)
@@ -451,16 +448,6 @@ namespace mgs2_v_s_fix
 
             #endregion
 
-
-            // Suggestion time!
-
-            if (Double.Parse(txt_Width.Text) == 1366 && Double.Parse(txt_Height.Text) == 768)
-            {
-                // A suggestion.
-
-                Ocelot.showMessage("laptop_res_suggestion");
-
-            }
 
         }
 
@@ -860,20 +847,22 @@ namespace mgs2_v_s_fix
 
                 double rapporto = (Double.Parse(txt_Width.Text) / Double.Parse(txt_Height.Text));
 
-                if (Double.Parse(txt_Width.Text) == 1366 && Double.Parse(txt_Height.Text) == 768)
-                {
-                    // A suggestion.
-
-                    Ocelot.showMessage("laptop_res_suggestion");
-
-                }
+                // NB: This is replied in Ocelot.startAutoconfig
 
                 // 1.6 -> 16:10
-                // 1.777... -> 16:9
-                // 2.333... -> 21:9
-                // 2.370period -> 21:9
+                // 1.777... -> 16:9       
+                // 1.778645883... -> 1366x768
 
-                if ((rapporto == 1.6d) || (rapporto == 1.7777777777777777d) || (rapporto == 2.3333333333333333d) || (rapporto == 2.3703703703703703d))
+                // 2.3703703703703703d -> 2560x1080
+                // 2.3888888888888888d -> 3440x1440
+
+                if (
+                    (rapporto == 1.6d) ||
+                    (rapporto == 1.7777777777777777d) ||
+                    (rapporto == 1.7786458333333333d) ||
+                    (rapporto == 2.3703703703703703d) ||
+                    (rapporto == 2.3888888888888888d)
+                    )
                 {                 
                     chb_WideScreenFIX.Checked = true;
                 }
@@ -886,25 +875,6 @@ namespace mgs2_v_s_fix
                 FullscreenCutscene_setVisibility(this,new MouseEventArgs(System.Windows.Forms.MouseButtons.None,1,1,1,1));
 
             }
-        }
-
-        // WideScreenFIX Tooltip
-
-        private void lbl_tooltip_Click(object sender, EventArgs e)
-        {
-
-            Ocelot.showMessage("tip_aspect_ratio");
-
-        }
-
-        private void lbl_tooltip_MouseEnter(object sender, EventArgs e)
-        {
-            lbl_tooltip.Font = new Font(lbl_tooltip.Font, FontStyle.Underline);
-        }
-
-        private void lbl_tooltip_MouseLeave(object sender, EventArgs e)
-        {
-            lbl_tooltip.Font = new Font(lbl_tooltip.Font, FontStyle.Regular);
         }
 
         // About tab

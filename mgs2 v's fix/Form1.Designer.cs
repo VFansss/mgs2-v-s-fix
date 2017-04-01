@@ -35,7 +35,6 @@
             this.tab_Resolution = new System.Windows.Forms.TabPage();
             this.chb_FullscreenCutscene = new System.Windows.Forms.CheckBox();
             this.lbl_FullscreenCutscene = new System.Windows.Forms.Label();
-            this.lbl_tooltip = new System.Windows.Forms.Label();
             this.chb_LaptopMode = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.chb_WindowMode = new System.Windows.Forms.CheckBox();
@@ -203,7 +202,6 @@
             this.tab_Resolution.BackColor = System.Drawing.Color.White;
             this.tab_Resolution.Controls.Add(this.chb_FullscreenCutscene);
             this.tab_Resolution.Controls.Add(this.lbl_FullscreenCutscene);
-            this.tab_Resolution.Controls.Add(this.lbl_tooltip);
             this.tab_Resolution.Controls.Add(this.chb_LaptopMode);
             this.tab_Resolution.Controls.Add(this.label8);
             this.tab_Resolution.Controls.Add(this.chb_WindowMode);
@@ -256,21 +254,6 @@
             this.lbl_FullscreenCutscene.TabIndex = 10;
             this.lbl_FullscreenCutscene.Text = "full screen cutscene:";
             this.lbl_FullscreenCutscene.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lbl_tooltip
-            // 
-            this.lbl_tooltip.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_tooltip.AutoSize = true;
-            this.lbl_tooltip.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_tooltip.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_tooltip.Location = new System.Drawing.Point(285, 86);
-            this.lbl_tooltip.Name = "lbl_tooltip";
-            this.lbl_tooltip.Size = new System.Drawing.Size(44, 26);
-            this.lbl_tooltip.TabIndex = 9;
-            this.lbl_tooltip.Text = "( ? )";
-            this.lbl_tooltip.Click += new System.EventHandler(this.lbl_tooltip_Click);
-            this.lbl_tooltip.MouseEnter += new System.EventHandler(this.lbl_tooltip_MouseEnter);
-            this.lbl_tooltip.MouseLeave += new System.EventHandler(this.lbl_tooltip_MouseLeave);
             // 
             // chb_LaptopMode
             // 
@@ -1807,7 +1790,6 @@
         private System.Windows.Forms.RadioButton SE_low;
         private System.Windows.Forms.CheckBox chb_LaptopMode;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lbl_tooltip;
         private System.Windows.Forms.PictureBox otagif;
         private System.Windows.Forms.TabPage tab_About;
         private System.Windows.Forms.RichTextBox tbx_About;
