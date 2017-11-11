@@ -281,6 +281,15 @@ namespace mgs2_v_s_fix
                             ws_ini.Write("cutscenes_bottom_black_border", "480", "MISC");
                         }
 
+                        if (Ocelot.InternalConfiguration.Resolution["OptimizedFOV"].Equals("16:9"))
+                        {
+                            ws_ini.Write("custom_fov", "1", "MISC");
+                        }
+                        else
+                        {
+                            ws_ini.Write("custom_fov", "0", "MISC");
+                        }
+
                     }
 
                     // GraphicAdapterName
@@ -914,6 +923,17 @@ namespace mgs2_v_s_fix
             else
             {
                 defaultConfig.Resolution["WideScreenFIX"] = "false";
+            };
+
+            // Set 16:9 optimized FOV multiplier
+
+            if (rapporto == 1.7777777777777777d) // If 16:9...
+            {
+                defaultConfig.Resolution["OptimizedFOV"] = "16:9";
+            }
+            else
+            {
+                defaultConfig.Resolution["OptimizedFOV"] = "16:9";
             };
 
             Ocelot.getGraphicsAdapterList();

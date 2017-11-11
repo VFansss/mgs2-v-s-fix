@@ -319,12 +319,13 @@ namespace mgs2_v_s_fix
 
             }
 
-            // Just "FullscreenCutscene" things...
+            // IF WSF is enabled
             if (Ocelot.InternalConfiguration.Resolution["WideScreenFIX"] == "true")
             {
                 lbl_FullscreenCutscene.Visible = true;
                 chb_FullscreenCutscene.Visible = true;
 
+                // Just "FullscreenCutscene" things...
                 if (Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"] == "true")
                 { 
                 chb_FullscreenCutscene.Text = "ON";
@@ -335,6 +336,19 @@ namespace mgs2_v_s_fix
                 chb_FullscreenCutscene.Text = "OFF";
                 chb_FullscreenCutscene.Checked = false;
                 }
+
+                // OptimizedFOV
+                if (Ocelot.InternalConfiguration.Resolution["OptimizedFOV"] == "16:9")
+                {
+                    chb_OptimizedFOV.Text = "ON";
+                    chb_OptimizedFOV.Checked = true;
+                }
+                else
+                {
+                    chb_OptimizedFOV.Text = "OFF";
+                    chb_OptimizedFOV.Checked = false;
+                }
+
             }
 
             else
@@ -579,6 +593,15 @@ namespace mgs2_v_s_fix
             else
             {
                 Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"] = "false";
+            }
+
+            if (chb_OptimizedFOV.Checked == true)
+            {
+                Ocelot.InternalConfiguration.Resolution["OptimizedFOV"] = "16:9";
+            }
+            else
+            {
+                Ocelot.InternalConfiguration.Resolution["OptimizedFOV"] = "NO";
             }
 
             #endregion
@@ -928,6 +951,16 @@ namespace mgs2_v_s_fix
                 else
                 {
                     chb_WideScreenFIX.Checked = false;
+                }
+
+                if (rapporto == 1.7777777777777777d)
+                {
+                    chb_OptimizedFOV.Checked = true;
+                }
+
+                else
+                {
+                    chb_OptimizedFOV.Checked = false;
                 }
 
                 FullscreenCutscene_setVisibility(this,new MouseEventArgs(System.Windows.Forms.MouseButtons.None,1,1,1,1));

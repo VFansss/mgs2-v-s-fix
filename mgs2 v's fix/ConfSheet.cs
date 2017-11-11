@@ -26,7 +26,8 @@ namespace mgs2_v_s_fix
                 {"GraphicAdapterName",null},
                 {"WindowMode",null},
                 {"LaptopMode",null},
-                {"FullscreenCutscene",null}
+                {"FullscreenCutscene",null},
+                {"OptimizedFOV",null}
 
              };
 
