@@ -33,6 +33,7 @@
             this.btn_settings = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_Resolution = new System.Windows.Forms.TabPage();
+            this.help_resolution = new System.Windows.Forms.Label();
             this.chb_OptimizedFOV = new System.Windows.Forms.CheckBox();
             this.lbl_OptimizedFOV = new System.Windows.Forms.Label();
             this.chb_FullscreenCutscene = new System.Windows.Forms.CheckBox();
@@ -50,6 +51,7 @@
             this.txt_Width = new System.Windows.Forms.TextBox();
             this.lbl_des_00 = new System.Windows.Forms.Label();
             this.tab_Controls = new System.Windows.Forms.TabPage();
+            this.help_controls = new System.Windows.Forms.Label();
             this.pnl_XboxGamepad = new System.Windows.Forms.Panel();
             this.XboxGamepad_PS2 = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
@@ -207,6 +209,7 @@
             // tab_Resolution
             // 
             this.tab_Resolution.BackColor = System.Drawing.Color.White;
+            this.tab_Resolution.Controls.Add(this.help_resolution);
             this.tab_Resolution.Controls.Add(this.chb_OptimizedFOV);
             this.tab_Resolution.Controls.Add(this.lbl_OptimizedFOV);
             this.tab_Resolution.Controls.Add(this.chb_FullscreenCutscene);
@@ -231,6 +234,20 @@
             this.tab_Resolution.TabIndex = 0;
             this.tab_Resolution.Text = "Resolution";
             // 
+            // help_resolution
+            // 
+            this.help_resolution.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_resolution.AutoSize = true;
+            this.help_resolution.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_resolution.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_resolution.Location = new System.Drawing.Point(19, 314);
+            this.help_resolution.Name = "help_resolution";
+            this.help_resolution.Size = new System.Drawing.Size(489, 19);
+            this.help_resolution.TabIndex = 14;
+            this.help_resolution.Text = "Issues with graphics? Freezing movies? Miscellaneous doubts? Click here!";
+            this.help_resolution.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.help_resolution.Click += new System.EventHandler(this.help_resolution_Click);
+            // 
             // chb_OptimizedFOV
             // 
             this.chb_OptimizedFOV.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -242,7 +259,7 @@
             this.chb_OptimizedFOV.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_OptimizedFOV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_OptimizedFOV.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_OptimizedFOV.Location = new System.Drawing.Point(237, 143);
+            this.chb_OptimizedFOV.Location = new System.Drawing.Point(237, 118);
             this.chb_OptimizedFOV.Name = "chb_OptimizedFOV";
             this.chb_OptimizedFOV.Size = new System.Drawing.Size(55, 26);
             this.chb_OptimizedFOV.TabIndex = 13;
@@ -257,7 +274,7 @@
             this.lbl_OptimizedFOV.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_OptimizedFOV.AutoSize = true;
             this.lbl_OptimizedFOV.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OptimizedFOV.Location = new System.Drawing.Point(101, 145);
+            this.lbl_OptimizedFOV.Location = new System.Drawing.Point(101, 120);
             this.lbl_OptimizedFOV.Name = "lbl_OptimizedFOV";
             this.lbl_OptimizedFOV.Size = new System.Drawing.Size(138, 19);
             this.lbl_OptimizedFOV.TabIndex = 12;
@@ -275,7 +292,7 @@
             this.chb_FullscreenCutscene.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_FullscreenCutscene.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_FullscreenCutscene.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FullscreenCutscene.Location = new System.Drawing.Point(237, 118);
+            this.chb_FullscreenCutscene.Location = new System.Drawing.Point(237, 93);
             this.chb_FullscreenCutscene.Name = "chb_FullscreenCutscene";
             this.chb_FullscreenCutscene.Size = new System.Drawing.Size(55, 26);
             this.chb_FullscreenCutscene.TabIndex = 11;
@@ -290,7 +307,7 @@
             this.lbl_FullscreenCutscene.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_FullscreenCutscene.AutoSize = true;
             this.lbl_FullscreenCutscene.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FullscreenCutscene.Location = new System.Drawing.Point(96, 120);
+            this.lbl_FullscreenCutscene.Location = new System.Drawing.Point(96, 95);
             this.lbl_FullscreenCutscene.Name = "lbl_FullscreenCutscene";
             this.lbl_FullscreenCutscene.Size = new System.Drawing.Size(143, 19);
             this.lbl_FullscreenCutscene.TabIndex = 10;
@@ -308,7 +325,7 @@
             this.chb_LaptopMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_LaptopMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_LaptopMode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_LaptopMode.Location = new System.Drawing.Point(237, 216);
+            this.chb_LaptopMode.Location = new System.Drawing.Point(237, 191);
             this.chb_LaptopMode.Name = "chb_LaptopMode";
             this.chb_LaptopMode.Size = new System.Drawing.Size(55, 26);
             this.chb_LaptopMode.TabIndex = 8;
@@ -323,7 +340,7 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label8.Location = new System.Drawing.Point(66, 215);
+            this.label8.Location = new System.Drawing.Point(66, 190);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(183, 26);
             this.label8.TabIndex = 7;
@@ -341,7 +358,7 @@
             this.chb_WindowMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_WindowMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_WindowMode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_WindowMode.Location = new System.Drawing.Point(237, 176);
+            this.chb_WindowMode.Location = new System.Drawing.Point(237, 151);
             this.chb_WindowMode.Name = "chb_WindowMode";
             this.chb_WindowMode.Size = new System.Drawing.Size(55, 26);
             this.chb_WindowMode.TabIndex = 6;
@@ -356,7 +373,7 @@
             this.lbl_des_03.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_03.AutoSize = true;
             this.lbl_des_03.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_03.Location = new System.Drawing.Point(76, 258);
+            this.lbl_des_03.Location = new System.Drawing.Point(76, 233);
             this.lbl_des_03.Name = "lbl_des_03";
             this.lbl_des_03.Size = new System.Drawing.Size(165, 26);
             this.lbl_des_03.TabIndex = 5;
@@ -371,7 +388,7 @@
             this.lst_vga_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_vga_list.FormattingEnabled = true;
             this.lst_vga_list.ItemHeight = 18;
-            this.lst_vga_list.Location = new System.Drawing.Point(241, 264);
+            this.lst_vga_list.Location = new System.Drawing.Point(241, 239);
             this.lst_vga_list.Name = "lst_vga_list";
             this.lst_vga_list.Size = new System.Drawing.Size(245, 54);
             this.lst_vga_list.TabIndex = 4;
@@ -388,7 +405,7 @@
             this.chb_WideScreenFIX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_WideScreenFIX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_WideScreenFIX.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_WideScreenFIX.Location = new System.Drawing.Point(237, 90);
+            this.chb_WideScreenFIX.Location = new System.Drawing.Point(237, 65);
             this.chb_WideScreenFIX.Name = "chb_WideScreenFIX";
             this.chb_WideScreenFIX.Size = new System.Drawing.Size(55, 26);
             this.chb_WideScreenFIX.TabIndex = 1;
@@ -404,7 +421,7 @@
             this.lbl_des_02.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_02.AutoSize = true;
             this.lbl_des_02.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_02.Location = new System.Drawing.Point(97, 175);
+            this.lbl_des_02.Location = new System.Drawing.Point(97, 150);
             this.lbl_des_02.Name = "lbl_des_02";
             this.lbl_des_02.Size = new System.Drawing.Size(145, 26);
             this.lbl_des_02.TabIndex = 0;
@@ -416,7 +433,7 @@
             this.txt_Height.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Height.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Height.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txt_Height.Location = new System.Drawing.Point(325, 49);
+            this.txt_Height.Location = new System.Drawing.Point(325, 24);
             this.txt_Height.MaxLength = 5;
             this.txt_Height.Name = "txt_Height";
             this.txt_Height.ShortcutsEnabled = false;
@@ -434,7 +451,7 @@
             this.lbl_des_01.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_01.AutoSize = true;
             this.lbl_des_01.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_01.Location = new System.Drawing.Point(41, 89);
+            this.lbl_des_01.Location = new System.Drawing.Point(41, 64);
             this.lbl_des_01.Name = "lbl_des_01";
             this.lbl_des_01.Size = new System.Drawing.Size(201, 26);
             this.lbl_des_01.TabIndex = 0;
@@ -446,7 +463,7 @@
             this.lbl_X.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_X.AutoSize = true;
             this.lbl_X.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_X.Location = new System.Drawing.Point(298, 44);
+            this.lbl_X.Location = new System.Drawing.Point(298, 19);
             this.lbl_X.Name = "lbl_X";
             this.lbl_X.Size = new System.Drawing.Size(21, 26);
             this.lbl_X.TabIndex = 2;
@@ -457,7 +474,7 @@
             this.txt_Width.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Width.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Width.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txt_Width.Location = new System.Drawing.Point(241, 49);
+            this.txt_Width.Location = new System.Drawing.Point(241, 24);
             this.txt_Width.MaxLength = 4;
             this.txt_Width.Name = "txt_Width";
             this.txt_Width.ShortcutsEnabled = false;
@@ -475,7 +492,7 @@
             this.lbl_des_00.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_00.AutoSize = true;
             this.lbl_des_00.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_00.Location = new System.Drawing.Point(134, 44);
+            this.lbl_des_00.Location = new System.Drawing.Point(134, 19);
             this.lbl_des_00.Name = "lbl_des_00";
             this.lbl_des_00.Size = new System.Drawing.Size(108, 26);
             this.lbl_des_00.TabIndex = 0;
@@ -484,6 +501,7 @@
             // 
             // tab_Controls
             // 
+            this.tab_Controls.Controls.Add(this.help_controls);
             this.tab_Controls.Controls.Add(this.pnl_XboxGamepad);
             this.tab_Controls.Controls.Add(this.pictureBox1);
             this.tab_Controls.Location = new System.Drawing.Point(4, 32);
@@ -494,6 +512,20 @@
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
             // 
+            // help_controls
+            // 
+            this.help_controls.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_controls.AutoSize = true;
+            this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_controls.Location = new System.Drawing.Point(67, 314);
+            this.help_controls.Name = "help_controls";
+            this.help_controls.Size = new System.Drawing.Size(390, 19);
+            this.help_controls.TabIndex = 11;
+            this.help_controls.Text = "Issues with controller? Need help with buttons? Click here!";
+            this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
+            // 
             // pnl_XboxGamepad
             // 
             this.pnl_XboxGamepad.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -501,7 +533,7 @@
             this.pnl_XboxGamepad.Controls.Add(this.label10);
             this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_V);
             this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_NO);
-            this.pnl_XboxGamepad.Location = new System.Drawing.Point(33, 13);
+            this.pnl_XboxGamepad.Location = new System.Drawing.Point(33, 2);
             this.pnl_XboxGamepad.Name = "pnl_XboxGamepad";
             this.pnl_XboxGamepad.Size = new System.Drawing.Size(454, 32);
             this.pnl_XboxGamepad.TabIndex = 7;
@@ -592,7 +624,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 65);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 42);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(516, 268);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1769,6 +1801,7 @@
             this.tab_Resolution.ResumeLayout(false);
             this.tab_Resolution.PerformLayout();
             this.tab_Controls.ResumeLayout(false);
+            this.tab_Controls.PerformLayout();
             this.pnl_XboxGamepad.ResumeLayout(false);
             this.pnl_XboxGamepad.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1900,6 +1933,8 @@
         private System.Windows.Forms.Label lbl_OptimizedFOV;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lbl_donate;
+        private System.Windows.Forms.Label help_controls;
+        private System.Windows.Forms.Label help_resolution;
     }
 }
 

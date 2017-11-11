@@ -358,6 +358,11 @@ namespace mgs2_v_s_fix
                 chb_FullscreenCutscene.Text = "OFF";
                 chb_FullscreenCutscene.Checked = false;
 
+                lbl_OptimizedFOV.Visible = false;
+                chb_OptimizedFOV.Visible = false;
+                chb_OptimizedFOV.Text = "OFF";
+                chb_OptimizedFOV.Checked = false;
+
             }
 
             #endregion
@@ -1012,12 +1017,19 @@ namespace mgs2_v_s_fix
             {
                 lbl_FullscreenCutscene.Visible = true;
                 chb_FullscreenCutscene.Visible = true;
+
+                lbl_OptimizedFOV.Visible = true;
+                chb_OptimizedFOV.Visible = true;
+
             }
 
             else
             {
                 lbl_FullscreenCutscene.Visible = false;
                 chb_FullscreenCutscene.Visible = false;
+
+                lbl_OptimizedFOV.Visible = false;
+                chb_OptimizedFOV.Visible = false;
             }
         }
 
@@ -1230,7 +1242,7 @@ namespace mgs2_v_s_fix
             pictureBox1.Image = null;
         }
 
-        // Go to manual link
+        // Help link
 
         private void lbl_ManualLink_Click(object sender, EventArgs e)
         {
@@ -1245,6 +1257,33 @@ namespace mgs2_v_s_fix
             }
 
         }
+
+        private void help_resolution_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Troubleshooting-&-Debug-mode");
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
+        }
+
+        private void help_controls_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Controllers-&-Actions");
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
+        }
+
 
         //END CLASS
     }
