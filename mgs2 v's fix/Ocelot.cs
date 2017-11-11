@@ -1119,21 +1119,21 @@ namespace mgs2_v_s_fix
                 case "tip_patcher":
 
                     MessageBox.Show(
-                    "V's Fix will now run some extra application for patching game into 2.0 Version.\n\nOn some system it can prompt an UAC warning.\nIsn't doing anything harmful so allow it to do its job!",
+                    "V's Fix will now run some extra applications for patching the game into 2.0 Version.\n\nOn some system it can prompt an UAC warning.\nIsn't doing anything harmful; let it do its job!",
                     "Just an info...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "tip_AA":
 
-                    MessageBox.Show("Activating anti-aliasing require that game (mgs2_sse.exe) must run in WINDOWS XP SP3 compatibility mode.\n\nV's Fix will try to set it automatically but (like all things in life) may fail so check it out MANUALLY.\n\nRunning the game without XP compatibility may result in a BLACK SCREEN ON GAME STARTUP!\n\nAlso, it isn't compatible with 'High' model quality preset.",
+                    MessageBox.Show("Activating anti-aliasing requires that game (mgs2_sse.exe) must run in WINDOWS XP SP3 compatibility mode.\n\nV's Fix will try to set it automatically but (like all things in life) may fail so check it out MANUALLY.\n\nRunning the game without XP compatibility will result in a BLACK SCREEN ON GAME STARTUP!\n\nAlso, it isn't compatible with 'High' model quality preset.",
                     "Back to 2001!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "tip_vga":
 
-                    MessageBox.Show("Please be aware that since more VGA are installed on your system you have to be sure that executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!\n\nThis HAS to be done MANUALLY from your driver control panel!",
+                    MessageBox.Show("Please be aware that since more VGAs are installed on your system you have to be sure that the executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!\n\nThis MUST be done MANUALLY from your graphics adapter's control panel!",
                     "More graphics adapter detected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
@@ -1207,7 +1207,7 @@ namespace mgs2_v_s_fix
 
                     // TODO change this
                     MessageBox.Show(
-                    "V's Fix can't create some files into game directory.\nFix require full permission to create,delete and extract file into that directory. Try to run the fix using 'Admin rights'!",
+                    "V's Fix isn't able to create some files into game's directory.\nFix require full permission to create,delete and extract file into that directory. Try to run the fix using 'Admin rights'!",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1215,7 +1215,7 @@ namespace mgs2_v_s_fix
                 case "no_vga":
 
                     MessageBox.Show(
-                    "V's hasn't found any VGA installed in your system.\n\nIF you are able to read this, is meaning that means that it is wrong.\n\nUnfortunatelly is required to insert your VGA manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workarown.\n\nClosing this message will open your browser to V's Guide.\n\nWhould you kindly press the 'OK' button?",
+                    "V's hasn't found any VGA installed in your system.\n\nIF you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1223,7 +1223,7 @@ namespace mgs2_v_s_fix
                 case "no_donate":
 
                     MessageBox.Show(
-                    "V's Fix can't open the Paypal link in your browser :(",
+                    "V's Fix isn't able to open PayPal website! Please don't give up :(",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1253,7 +1253,7 @@ namespace mgs2_v_s_fix
                 default:
 
                     // TODO change this
-                    MessageBox.Show("VFansss is a shitty programmer, report this message to he: surely he will be very happy! ",
+                    MessageBox.Show("You shouldn't be able to read this message: /",
                     "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
