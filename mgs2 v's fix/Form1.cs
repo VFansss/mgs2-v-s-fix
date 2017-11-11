@@ -92,7 +92,7 @@ namespace mgs2_v_s_fix
 
             Ocelot.console("[ ] Settings button pressed");
 
-            // Check if INI contain all field & uncompiled fields
+            // Check if INI contain all field and/or uncompiled fields
 
             Ocelot.checkConfFileIntegrity();
 
@@ -117,9 +117,13 @@ namespace mgs2_v_s_fix
             }
 
             // Transfering internal setting to graphic setupper
-            load_InternalConfig_SetTo_SetupperConfig();
+            if (load_InternalConfig_SetTo_SetupperConfig() == false)
+            {
+                // Something gone wrong. A message has already show to the user;
+                return;
+            }
 
-            Ocelot.console("[ ] Settings - settings fron internal config attached to settings");
+            Ocelot.console("[ ] Settings - settings from internal config correctly attached to setupper");
 
             // Settings Mode
             btn_startGame.Visible = false;
@@ -187,7 +191,7 @@ namespace mgs2_v_s_fix
 
             /* this will edit setupper graphics and control based from properties inside InternalConfig */
 
-        public void load_InternalConfig_SetTo_SetupperConfig()
+        public bool load_InternalConfig_SetTo_SetupperConfig()
         {
 
             // Loading Resolution Settings
@@ -236,7 +240,7 @@ namespace mgs2_v_s_fix
             Ocelot.getGraphicsAdapterList();
 
             lst_vga_list.Items.Clear();
-           
+
             foreach(string s in Ocelot.vgaList){
 
                 lst_vga_list.Items.Add(s);
@@ -247,18 +251,70 @@ namespace mgs2_v_s_fix
 
             if (lst_vga_list.SelectedIndex == -1)
             {
-                // Strange case:
-                //  InternalConfig contain a VGA AdapterName that isn't installed on the machine
-                //   Probably someone has fucked with .ini
-                //    Standard Behaviour: Select an Intel vga
 
-                lst_vga_list.SelectedIndex = lst_vga_list.FindString("Intel");
+                Ocelot.console("[!] -VVV- No VGA Selected.");
 
-                if (lst_vga_list.SelectedIndex == -1)
+                if (Ocelot.vgaList.Count == 0)
                 {
-                    //No integrated graphics. Select the last one V's has found
 
-                    lst_vga_list.SelectedIndex = lst_vga_list.FindString(Ocelot.vgaList.Last.Value);
+                    Ocelot.console("[!] -WHY?- No VGA found on system. Awaiting manual input.");
+
+                    // Strange case:
+                    //  V's wasn't able to understand which video cards are available
+                    //   User need to do a manual insertion, if it hasn't already done it
+
+                    Ocelot.InternalConfiguration.Resolution.TryGetValue("GraphicAdapterName", out string explicitedVGAName);
+
+                    if (explicitedVGAName!= null && !explicitedVGAName.Equals("") && explicitedVGAName.Length > 0)
+                    {
+                        Ocelot.console("[!] -RESULT?- Found a manual inserted one: "+ explicitedVGAName);
+
+                        // Manually inserted
+                        lst_vga_list.Items.Add(explicitedVGAName);
+                        lst_vga_list.SelectedIndex = lst_vga_list.FindString(explicitedVGAName);
+                    }
+
+                    else
+                    {
+                        // Prompt a message to V's Wiki
+
+                        Ocelot.console("[!] -RESULT?- NO MANUAL INPUT. SHOWING MANUAL and ABORTING.");
+
+                        Ocelot.showMessage("no_vga");
+
+                        try
+                        {
+                            System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
+                        }
+
+                        catch
+                        {
+                            Ocelot.showMessage("UAC_error");
+                        }
+
+                        return false;
+
+                    }
+
+                }
+
+                else
+                {
+
+                    // Strange case:
+                    //  InternalConfig contain a VGA AdapterName that isn't installed on the machine
+                    //   Probably someone has fucked with .ini
+                    //    Standard Behaviour: Select an Intel vga
+
+                    lst_vga_list.SelectedIndex = lst_vga_list.FindString("Intel");
+
+                    if (lst_vga_list.SelectedIndex == -1)
+                    {
+                        //No integrated graphics. Select the last one V's has found
+
+                        lst_vga_list.SelectedIndex = lst_vga_list.FindString(Ocelot.vgaList.Last.Value);
+                    }
+
                 }
 
             }
@@ -448,7 +504,9 @@ namespace mgs2_v_s_fix
 
             #endregion
 
+            // All gone well. Can show the settings menu
 
+            return true;
         }
 
             /* this will retrieve settings from setupper and storage in inside Ocelot.InternalConfiguration */
@@ -499,7 +557,7 @@ namespace mgs2_v_s_fix
 
             // NB: Something shoud every be selected inside the Listbox now
             //  either manually or automatically by V's
-            //   Exception not controlled. Faith in humanity...
+            //   Exception not controlled. Faith in V's...
 
             Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"] = lst_vga_list.SelectedItem.ToString();
 

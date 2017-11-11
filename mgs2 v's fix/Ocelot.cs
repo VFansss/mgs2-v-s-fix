@@ -29,12 +29,6 @@ namespace mgs2_v_s_fix
         public static bool debugMode = false;
         public static string debugMode_filePath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\MGS2_VFix_debug.txt";
 
-        public Ocelot()
-        {
-
-
-        }
-
         /// Main Menu Function
 
         public static void startGame()
@@ -59,10 +53,12 @@ namespace mgs2_v_s_fix
         public static void checkConfFileIntegrity()
         {
 
-            // If field key don't exist inside Configuration_file.ini
+            // If key field doesn't exist inside Configuration_file.ini
             // V's fix will create it
             // THEN flag Autoconfigurator to do something later
-            
+
+            // NB: Doesn't actually save any readed value
+
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Resolution)
             {
                 if (!ConfFile.KeyExists(entry.Key, "Resolution"))
@@ -937,7 +933,32 @@ namespace mgs2_v_s_fix
 
             }
 
-            if (vgaList.Count > 1)
+            Ocelot.console("[!] -VVV- No VGA Selected.");
+
+            if(vgaList.Count == 0)
+            {
+                // No found VGA on the system. User has inserted one manually into configuration ini file?
+
+                string explicitedVGAName = "";
+
+                if (ConfFile.KeyExists("GraphicAdapterName", "Resolution"))
+                {
+                    explicitedVGAName = ConfFile.Read("GraphicAdapterName", "Resolution").ToString();
+                }
+
+                if (explicitedVGAName != null && !explicitedVGAName.Equals("") && explicitedVGAName.Length > 0)
+                {
+                    // Seems that user has done its job!
+                    vgaList.AddLast(explicitedVGAName);
+
+                    defaultConfig.Resolution["GraphicAdapterName"] = explicitedVGAName;
+
+                    Ocelot.console("[!] -AUTOCONFIG- Found a manual inserted one: " + explicitedVGAName);
+                }
+
+            }
+
+            else if (vgaList.Count > 1)
             {
 
                 Ocelot.showMessage("tip_vga");
@@ -994,17 +1015,67 @@ namespace mgs2_v_s_fix
 
         public static void getGraphicsAdapterList()
         {
+            // Reset the VGA list
             vgaList.Clear();
 
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
-            foreach (ManagementObject mo in searcher.Get())
-            {
-                PropertyData currentBitsPerPixel = mo.Properties["CurrentBitsPerPixel"];
-                PropertyData description = mo.Properties["Description"];
+            // Issues during retrieving?
+            bool notYetSnake = false;
 
-                vgaList.AddLast(description.Value.ToString());
+            try // Method 1
+            {
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
+                foreach (ManagementObject mo in searcher.Get())
+                {
+                    PropertyData currentBitsPerPixel = mo.Properties["CurrentBitsPerPixel"];
+                    PropertyData description = mo.Properties["Description"];
+
+                    vgaList.AddLast(description.Value.ToString());
+
+                }
 
             }
+
+            catch
+            {
+                // Try another method
+                notYetSnake = true;
+            }
+
+            if (notYetSnake)
+            {
+                notYetSnake = false;
+                vgaList.Clear();
+
+                try // Method 2
+                {
+                    ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DisplayControllerConfiguration");
+                    foreach (ManagementObject mo in searcher.Get())
+                    {
+                        PropertyData currentBitsPerPixel = mo.Properties["CurrentBitsPerPixel"];
+                        PropertyData description = mo.Properties["Description"];
+
+                        vgaList.AddLast(description.Value.ToString());
+                    }
+
+                }
+
+                catch
+                {
+                    // Try another method
+                    notYetSnake = true;
+                }
+
+            }
+
+            if (notYetSnake)
+            {
+                vgaList.Clear();
+
+                // I give up. A message will be prompt to the user
+
+            }
+
+
         }
 
         // show a MessageBox with custom message based on a string code
@@ -1116,7 +1187,15 @@ namespace mgs2_v_s_fix
 
                     // TODO change this
                     MessageBox.Show(
-                    "V's Fix can't create some files into game directory.\nFix require full permits to create,delete and extract file into that directory. Try to run the fix using 'Admin rights'!",
+                    "V's Fix can't create some files into game directory.\nFix require full permission to create,delete and extract file into that directory. Try to run the fix using 'Admin rights'!",
+                    "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    break;
+
+                case "no_vga":
+
+                    MessageBox.Show(
+                    "V's hasn't found any VGA installed in your system.\n\nIF you are able to read this, is meaning that means that it is wrong.\n\nUnfortunatelly is required to insert your VGA manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workarown.\n\nClosing this message will open your browser to V's Guide. Whould you kindly press the 'OK' button?",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
