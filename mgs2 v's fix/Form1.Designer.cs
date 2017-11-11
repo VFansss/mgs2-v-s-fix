@@ -118,6 +118,7 @@
             this.otagif = new System.Windows.Forms.PictureBox();
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pic_background = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
@@ -137,6 +138,7 @@
             this.pnl_about.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -1664,6 +1666,15 @@
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
             // 
+            // pic_background
+            // 
+            this.pic_background.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pic_background.Location = new System.Drawing.Point(5, 4);
+            this.pic_background.Name = "pic_background";
+            this.pic_background.Size = new System.Drawing.Size(760, 381);
+            this.pic_background.TabIndex = 9;
+            this.pic_background.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1679,7 +1690,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btn_settings);
             this.Controls.Add(this.btn_startGame);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.pic_background);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -1716,6 +1727,7 @@
             this.pnl_about.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1812,6 +1824,7 @@
         private System.Windows.Forms.Label lbl_debugMode;
         private System.Windows.Forms.Label lbl_ManualLink;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pic_background;
     }
 }
 

@@ -130,7 +130,7 @@ namespace mgs2_v_s_fix
             btn_settings.Visible = false;
             btn_saveSettings.Visible = true;
             tabControl1.Visible = true;
-            BackgroundImage = null;
+            pic_background.BackgroundImage = null;
             otagif.Image = mgs2_v_s_fix.Properties.Resources.otagif;
             otagif.Enabled = true;
             otagif.Visible = true;
@@ -1032,7 +1032,7 @@ namespace mgs2_v_s_fix
             string resourceName = "bg"+ran_number;
 
             bg_number = ran_number;
-            this.BackgroundImage = (System.Drawing.Image)mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
+            pic_background.BackgroundImage = (System.Drawing.Image)mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
 
             return;
         }
