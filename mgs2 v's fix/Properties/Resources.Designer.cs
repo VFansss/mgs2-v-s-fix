@@ -151,6 +151,16 @@ namespace mgs2_v_s_fix.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iceCream {
+            get {
+                object obj = ResourceManager.GetObject("iceCream", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Icon simile a (Icona).
         /// </summary>
         internal static System.Drawing.Icon ico1 {

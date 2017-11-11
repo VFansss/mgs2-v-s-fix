@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
+    <None Include="Resources\iceCream.png" />
     <None Include="Resources\ico4.ico" />
     <None Include="Resources\ico3.ico" />
     <None Include="Resources\ico2.ico" />

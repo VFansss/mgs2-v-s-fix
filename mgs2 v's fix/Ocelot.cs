@@ -1215,7 +1215,15 @@ namespace mgs2_v_s_fix
                 case "no_vga":
 
                     MessageBox.Show(
-                    "V's hasn't found any VGA installed in your system.\n\nIF you are able to read this, is meaning that means that it is wrong.\n\nUnfortunatelly is required to insert your VGA manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workarown.\n\nClosing this message will open your browser to V's Guide. Whould you kindly press the 'OK' button?",
+                    "V's hasn't found any VGA installed in your system.\n\nIF you are able to read this, is meaning that means that it is wrong.\n\nUnfortunatelly is required to insert your VGA manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workarown.\n\nClosing this message will open your browser to V's Guide.\n\nWhould you kindly press the 'OK' button?",
+                    "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    break;
+
+                case "no_donate":
+
+                    MessageBox.Show(
+                    "V's Fix can't open the Paypal link in your browser :(",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;

@@ -1178,6 +1178,31 @@ namespace mgs2_v_s_fix
 
         }
 
+        // About
+
+        private void lbl_donate_Click(object sender, EventArgs e)
+        {
+            donate();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            donate();
+        }
+
+        private void donate()
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://paypal.me/VFansss");
+            }
+
+            catch
+            {
+                Ocelot.showMessage("no_donate");
+            }
+        }
+
         // Controller Layout graphics switcher
 
         private void XboxGamepad_V_MouseHover(object sender, EventArgs e)
@@ -1209,9 +1234,18 @@ namespace mgs2_v_s_fix
 
         private void lbl_ManualLink_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki");
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki");
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
+
         }
 
-    //END CLASS
+        //END CLASS
     }
 }
