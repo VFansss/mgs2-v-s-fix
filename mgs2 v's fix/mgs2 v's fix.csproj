@@ -185,6 +185,7 @@
     <None Include="Resources\ico7.ico" />
     <None Include="Resources\ico6.ico" />
     <None Include="Resources\ico5.ico" />
+    <EmbeddedResource Include="Resources\NoController.zip" />
     <None Include="Resources\XboxController_Layout_V.jpg" />
     <None Include="Resources\XboxController_Layout_PS2.jpg" />
     <EmbeddedResource Include="PAPERS\Contacts.txt" />

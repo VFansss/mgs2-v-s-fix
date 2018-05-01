@@ -539,7 +539,9 @@ namespace mgs2_v_s_fix
 
                             break;
 
-                        default: // Case "NO". Nothing to do.
+                        default: // Case "NO". Extract the default files.
+
+                            Unzip.UnZippa("NoController.zip", true);
 
                             break;
 

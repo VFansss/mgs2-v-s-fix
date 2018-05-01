@@ -291,6 +291,16 @@ namespace mgs2_v_s_fix.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] NoController {
+            get {
+                object obj = ResourceManager.GetObject("NoController", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap otagif {
