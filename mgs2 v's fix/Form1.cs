@@ -77,7 +77,7 @@ namespace mgs2_v_s_fix
 
         }
 
-        // Main menu buttom
+        #region MAIN MENU
 
         private void btn_startGame_Click(object sender, EventArgs e)
         {
@@ -134,7 +134,7 @@ namespace mgs2_v_s_fix
             otagif.Image = mgs2_v_s_fix.Properties.Resources.otagif;
             otagif.Enabled = true;
             otagif.Visible = true;
-            
+
 
             setNewIcon();
 
@@ -187,9 +187,11 @@ namespace mgs2_v_s_fix
 
         }
 
-        // Internal Logic
+        #endregion
 
-            /* this will edit setupper graphics and control based from properties inside InternalConfig */
+        #region Internal Logic
+
+        /* this will edit setupper graphics and control based from properties inside InternalConfig */
 
         public bool load_InternalConfig_SetTo_SetupperConfig()
         {
@@ -742,7 +744,9 @@ namespace mgs2_v_s_fix
           
         }
 
-        // Graphics Adjustment
+        #endregion
+
+        #region Graphical Adjustment
 
         private void lst_vga_list_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -867,200 +871,6 @@ namespace mgs2_v_s_fix
 
         }
 
-        // Input field check
-
-        private void txt_Width_Click(object sender, EventArgs e)
-        {
-            txt_Width.SelectAll();
-        }
-
-        private void txt_Height_Click(object sender, EventArgs e)
-        {
-            txt_Height.SelectAll();
-        }
-
-        private void txt_Width_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8)
-            {
-                // Bad input
-                e.Handled = true;
-            }              
-
-        }
-
-        private void txt_Height_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8)
-            {
-                // Bad input
-                e.Handled = true;
-            }
-        }
-
-        private void txt_Width_Leave(object sender, EventArgs e)
-        {
-            if (txt_Width.TextLength == 0)
-            {
-                txt_Width.Text = Ocelot.InternalConfiguration.Resolution["Width"];
-                txt_Height.Text = Ocelot.InternalConfiguration.Resolution["Height"];
-
-            }
-
-        }
-
-        private void txt_Height_Leave(object sender, EventArgs e)
-        {
-            if (txt_Height.TextLength == 0)
-            {
-                txt_Width.Text = Ocelot.InternalConfiguration.Resolution["Width"];
-                txt_Height.Text = Ocelot.InternalConfiguration.Resolution["Height"];
-
-            }
-        }
-
-        // WideScreenFIX auto checker
-
-        private void checkIfWSElegible(object sender, KeyEventArgs e)
-        {
-            if (txt_Width.Text.Equals("")||(txt_Height.Text.Equals("")))
-            {
-                // Empty String
-            }
-
-            else
-            {
-
-                double rapporto = (Double.Parse(txt_Width.Text) / Double.Parse(txt_Height.Text));
-
-                // NB: This is replied in Ocelot.startAutoconfig
-
-                // 1.6 -> 16:10
-                // 1.777... -> 16:9       
-                // 1.778645883... -> 1366x768
-
-                // 2.3703703703703703d -> 2560x1080
-                // 2.3888888888888888d -> 3440x1440
-
-                if (
-                    (rapporto == 1.6d) ||
-                    (rapporto == 1.7777777777777777d) ||
-                    (rapporto == 1.7786458333333333d) ||
-                    (rapporto == 2.3703703703703703d) ||
-                    (rapporto == 2.3888888888888888d)
-                    )
-                {                 
-                    chb_WideScreenFIX.Checked = true;
-                }
-
-                else
-                {
-                    chb_WideScreenFIX.Checked = false;
-                }
-
-                if (rapporto == 1.7777777777777777d)
-                {
-                    chb_OptimizedFOV.Checked = true;
-                }
-
-                else
-                {
-                    chb_OptimizedFOV.Checked = false;
-                }
-
-                FullscreenCutscene_setVisibility(this,new MouseEventArgs(System.Windows.Forms.MouseButtons.None,1,1,1,1));
-
-            }
-        }
-
-        // About tab
-
-        private void tbx_About_LinkClicked(object sender, LinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(e.LinkText);
-        }
-
-        private void abt_CheckedChanged(object sender, EventArgs e)
-        {
-            setNewColor(sender, e);
-
-            RadioButton rdi = (RadioButton)sender;
-
-            loadTXT(rdi.Name.Substring(4));
-
-            return;
-
-        }
-
-        private void loadTXT(string NAMEFILE)
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "mgs2_v_s_fix.PAPERS."+NAMEFILE+".txt";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                tbx_About.Text = reader.ReadToEnd();
-            }
-
-            tbx_About.SelectionStart = 0;
-            tbx_About.SelectionLength = 1;
-            tbx_About.ScrollToCaret();
-
-        }
-
-        // Exclusive toggle logic
-
-        private void FullscreenCutscene_setVisibility(object sender, MouseEventArgs e)
-        {
-
-            if (chb_WideScreenFIX.Checked == true)
-            {
-                lbl_FullscreenCutscene.Visible = true;
-                chb_FullscreenCutscene.Visible = true;
-
-                lbl_OptimizedFOV.Visible = true;
-                chb_OptimizedFOV.Visible = true;
-
-            }
-
-            else
-            {
-                lbl_FullscreenCutscene.Visible = false;
-                chb_FullscreenCutscene.Visible = false;
-
-                lbl_OptimizedFOV.Visible = false;
-                chb_OptimizedFOV.Visible = false;
-            }
-        }
-
-        private void chb_AA_MouseClick(object sender, MouseEventArgs e)
-        {
-
-            if (chb_AA.Checked == true)
-            {
-
-                Ocelot.showMessage("tip_AA");
-                
-
-                if (ModelQuality_high.Checked == true)
-                {
-                    ModelQuality_medium.Checked = true;
-                }
-
-            }
-
-        }
-
-        private void ModelQuality_high_MouseClick(object sender, MouseEventArgs e)
-        {
-
-            if (ModelQuality_high.Checked == true)
-            {
-                chb_AA.Checked = false;
-            }
-
-        }
-
         // Background chooser
 
         private void setNewBackground()
@@ -1070,11 +880,11 @@ namespace mgs2_v_s_fix
             int ran_number = 0;
 
             // From 1 to 5! 
-            
-            do {ran_number = rnd.Next(1, 6);}
-            while(!(ran_number!=bg_number));
-            
-            string resourceName = "bg"+ran_number;
+
+            do { ran_number = rnd.Next(1, 6); }
+            while (!(ran_number != bg_number));
+
+            string resourceName = "bg" + ran_number;
 
             bg_number = ran_number;
             pic_background.BackgroundImage = (System.Drawing.Image)mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
@@ -1186,34 +996,148 @@ namespace mgs2_v_s_fix
             this.pictureBox2.Image = ohi.ToBitmap();
 
             return;
-            
+
 
         }
 
-        // About
+        #endregion
 
-        private void lbl_donate_Click(object sender, EventArgs e)
+        #region RESOLUTION tab
+
+        // Input field check
+
+        private void txt_Width_Click(object sender, EventArgs e)
         {
-            donate();
+            txt_Width.SelectAll();
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void txt_Height_Click(object sender, EventArgs e)
         {
-            donate();
+            txt_Height.SelectAll();
         }
 
-        private void donate()
+        private void txt_Width_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8)
             {
-                System.Diagnostics.Process.Start("https://paypal.me/VFansss");
+                // Bad input
+                e.Handled = true;
+            }              
+
+        }
+
+        private void txt_Height_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8)
+            {
+                // Bad input
+                e.Handled = true;
+            }
+        }
+
+        private void txt_Width_Leave(object sender, EventArgs e)
+        {
+            if (txt_Width.TextLength == 0)
+            {
+                txt_Width.Text = Ocelot.InternalConfiguration.Resolution["Width"];
+                txt_Height.Text = Ocelot.InternalConfiguration.Resolution["Height"];
+
             }
 
-            catch
+        }
+
+        private void txt_Height_Leave(object sender, EventArgs e)
+        {
+            if (txt_Height.TextLength == 0)
             {
-                Ocelot.showMessage("no_donate");
+                txt_Width.Text = Ocelot.InternalConfiguration.Resolution["Width"];
+                txt_Height.Text = Ocelot.InternalConfiguration.Resolution["Height"];
+
             }
         }
+
+        // WideScreenFIX auto checker
+
+        private void checkIfWSElegible(object sender, KeyEventArgs e)
+        {
+            if (txt_Width.Text.Equals("")||(txt_Height.Text.Equals("")))
+            {
+                // Empty String
+            }
+
+            else
+            {
+
+                double rapporto = (Double.Parse(txt_Width.Text) / Double.Parse(txt_Height.Text));
+
+                // NB: This is replied in Ocelot.startAutoconfig
+
+                // 1.6 -> 16:10
+                // 1.777... -> 16:9       
+                // 1.778645883... -> 1366x768
+
+                // 2.3703703703703703d -> 2560x1080
+                // 2.3888888888888888d -> 3440x1440
+
+                if (
+                    (rapporto == 1.6d) ||
+                    (rapporto == 1.7777777777777777d) ||
+                    (rapporto == 1.7786458333333333d) ||
+                    (rapporto == 2.3703703703703703d) ||
+                    (rapporto == 2.3888888888888888d)
+                    )
+                {                 
+                    chb_WideScreenFIX.Checked = true;
+                }
+
+                else
+                {
+                    chb_WideScreenFIX.Checked = false;
+                }
+
+                if (rapporto == 1.7777777777777777d)
+                {
+                    chb_OptimizedFOV.Checked = true;
+                }
+
+                else
+                {
+                    chb_OptimizedFOV.Checked = false;
+                }
+
+                FullscreenCutscene_setVisibility(this,new MouseEventArgs(System.Windows.Forms.MouseButtons.None,1,1,1,1));
+
+            }
+        }
+
+        // Exclusive toggle logic
+
+        private void FullscreenCutscene_setVisibility(object sender, MouseEventArgs e)
+        {
+
+            if (chb_WideScreenFIX.Checked == true)
+            {
+                lbl_FullscreenCutscene.Visible = true;
+                chb_FullscreenCutscene.Visible = true;
+
+                lbl_OptimizedFOV.Visible = true;
+                chb_OptimizedFOV.Visible = true;
+
+            }
+
+            else
+            {
+                lbl_FullscreenCutscene.Visible = false;
+                chb_FullscreenCutscene.Visible = false;
+
+                lbl_OptimizedFOV.Visible = false;
+                chb_OptimizedFOV.Visible = false;
+            }
+        }
+
+        #endregion
+
+        #region CONTROLLER tab
 
         // Controller Layout graphics switcher
 
@@ -1242,7 +1166,103 @@ namespace mgs2_v_s_fix
             pictureBox1.Image = null;
         }
 
-        // Help link
+        #endregion
+
+        #region GRAPHICS tab
+
+        // Exclusive toggle logic
+
+        private void chb_AA_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (chb_AA.Checked == true)
+            {
+
+                Ocelot.showMessage("tip_AA");
+
+
+                if (ModelQuality_high.Checked == true)
+                {
+                    ModelQuality_medium.Checked = true;
+                }
+
+            }
+
+        }
+
+        private void ModelQuality_high_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (ModelQuality_high.Checked == true)
+            {
+                chb_AA.Checked = false;
+            }
+
+        }
+
+        #endregion
+
+        #region ABOUT tab
+
+        private void tbx_About_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.LinkText);
+        }
+
+        private void abt_CheckedChanged(object sender, EventArgs e)
+        {
+            setNewColor(sender, e);
+
+            RadioButton rdi = (RadioButton)sender;
+
+            loadTXT(rdi.Name.Substring(4));
+
+            return;
+
+        }
+
+        private void loadTXT(string NAMEFILE)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "mgs2_v_s_fix.PAPERS." + NAMEFILE + ".txt";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                tbx_About.Text = reader.ReadToEnd();
+            }
+
+            tbx_About.SelectionStart = 0;
+            tbx_About.SelectionLength = 1;
+            tbx_About.ScrollToCaret();
+
+        }
+
+        private void lbl_donate_Click(object sender, EventArgs e)
+        {
+            donate();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            donate();
+        }
+
+        private void donate()
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://paypal.me/VFansss");
+            }
+
+            catch
+            {
+                Ocelot.showMessage("no_donate");
+            }
+        }
+
+        #endregion
+
+        #region HELP links
 
         private void lbl_ManualLink_Click(object sender, EventArgs e)
         {
@@ -1284,6 +1304,7 @@ namespace mgs2_v_s_fix
             }
         }
 
+        #endregion
 
         //END CLASS
     }

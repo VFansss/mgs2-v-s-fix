@@ -202,7 +202,7 @@
             this.tabControl1.Location = new System.Drawing.Point(234, 20);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(531, 372);
+            this.tabControl1.Size = new System.Drawing.Size(546, 415);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.Visible = false;
             // 
@@ -507,7 +507,7 @@
             this.tab_Controls.Location = new System.Drawing.Point(4, 32);
             this.tab_Controls.Name = "tab_Controls";
             this.tab_Controls.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Controls.Size = new System.Drawing.Size(523, 336);
+            this.tab_Controls.Size = new System.Drawing.Size(538, 379);
             this.tab_Controls.TabIndex = 1;
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
@@ -518,7 +518,7 @@
             this.help_controls.AutoSize = true;
             this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
             this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_controls.Location = new System.Drawing.Point(67, 314);
+            this.help_controls.Location = new System.Drawing.Point(75, 357);
             this.help_controls.Name = "help_controls";
             this.help_controls.Size = new System.Drawing.Size(390, 19);
             this.help_controls.TabIndex = 11;
@@ -533,7 +533,7 @@
             this.pnl_XboxGamepad.Controls.Add(this.label10);
             this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_V);
             this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_NO);
-            this.pnl_XboxGamepad.Location = new System.Drawing.Point(33, 2);
+            this.pnl_XboxGamepad.Location = new System.Drawing.Point(41, 23);
             this.pnl_XboxGamepad.Name = "pnl_XboxGamepad";
             this.pnl_XboxGamepad.Size = new System.Drawing.Size(454, 32);
             this.pnl_XboxGamepad.TabIndex = 7;
@@ -624,9 +624,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 42);
+            this.pictureBox1.Location = new System.Drawing.Point(68, 109);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(516, 268);
+            this.pictureBox1.Size = new System.Drawing.Size(405, 181);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -1720,7 +1720,7 @@
             this.lbl_debugMode.AutoSize = true;
             this.lbl_debugMode.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_debugMode.ForeColor = System.Drawing.Color.Black;
-            this.lbl_debugMode.Location = new System.Drawing.Point(690, 4);
+            this.lbl_debugMode.Location = new System.Drawing.Point(705, 4);
             this.lbl_debugMode.Name = "lbl_debugMode";
             this.lbl_debugMode.Size = new System.Drawing.Size(75, 15);
             this.lbl_debugMode.TabIndex = 6;
@@ -1731,7 +1731,7 @@
             // 
             this.otagif.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.otagif.Enabled = false;
-            this.otagif.Location = new System.Drawing.Point(88, 62);
+            this.otagif.Location = new System.Drawing.Point(88, 81);
             this.otagif.Name = "otagif";
             this.otagif.Size = new System.Drawing.Size(64, 108);
             this.otagif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1746,7 +1746,7 @@
             this.lbl_ManualLink.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_ManualLink.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ManualLink.ForeColor = System.Drawing.Color.Black;
-            this.lbl_ManualLink.Location = new System.Drawing.Point(42, 377);
+            this.lbl_ManualLink.Location = new System.Drawing.Point(42, 416);
             this.lbl_ManualLink.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_ManualLink.Name = "lbl_ManualLink";
             this.lbl_ManualLink.Size = new System.Drawing.Size(65, 15);
@@ -1758,7 +1758,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox2.Location = new System.Drawing.Point(5, 366);
+            this.pictureBox2.Location = new System.Drawing.Point(5, 405);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -1769,7 +1769,7 @@
             // pic_background
             // 
             this.pic_background.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pic_background.Location = new System.Drawing.Point(-1, -1);
+            this.pic_background.Location = new System.Drawing.Point(14, 38);
             this.pic_background.Name = "pic_background";
             this.pic_background.Size = new System.Drawing.Size(772, 405);
             this.pic_background.TabIndex = 9;
@@ -1780,7 +1780,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(769, 402);
+            this.ClientSize = new System.Drawing.Size(784, 441);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lbl_ManualLink);
             this.Controls.Add(this.lbl_debugMode);
