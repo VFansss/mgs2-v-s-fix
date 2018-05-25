@@ -61,16 +61,6 @@ namespace mgs2_v_s_fix.Properties {
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Byte[].
-        /// </summary>
-        internal static byte[] audio_fix {
-            get {
-                object obj = ResourceManager.GetObject("audio_fix", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap bg1 {
@@ -127,6 +117,26 @@ namespace mgs2_v_s_fix.Properties {
             get {
                 object obj = ResourceManager.GetObject("configuration_file", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ControllerXBOX_PS2Layout {
+            get {
+                object obj = ResourceManager.GetObject("ControllerXBOX_PS2Layout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ControllerXBOX_VLayout {
+            get {
+                object obj = ResourceManager.GetObject("ControllerXBOX_VLayout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -326,36 +336,6 @@ namespace mgs2_v_s_fix.Properties {
         internal static byte[] WSF {
             get {
                 object obj = ResourceManager.GetObject("WSF", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap XboxController_Layout_PS2 {
-            get {
-                object obj = ResourceManager.GetObject("XboxController_Layout_PS2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap XboxController_Layout_V {
-            get {
-                object obj = ResourceManager.GetObject("XboxController_Layout_V", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Byte[].
-        /// </summary>
-        internal static byte[] xgamepad {
-            get {
-                object obj = ResourceManager.GetObject("xgamepad", resourceCulture);
                 return ((byte[])(obj));
             }
         }

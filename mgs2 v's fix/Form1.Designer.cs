@@ -496,7 +496,7 @@
             this.pnl_XboxGamepad.Controls.Add(this.label10);
             this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_V);
             this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_NO);
-            this.pnl_XboxGamepad.Location = new System.Drawing.Point(41, 23);
+            this.pnl_XboxGamepad.Location = new System.Drawing.Point(41, 25);
             this.pnl_XboxGamepad.Name = "pnl_XboxGamepad";
             this.pnl_XboxGamepad.Size = new System.Drawing.Size(454, 32);
             this.pnl_XboxGamepad.TabIndex = 7;
@@ -587,7 +587,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(68, 109);
+            this.pictureBox1.Location = new System.Drawing.Point(68, 111);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(405, 181);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -707,11 +707,11 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label11.Location = new System.Drawing.Point(162, 253);
+            this.label11.Location = new System.Drawing.Point(154, 253);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(155, 26);
+            this.label11.Size = new System.Drawing.Size(163, 26);
             this.label11.TabIndex = 10;
-            this.label11.Text = "Extra Cool Effect:";
+            this.label11.Text = "Extra Cool Effects:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnl_EffectQuantity

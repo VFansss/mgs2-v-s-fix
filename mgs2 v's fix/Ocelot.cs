@@ -543,14 +543,14 @@ namespace mgs2_v_s_fix
                     {
 
                         case "V":
-                            Unzip.UnZippa("360Gamepad.zip", true);
-                            Unzip.UnZippa("XboxGamepad_V.zip", true);
+                            Unzip.UnZippa("XInputPlus.zip", true);
+                            Unzip.UnZippa("ControllerXBOX_VLayout.zip", true);
 
                             break;
 
                         case "PS2":
-                            Unzip.UnZippa("360Gamepad.zip", true);
-                            Unzip.UnZippa("XboxGamepad_PS2.zip", true);
+                            Unzip.UnZippa("XInputPlus.zip", true);
+                            Unzip.UnZippa("ControllerXBOX_PS2Layout.zip", true);
 
                             break;
 

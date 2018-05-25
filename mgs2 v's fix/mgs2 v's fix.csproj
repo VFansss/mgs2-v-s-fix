@@ -134,8 +134,10 @@
     <EmbeddedResource Include="Resources\3_fixed_exe.zip" />
     <EmbeddedResource Include="Resources\Configuration_file.zip" />
     <EmbeddedResource Include="Resources\WSF.zip" />
-    <EmbeddedResource Include="Resources\360Gamepad.zip" />
+    <EmbeddedResource Include="Resources\XInputPlus.zip" />
     <EmbeddedResource Include="Resources\DXWrapper.zip" />
+    <EmbeddedResource Include="Resources\ControllerDS4_PS2Layout.zip" />
+    <EmbeddedResource Include="Resources\ControllerDS4_VLayout.zip" />
     <None Include="Resources\MGS2.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +175,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
+    <None Include="Resources\ControllerXBOX_PS2Layout.jpg" />
+    <None Include="Resources\ControllerXBOX_VLayout.jpg" />
     <None Include="Resources\iceCream.png" />
     <None Include="Resources\ico4.ico" />
     <None Include="Resources\ico3.ico" />
@@ -187,8 +191,6 @@
     <None Include="Resources\ico6.ico" />
     <None Include="Resources\ico5.ico" />
     <EmbeddedResource Include="Resources\NoController.zip" />
-    <None Include="Resources\XboxController_Layout_V.jpg" />
-    <None Include="Resources\XboxController_Layout_PS2.jpg" />
     <EmbeddedResource Include="PAPERS\Contacts.txt" />
     <EmbeddedResource Include="PAPERS\Licence.txt" />
     <Content Include="PAPERS\Opcode.txt" />
@@ -199,8 +201,8 @@
     <None Include="Resources\bg2.jpg" />
     <None Include="Resources\bg1.jpg" />
     <EmbeddedResource Include="Resources\V_s_sweetFX.zip" />
-    <EmbeddedResource Include="Resources\XboxGamepad_PS2.zip" />
-    <EmbeddedResource Include="Resources\XboxGamepad_V.zip" />
+    <EmbeddedResource Include="Resources\ControllerXBOX_PS2Layout.zip" />
+    <EmbeddedResource Include="Resources\ControllerXBOX_VLayout.zip" />
     <None Include="Resources\otagif.gif" />
   </ItemGroup>
   <ItemGroup />

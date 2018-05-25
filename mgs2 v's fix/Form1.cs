@@ -397,13 +397,13 @@ namespace mgs2_v_s_fix
             {
                 case "V":
 
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_V;
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
 
                     break;
 
                 case "PS2":
 
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_PS2;
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
 
                     break;
 
@@ -1143,22 +1143,22 @@ namespace mgs2_v_s_fix
 
         private void XboxGamepad_V_MouseHover(object sender, EventArgs e)
         {
-            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_V;
+            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
         }
 
         private void XboxGamepad_PS2_MouseHover(object sender, EventArgs e)
         {
-            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_PS2;
+            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
         }
 
         private void XboxGamepad_V_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_V;
+            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
         }
 
         private void XboxGamepad_PS2_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.XboxController_Layout_PS2;
+            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
         }
 
         private void XboxGamepad_NO_Click(object sender, EventArgs e)
