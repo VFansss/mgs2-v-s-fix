@@ -206,6 +206,18 @@ namespace mgs2_v_s_fix
                     StringBuilder hexString = new StringBuilder();
                     int opcode;
 
+                    // PRELIMINARY ACTIONS
+
+                    #region lot_of_things
+                    // Extract DX Wrapper
+
+                    File.Delete(Application.StartupPath + "\\d3d8.dll");
+                    File.Delete(Application.StartupPath + "\\enbconvertor.ini");
+
+                    Unzip.UnZippa("DXWrapper.zip",true);
+
+                    #endregion
+
                     ////// 
                     //--------- Resolution
                     ////// 
@@ -457,7 +469,10 @@ namespace mgs2_v_s_fix
 
                         // NB: Incredibly, this patch doesn't need to be applied if SweetFX is used. Don't know why.
 
-                        foreach (string vganame in vgaList)
+                        // March '18 Note - I tell you why: because if SweetFX was enabled the game use Dx8 to Dx9 wrapper.
+                        // Now the wrapper is enabled by default, thus is not needed anymore to use the laptop fix button.
+
+                        /*foreach (string vganame in vgaList)
                         {
                             if ((Ocelot.InternalConfiguration.Resolution["LaptopMode"] == "true") &&
                                 (vganame.Contains("Intel")) &&
@@ -493,7 +508,7 @@ namespace mgs2_v_s_fix
 
                             }
 
-                        }
+                        }*/
 
                     }
 
@@ -702,10 +717,10 @@ namespace mgs2_v_s_fix
 
                     File.Delete(Application.StartupPath + "\\SweetFX_settings.txt");
                     File.Delete(Application.StartupPath + "\\SweetFX_preset.txt");
-                    File.Delete(Application.StartupPath + "\\enbconvertor.ini");
+                    //File.Delete(Application.StartupPath + "\\enbconvertor.ini");
                     File.Delete(Application.StartupPath + "\\dxgi.dll");
                     File.Delete(Application.StartupPath + "\\d3d9.dll");
-                    File.Delete(Application.StartupPath + "\\d3d8.dll");
+                    //File.Delete(Application.StartupPath + "\\d3d8.dll");
 
                     if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("true"))
                     {

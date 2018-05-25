@@ -135,6 +135,7 @@
     <EmbeddedResource Include="Resources\Configuration_file.zip" />
     <EmbeddedResource Include="Resources\WSF.zip" />
     <EmbeddedResource Include="Resources\360Gamepad.zip" />
+    <EmbeddedResource Include="Resources\DXWrapper.zip" />
     <None Include="Resources\MGS2.ttf" />
   </ItemGroup>
   <ItemGroup>

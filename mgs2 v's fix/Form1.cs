@@ -226,7 +226,7 @@ namespace mgs2_v_s_fix
                 chb_WindowMode.Checked = false;
             }
 
-            if (Ocelot.InternalConfiguration.Resolution["LaptopMode"] == "true")
+            /*if (Ocelot.InternalConfiguration.Resolution["LaptopMode"] == "true")
             {
                 chb_LaptopMode.Text = "ON";
                 chb_LaptopMode.Checked = true;
@@ -236,7 +236,7 @@ namespace mgs2_v_s_fix
             {
                 chb_LaptopMode.Text = "OFF";
                 chb_LaptopMode.Checked = false;
-            }
+            }*/
 
 
             Ocelot.getGraphicsAdapterList();
@@ -565,7 +565,7 @@ namespace mgs2_v_s_fix
                 Ocelot.InternalConfiguration.Resolution["WindowMode"] = "false";
             }
 
-            if (chb_LaptopMode.Checked == true)
+            /*if (chb_LaptopMode.Checked == true)
             {
                 Ocelot.InternalConfiguration.Resolution["LaptopMode"] = "true";
 
@@ -574,7 +574,7 @@ namespace mgs2_v_s_fix
             else
             {
                 Ocelot.InternalConfiguration.Resolution["LaptopMode"] = "false";
-            }
+            }*/
 
             // NB: Something shoud every be selected inside the Listbox now
             //  either manually or automatically by V's
@@ -835,7 +835,7 @@ namespace mgs2_v_s_fix
                     chb.ForeColor = System.Drawing.Color.Black;
                     chb.Text = "OFF";
 
-                    if (chb.Name == "chb_LaptopMode") { chb.Text = "NO"; }
+                    //if (chb.Name == "chb_LaptopMode") { chb.Text = "NO"; }
 
                 }
                 else
@@ -844,7 +844,7 @@ namespace mgs2_v_s_fix
                     chb.ForeColor = System.Drawing.Color.DarkOrange;
                     chb.Text = "ON";
 
-                    if (chb.Name == "chb_LaptopMode") { chb.Text = "YUP"; }
+                    //if (chb.Name == "chb_LaptopMode") { chb.Text = "YUP"; }
 
                 }
 

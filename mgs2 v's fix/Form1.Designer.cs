@@ -38,8 +38,6 @@
             this.lbl_OptimizedFOV = new System.Windows.Forms.Label();
             this.chb_FullscreenCutscene = new System.Windows.Forms.CheckBox();
             this.lbl_FullscreenCutscene = new System.Windows.Forms.Label();
-            this.chb_LaptopMode = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.chb_WindowMode = new System.Windows.Forms.CheckBox();
             this.lbl_des_03 = new System.Windows.Forms.Label();
             this.lst_vga_list = new System.Windows.Forms.ListBox();
@@ -214,8 +212,6 @@
             this.tab_Resolution.Controls.Add(this.lbl_OptimizedFOV);
             this.tab_Resolution.Controls.Add(this.chb_FullscreenCutscene);
             this.tab_Resolution.Controls.Add(this.lbl_FullscreenCutscene);
-            this.tab_Resolution.Controls.Add(this.chb_LaptopMode);
-            this.tab_Resolution.Controls.Add(this.label8);
             this.tab_Resolution.Controls.Add(this.chb_WindowMode);
             this.tab_Resolution.Controls.Add(this.lbl_des_03);
             this.tab_Resolution.Controls.Add(this.lst_vga_list);
@@ -230,7 +226,7 @@
             this.tab_Resolution.Location = new System.Drawing.Point(4, 32);
             this.tab_Resolution.Name = "tab_Resolution";
             this.tab_Resolution.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Resolution.Size = new System.Drawing.Size(523, 336);
+            this.tab_Resolution.Size = new System.Drawing.Size(538, 379);
             this.tab_Resolution.TabIndex = 0;
             this.tab_Resolution.Text = "Resolution";
             // 
@@ -240,7 +236,7 @@
             this.help_resolution.AutoSize = true;
             this.help_resolution.Cursor = System.Windows.Forms.Cursors.Hand;
             this.help_resolution.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_resolution.Location = new System.Drawing.Point(19, 314);
+            this.help_resolution.Location = new System.Drawing.Point(25, 353);
             this.help_resolution.Name = "help_resolution";
             this.help_resolution.Size = new System.Drawing.Size(489, 19);
             this.help_resolution.TabIndex = 14;
@@ -313,39 +309,6 @@
             this.lbl_FullscreenCutscene.TabIndex = 10;
             this.lbl_FullscreenCutscene.Text = "full screen cutscene:";
             this.lbl_FullscreenCutscene.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // chb_LaptopMode
-            // 
-            this.chb_LaptopMode.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chb_LaptopMode.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chb_LaptopMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chb_LaptopMode.FlatAppearance.BorderSize = 0;
-            this.chb_LaptopMode.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.chb_LaptopMode.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.chb_LaptopMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.chb_LaptopMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chb_LaptopMode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_LaptopMode.Location = new System.Drawing.Point(237, 191);
-            this.chb_LaptopMode.Name = "chb_LaptopMode";
-            this.chb_LaptopMode.Size = new System.Drawing.Size(55, 26);
-            this.chb_LaptopMode.TabIndex = 8;
-            this.chb_LaptopMode.TabStop = false;
-            this.chb_LaptopMode.Text = "XXX";
-            this.chb_LaptopMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chb_LaptopMode.UseVisualStyleBackColor = true;
-            this.chb_LaptopMode.CheckedChanged += new System.EventHandler(this.setNewColor);
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label8.Location = new System.Drawing.Point(66, 190);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(183, 26);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Your pc is a laptop?:";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // chb_WindowMode
             // 
@@ -646,7 +609,7 @@
             this.tab_Graphics.Controls.Add(this.pnl_RenderingSize);
             this.tab_Graphics.Location = new System.Drawing.Point(4, 32);
             this.tab_Graphics.Name = "tab_Graphics";
-            this.tab_Graphics.Size = new System.Drawing.Size(523, 336);
+            this.tab_Graphics.Size = new System.Drawing.Size(538, 379);
             this.tab_Graphics.TabIndex = 2;
             this.tab_Graphics.Text = "Graphics";
             this.tab_Graphics.UseVisualStyleBackColor = true;
@@ -1205,7 +1168,7 @@
             this.tab_Sound.Controls.Add(this.pnl_SE);
             this.tab_Sound.Location = new System.Drawing.Point(4, 32);
             this.tab_Sound.Name = "tab_Sound";
-            this.tab_Sound.Size = new System.Drawing.Size(523, 336);
+            this.tab_Sound.Size = new System.Drawing.Size(538, 379);
             this.tab_Sound.TabIndex = 3;
             this.tab_Sound.Text = "Other";
             this.tab_Sound.UseVisualStyleBackColor = true;
@@ -1553,7 +1516,7 @@
             this.tab_About.Controls.Add(this.tbx_About);
             this.tab_About.Location = new System.Drawing.Point(4, 32);
             this.tab_About.Name = "tab_About";
-            this.tab_About.Size = new System.Drawing.Size(523, 336);
+            this.tab_About.Size = new System.Drawing.Size(538, 379);
             this.tab_About.TabIndex = 4;
             this.tab_About.Text = "About";
             // 
@@ -1720,7 +1683,7 @@
             this.lbl_debugMode.AutoSize = true;
             this.lbl_debugMode.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_debugMode.ForeColor = System.Drawing.Color.Black;
-            this.lbl_debugMode.Location = new System.Drawing.Point(705, 4);
+            this.lbl_debugMode.Location = new System.Drawing.Point(11, 9);
             this.lbl_debugMode.Name = "lbl_debugMode";
             this.lbl_debugMode.Size = new System.Drawing.Size(75, 15);
             this.lbl_debugMode.TabIndex = 6;
@@ -1904,8 +1867,6 @@
         private System.Windows.Forms.RadioButton SE_high;
         private System.Windows.Forms.RadioButton SE_medium;
         private System.Windows.Forms.RadioButton SE_low;
-        private System.Windows.Forms.CheckBox chb_LaptopMode;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox otagif;
         private System.Windows.Forms.TabPage tab_About;
         private System.Windows.Forms.RichTextBox tbx_About;
