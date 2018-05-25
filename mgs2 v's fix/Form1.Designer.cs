@@ -49,12 +49,16 @@
             this.txt_Width = new System.Windows.Forms.TextBox();
             this.lbl_des_00 = new System.Windows.Forms.Label();
             this.tab_Controls = new System.Windows.Forms.TabPage();
-            this.help_controls = new System.Windows.Forms.Label();
-            this.pnl_XboxGamepad = new System.Windows.Forms.Panel();
-            this.XboxGamepad_PS2 = new System.Windows.Forms.RadioButton();
+            this.pnl_PreferredLayout = new System.Windows.Forms.Panel();
+            this.PreferredLayout_PS2 = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
-            this.XboxGamepad_V = new System.Windows.Forms.RadioButton();
-            this.XboxGamepad_NO = new System.Windows.Forms.RadioButton();
+            this.PreferredLayout_V = new System.Windows.Forms.RadioButton();
+            this.pnl_EnableController = new System.Windows.Forms.Panel();
+            this.EnableController_DS4 = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
+            this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
+            this.EnableController_NO = new System.Windows.Forms.RadioButton();
+            this.help_controls = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
             this.chb_AA = new System.Windows.Forms.CheckBox();
@@ -126,7 +130,8 @@
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
-            this.pnl_XboxGamepad.SuspendLayout();
+            this.pnl_PreferredLayout.SuspendLayout();
+            this.pnl_EnableController.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tab_Graphics.SuspendLayout();
             this.pnl_EffectQuantity.SuspendLayout();
@@ -464,9 +469,10 @@
             // 
             // tab_Controls
             // 
-            this.tab_Controls.Controls.Add(this.help_controls);
-            this.tab_Controls.Controls.Add(this.pnl_XboxGamepad);
             this.tab_Controls.Controls.Add(this.pictureBox1);
+            this.tab_Controls.Controls.Add(this.pnl_PreferredLayout);
+            this.tab_Controls.Controls.Add(this.pnl_EnableController);
+            this.tab_Controls.Controls.Add(this.help_controls);
             this.tab_Controls.Location = new System.Drawing.Point(4, 32);
             this.tab_Controls.Name = "tab_Controls";
             this.tab_Controls.Padding = new System.Windows.Forms.Padding(3);
@@ -474,6 +480,168 @@
             this.tab_Controls.TabIndex = 1;
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
+            // 
+            // pnl_PreferredLayout
+            // 
+            this.pnl_PreferredLayout.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_PS2);
+            this.pnl_PreferredLayout.Controls.Add(this.label10);
+            this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_V);
+            this.pnl_PreferredLayout.Location = new System.Drawing.Point(42, 62);
+            this.pnl_PreferredLayout.Name = "pnl_PreferredLayout";
+            this.pnl_PreferredLayout.Size = new System.Drawing.Size(468, 268);
+            this.pnl_PreferredLayout.TabIndex = 12;
+            // 
+            // PreferredLayout_PS2
+            // 
+            this.PreferredLayout_PS2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PreferredLayout_PS2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.PreferredLayout_PS2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PreferredLayout_PS2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PreferredLayout_PS2.FlatAppearance.BorderSize = 0;
+            this.PreferredLayout_PS2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_PS2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PreferredLayout_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreferredLayout_PS2.Location = new System.Drawing.Point(303, 4);
+            this.PreferredLayout_PS2.Name = "PreferredLayout_PS2";
+            this.PreferredLayout_PS2.Size = new System.Drawing.Size(111, 30);
+            this.PreferredLayout_PS2.TabIndex = 4;
+            this.PreferredLayout_PS2.TabStop = true;
+            this.PreferredLayout_PS2.Text = "PS2 Type";
+            this.PreferredLayout_PS2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PreferredLayout_PS2.UseVisualStyleBackColor = false;
+            this.PreferredLayout_PS2.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.PreferredLayout_PS2.Click += new System.EventHandler(this.PreferredLayout_Click);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label10.Location = new System.Drawing.Point(33, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(146, 26);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Buttons Layout:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // PreferredLayout_V
+            // 
+            this.PreferredLayout_V.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PreferredLayout_V.Appearance = System.Windows.Forms.Appearance.Button;
+            this.PreferredLayout_V.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PreferredLayout_V.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PreferredLayout_V.FlatAppearance.BorderSize = 0;
+            this.PreferredLayout_V.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_V.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PreferredLayout_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreferredLayout_V.Location = new System.Drawing.Point(206, 4);
+            this.PreferredLayout_V.Name = "PreferredLayout_V";
+            this.PreferredLayout_V.Size = new System.Drawing.Size(94, 30);
+            this.PreferredLayout_V.TabIndex = 1;
+            this.PreferredLayout_V.TabStop = true;
+            this.PreferredLayout_V.Text = "V\'s Type";
+            this.PreferredLayout_V.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PreferredLayout_V.UseVisualStyleBackColor = false;
+            this.PreferredLayout_V.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.PreferredLayout_V.Click += new System.EventHandler(this.PreferredLayout_Click);
+            // 
+            // pnl_EnableController
+            // 
+            this.pnl_EnableController.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnl_EnableController.Controls.Add(this.EnableController_DS4);
+            this.pnl_EnableController.Controls.Add(this.label8);
+            this.pnl_EnableController.Controls.Add(this.EnableController_XBOX);
+            this.pnl_EnableController.Controls.Add(this.EnableController_NO);
+            this.pnl_EnableController.Location = new System.Drawing.Point(41, 16);
+            this.pnl_EnableController.Name = "pnl_EnableController";
+            this.pnl_EnableController.Size = new System.Drawing.Size(469, 32);
+            this.pnl_EnableController.TabIndex = 8;
+            // 
+            // EnableController_DS4
+            // 
+            this.EnableController_DS4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EnableController_DS4.Appearance = System.Windows.Forms.Appearance.Button;
+            this.EnableController_DS4.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_DS4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EnableController_DS4.FlatAppearance.BorderSize = 0;
+            this.EnableController_DS4.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_DS4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_DS4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_DS4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnableController_DS4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnableController_DS4.Location = new System.Drawing.Point(301, 4);
+            this.EnableController_DS4.Name = "EnableController_DS4";
+            this.EnableController_DS4.Size = new System.Drawing.Size(120, 30);
+            this.EnableController_DS4.TabIndex = 4;
+            this.EnableController_DS4.TabStop = true;
+            this.EnableController_DS4.Text = "DualShock 4";
+            this.EnableController_DS4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_DS4.UseVisualStyleBackColor = false;
+            this.EnableController_DS4.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.EnableController_DS4.Click += new System.EventHandler(this.EnableController_Click);
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label8.Location = new System.Drawing.Point(36, 6);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 26);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Controller:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // EnableController_XBOX
+            // 
+            this.EnableController_XBOX.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EnableController_XBOX.Appearance = System.Windows.Forms.Appearance.Button;
+            this.EnableController_XBOX.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_XBOX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EnableController_XBOX.FlatAppearance.BorderSize = 0;
+            this.EnableController_XBOX.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_XBOX.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_XBOX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_XBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnableController_XBOX.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnableController_XBOX.Location = new System.Drawing.Point(204, 4);
+            this.EnableController_XBOX.Name = "EnableController_XBOX";
+            this.EnableController_XBOX.Size = new System.Drawing.Size(94, 30);
+            this.EnableController_XBOX.TabIndex = 1;
+            this.EnableController_XBOX.TabStop = true;
+            this.EnableController_XBOX.Text = "Xbox";
+            this.EnableController_XBOX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_XBOX.UseVisualStyleBackColor = false;
+            this.EnableController_XBOX.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.EnableController_XBOX.Click += new System.EventHandler(this.EnableController_Click);
+            // 
+            // EnableController_NO
+            // 
+            this.EnableController_NO.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EnableController_NO.Appearance = System.Windows.Forms.Appearance.Button;
+            this.EnableController_NO.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_NO.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EnableController_NO.FlatAppearance.BorderSize = 0;
+            this.EnableController_NO.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_NO.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_NO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_NO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnableController_NO.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnableController_NO.Location = new System.Drawing.Point(142, 4);
+            this.EnableController_NO.Name = "EnableController_NO";
+            this.EnableController_NO.Size = new System.Drawing.Size(58, 30);
+            this.EnableController_NO.TabIndex = 0;
+            this.EnableController_NO.TabStop = true;
+            this.EnableController_NO.Text = "NO";
+            this.EnableController_NO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_NO.UseVisualStyleBackColor = false;
+            this.EnableController_NO.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.EnableController_NO.Click += new System.EventHandler(this.EnableController_Click);
             // 
             // help_controls
             // 
@@ -489,105 +657,10 @@
             this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
             // 
-            // pnl_XboxGamepad
-            // 
-            this.pnl_XboxGamepad.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_PS2);
-            this.pnl_XboxGamepad.Controls.Add(this.label10);
-            this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_V);
-            this.pnl_XboxGamepad.Controls.Add(this.XboxGamepad_NO);
-            this.pnl_XboxGamepad.Location = new System.Drawing.Point(41, 25);
-            this.pnl_XboxGamepad.Name = "pnl_XboxGamepad";
-            this.pnl_XboxGamepad.Size = new System.Drawing.Size(454, 32);
-            this.pnl_XboxGamepad.TabIndex = 7;
-            // 
-            // XboxGamepad_PS2
-            // 
-            this.XboxGamepad_PS2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.XboxGamepad_PS2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.XboxGamepad_PS2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.XboxGamepad_PS2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.XboxGamepad_PS2.FlatAppearance.BorderSize = 0;
-            this.XboxGamepad_PS2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.XboxGamepad_PS2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.XboxGamepad_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.XboxGamepad_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.XboxGamepad_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XboxGamepad_PS2.Location = new System.Drawing.Point(340, 4);
-            this.XboxGamepad_PS2.Name = "XboxGamepad_PS2";
-            this.XboxGamepad_PS2.Size = new System.Drawing.Size(92, 30);
-            this.XboxGamepad_PS2.TabIndex = 4;
-            this.XboxGamepad_PS2.TabStop = true;
-            this.XboxGamepad_PS2.Text = "PS2 Type";
-            this.XboxGamepad_PS2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.XboxGamepad_PS2.UseVisualStyleBackColor = false;
-            this.XboxGamepad_PS2.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.XboxGamepad_PS2.Click += new System.EventHandler(this.XboxGamepad_PS2_Click);
-            this.XboxGamepad_PS2.MouseHover += new System.EventHandler(this.XboxGamepad_PS2_MouseHover);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label10.Location = new System.Drawing.Point(33, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(147, 26);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Xbox Gamepad:";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // XboxGamepad_V
-            // 
-            this.XboxGamepad_V.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.XboxGamepad_V.Appearance = System.Windows.Forms.Appearance.Button;
-            this.XboxGamepad_V.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.XboxGamepad_V.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.XboxGamepad_V.FlatAppearance.BorderSize = 0;
-            this.XboxGamepad_V.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.XboxGamepad_V.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.XboxGamepad_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.XboxGamepad_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.XboxGamepad_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XboxGamepad_V.Location = new System.Drawing.Point(245, 4);
-            this.XboxGamepad_V.Name = "XboxGamepad_V";
-            this.XboxGamepad_V.Size = new System.Drawing.Size(94, 30);
-            this.XboxGamepad_V.TabIndex = 1;
-            this.XboxGamepad_V.TabStop = true;
-            this.XboxGamepad_V.Text = "V\'s Type";
-            this.XboxGamepad_V.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.XboxGamepad_V.UseVisualStyleBackColor = false;
-            this.XboxGamepad_V.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.XboxGamepad_V.Click += new System.EventHandler(this.XboxGamepad_V_Click);
-            this.XboxGamepad_V.MouseHover += new System.EventHandler(this.XboxGamepad_V_MouseHover);
-            // 
-            // XboxGamepad_NO
-            // 
-            this.XboxGamepad_NO.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.XboxGamepad_NO.Appearance = System.Windows.Forms.Appearance.Button;
-            this.XboxGamepad_NO.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.XboxGamepad_NO.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.XboxGamepad_NO.FlatAppearance.BorderSize = 0;
-            this.XboxGamepad_NO.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.XboxGamepad_NO.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.XboxGamepad_NO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.XboxGamepad_NO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.XboxGamepad_NO.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XboxGamepad_NO.Location = new System.Drawing.Point(187, 4);
-            this.XboxGamepad_NO.Name = "XboxGamepad_NO";
-            this.XboxGamepad_NO.Size = new System.Drawing.Size(58, 30);
-            this.XboxGamepad_NO.TabIndex = 0;
-            this.XboxGamepad_NO.TabStop = true;
-            this.XboxGamepad_NO.Text = "NO";
-            this.XboxGamepad_NO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.XboxGamepad_NO.UseVisualStyleBackColor = false;
-            this.XboxGamepad_NO.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.XboxGamepad_NO.Click += new System.EventHandler(this.XboxGamepad_NO_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(68, 111);
+            this.pictureBox1.Location = new System.Drawing.Point(68, 140);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(405, 181);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1765,8 +1838,10 @@
             this.tab_Resolution.PerformLayout();
             this.tab_Controls.ResumeLayout(false);
             this.tab_Controls.PerformLayout();
-            this.pnl_XboxGamepad.ResumeLayout(false);
-            this.pnl_XboxGamepad.PerformLayout();
+            this.pnl_PreferredLayout.ResumeLayout(false);
+            this.pnl_PreferredLayout.PerformLayout();
+            this.pnl_EnableController.ResumeLayout(false);
+            this.pnl_EnableController.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tab_Graphics.ResumeLayout(false);
             this.tab_Graphics.PerformLayout();
@@ -1881,11 +1956,6 @@
         private System.Windows.Forms.RadioButton abt_Regards;
         private System.Windows.Forms.RadioButton abt_Licence;
         private System.Windows.Forms.RadioButton abt_Contacts;
-        private System.Windows.Forms.Panel pnl_XboxGamepad;
-        private System.Windows.Forms.RadioButton XboxGamepad_PS2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.RadioButton XboxGamepad_V;
-        private System.Windows.Forms.RadioButton XboxGamepad_NO;
         private System.Windows.Forms.Label lbl_debugMode;
         private System.Windows.Forms.Label lbl_ManualLink;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -1896,6 +1966,15 @@
         private System.Windows.Forms.Label lbl_donate;
         private System.Windows.Forms.Label help_controls;
         private System.Windows.Forms.Label help_resolution;
+        private System.Windows.Forms.Panel pnl_EnableController;
+        private System.Windows.Forms.RadioButton EnableController_DS4;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton EnableController_XBOX;
+        private System.Windows.Forms.RadioButton EnableController_NO;
+        private System.Windows.Forms.Panel pnl_PreferredLayout;
+        private System.Windows.Forms.RadioButton PreferredLayout_PS2;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.RadioButton PreferredLayout_V;
     }
 }
 

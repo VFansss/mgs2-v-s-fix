@@ -373,45 +373,59 @@ namespace mgs2_v_s_fix
 
             #region lot_of_things
 
-            foreach (Panel panel in tab_Controls.Controls.OfType<Panel>())
+            // What controller, and what layout?
+
+            if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("XBOX"))
             {
+                pnl_PreferredLayout.Visible = true;
+                EnableController_XBOX.Checked = true;
 
-                String key = panel.Name.Remove(0, 4);
-                // NB: 'key' local variable now contain name of the settings key (ie: "SoundQuality")
+                if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
+                {
+                    PreferredLayout_PS2.Checked = true;
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
+                }
 
-
-                String value = Ocelot.InternalConfiguration.Controls[key];
-                // NB: 'value' contain value get from InternalSetting corresponding to the 'key' (ie: "high")
-
-                String rad_name = key + "_" + value;
-                // rad_name=SoundQuality_high
-                //  or rad_name=SoundQuality_medium
-                //   or rad_name=SoundQuality_low
-
-                RadioButton rad = (RadioButton)panel.Controls.Find(rad_name, true).GetValue(0);
-                rad.Checked = true;
+                else
+                {
+                    // V Layout
+                    PreferredLayout_V.Checked = true;
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
+                }
 
             }
 
-            switch (Ocelot.InternalConfiguration.Controls["XboxGamepad"])
+            else if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("DS4"))
             {
-                case "V":
+                pnl_PreferredLayout.Visible = true;
+                EnableController_DS4.Checked = true;
 
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
-
-                    break;
-
-                case "PS2":
-
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
-
-                    break;
-
-                default:
-
+                if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
+                {
+                    // TODO
+                    PreferredLayout_PS2.Checked = true;
                     pictureBox1.Image = null;
+                }
 
-                    break;
+                else
+                {
+                    // TODO
+                    PreferredLayout_V.Checked = true;
+                    pictureBox1.Image = null;
+                }
+
+            }
+
+            else
+            {
+                // No recognized controller is set. Hide everything
+                EnableController_NO.Checked = true;
+                pnl_PreferredLayout.Visible = false;
+
+                // Set a default layout value for saving it a first time
+
+                PreferredLayout_V.Checked = true;
+
             }
 
             #endregion
@@ -617,24 +631,36 @@ namespace mgs2_v_s_fix
 
             #region lot_of_things
 
-            foreach (Panel panel in tab_Controls.Controls.OfType<Panel>())
+            // What controller?
+
+            if (EnableController_XBOX.Checked)
             {
-
-
-                String key = panel.Name.Remove(0, 4);
-                // NB: 'key' local variable now contain name of the settings key (ie: "MotionBlur")
-
-                var checkedButton = panel.Controls.OfType<RadioButton>()
-                                      .FirstOrDefault(r => r.Checked);
-
-                string checkedButtonName = checkedButton.Name.ToString();
-
-                string value = checkedButtonName.Substring(checkedButtonName.IndexOf('_') + 1);
-                // NB: 'value' contain value get from SetupperConfig corresponding to the 'key' (ie: "high")
-
-                Ocelot.InternalConfiguration.Controls[key] = value;
-
+                Ocelot.InternalConfiguration.Controls["EnableController"] = "XBOX";
             }
+
+            else if (EnableController_DS4.Checked)
+            {
+                Ocelot.InternalConfiguration.Controls["EnableController"] = "DS4";
+            }
+
+            else
+            {
+                // No controller
+                Ocelot.InternalConfiguration.Controls["EnableController"] = "NO";
+            }
+
+            // What layout?
+
+            if (PreferredLayout_PS2.Checked)
+            {
+                Ocelot.InternalConfiguration.Controls["PreferredLayout"] = "PS2";
+            }
+            else
+            {
+                // V's Layout
+                Ocelot.InternalConfiguration.Controls["PreferredLayout"] = "V";
+            }
+
             #endregion
 
             // Graphics Settings
@@ -1140,6 +1166,91 @@ namespace mgs2_v_s_fix
         #region CONTROLLER tab
 
         // Controller Layout graphics switcher
+
+        private void EnableController_Click(object sender, EventArgs e)
+        {
+            // Click on one of the EnableController radio buttons
+
+            if(sender.GetType() != typeof(RadioButton))
+            {
+                // ??
+                throw new Exception("Event raised by an unknow element");
+
+            }
+
+            RadioButton pressedRadio = (RadioButton)sender;
+
+            // What controller, and what layout?
+
+            if (pressedRadio.Name.Equals("EnableController_NO"))
+            {
+                pnl_PreferredLayout.Visible = false;
+
+                // Set a default value
+                PreferredLayout_V.Checked = true;
+
+            }
+
+            else
+            {
+                PreferredLayout_UpdateImage();
+            }
+
+
+        }
+
+        private void PreferredLayout_Click(object sender, EventArgs e)
+        {
+            PreferredLayout_UpdateImage();
+        }
+
+        private void PreferredLayout_UpdateImage()
+        {
+            // What controller, and what layout?
+
+            if (EnableController_XBOX.Checked)
+            {
+                pnl_PreferredLayout.Visible = true;
+
+                if (PreferredLayout_PS2.Checked)
+                {
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
+                }
+
+                else
+                {
+                    // V Layout
+                    PreferredLayout_V.Checked = true;
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
+                }
+
+            }
+
+            else if (EnableController_DS4.Checked)
+            {
+                if (EnableController_DS4.Checked)
+                {
+                    // TODO
+                    pictureBox1.Image = null;
+                }
+
+                else
+                {
+                    // TODO
+                    PreferredLayout_V.Checked = true;
+                    pictureBox1.Image = null;
+                }
+
+            }
+
+            else
+            {
+                // ??
+                throw new Exception("ERROR: A layout has been selected without knowing your kind of controller!");
+            }
+        }
+
+        // Old
 
         private void XboxGamepad_V_MouseHover(object sender, EventArgs e)
         {

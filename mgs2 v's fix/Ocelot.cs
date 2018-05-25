@@ -530,35 +530,58 @@ namespace mgs2_v_s_fix
                     ////// 
 
                     #region lot_of_things
-                    // 360Gamepad
 
-                    // 0: delete all (if present) existing 360Gamepad files
+                    // 0: delete all (if present) existing XInputPlus files
 
                     File.Delete(Application.StartupPath + "\\Dinput.dll");
                     File.Delete(Application.StartupPath + "\\Dinput8.dll");
                     File.Delete(Application.StartupPath + "\\XInput1_3.dll");
                     File.Delete(Application.StartupPath + "\\XInputPlus.ini");
 
-                    switch (Ocelot.InternalConfiguration.Controls["XboxGamepad"])
+                    // What controller?
+
+                    if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("NO"))
                     {
+                        Unzip.UnZippa("NoController.zip", true);
+                    }
 
-                        case "V":
-                            Unzip.UnZippa("XInputPlus.zip", true);
-                            Unzip.UnZippa("ControllerXBOX_VLayout.zip", true);
+                    else
+                    {
+                        // Extract XInput Plus
+                        Unzip.UnZippa("XInputPlus.zip", true);
 
-                            break;
 
-                        case "PS2":
-                            Unzip.UnZippa("XInputPlus.zip", true);
-                            Unzip.UnZippa("ControllerXBOX_PS2Layout.zip", true);
+                        if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("DS4"))
+                        {
+                            // What layout?
 
-                            break;
+                            if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
+                            {
+                                Unzip.UnZippa("ControllerDS4_PS2Layout.zip", true);
+                            }
 
-                        default: // Case "NO". Extract the default files.
+                            else // V Layout
+                            {
+                                Unzip.UnZippa("ControllerDS4_VLayout.zip", true);
+                            }
 
-                            Unzip.UnZippa("NoController.zip", true);
+                        }
 
-                            break;
+                        else // XBOX
+                        {
+                            // What layout?
+
+                            if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
+                            {
+                                Unzip.UnZippa("ControllerXBOX_PS2Layout.zip", true);
+                            }
+
+                            else // V Layout
+                            {
+                                Unzip.UnZippa("ControllerXBOX_VLayout.zip", true);
+                            }
+
+                        }
 
                     }
 
@@ -1020,7 +1043,9 @@ namespace mgs2_v_s_fix
 
             // Controls
 
-            defaultConfig.Controls["XboxGamepad"] = "NO";
+            //defaultConfig.Controls["XboxGamepad"] = "NO";
+            defaultConfig.Controls["EnableController"] = "NO";
+            defaultConfig.Controls["PreferredLayout"] = "V";
 
             // Graphics
 

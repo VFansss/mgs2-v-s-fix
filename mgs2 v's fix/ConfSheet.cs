@@ -33,7 +33,9 @@ namespace mgs2_v_s_fix
 
             this.Controls = new Dictionary<string, string>
             {
-                {"XboxGamepad",null},
+                //{"XboxGamepad",null},
+                {"EnableController",null},
+                {"PreferredLayout",null},
             };
 
             this.Graphics = new Dictionary<string, string>
