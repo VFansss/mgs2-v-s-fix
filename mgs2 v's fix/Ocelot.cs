@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using System.Management;
 using System.IO;
 using Microsoft.Win32;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace mgs2_v_s_fix
 {
@@ -102,7 +104,7 @@ namespace mgs2_v_s_fix
 
         }
 
-                // I don't think these 2 need to be edited frequently
+        // I don't think these 2 need to be edited frequently
         public static void load_INI_SetTo_InternalConfig()
         {
 
@@ -183,7 +185,8 @@ namespace mgs2_v_s_fix
             return;
         }
 
-                // Big function that apply V's Fix settings
+        // !!!!
+        // Big function that apply V's Fix settings
         internal static void load_InternalConfig_SetTo_MGS()
         {
             
@@ -913,6 +916,21 @@ namespace mgs2_v_s_fix
                     //End Using
                 }
 
+                // Avoid strange Windows UAC issues setting full
+                // access on MGS2 files from every windows user
+
+                string homeDirectory = Directory.GetParent(Application.StartupPath).ToString();
+
+                // Create the savedata folder,if not already exist
+
+                Directory.CreateDirectory(homeDirectory+"\\savedata");
+
+                // Grant access to everyone, if possible
+
+                bool success = grantAccessToEveryUser(homeDirectory);
+
+                Ocelot.console("[ ] grantAccess has returned "+success);
+
             }
 
             catch
@@ -1137,6 +1155,38 @@ namespace mgs2_v_s_fix
 
             }
 
+
+        }
+
+        // Make MGS2 files readable by every user on the system
+
+        private static bool grantAccessToEveryUser(string fullPath)
+        {
+
+            bool success = false;
+
+            try{
+
+                DirectoryInfo dInfo = new DirectoryInfo(fullPath);
+                DirectorySecurity dSecurity = dInfo.GetAccessControl();
+
+                SecurityIdentifier identity = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+
+                dSecurity.AddAccessRule(new FileSystemAccessRule(identity, FileSystemRights.FullControl,
+                                                                 InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit,
+                                                                 PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
+                dInfo.SetAccessControl(dSecurity);
+
+                success = true;
+
+            }
+
+            catch
+            {
+                success = false;
+            }
+
+            return success;
 
         }
 
