@@ -120,6 +120,11 @@
             this.abt_Licence = new System.Windows.Forms.RadioButton();
             this.abt_Contacts = new System.Windows.Forms.RadioButton();
             this.tbx_About = new System.Windows.Forms.RichTextBox();
+            this.tab_cP = new System.Windows.Forms.TabPage();
+            this.ptb_comPLAY = new System.Windows.Forms.PictureBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_saveSettings = new System.Windows.Forms.Button();
             this.lbl_debugMode = new System.Windows.Forms.Label();
@@ -127,6 +132,8 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
@@ -146,6 +153,8 @@
             this.tab_About.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnl_about.SuspendLayout();
+            this.tab_cP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -200,12 +209,13 @@
             this.tabControl1.Controls.Add(this.tab_Graphics);
             this.tabControl1.Controls.Add(this.tab_Sound);
             this.tabControl1.Controls.Add(this.tab_About);
+            this.tabControl1.Controls.Add(this.tab_cP);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabControl1.Location = new System.Drawing.Point(234, 20);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(546, 415);
+            this.tabControl1.Size = new System.Drawing.Size(560, 415);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.Visible = false;
             // 
@@ -231,7 +241,7 @@
             this.tab_Resolution.Location = new System.Drawing.Point(4, 32);
             this.tab_Resolution.Name = "tab_Resolution";
             this.tab_Resolution.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Resolution.Size = new System.Drawing.Size(538, 379);
+            this.tab_Resolution.Size = new System.Drawing.Size(552, 379);
             this.tab_Resolution.TabIndex = 0;
             this.tab_Resolution.Text = "Resolution";
             // 
@@ -241,7 +251,7 @@
             this.help_resolution.AutoSize = true;
             this.help_resolution.Cursor = System.Windows.Forms.Cursors.Hand;
             this.help_resolution.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_resolution.Location = new System.Drawing.Point(25, 353);
+            this.help_resolution.Location = new System.Drawing.Point(30, 353);
             this.help_resolution.Name = "help_resolution";
             this.help_resolution.Size = new System.Drawing.Size(489, 19);
             this.help_resolution.TabIndex = 14;
@@ -260,7 +270,7 @@
             this.chb_OptimizedFOV.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_OptimizedFOV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_OptimizedFOV.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_OptimizedFOV.Location = new System.Drawing.Point(237, 118);
+            this.chb_OptimizedFOV.Location = new System.Drawing.Point(246, 118);
             this.chb_OptimizedFOV.Name = "chb_OptimizedFOV";
             this.chb_OptimizedFOV.Size = new System.Drawing.Size(55, 26);
             this.chb_OptimizedFOV.TabIndex = 13;
@@ -275,7 +285,7 @@
             this.lbl_OptimizedFOV.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_OptimizedFOV.AutoSize = true;
             this.lbl_OptimizedFOV.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OptimizedFOV.Location = new System.Drawing.Point(101, 120);
+            this.lbl_OptimizedFOV.Location = new System.Drawing.Point(110, 120);
             this.lbl_OptimizedFOV.Name = "lbl_OptimizedFOV";
             this.lbl_OptimizedFOV.Size = new System.Drawing.Size(138, 19);
             this.lbl_OptimizedFOV.TabIndex = 12;
@@ -293,7 +303,7 @@
             this.chb_FullscreenCutscene.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_FullscreenCutscene.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_FullscreenCutscene.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FullscreenCutscene.Location = new System.Drawing.Point(237, 93);
+            this.chb_FullscreenCutscene.Location = new System.Drawing.Point(246, 93);
             this.chb_FullscreenCutscene.Name = "chb_FullscreenCutscene";
             this.chb_FullscreenCutscene.Size = new System.Drawing.Size(55, 26);
             this.chb_FullscreenCutscene.TabIndex = 11;
@@ -308,7 +318,7 @@
             this.lbl_FullscreenCutscene.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_FullscreenCutscene.AutoSize = true;
             this.lbl_FullscreenCutscene.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FullscreenCutscene.Location = new System.Drawing.Point(96, 95);
+            this.lbl_FullscreenCutscene.Location = new System.Drawing.Point(105, 95);
             this.lbl_FullscreenCutscene.Name = "lbl_FullscreenCutscene";
             this.lbl_FullscreenCutscene.Size = new System.Drawing.Size(143, 19);
             this.lbl_FullscreenCutscene.TabIndex = 10;
@@ -326,7 +336,7 @@
             this.chb_WindowMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_WindowMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_WindowMode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_WindowMode.Location = new System.Drawing.Point(237, 151);
+            this.chb_WindowMode.Location = new System.Drawing.Point(246, 151);
             this.chb_WindowMode.Name = "chb_WindowMode";
             this.chb_WindowMode.Size = new System.Drawing.Size(55, 26);
             this.chb_WindowMode.TabIndex = 6;
@@ -341,7 +351,7 @@
             this.lbl_des_03.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_03.AutoSize = true;
             this.lbl_des_03.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_03.Location = new System.Drawing.Point(76, 233);
+            this.lbl_des_03.Location = new System.Drawing.Point(85, 233);
             this.lbl_des_03.Name = "lbl_des_03";
             this.lbl_des_03.Size = new System.Drawing.Size(165, 26);
             this.lbl_des_03.TabIndex = 5;
@@ -356,7 +366,7 @@
             this.lst_vga_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_vga_list.FormattingEnabled = true;
             this.lst_vga_list.ItemHeight = 18;
-            this.lst_vga_list.Location = new System.Drawing.Point(241, 239);
+            this.lst_vga_list.Location = new System.Drawing.Point(250, 239);
             this.lst_vga_list.Name = "lst_vga_list";
             this.lst_vga_list.Size = new System.Drawing.Size(245, 54);
             this.lst_vga_list.TabIndex = 4;
@@ -373,7 +383,7 @@
             this.chb_WideScreenFIX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_WideScreenFIX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_WideScreenFIX.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_WideScreenFIX.Location = new System.Drawing.Point(237, 65);
+            this.chb_WideScreenFIX.Location = new System.Drawing.Point(246, 65);
             this.chb_WideScreenFIX.Name = "chb_WideScreenFIX";
             this.chb_WideScreenFIX.Size = new System.Drawing.Size(55, 26);
             this.chb_WideScreenFIX.TabIndex = 1;
@@ -389,7 +399,7 @@
             this.lbl_des_02.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_02.AutoSize = true;
             this.lbl_des_02.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_02.Location = new System.Drawing.Point(97, 150);
+            this.lbl_des_02.Location = new System.Drawing.Point(106, 150);
             this.lbl_des_02.Name = "lbl_des_02";
             this.lbl_des_02.Size = new System.Drawing.Size(145, 26);
             this.lbl_des_02.TabIndex = 0;
@@ -401,7 +411,7 @@
             this.txt_Height.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Height.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Height.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txt_Height.Location = new System.Drawing.Point(325, 24);
+            this.txt_Height.Location = new System.Drawing.Point(334, 24);
             this.txt_Height.MaxLength = 5;
             this.txt_Height.Name = "txt_Height";
             this.txt_Height.ShortcutsEnabled = false;
@@ -419,7 +429,7 @@
             this.lbl_des_01.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_01.AutoSize = true;
             this.lbl_des_01.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_01.Location = new System.Drawing.Point(41, 64);
+            this.lbl_des_01.Location = new System.Drawing.Point(50, 64);
             this.lbl_des_01.Name = "lbl_des_01";
             this.lbl_des_01.Size = new System.Drawing.Size(201, 26);
             this.lbl_des_01.TabIndex = 0;
@@ -431,7 +441,7 @@
             this.lbl_X.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_X.AutoSize = true;
             this.lbl_X.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_X.Location = new System.Drawing.Point(298, 19);
+            this.lbl_X.Location = new System.Drawing.Point(307, 19);
             this.lbl_X.Name = "lbl_X";
             this.lbl_X.Size = new System.Drawing.Size(21, 26);
             this.lbl_X.TabIndex = 2;
@@ -442,7 +452,7 @@
             this.txt_Width.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Width.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Width.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txt_Width.Location = new System.Drawing.Point(241, 24);
+            this.txt_Width.Location = new System.Drawing.Point(250, 24);
             this.txt_Width.MaxLength = 4;
             this.txt_Width.Name = "txt_Width";
             this.txt_Width.ShortcutsEnabled = false;
@@ -460,7 +470,7 @@
             this.lbl_des_00.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_00.AutoSize = true;
             this.lbl_des_00.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_00.Location = new System.Drawing.Point(134, 19);
+            this.lbl_des_00.Location = new System.Drawing.Point(143, 19);
             this.lbl_des_00.Name = "lbl_des_00";
             this.lbl_des_00.Size = new System.Drawing.Size(108, 26);
             this.lbl_des_00.TabIndex = 0;
@@ -476,7 +486,7 @@
             this.tab_Controls.Location = new System.Drawing.Point(4, 32);
             this.tab_Controls.Name = "tab_Controls";
             this.tab_Controls.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Controls.Size = new System.Drawing.Size(538, 379);
+            this.tab_Controls.Size = new System.Drawing.Size(552, 379);
             this.tab_Controls.TabIndex = 1;
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
@@ -484,7 +494,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 86);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 86);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(515, 270);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -497,7 +507,7 @@
             this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_PS2);
             this.pnl_PreferredLayout.Controls.Add(this.label10);
             this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_V);
-            this.pnl_PreferredLayout.Location = new System.Drawing.Point(6, 49);
+            this.pnl_PreferredLayout.Location = new System.Drawing.Point(15, 49);
             this.pnl_PreferredLayout.Name = "pnl_PreferredLayout";
             this.pnl_PreferredLayout.Size = new System.Drawing.Size(526, 305);
             this.pnl_PreferredLayout.TabIndex = 12;
@@ -567,7 +577,7 @@
             this.pnl_EnableController.Controls.Add(this.label8);
             this.pnl_EnableController.Controls.Add(this.EnableController_XBOX);
             this.pnl_EnableController.Controls.Add(this.EnableController_NO);
-            this.pnl_EnableController.Location = new System.Drawing.Point(41, 7);
+            this.pnl_EnableController.Location = new System.Drawing.Point(50, 7);
             this.pnl_EnableController.Name = "pnl_EnableController";
             this.pnl_EnableController.Size = new System.Drawing.Size(469, 32);
             this.pnl_EnableController.TabIndex = 8;
@@ -659,7 +669,7 @@
             this.help_controls.AutoSize = true;
             this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
             this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_controls.Location = new System.Drawing.Point(75, 357);
+            this.help_controls.Location = new System.Drawing.Point(84, 357);
             this.help_controls.Name = "help_controls";
             this.help_controls.Size = new System.Drawing.Size(390, 19);
             this.help_controls.TabIndex = 11;
@@ -682,7 +692,7 @@
             this.tab_Graphics.Controls.Add(this.pnl_RenderingSize);
             this.tab_Graphics.Location = new System.Drawing.Point(4, 32);
             this.tab_Graphics.Name = "tab_Graphics";
-            this.tab_Graphics.Size = new System.Drawing.Size(538, 379);
+            this.tab_Graphics.Size = new System.Drawing.Size(552, 379);
             this.tab_Graphics.TabIndex = 2;
             this.tab_Graphics.Text = "Graphics";
             this.tab_Graphics.UseVisualStyleBackColor = true;
@@ -698,7 +708,7 @@
             this.chb_AA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_AA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_AA.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_AA.Location = new System.Drawing.Point(313, 226);
+            this.chb_AA.Location = new System.Drawing.Point(329, 226);
             this.chb_AA.Name = "chb_AA";
             this.chb_AA.Size = new System.Drawing.Size(55, 26);
             this.chb_AA.TabIndex = 15;
@@ -714,7 +724,7 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label9.Location = new System.Drawing.Point(124, 225);
+            this.label9.Location = new System.Drawing.Point(140, 225);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(193, 26);
             this.label9.TabIndex = 14;
@@ -732,7 +742,7 @@
             this.chb_MotionBlur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_MotionBlur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_MotionBlur.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_MotionBlur.Location = new System.Drawing.Point(313, 280);
+            this.chb_MotionBlur.Location = new System.Drawing.Point(329, 280);
             this.chb_MotionBlur.Name = "chb_MotionBlur";
             this.chb_MotionBlur.Size = new System.Drawing.Size(55, 26);
             this.chb_MotionBlur.TabIndex = 13;
@@ -747,7 +757,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label7.Location = new System.Drawing.Point(197, 279);
+            this.label7.Location = new System.Drawing.Point(213, 279);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 26);
             this.label7.TabIndex = 12;
@@ -765,7 +775,7 @@
             this.chb_BunchOfCoolEffect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_BunchOfCoolEffect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_BunchOfCoolEffect.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(313, 254);
+            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(329, 254);
             this.chb_BunchOfCoolEffect.Name = "chb_BunchOfCoolEffect";
             this.chb_BunchOfCoolEffect.Size = new System.Drawing.Size(55, 26);
             this.chb_BunchOfCoolEffect.TabIndex = 11;
@@ -780,7 +790,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label11.Location = new System.Drawing.Point(154, 253);
+            this.label11.Location = new System.Drawing.Point(170, 253);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(163, 26);
             this.label11.TabIndex = 10;
@@ -794,7 +804,7 @@
             this.pnl_EffectQuantity.Controls.Add(this.label5);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_medium);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_low);
-            this.pnl_EffectQuantity.Location = new System.Drawing.Point(45, 177);
+            this.pnl_EffectQuantity.Location = new System.Drawing.Point(61, 177);
             this.pnl_EffectQuantity.Name = "pnl_EffectQuantity";
             this.pnl_EffectQuantity.Size = new System.Drawing.Size(425, 32);
             this.pnl_EffectQuantity.TabIndex = 5;
@@ -881,7 +891,7 @@
             this.pnl_RenderingClearness.Controls.Add(this.label3);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_medium);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_low);
-            this.pnl_RenderingClearness.Location = new System.Drawing.Point(45, 139);
+            this.pnl_RenderingClearness.Location = new System.Drawing.Point(61, 139);
             this.pnl_RenderingClearness.Name = "pnl_RenderingClearness";
             this.pnl_RenderingClearness.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingClearness.TabIndex = 5;
@@ -968,7 +978,7 @@
             this.pnl_ModelQuality.Controls.Add(this.label2);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_medium);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_low);
-            this.pnl_ModelQuality.Location = new System.Drawing.Point(45, 101);
+            this.pnl_ModelQuality.Location = new System.Drawing.Point(61, 101);
             this.pnl_ModelQuality.Name = "pnl_ModelQuality";
             this.pnl_ModelQuality.Size = new System.Drawing.Size(425, 32);
             this.pnl_ModelQuality.TabIndex = 5;
@@ -1056,7 +1066,7 @@
             this.pnl_ShadowDetail.Controls.Add(this.label1);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_medium);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_low);
-            this.pnl_ShadowDetail.Location = new System.Drawing.Point(45, 63);
+            this.pnl_ShadowDetail.Location = new System.Drawing.Point(61, 63);
             this.pnl_ShadowDetail.Name = "pnl_ShadowDetail";
             this.pnl_ShadowDetail.Size = new System.Drawing.Size(425, 32);
             this.pnl_ShadowDetail.TabIndex = 5;
@@ -1146,7 +1156,7 @@
             this.pnl_RenderingSize.Controls.Add(this.lbl_descr);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_medium);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_low);
-            this.pnl_RenderingSize.Location = new System.Drawing.Point(45, 27);
+            this.pnl_RenderingSize.Location = new System.Drawing.Point(61, 27);
             this.pnl_RenderingSize.Name = "pnl_RenderingSize";
             this.pnl_RenderingSize.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingSize.TabIndex = 2;
@@ -1241,7 +1251,7 @@
             this.tab_Sound.Controls.Add(this.pnl_SE);
             this.tab_Sound.Location = new System.Drawing.Point(4, 32);
             this.tab_Sound.Name = "tab_Sound";
-            this.tab_Sound.Size = new System.Drawing.Size(538, 379);
+            this.tab_Sound.Size = new System.Drawing.Size(552, 379);
             this.tab_Sound.TabIndex = 3;
             this.tab_Sound.Text = "Other";
             this.tab_Sound.UseVisualStyleBackColor = true;
@@ -1257,7 +1267,7 @@
             this.chb_FixAfterPlaying.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_FixAfterPlaying.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_FixAfterPlaying.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(338, 30);
+            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(350, 30);
             this.chb_FixAfterPlaying.Name = "chb_FixAfterPlaying";
             this.chb_FixAfterPlaying.Size = new System.Drawing.Size(55, 26);
             this.chb_FixAfterPlaying.TabIndex = 13;
@@ -1272,7 +1282,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label4.Location = new System.Drawing.Point(97, 29);
+            this.label4.Location = new System.Drawing.Point(109, 29);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(235, 26);
             this.label4.TabIndex = 12;
@@ -1284,7 +1294,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label6.Location = new System.Drawing.Point(90, 236);
+            this.label6.Location = new System.Drawing.Point(102, 236);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 26);
             this.label6.TabIndex = 9;
@@ -1300,7 +1310,7 @@
             this.lst_sound_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_sound_list.FormattingEnabled = true;
             this.lst_sound_list.ItemHeight = 18;
-            this.lst_sound_list.Location = new System.Drawing.Point(238, 241);
+            this.lst_sound_list.Location = new System.Drawing.Point(250, 241);
             this.lst_sound_list.Name = "lst_sound_list";
             this.lst_sound_list.Size = new System.Drawing.Size(245, 54);
             this.lst_sound_list.TabIndex = 8;
@@ -1314,7 +1324,7 @@
             this.pnl_Quality.Controls.Add(this.Quality_medium);
             this.pnl_Quality.Controls.Add(this.Quality_low);
             this.pnl_Quality.Controls.Add(this.label13);
-            this.pnl_Quality.Location = new System.Drawing.Point(54, 79);
+            this.pnl_Quality.Location = new System.Drawing.Point(66, 79);
             this.pnl_Quality.Name = "pnl_Quality";
             this.pnl_Quality.Size = new System.Drawing.Size(432, 32);
             this.pnl_Quality.TabIndex = 6;
@@ -1405,7 +1415,7 @@
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_medium);
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_low);
             this.pnl_SoundQuality.Controls.Add(this.label15);
-            this.pnl_SoundQuality.Location = new System.Drawing.Point(54, 181);
+            this.pnl_SoundQuality.Location = new System.Drawing.Point(66, 181);
             this.pnl_SoundQuality.Name = "pnl_SoundQuality";
             this.pnl_SoundQuality.Size = new System.Drawing.Size(432, 32);
             this.pnl_SoundQuality.TabIndex = 5;
@@ -1496,7 +1506,7 @@
             this.pnl_SE.Controls.Add(this.SE_high);
             this.pnl_SE.Controls.Add(this.SE_medium);
             this.pnl_SE.Controls.Add(this.SE_low);
-            this.pnl_SE.Location = new System.Drawing.Point(33, 132);
+            this.pnl_SE.Location = new System.Drawing.Point(45, 132);
             this.pnl_SE.Name = "pnl_SE";
             this.pnl_SE.Size = new System.Drawing.Size(453, 32);
             this.pnl_SE.TabIndex = 3;
@@ -1589,7 +1599,7 @@
             this.tab_About.Controls.Add(this.tbx_About);
             this.tab_About.Location = new System.Drawing.Point(4, 32);
             this.tab_About.Name = "tab_About";
-            this.tab_About.Size = new System.Drawing.Size(538, 379);
+            this.tab_About.Size = new System.Drawing.Size(552, 379);
             this.tab_About.TabIndex = 4;
             this.tab_About.Text = "About";
             // 
@@ -1600,7 +1610,7 @@
             this.lbl_donate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_donate.Font = new System.Drawing.Font("Calibri", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_donate.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbl_donate.Location = new System.Drawing.Point(138, 29);
+            this.lbl_donate.Location = new System.Drawing.Point(151, 29);
             this.lbl_donate.Name = "lbl_donate";
             this.lbl_donate.Size = new System.Drawing.Size(322, 26);
             this.lbl_donate.TabIndex = 10;
@@ -1612,7 +1622,7 @@
             // 
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::mgs2_v_s_fix.Properties.Resources.iceCream;
-            this.pictureBox3.Location = new System.Drawing.Point(70, 8);
+            this.pictureBox3.Location = new System.Drawing.Point(74, 8);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(64, 64);
             this.pictureBox3.TabIndex = 8;
@@ -1625,7 +1635,7 @@
             this.pnl_about.Controls.Add(this.abt_Regards);
             this.pnl_about.Controls.Add(this.abt_Licence);
             this.pnl_about.Controls.Add(this.abt_Contacts);
-            this.pnl_about.Location = new System.Drawing.Point(46, 77);
+            this.pnl_about.Location = new System.Drawing.Point(55, 77);
             this.pnl_about.Name = "pnl_about";
             this.pnl_about.Size = new System.Drawing.Size(441, 48);
             this.pnl_about.TabIndex = 6;
@@ -1702,10 +1712,74 @@
             this.tbx_About.Name = "tbx_About";
             this.tbx_About.ReadOnly = true;
             this.tbx_About.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.tbx_About.Size = new System.Drawing.Size(512, 201);
+            this.tbx_About.Size = new System.Drawing.Size(532, 236);
             this.tbx_About.TabIndex = 1;
             this.tbx_About.Text = "In my restless dreams ; I see that town...";
             this.tbx_About.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.tbx_About_LinkClicked);
+            // 
+            // tab_cP
+            // 
+            this.tab_cP.Controls.Add(this.label19);
+            this.tab_cP.Controls.Add(this.label18);
+            this.tab_cP.Controls.Add(this.label17);
+            this.tab_cP.Controls.Add(this.label16);
+            this.tab_cP.Controls.Add(this.label12);
+            this.tab_cP.Controls.Add(this.ptb_comPLAY);
+            this.tab_cP.Location = new System.Drawing.Point(4, 32);
+            this.tab_cP.Name = "tab_cP";
+            this.tab_cP.Size = new System.Drawing.Size(552, 379);
+            this.tab_cP.TabIndex = 5;
+            this.tab_cP.Text = "Savedata";
+            this.tab_cP.UseVisualStyleBackColor = true;
+            // 
+            // ptb_comPLAY
+            // 
+            this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
+            this.ptb_comPLAY.Location = new System.Drawing.Point(67, 118);
+            this.ptb_comPLAY.Name = "ptb_comPLAY";
+            this.ptb_comPLAY.Size = new System.Drawing.Size(423, 196);
+            this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptb_comPLAY.TabIndex = 13;
+            this.ptb_comPLAY.TabStop = false;
+            this.ptb_comPLAY.Click += new System.EventHandler(this.ptb_comPLAY_Click);
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label17.Location = new System.Drawing.Point(69, 83);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(432, 26);
+            this.label17.TabIndex = 12;
+            this.label17.Text = "Are you sharing your PC with friends or brothers?";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label16.Location = new System.Drawing.Point(132, 48);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(290, 26);
+            this.label16.TabIndex = 11;
+            this.label16.Text = "Playing on multiple PCs at once?";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label12.Location = new System.Drawing.Point(125, 13);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(300, 26);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Don\'t want to lose your progress?";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_exit
             // 
@@ -1756,7 +1830,7 @@
             this.lbl_debugMode.AutoSize = true;
             this.lbl_debugMode.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_debugMode.ForeColor = System.Drawing.Color.Black;
-            this.lbl_debugMode.Location = new System.Drawing.Point(11, 9);
+            this.lbl_debugMode.Location = new System.Drawing.Point(26, 9);
             this.lbl_debugMode.Name = "lbl_debugMode";
             this.lbl_debugMode.Size = new System.Drawing.Size(75, 15);
             this.lbl_debugMode.TabIndex = 6;
@@ -1805,18 +1879,42 @@
             // pic_background
             // 
             this.pic_background.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pic_background.Location = new System.Drawing.Point(14, 38);
+            this.pic_background.Location = new System.Drawing.Point(29, 38);
             this.pic_background.Name = "pic_background";
             this.pic_background.Size = new System.Drawing.Size(772, 405);
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(90, 351);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(375, 19);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "( Click on the logo above to open the comPLAY Website )";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label19.Location = new System.Drawing.Point(147, 322);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(278, 26);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "I have a solution for both of us!";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 441);
+            this.ClientSize = new System.Drawing.Size(799, 441);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lbl_ManualLink);
             this.Controls.Add(this.lbl_debugMode);
@@ -1867,6 +1965,9 @@
             this.tab_About.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnl_about.ResumeLayout(false);
+            this.tab_cP.ResumeLayout(false);
+            this.tab_cP.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
@@ -1975,6 +2076,13 @@
         private System.Windows.Forms.RadioButton PreferredLayout_PS2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RadioButton PreferredLayout_V;
+        private System.Windows.Forms.TabPage tab_cP;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.PictureBox ptb_comPLAY;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }
 

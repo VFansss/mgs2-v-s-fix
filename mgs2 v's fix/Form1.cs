@@ -1386,6 +1386,20 @@ namespace mgs2_v_s_fix
             }
         }
 
+        private void ptb_comPLAY_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://www.complay.info/");
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
+        }
+
+
         #endregion
 
         //END CLASS

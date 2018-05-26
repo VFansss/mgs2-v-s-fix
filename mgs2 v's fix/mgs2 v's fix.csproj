@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
+    <None Include="Resources\cP.png" />
     <None Include="Resources\ControllerDS4_VLayout.png" />
     <None Include="Resources\ControllerXBOX_PS2Layout.png" />
     <None Include="Resources\ControllerXBOX_VLayout.png" />
