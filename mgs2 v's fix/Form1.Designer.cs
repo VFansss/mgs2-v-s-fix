@@ -121,10 +121,12 @@
             this.abt_Contacts = new System.Windows.Forms.RadioButton();
             this.tbx_About = new System.Windows.Forms.RichTextBox();
             this.tab_cP = new System.Windows.Forms.TabPage();
-            this.ptb_comPLAY = new System.Windows.Forms.PictureBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.ptb_comPLAY = new System.Windows.Forms.PictureBox();
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_saveSettings = new System.Windows.Forms.Button();
             this.lbl_debugMode = new System.Windows.Forms.Label();
@@ -132,8 +134,6 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
@@ -1294,7 +1294,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label6.Location = new System.Drawing.Point(102, 236);
+            this.label6.Location = new System.Drawing.Point(100, 304);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 26);
             this.label6.TabIndex = 9;
@@ -1310,7 +1310,7 @@
             this.lst_sound_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_sound_list.FormattingEnabled = true;
             this.lst_sound_list.ItemHeight = 18;
-            this.lst_sound_list.Location = new System.Drawing.Point(250, 241);
+            this.lst_sound_list.Location = new System.Drawing.Point(248, 309);
             this.lst_sound_list.Name = "lst_sound_list";
             this.lst_sound_list.Size = new System.Drawing.Size(245, 54);
             this.lst_sound_list.TabIndex = 8;
@@ -1732,18 +1732,29 @@
             this.tab_cP.Text = "Savedata";
             this.tab_cP.UseVisualStyleBackColor = true;
             // 
-            // ptb_comPLAY
+            // label19
             // 
-            this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
-            this.ptb_comPLAY.Location = new System.Drawing.Point(67, 118);
-            this.ptb_comPLAY.Name = "ptb_comPLAY";
-            this.ptb_comPLAY.Size = new System.Drawing.Size(423, 196);
-            this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptb_comPLAY.TabIndex = 13;
-            this.ptb_comPLAY.TabStop = false;
-            this.ptb_comPLAY.Click += new System.EventHandler(this.ptb_comPLAY_Click);
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label19.Location = new System.Drawing.Point(147, 322);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(278, 26);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "I have a solution for both of us!";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(90, 351);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(375, 19);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "( Click on the logo above to open the comPLAY Website )";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label17
             // 
@@ -1780,6 +1791,19 @@
             this.label12.TabIndex = 10;
             this.label12.Text = "Don\'t want to lose your progress?";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ptb_comPLAY
+            // 
+            this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
+            this.ptb_comPLAY.Location = new System.Drawing.Point(67, 118);
+            this.ptb_comPLAY.Name = "ptb_comPLAY";
+            this.ptb_comPLAY.Size = new System.Drawing.Size(423, 196);
+            this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptb_comPLAY.TabIndex = 13;
+            this.ptb_comPLAY.TabStop = false;
+            this.ptb_comPLAY.Click += new System.EventHandler(this.ptb_comPLAY_Click);
             // 
             // btn_exit
             // 
@@ -1830,7 +1854,7 @@
             this.lbl_debugMode.AutoSize = true;
             this.lbl_debugMode.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_debugMode.ForeColor = System.Drawing.Color.Black;
-            this.lbl_debugMode.Location = new System.Drawing.Point(26, 9);
+            this.lbl_debugMode.Location = new System.Drawing.Point(12, 9);
             this.lbl_debugMode.Name = "lbl_debugMode";
             this.lbl_debugMode.Size = new System.Drawing.Size(75, 15);
             this.lbl_debugMode.TabIndex = 6;
@@ -1878,36 +1902,14 @@
             // 
             // pic_background
             // 
-            this.pic_background.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pic_background.Location = new System.Drawing.Point(29, 38);
+            this.pic_background.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pic_background.Location = new System.Drawing.Point(0, -2);
             this.pic_background.Name = "pic_background";
-            this.pic_background.Size = new System.Drawing.Size(772, 405);
+            this.pic_background.Size = new System.Drawing.Size(800, 444);
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
-            // 
-            // label18
-            // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(90, 351);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(375, 19);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "( Click on the logo above to open the comPLAY Website )";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label19.Location = new System.Drawing.Point(147, 322);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(278, 26);
-            this.label19.TabIndex = 15;
-            this.label19.Text = "I have a solution for both of us!";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 

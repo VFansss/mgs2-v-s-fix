@@ -175,6 +175,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
+    <None Include="Resources\bg7.png" />
+    <None Include="Resources\bg6.png" />
+    <None Include="Resources\bg6.bmp" />
+    <None Include="Resources\bg5.png" />
+    <None Include="Resources\bg4.png" />
+    <None Include="Resources\bg3.png" />
+    <None Include="Resources\bg2.png" />
+    <None Include="Resources\bg1.png" />
     <None Include="Resources\cP.png" />
     <None Include="Resources\ControllerDS4_VLayout.png" />
     <None Include="Resources\ControllerXBOX_PS2Layout.png" />
@@ -198,11 +206,6 @@
     <EmbeddedResource Include="PAPERS\Licence.txt" />
     <Content Include="PAPERS\Opcode.txt" />
     <EmbeddedResource Include="PAPERS\Regards.txt" />
-    <None Include="Resources\bg5.jpg" />
-    <None Include="Resources\bg4.jpg" />
-    <None Include="Resources\bg3.jpg" />
-    <None Include="Resources\bg2.jpg" />
-    <None Include="Resources\bg1.jpg" />
     <EmbeddedResource Include="Resources\V_s_sweetFX.zip" />
     <EmbeddedResource Include="Resources\ControllerXBOX_PS2Layout.zip" />
     <EmbeddedResource Include="Resources\ControllerXBOX_VLayout.zip" />

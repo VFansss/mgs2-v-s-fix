@@ -904,9 +904,10 @@ namespace mgs2_v_s_fix
             Random rnd = new Random();
             int ran_number = 0;
 
-            // From 1 to 5! 
+            // CHANGE THIS IF MORE SCREENSHOT ARE AVAILABLE
+            int NUMBER_OF_SCREENSHOTS = 7;
 
-            do { ran_number = rnd.Next(1, 6); }
+            do { ran_number = rnd.Next(1, NUMBER_OF_SCREENSHOTS+1); }
             while (!(ran_number != bg_number));
 
             string resourceName = "bg" + ran_number;
