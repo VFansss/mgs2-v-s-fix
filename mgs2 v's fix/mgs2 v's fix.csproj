@@ -175,8 +175,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
-    <None Include="Resources\ControllerXBOX_PS2Layout.jpg" />
-    <None Include="Resources\ControllerXBOX_VLayout.jpg" />
+    <None Include="Resources\ControllerDS4_VLayout.png" />
+    <None Include="Resources\ControllerXBOX_PS2Layout.png" />
+    <None Include="Resources\ControllerXBOX_VLayout.png" />
+    <None Include="Resources\ControllerDS4_PS2Layout.png" />
     <None Include="Resources\iceCream.png" />
     <None Include="Resources\ico4.ico" />
     <None Include="Resources\ico3.ico" />

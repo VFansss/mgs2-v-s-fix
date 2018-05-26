@@ -402,16 +402,15 @@ namespace mgs2_v_s_fix
 
                 if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
                 {
-                    // TODO
                     PreferredLayout_PS2.Checked = true;
-                    pictureBox1.Image = null;
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_PS2Layout;
                 }
 
                 else
                 {
-                    // TODO
+                    // VLayout
                     PreferredLayout_V.Checked = true;
-                    pictureBox1.Image = null;
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_VLayout;
                 }
 
             }
@@ -1228,17 +1227,16 @@ namespace mgs2_v_s_fix
 
             else if (EnableController_DS4.Checked)
             {
-                if (EnableController_DS4.Checked)
+                if (PreferredLayout_PS2.Checked)
                 {
-                    // TODO
-                    pictureBox1.Image = null;
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_PS2Layout;
                 }
 
                 else
                 {
-                    // TODO
+                    // VLayout
                     PreferredLayout_V.Checked = true;
-                    pictureBox1.Image = null;
+                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_VLayout;
                 }
 
             }
@@ -1248,33 +1246,6 @@ namespace mgs2_v_s_fix
                 // ??
                 throw new Exception("ERROR: A layout has been selected without knowing your kind of controller!");
             }
-        }
-
-        // Old
-
-        private void XboxGamepad_V_MouseHover(object sender, EventArgs e)
-        {
-            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
-        }
-
-        private void XboxGamepad_PS2_MouseHover(object sender, EventArgs e)
-        {
-            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
-        }
-
-        private void XboxGamepad_V_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
-        }
-
-        private void XboxGamepad_PS2_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
-        }
-
-        private void XboxGamepad_NO_Click(object sender, EventArgs e)
-        {
-            pictureBox1.Image = null;
         }
 
         #endregion

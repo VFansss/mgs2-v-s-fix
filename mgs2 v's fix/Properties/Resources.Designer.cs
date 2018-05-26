@@ -123,6 +123,26 @@ namespace mgs2_v_s_fix.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ControllerDS4_PS2Layout {
+            get {
+                object obj = ResourceManager.GetObject("ControllerDS4_PS2Layout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ControllerDS4_VLayout {
+            get {
+                object obj = ResourceManager.GetObject("ControllerDS4_VLayout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ControllerXBOX_PS2Layout {
             get {
                 object obj = ResourceManager.GetObject("ControllerXBOX_PS2Layout", resourceCulture);

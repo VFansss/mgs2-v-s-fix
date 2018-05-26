@@ -49,6 +49,7 @@
             this.txt_Width = new System.Windows.Forms.TextBox();
             this.lbl_des_00 = new System.Windows.Forms.Label();
             this.tab_Controls = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnl_PreferredLayout = new System.Windows.Forms.Panel();
             this.PreferredLayout_PS2 = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
             this.EnableController_NO = new System.Windows.Forms.RadioButton();
             this.help_controls = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
             this.chb_AA = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -130,9 +130,9 @@
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_PreferredLayout.SuspendLayout();
             this.pnl_EnableController.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tab_Graphics.SuspendLayout();
             this.pnl_EffectQuantity.SuspendLayout();
             this.pnl_RenderingClearness.SuspendLayout();
@@ -481,15 +481,25 @@
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 86);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(515, 270);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // pnl_PreferredLayout
             // 
             this.pnl_PreferredLayout.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_PS2);
             this.pnl_PreferredLayout.Controls.Add(this.label10);
             this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_V);
-            this.pnl_PreferredLayout.Location = new System.Drawing.Point(42, 62);
+            this.pnl_PreferredLayout.Location = new System.Drawing.Point(6, 49);
             this.pnl_PreferredLayout.Name = "pnl_PreferredLayout";
-            this.pnl_PreferredLayout.Size = new System.Drawing.Size(468, 268);
+            this.pnl_PreferredLayout.Size = new System.Drawing.Size(526, 305);
             this.pnl_PreferredLayout.TabIndex = 12;
             // 
             // PreferredLayout_PS2
@@ -504,7 +514,7 @@
             this.PreferredLayout_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_PS2.Location = new System.Drawing.Point(303, 4);
+            this.PreferredLayout_PS2.Location = new System.Drawing.Point(347, 1);
             this.PreferredLayout_PS2.Name = "PreferredLayout_PS2";
             this.PreferredLayout_PS2.Size = new System.Drawing.Size(111, 30);
             this.PreferredLayout_PS2.TabIndex = 4;
@@ -520,7 +530,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label10.Location = new System.Drawing.Point(33, 6);
+            this.label10.Location = new System.Drawing.Point(77, 3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(146, 26);
             this.label10.TabIndex = 3;
@@ -539,7 +549,7 @@
             this.PreferredLayout_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_V.Location = new System.Drawing.Point(206, 4);
+            this.PreferredLayout_V.Location = new System.Drawing.Point(250, 1);
             this.PreferredLayout_V.Name = "PreferredLayout_V";
             this.PreferredLayout_V.Size = new System.Drawing.Size(94, 30);
             this.PreferredLayout_V.TabIndex = 1;
@@ -557,7 +567,7 @@
             this.pnl_EnableController.Controls.Add(this.label8);
             this.pnl_EnableController.Controls.Add(this.EnableController_XBOX);
             this.pnl_EnableController.Controls.Add(this.EnableController_NO);
-            this.pnl_EnableController.Location = new System.Drawing.Point(41, 16);
+            this.pnl_EnableController.Location = new System.Drawing.Point(41, 7);
             this.pnl_EnableController.Name = "pnl_EnableController";
             this.pnl_EnableController.Size = new System.Drawing.Size(469, 32);
             this.pnl_EnableController.TabIndex = 8;
@@ -656,16 +666,6 @@
             this.help_controls.Text = "Issues with controller? Need help with buttons? Click here!";
             this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(68, 140);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(405, 181);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // tab_Graphics
             // 
@@ -1838,11 +1838,11 @@
             this.tab_Resolution.PerformLayout();
             this.tab_Controls.ResumeLayout(false);
             this.tab_Controls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_PreferredLayout.ResumeLayout(false);
             this.pnl_PreferredLayout.PerformLayout();
             this.pnl_EnableController.ResumeLayout(false);
             this.pnl_EnableController.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tab_Graphics.ResumeLayout(false);
             this.tab_Graphics.PerformLayout();
             this.pnl_EffectQuantity.ResumeLayout(false);
