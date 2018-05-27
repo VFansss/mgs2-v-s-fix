@@ -93,6 +93,8 @@
             this.RenderingSize_medium = new System.Windows.Forms.RadioButton();
             this.RenderingSize_low = new System.Windows.Forms.RadioButton();
             this.tab_Sound = new System.Windows.Forms.TabPage();
+            this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
+            this.lbl_checkForUpdate = new System.Windows.Forms.Label();
             this.chb_FixAfterPlaying = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -134,8 +136,6 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
-            this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
-            this.lbl_checkForUpdate = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
@@ -149,6 +149,7 @@
             this.pnl_ShadowDetail.SuspendLayout();
             this.pnl_RenderingSize.SuspendLayout();
             this.tab_Sound.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
             this.pnl_Quality.SuspendLayout();
             this.pnl_SoundQuality.SuspendLayout();
             this.pnl_SE.SuspendLayout();
@@ -160,7 +161,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -510,7 +510,7 @@
             this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_PS2);
             this.pnl_PreferredLayout.Controls.Add(this.label10);
             this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_V);
-            this.pnl_PreferredLayout.Location = new System.Drawing.Point(15, 49);
+            this.pnl_PreferredLayout.Location = new System.Drawing.Point(13, 49);
             this.pnl_PreferredLayout.Name = "pnl_PreferredLayout";
             this.pnl_PreferredLayout.Size = new System.Drawing.Size(526, 305);
             this.pnl_PreferredLayout.TabIndex = 12;
@@ -527,7 +527,7 @@
             this.PreferredLayout_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_PS2.Location = new System.Drawing.Point(347, 1);
+            this.PreferredLayout_PS2.Location = new System.Drawing.Point(343, 1);
             this.PreferredLayout_PS2.Name = "PreferredLayout_PS2";
             this.PreferredLayout_PS2.Size = new System.Drawing.Size(111, 30);
             this.PreferredLayout_PS2.TabIndex = 4;
@@ -543,7 +543,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label10.Location = new System.Drawing.Point(77, 3);
+            this.label10.Location = new System.Drawing.Point(73, 3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(146, 26);
             this.label10.TabIndex = 3;
@@ -562,7 +562,7 @@
             this.PreferredLayout_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_V.Location = new System.Drawing.Point(250, 1);
+            this.PreferredLayout_V.Location = new System.Drawing.Point(246, 1);
             this.PreferredLayout_V.Name = "PreferredLayout_V";
             this.PreferredLayout_V.Size = new System.Drawing.Size(94, 30);
             this.PreferredLayout_V.TabIndex = 1;
@@ -580,7 +580,7 @@
             this.pnl_EnableController.Controls.Add(this.label8);
             this.pnl_EnableController.Controls.Add(this.EnableController_XBOX);
             this.pnl_EnableController.Controls.Add(this.EnableController_NO);
-            this.pnl_EnableController.Location = new System.Drawing.Point(50, 7);
+            this.pnl_EnableController.Location = new System.Drawing.Point(48, 7);
             this.pnl_EnableController.Name = "pnl_EnableController";
             this.pnl_EnableController.Size = new System.Drawing.Size(469, 32);
             this.pnl_EnableController.TabIndex = 8;
@@ -597,7 +597,7 @@
             this.EnableController_DS4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EnableController_DS4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EnableController_DS4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableController_DS4.Location = new System.Drawing.Point(301, 4);
+            this.EnableController_DS4.Location = new System.Drawing.Point(307, 4);
             this.EnableController_DS4.Name = "EnableController_DS4";
             this.EnableController_DS4.Size = new System.Drawing.Size(120, 30);
             this.EnableController_DS4.TabIndex = 4;
@@ -613,7 +613,7 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label8.Location = new System.Drawing.Point(36, 6);
+            this.label8.Location = new System.Drawing.Point(42, 6);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 26);
             this.label8.TabIndex = 3;
@@ -632,7 +632,7 @@
             this.EnableController_XBOX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EnableController_XBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EnableController_XBOX.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableController_XBOX.Location = new System.Drawing.Point(204, 4);
+            this.EnableController_XBOX.Location = new System.Drawing.Point(210, 4);
             this.EnableController_XBOX.Name = "EnableController_XBOX";
             this.EnableController_XBOX.Size = new System.Drawing.Size(94, 30);
             this.EnableController_XBOX.TabIndex = 1;
@@ -655,7 +655,7 @@
             this.EnableController_NO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EnableController_NO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EnableController_NO.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableController_NO.Location = new System.Drawing.Point(142, 4);
+            this.EnableController_NO.Location = new System.Drawing.Point(148, 4);
             this.EnableController_NO.Name = "EnableController_NO";
             this.EnableController_NO.Size = new System.Drawing.Size(58, 30);
             this.EnableController_NO.TabIndex = 0;
@@ -672,7 +672,7 @@
             this.help_controls.AutoSize = true;
             this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
             this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_controls.Location = new System.Drawing.Point(84, 357);
+            this.help_controls.Location = new System.Drawing.Point(82, 357);
             this.help_controls.Name = "help_controls";
             this.help_controls.Size = new System.Drawing.Size(390, 19);
             this.help_controls.TabIndex = 11;
@@ -711,7 +711,7 @@
             this.chb_AA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_AA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_AA.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_AA.Location = new System.Drawing.Point(329, 226);
+            this.chb_AA.Location = new System.Drawing.Point(332, 226);
             this.chb_AA.Name = "chb_AA";
             this.chb_AA.Size = new System.Drawing.Size(55, 26);
             this.chb_AA.TabIndex = 15;
@@ -727,7 +727,7 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label9.Location = new System.Drawing.Point(140, 225);
+            this.label9.Location = new System.Drawing.Point(143, 225);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(193, 26);
             this.label9.TabIndex = 14;
@@ -745,7 +745,7 @@
             this.chb_MotionBlur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_MotionBlur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_MotionBlur.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_MotionBlur.Location = new System.Drawing.Point(329, 280);
+            this.chb_MotionBlur.Location = new System.Drawing.Point(332, 280);
             this.chb_MotionBlur.Name = "chb_MotionBlur";
             this.chb_MotionBlur.Size = new System.Drawing.Size(55, 26);
             this.chb_MotionBlur.TabIndex = 13;
@@ -760,7 +760,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label7.Location = new System.Drawing.Point(213, 279);
+            this.label7.Location = new System.Drawing.Point(216, 279);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 26);
             this.label7.TabIndex = 12;
@@ -778,7 +778,7 @@
             this.chb_BunchOfCoolEffect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_BunchOfCoolEffect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_BunchOfCoolEffect.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(329, 254);
+            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(332, 254);
             this.chb_BunchOfCoolEffect.Name = "chb_BunchOfCoolEffect";
             this.chb_BunchOfCoolEffect.Size = new System.Drawing.Size(55, 26);
             this.chb_BunchOfCoolEffect.TabIndex = 11;
@@ -793,7 +793,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label11.Location = new System.Drawing.Point(170, 253);
+            this.label11.Location = new System.Drawing.Point(173, 253);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(163, 26);
             this.label11.TabIndex = 10;
@@ -807,7 +807,7 @@
             this.pnl_EffectQuantity.Controls.Add(this.label5);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_medium);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_low);
-            this.pnl_EffectQuantity.Location = new System.Drawing.Point(61, 177);
+            this.pnl_EffectQuantity.Location = new System.Drawing.Point(64, 177);
             this.pnl_EffectQuantity.Name = "pnl_EffectQuantity";
             this.pnl_EffectQuantity.Size = new System.Drawing.Size(425, 32);
             this.pnl_EffectQuantity.TabIndex = 5;
@@ -894,7 +894,7 @@
             this.pnl_RenderingClearness.Controls.Add(this.label3);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_medium);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_low);
-            this.pnl_RenderingClearness.Location = new System.Drawing.Point(61, 139);
+            this.pnl_RenderingClearness.Location = new System.Drawing.Point(64, 139);
             this.pnl_RenderingClearness.Name = "pnl_RenderingClearness";
             this.pnl_RenderingClearness.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingClearness.TabIndex = 5;
@@ -981,7 +981,7 @@
             this.pnl_ModelQuality.Controls.Add(this.label2);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_medium);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_low);
-            this.pnl_ModelQuality.Location = new System.Drawing.Point(61, 101);
+            this.pnl_ModelQuality.Location = new System.Drawing.Point(64, 101);
             this.pnl_ModelQuality.Name = "pnl_ModelQuality";
             this.pnl_ModelQuality.Size = new System.Drawing.Size(425, 32);
             this.pnl_ModelQuality.TabIndex = 5;
@@ -1069,7 +1069,7 @@
             this.pnl_ShadowDetail.Controls.Add(this.label1);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_medium);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_low);
-            this.pnl_ShadowDetail.Location = new System.Drawing.Point(61, 63);
+            this.pnl_ShadowDetail.Location = new System.Drawing.Point(64, 63);
             this.pnl_ShadowDetail.Name = "pnl_ShadowDetail";
             this.pnl_ShadowDetail.Size = new System.Drawing.Size(425, 32);
             this.pnl_ShadowDetail.TabIndex = 5;
@@ -1159,7 +1159,7 @@
             this.pnl_RenderingSize.Controls.Add(this.lbl_descr);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_medium);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_low);
-            this.pnl_RenderingSize.Location = new System.Drawing.Point(61, 27);
+            this.pnl_RenderingSize.Location = new System.Drawing.Point(64, 27);
             this.pnl_RenderingSize.Name = "pnl_RenderingSize";
             this.pnl_RenderingSize.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingSize.TabIndex = 2;
@@ -1260,6 +1260,27 @@
             this.tab_Sound.TabIndex = 3;
             this.tab_Sound.Text = "Other";
             this.tab_Sound.UseVisualStyleBackColor = true;
+            // 
+            // ptb_GitHubLogo
+            // 
+            this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_GitHubLogo.Image = global::mgs2_v_s_fix.Properties.Resources.GitHubLogo;
+            this.ptb_GitHubLogo.Location = new System.Drawing.Point(246, 230);
+            this.ptb_GitHubLogo.Name = "ptb_GitHubLogo";
+            this.ptb_GitHubLogo.Size = new System.Drawing.Size(60, 60);
+            this.ptb_GitHubLogo.TabIndex = 19;
+            this.ptb_GitHubLogo.TabStop = false;
+            this.ptb_GitHubLogo.Click += new System.EventHandler(this.ptb_GitHubLogo_Click);
+            // 
+            // lbl_checkForUpdate
+            // 
+            this.lbl_checkForUpdate.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_checkForUpdate.Location = new System.Drawing.Point(6, 299);
+            this.lbl_checkForUpdate.Name = "lbl_checkForUpdate";
+            this.lbl_checkForUpdate.Size = new System.Drawing.Size(540, 33);
+            this.lbl_checkForUpdate.TabIndex = 20;
+            this.lbl_checkForUpdate.Text = "[RUNTIME]";
+            this.lbl_checkForUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chb_FixAfterPlaying
             // 
@@ -1615,11 +1636,11 @@
             this.lbl_donate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_donate.Font = new System.Drawing.Font("Calibri", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_donate.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbl_donate.Location = new System.Drawing.Point(151, 29);
+            this.lbl_donate.Location = new System.Drawing.Point(154, 29);
             this.lbl_donate.Name = "lbl_donate";
             this.lbl_donate.Size = new System.Drawing.Size(322, 26);
             this.lbl_donate.TabIndex = 10;
-            this.lbl_donate.Text = "Spare $ or € ? Pay me an ice cream!\r\n";
+            this.lbl_donate.Text = "Spare $ or € ? Gift me an ice cream!\r\n";
             this.lbl_donate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lbl_donate.Click += new System.EventHandler(this.lbl_donate_Click);
             // 
@@ -1627,7 +1648,7 @@
             // 
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::mgs2_v_s_fix.Properties.Resources.iceCream;
-            this.pictureBox3.Location = new System.Drawing.Point(74, 8);
+            this.pictureBox3.Location = new System.Drawing.Point(77, 8);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(64, 64);
             this.pictureBox3.TabIndex = 8;
@@ -1640,7 +1661,7 @@
             this.pnl_about.Controls.Add(this.abt_Regards);
             this.pnl_about.Controls.Add(this.abt_Licence);
             this.pnl_about.Controls.Add(this.abt_Contacts);
-            this.pnl_about.Location = new System.Drawing.Point(55, 77);
+            this.pnl_about.Location = new System.Drawing.Point(56, 77);
             this.pnl_about.Name = "pnl_about";
             this.pnl_about.Size = new System.Drawing.Size(441, 48);
             this.pnl_about.TabIndex = 6;
@@ -1656,7 +1677,7 @@
             this.abt_Regards.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.abt_Regards.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.abt_Regards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abt_Regards.Location = new System.Drawing.Point(290, 9);
+            this.abt_Regards.Location = new System.Drawing.Point(282, 9);
             this.abt_Regards.Name = "abt_Regards";
             this.abt_Regards.Size = new System.Drawing.Size(132, 30);
             this.abt_Regards.TabIndex = 4;
@@ -1677,7 +1698,7 @@
             this.abt_Licence.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.abt_Licence.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.abt_Licence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abt_Licence.Location = new System.Drawing.Point(170, 9);
+            this.abt_Licence.Location = new System.Drawing.Point(162, 9);
             this.abt_Licence.Name = "abt_Licence";
             this.abt_Licence.Size = new System.Drawing.Size(104, 30);
             this.abt_Licence.TabIndex = 1;
@@ -1698,7 +1719,7 @@
             this.abt_Contacts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.abt_Contacts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.abt_Contacts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abt_Contacts.Location = new System.Drawing.Point(34, 9);
+            this.abt_Contacts.Location = new System.Drawing.Point(26, 9);
             this.abt_Contacts.Name = "abt_Contacts";
             this.abt_Contacts.Size = new System.Drawing.Size(104, 30);
             this.abt_Contacts.TabIndex = 0;
@@ -1742,7 +1763,7 @@
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label19.Location = new System.Drawing.Point(147, 322);
+            this.label19.Location = new System.Drawing.Point(139, 322);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(278, 26);
             this.label19.TabIndex = 15;
@@ -1754,7 +1775,7 @@
             this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(90, 351);
+            this.label18.Location = new System.Drawing.Point(82, 351);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(375, 19);
             this.label18.TabIndex = 14;
@@ -1766,7 +1787,7 @@
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label17.Location = new System.Drawing.Point(69, 83);
+            this.label17.Location = new System.Drawing.Point(61, 83);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(432, 26);
             this.label17.TabIndex = 12;
@@ -1778,7 +1799,7 @@
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label16.Location = new System.Drawing.Point(132, 48);
+            this.label16.Location = new System.Drawing.Point(124, 48);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(290, 26);
             this.label16.TabIndex = 11;
@@ -1790,7 +1811,7 @@
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label12.Location = new System.Drawing.Point(125, 13);
+            this.label12.Location = new System.Drawing.Point(117, 13);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(300, 26);
             this.label12.TabIndex = 10;
@@ -1802,7 +1823,7 @@
             this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
-            this.ptb_comPLAY.Location = new System.Drawing.Point(67, 118);
+            this.ptb_comPLAY.Location = new System.Drawing.Point(59, 118);
             this.ptb_comPLAY.Name = "ptb_comPLAY";
             this.ptb_comPLAY.Size = new System.Drawing.Size(423, 196);
             this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1916,27 +1937,6 @@
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
-            // ptb_GitHubLogo
-            // 
-            this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptb_GitHubLogo.Image = global::mgs2_v_s_fix.Properties.Resources.GitHubLogo;
-            this.ptb_GitHubLogo.Location = new System.Drawing.Point(246, 230);
-            this.ptb_GitHubLogo.Name = "ptb_GitHubLogo";
-            this.ptb_GitHubLogo.Size = new System.Drawing.Size(60, 60);
-            this.ptb_GitHubLogo.TabIndex = 19;
-            this.ptb_GitHubLogo.TabStop = false;
-            this.ptb_GitHubLogo.Click += new System.EventHandler(this.ptb_GitHubLogo_Click);
-            // 
-            // lbl_checkForUpdate
-            // 
-            this.lbl_checkForUpdate.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_checkForUpdate.Location = new System.Drawing.Point(6, 299);
-            this.lbl_checkForUpdate.Name = "lbl_checkForUpdate";
-            this.lbl_checkForUpdate.Size = new System.Drawing.Size(540, 33);
-            this.lbl_checkForUpdate.TabIndex = 20;
-            this.lbl_checkForUpdate.Text = "[RUNTIME]";
-            this.lbl_checkForUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1983,6 +1983,7 @@
             this.pnl_RenderingSize.PerformLayout();
             this.tab_Sound.ResumeLayout(false);
             this.tab_Sound.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
             this.pnl_Quality.ResumeLayout(false);
             this.pnl_Quality.PerformLayout();
             this.pnl_SoundQuality.ResumeLayout(false);
@@ -1999,7 +2000,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
