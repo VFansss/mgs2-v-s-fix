@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Drawing.Text;
 using System.IO;
 using System.Reflection;
+using static mgs2_v_s_fix.Flags;
+using System.Threading.Tasks;
 
 namespace mgs2_v_s_fix
 {
@@ -24,11 +26,17 @@ namespace mgs2_v_s_fix
         private PrivateFontCollection fonts = new PrivateFontCollection();
         Font myFont;
 
-        // Remember current background image. Aoid repetition.
+        // Remember current background image to avoid repetition.
         private int bg_number;
 
-        // Remember current icon image. Avoid repetition.
+        // Remember current icon image to avoid repetition.
         private int ico_number;
+
+        // UPDATE Variable
+
+        private bool UPDATE_checkInProgress = false;
+
+        private string checkForUpdateDefaultString = "(Click on the GitHub logo above to check for updates)";
 
         public Form1()
         {
@@ -74,6 +82,10 @@ namespace mgs2_v_s_fix
             setNewBackground();
 
             Ocelot.console("[+] Form1 constructor has done. Waiting user input.");
+
+            // Bind lbl_checkForUpdate.Text to default text
+
+            lbl_checkForUpdate.Text = checkForUpdateDefaultString;
 
         }
 
@@ -1351,7 +1363,7 @@ namespace mgs2_v_s_fix
         {
             try
             {
-                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki");
+                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI);
             }
 
             catch
@@ -1400,6 +1412,74 @@ namespace mgs2_v_s_fix
             }
         }
 
+        #endregion
+
+        #region UPDATE
+
+        // UPDATE
+
+        private async void ptb_GitHubLogo_Click(object sender, EventArgs e)
+        {
+            if (UPDATE_checkInProgress)
+            {
+                // Do nothing
+                return;
+            }
+
+            // Lock
+
+            UPDATE_checkInProgress = true;
+
+            lbl_checkForUpdate.Text = "Checking...";
+
+            // Set the async
+            UPDATE_AVAILABILITY remoteStatus = await Task.Run(() => Ocelot.CheckForUpdatesAsync());
+
+            UPDATE_checkFinished(remoteStatus);
+
+        }
+
+        private void UPDATE_checkFinished(UPDATE_AVAILABILITY result)
+        {
+
+            switch (result)
+            {
+                case UPDATE_AVAILABILITY.NoUpdates:
+
+                    Ocelot.showMessage("update_noupdates");
+
+                    break;
+
+                case UPDATE_AVAILABILITY.UpdateAvailable:
+
+                    Ocelot.showMessage("update_available");
+
+                    try
+                    {
+                        System.Diagnostics.Process.Start(Ocelot.GITHUB_RELEASE);
+                    }
+
+                    catch
+                    {
+                        Ocelot.showMessage("UAC_error");
+                    }
+
+                    break;
+
+                default:
+
+                    // Response mismatch & network errors
+
+                    Ocelot.showMessage("update_crashedinfire");
+
+                    break;
+            }
+
+            // Re-allow the update checks
+
+            lbl_checkForUpdate.Text = checkForUpdateDefaultString;
+            UPDATE_checkInProgress = false;
+        }
 
         #endregion
 

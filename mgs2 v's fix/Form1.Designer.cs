@@ -134,6 +134,8 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
+            this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
+            this.lbl_checkForUpdate = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
@@ -158,6 +160,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -1242,6 +1245,8 @@
             // 
             // tab_Sound
             // 
+            this.tab_Sound.Controls.Add(this.ptb_GitHubLogo);
+            this.tab_Sound.Controls.Add(this.lbl_checkForUpdate);
             this.tab_Sound.Controls.Add(this.chb_FixAfterPlaying);
             this.tab_Sound.Controls.Add(this.label4);
             this.tab_Sound.Controls.Add(this.label6);
@@ -1294,7 +1299,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label6.Location = new System.Drawing.Point(100, 304);
+            this.label6.Location = new System.Drawing.Point(79, 348);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 26);
             this.label6.TabIndex = 9;
@@ -1310,7 +1315,7 @@
             this.lst_sound_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_sound_list.FormattingEnabled = true;
             this.lst_sound_list.ItemHeight = 18;
-            this.lst_sound_list.Location = new System.Drawing.Point(248, 309);
+            this.lst_sound_list.Location = new System.Drawing.Point(227, 353);
             this.lst_sound_list.Name = "lst_sound_list";
             this.lst_sound_list.Size = new System.Drawing.Size(245, 54);
             this.lst_sound_list.TabIndex = 8;
@@ -1911,6 +1916,27 @@
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
+            // ptb_GitHubLogo
+            // 
+            this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_GitHubLogo.Image = global::mgs2_v_s_fix.Properties.Resources.GitHubLogo;
+            this.ptb_GitHubLogo.Location = new System.Drawing.Point(246, 230);
+            this.ptb_GitHubLogo.Name = "ptb_GitHubLogo";
+            this.ptb_GitHubLogo.Size = new System.Drawing.Size(60, 60);
+            this.ptb_GitHubLogo.TabIndex = 19;
+            this.ptb_GitHubLogo.TabStop = false;
+            this.ptb_GitHubLogo.Click += new System.EventHandler(this.ptb_GitHubLogo_Click);
+            // 
+            // lbl_checkForUpdate
+            // 
+            this.lbl_checkForUpdate.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_checkForUpdate.Location = new System.Drawing.Point(6, 299);
+            this.lbl_checkForUpdate.Name = "lbl_checkForUpdate";
+            this.lbl_checkForUpdate.Size = new System.Drawing.Size(540, 33);
+            this.lbl_checkForUpdate.TabIndex = 20;
+            this.lbl_checkForUpdate.Text = "[RUNTIME]";
+            this.lbl_checkForUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1973,6 +1999,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2085,6 +2112,8 @@
         private System.Windows.Forms.PictureBox ptb_comPLAY;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.PictureBox ptb_GitHubLogo;
+        private System.Windows.Forms.Label lbl_checkForUpdate;
     }
 }
 

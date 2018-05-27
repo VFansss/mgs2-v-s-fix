@@ -10,11 +10,29 @@ using System.IO;
 using Microsoft.Win32;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using static mgs2_v_s_fix.Flags;
+using Newtonsoft.Json.Linq;
 
 namespace mgs2_v_s_fix
 {
     class Ocelot
     {
+
+        // Current version of the V's Fix
+        
+        // YYMMDD
+        public const string VERSION = "180527";
+
+        // UPDATE
+
+        public const string GITHUB_API = "https://api.github.com/repos/VFansss/mgs2-v-s-fix/releases/latest";
+        public const string GITHUB_RELEASE = "https://github.com/VFansss/mgs2-v-s-fix/releases";
+        public const string GITHUB_WIKI = "https://github.com/VFansss/mgs2-v-s-fix/wiki";
 
         // Contain Key-Value from Configuration_file.ini when 'Ocelot.load_INI_SetTo_InternalConfig' is called
         public static ConfSheet InternalConfiguration = new ConfSheet();
@@ -185,8 +203,7 @@ namespace mgs2_v_s_fix
             return;
         }
 
-        // !!!!
-        // Big function that apply V's Fix settings
+        // !!!! Big function that apply V's Fix settings
         internal static void load_InternalConfig_SetTo_MGS()
         {
             
@@ -1198,7 +1215,31 @@ namespace mgs2_v_s_fix
             switch (code)
             {
 
-                    // INFORMATION TIP    
+                // INFORMATION TIP    
+
+                case "update_crashedinfire":
+
+                    MessageBox.Show(
+                    "Can't reach GitHub for updates (Are you offline?)",
+                    "Ehi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "update_noupdates":
+
+                    MessageBox.Show(
+                    "Seems that there isn't any updates for the V's Fix.\n\nHappy playing :)",
+                    "Ehi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "update_available":
+
+                    MessageBox.Show(
+                    "It seems that someone has actually worked!\n\nPress 'OK' to open the V's Fix GitHub Release page to download the latest release!",
+                    "UPDATE AVAILABLE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
 
                 case "debug_mode":
 
@@ -1406,7 +1447,178 @@ namespace mgs2_v_s_fix
 
         }
 
-    // END CLASS
+        // UPDATE action
+
+        public static async Task<UPDATE_AVAILABILITY> CheckForUpdatesAsync()
+        {
+
+            // NB: It will become a JSON
+            dynamic remoteResponse = null;
+            bool validResponse = false;
+
+            string URL = GITHUB_API;
+
+            using (var client = new HttpClient())
+            {
+                client.Timeout = TimeSpan.FromSeconds(5);
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                // Add TLS support
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
+                try
+                {
+                    // GO! - Send request in GET
+                    var response = client.GetAsync(URL).Result;
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // HTML Request returned 200
+
+                        string responseBody = await response.Content.ReadAsStringAsync();
+
+                        // Response is a JSON
+
+                        JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+                        {
+                            DateParseHandling = DateParseHandling.None
+                        };
+
+                        remoteResponse = JsonConvert.DeserializeObject(responseBody);
+
+                        if (remoteResponse != null)
+                        {
+                            validResponse = true;
+                        }
+
+                    }
+
+                    else
+                    {
+                        // Server has responsed, but with an HTML code different from 200
+                        return UPDATE_AVAILABILITY.NetworkError;
+                    }
+
+                }
+                catch
+                {
+                    // Error during request
+
+                    /* Note to future myself:
+                     * Try to catch for (HttpRequestException e)
+                     * You can read whats happened reading e.InnerException.Message
+                     * 
+                     * */
+
+                    return UPDATE_AVAILABILITY.NetworkError;
+                }
+
+            }
+
+            if (validResponse)
+            {
+
+                // Copy remote version data into a local copy
+
+                try
+                {
+                    // Bind from JSON to local object
+
+                    UpdateSoftwareSheet response = new UpdateSoftwareSheet()
+                    {
+                        ReleaseName = remoteResponse.name,
+                        ReleaseURL = remoteResponse.html_url,
+                        PublishedAt = remoteResponse.published_at,
+                        //Changelog = remoteResponse.body
+                    };
+
+                    // Get VERSION
+
+                    DateTime myDate = DateTime.Parse(response.PublishedAt);
+
+                    response.VERSION = myDate.ToString("yyMMdd");
+
+                    JObject ohi = (JObject)remoteResponse;
+                    int assetsOnGitHub = ohi["assets"].Count();
+
+                    if (assetsOnGitHub > 1)
+                    {
+                        // ???
+                        return UPDATE_AVAILABILITY.ResponseMismatch;
+                    }
+
+                    else
+                    {
+                        response.LatestZipName = remoteResponse.assets[0].name;
+                        response.LatestZipURL = remoteResponse.assets[0].browser_download_url;
+                        response.SizeInByte = remoteResponse.assets[0].size;
+
+                        // MY RESPONSE IS THERE!
+
+                        // Calculating if an update is available
+
+                        int currentVersion = getIntFromThisString(VERSION);
+                        int latestVersion = getIntFromThisString(response.VERSION);
+
+                        console("CurrentVersion: "+ currentVersion+"   LatestVersion: "+latestVersion);
+
+                        if (latestVersion>currentVersion)
+                        {
+                            // Yeah!
+                            return UPDATE_AVAILABILITY.UpdateAvailable;
+                        }
+
+                        else
+                        {
+                            return UPDATE_AVAILABILITY.NoUpdates;
+                        }
+                        
+                    }
+
+                }
+
+                catch
+                {
+                    // Response mismatch! Server has send somethings unexpected
+
+                    return UPDATE_AVAILABILITY.ResponseMismatch;
+
+                }
+
+            }
+
+            else
+            {
+                // Server has responsed something, but isn't well formatted
+                return UPDATE_AVAILABILITY.ResponseMismatch;
+            }
+
+        }
+
+        public static int getIntFromThisString(string inputString)
+        {
+            int returnValue = 0;
+
+            try
+            {
+                string numericPhone = new String(inputString.Where(Char.IsDigit).ToArray());
+
+                returnValue = Convert.ToInt32(numericPhone);
+            }
+
+            catch(Exception e)
+            {
+                // Do nothing
+
+                Ocelot.console(e.Message);
+
+            }
+
+            return returnValue;
+        }
+
+        // END CLASS
 
     }
 
