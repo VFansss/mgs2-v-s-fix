@@ -23,9 +23,7 @@ namespace mgs2_v_s_fix
     class Ocelot
     {
 
-        // Current version of the V's Fix
-        
-        // YYMMDD
+        // Current version of the V's Fix - Format is YYMMDD
         public const string VERSION = "180527";
 
         // UPDATE
