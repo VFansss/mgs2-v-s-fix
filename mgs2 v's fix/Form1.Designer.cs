@@ -1763,11 +1763,11 @@
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label19.Location = new System.Drawing.Point(139, 322);
+            this.label19.Location = new System.Drawing.Point(121, 322);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(278, 26);
+            this.label19.Size = new System.Drawing.Size(310, 26);
             this.label19.TabIndex = 15;
-            this.label19.Text = "I have a solution for both of us!";
+            this.label19.Text = "I\'ve made a solution for both of us!";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label18
