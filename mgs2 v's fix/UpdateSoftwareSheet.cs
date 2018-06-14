@@ -8,7 +8,7 @@
 
         public string ReleaseURL { get; set; }
 
-        public string PublishedAt { get; set; }
+        public string CreatedAt { get; set; }
 
         public string LatestZipName { get; set; }
 
@@ -26,7 +26,7 @@
             VERSION = "-1";
             ReleaseName = "-1";
             ReleaseURL = "-1";
-            PublishedAt = "-1";
+            CreatedAt = "-1";
             LatestZipName = "-1";
             LatestZipURL = "-1";
             SizeInByte = "-1";

@@ -24,7 +24,7 @@ namespace mgs2_v_s_fix
     {
 
         // Current version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "180614";
+        public const string VERSION = "170614";
 
         // UPDATE
 
@@ -1529,13 +1529,13 @@ namespace mgs2_v_s_fix
                     {
                         ReleaseName = remoteResponse.name,
                         ReleaseURL = remoteResponse.html_url,
-                        PublishedAt = remoteResponse.published_at,
+                        CreatedAt = remoteResponse.created_at,
                         //Changelog = remoteResponse.body
                     };
 
                     // Get VERSION
 
-                    DateTime myDate = DateTime.Parse(response.PublishedAt);
+                    DateTime myDate = DateTime.Parse(response.CreatedAt);
 
                     response.VERSION = myDate.ToString("yyMMdd");
 
@@ -1544,36 +1544,33 @@ namespace mgs2_v_s_fix
 
                     if (assetsOnGitHub > 1)
                     {
-                        // ???
-                        return UPDATE_AVAILABILITY.ResponseMismatch;
+                        // EDIT: Allow more assets
+
+                        //return UPDATE_AVAILABILITY.ResponseMismatch;
+                    }
+
+                    response.LatestZipName = remoteResponse.assets[0].name;
+                    response.LatestZipURL = remoteResponse.assets[0].browser_download_url;
+                    response.SizeInByte = remoteResponse.assets[0].size;
+
+                    // MY RESPONSE IS THERE!
+
+                    // Calculating if an update is available
+
+                    int localVersion = getIntFromThisString(VERSION);
+                    int remoteVersion = getIntFromThisString(response.VERSION);
+
+                    console("CurrentVersion: "+ localVersion+"   LatestVersion: "+remoteVersion);
+
+                    if (remoteVersion>localVersion)
+                    {
+                        // Yeah!
+                        return UPDATE_AVAILABILITY.UpdateAvailable;
                     }
 
                     else
                     {
-                        response.LatestZipName = remoteResponse.assets[0].name;
-                        response.LatestZipURL = remoteResponse.assets[0].browser_download_url;
-                        response.SizeInByte = remoteResponse.assets[0].size;
-
-                        // MY RESPONSE IS THERE!
-
-                        // Calculating if an update is available
-
-                        int currentVersion = getIntFromThisString(VERSION);
-                        int latestVersion = getIntFromThisString(response.VERSION);
-
-                        console("CurrentVersion: "+ currentVersion+"   LatestVersion: "+latestVersion);
-
-                        if (latestVersion>currentVersion)
-                        {
-                            // Yeah!
-                            return UPDATE_AVAILABILITY.UpdateAvailable;
-                        }
-
-                        else
-                        {
-                            return UPDATE_AVAILABILITY.NoUpdates;
-                        }
-                        
+                        return UPDATE_AVAILABILITY.NoUpdates;
                     }
 
                 }
