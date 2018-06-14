@@ -24,7 +24,7 @@ namespace mgs2_v_s_fix
     {
 
         // Current version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "180527";
+        public const string VERSION = "180614";
 
         // UPDATE
 
@@ -1187,10 +1187,12 @@ namespace mgs2_v_s_fix
 
                 SecurityIdentifier identity = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
 
-                dSecurity.AddAccessRule(new FileSystemAccessRule(identity, FileSystemRights.FullControl,
-                                                                 InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit,
-                                                                 PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
+                dSecurity.AddAccessRule(new FileSystemAccessRule(identity, 
+                                                                FileSystemRights.FullControl,
+                                                                 InheritanceFlags.ContainerInherit,
+                                                                 PropagationFlags.InheritOnly, AccessControlType.Allow));
                 dInfo.SetAccessControl(dSecurity);
+
 
                 success = true;
 
