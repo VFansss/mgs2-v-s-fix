@@ -24,7 +24,7 @@ namespace mgs2_v_s_fix
     {
 
         // Current version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "170614";
+        public const string VERSION = "180614";
 
         // UPDATE
 
@@ -1182,17 +1182,10 @@ namespace mgs2_v_s_fix
 
             try{
 
-                DirectoryInfo dInfo = new DirectoryInfo(fullPath);
-                DirectorySecurity dSecurity = dInfo.GetAccessControl();
-
-                SecurityIdentifier identity = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
-
-                dSecurity.AddAccessRule(new FileSystemAccessRule(identity, 
-                                                                FileSystemRights.FullControl,
-                                                                 InheritanceFlags.ContainerInherit,
-                                                                 PropagationFlags.InheritOnly, AccessControlType.Allow));
-                dInfo.SetAccessControl(dSecurity);
-
+                DirectorySecurity sec = Directory.GetAccessControl(fullPath);
+                SecurityIdentifier everyone = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+                sec.AddAccessRule(new FileSystemAccessRule(everyone, FileSystemRights.Modify | FileSystemRights.Synchronize, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+                Directory.SetAccessControl(fullPath, sec);
 
                 success = true;
 
