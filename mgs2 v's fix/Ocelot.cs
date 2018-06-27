@@ -931,6 +931,8 @@ namespace mgs2_v_s_fix
                     //End Using
                 }
 
+                /*
+
                 // Avoid strange Windows UAC issues setting full
                 // access on MGS2 files from every windows user
 
@@ -945,6 +947,8 @@ namespace mgs2_v_s_fix
                 bool success = grantAccessToEveryUser(homeDirectory);
 
                 Ocelot.console("[ ] grantAccess has returned "+success);
+
+                */
 
             }
 
