@@ -1196,6 +1196,9 @@ namespace mgs2_v_s_fix
 
             if (pressedRadio.Name.Equals("EnableController_NO"))
             {
+                // Hide the gamepad image
+                pictureBox1.Image = null;
+
                 pnl_PreferredLayout.Visible = false;
 
                 // Set a default value
@@ -1220,10 +1223,10 @@ namespace mgs2_v_s_fix
         {
             // What controller, and what layout?
 
+            pnl_PreferredLayout.Visible = true;
+
             if (EnableController_XBOX.Checked)
             {
-                pnl_PreferredLayout.Visible = true;
-
                 if (PreferredLayout_PS2.Checked)
                 {
                     pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
