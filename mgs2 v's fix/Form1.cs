@@ -81,7 +81,7 @@ namespace mgs2_v_s_fix
 
             setNewBackground();
 
-            Ocelot.console("[+] Form1 constructor has done. Waiting user input.");
+            Ocelot.PrintToDebugConsole("[+] Form1 constructor has done. Waiting user input.");
 
             // Bind lbl_checkForUpdate.Text to default text
 
@@ -95,14 +95,14 @@ namespace mgs2_v_s_fix
         {
             Ocelot.startGame();
 
-            Ocelot.console("[+] Start game button pressed");
+            Ocelot.PrintToDebugConsole("[+] Start game button pressed");
 
         }
 
         private void btn_settings_Click(object sender, EventArgs e)
         {
 
-            Ocelot.console("[ ] Settings button pressed");
+            Ocelot.PrintToDebugConsole("[ ] Settings button pressed");
 
             // Check if INI contain all field and/or uncompiled fields
 
@@ -135,7 +135,7 @@ namespace mgs2_v_s_fix
                 return;
             }
 
-            Ocelot.console("[ ] Settings - settings from internal config correctly attached to setupper");
+            Ocelot.PrintToDebugConsole("[ ] Settings - settings from internal config correctly attached to setupper");
 
             // Settings Mode
             btn_startGame.Visible = false;
@@ -157,14 +157,28 @@ namespace mgs2_v_s_fix
 
             abt_Contacts.Checked = true;
 
-            Ocelot.console("[+] Settings has been displayed.");
+            // Must display the warning about winXP compatiblity?
+
+            if (!Ocelot.InternalConfiguration.Others["CompatibilityWarningDisplayed"].Equals("true"))
+            {
+                // Display it!
+
+                Ocelot.showMessage("compatibilityWarning");
+
+                // Not display anymore
+
+                Ocelot.InternalConfiguration.Others["CompatibilityWarningDisplayed"] = "true";
+
+            }
+
+            Ocelot.PrintToDebugConsole("[+] Settings has been displayed.");
 
         }
 
         private void btn_saveSettings_Click(object sender, EventArgs e)
         {
 
-            Ocelot.console("[ ] Save button pressed");
+            Ocelot.PrintToDebugConsole("[ ] Save button pressed");
 
             load_SetupperConfig_SetTo_InternalConfig();
 
@@ -187,7 +201,7 @@ namespace mgs2_v_s_fix
             pictureBox2.Visible = false;
             lbl_ManualLink.Visible = false;
 
-            Ocelot.console("[+] Save has been saved (!)");
+            Ocelot.PrintToDebugConsole("[+] Save has been saved (!)");
 
         }
 
@@ -195,7 +209,7 @@ namespace mgs2_v_s_fix
         {
             Application.Exit();
 
-            Ocelot.console("[+] Exit button pressed");
+            Ocelot.PrintToDebugConsole("[+] Exit button pressed");
 
         }
 
@@ -266,12 +280,12 @@ namespace mgs2_v_s_fix
             if (lst_vga_list.SelectedIndex == -1)
             {
 
-                Ocelot.console("[!] -VVV- No VGA Selected.");
+                Ocelot.PrintToDebugConsole("[!] -VVV- No VGA Selected.");
 
                 if (Ocelot.vgaList.Count == 0)
                 {
 
-                    Ocelot.console("[!] -WHY?- No VGA found on system. Awaiting manual input.");
+                    Ocelot.PrintToDebugConsole("[!] -WHY?- No VGA found on system. Awaiting manual input.");
 
                     // Strange case:
                     //  V's wasn't able to understand which video cards are available
@@ -281,7 +295,7 @@ namespace mgs2_v_s_fix
 
                     if (explicitedVGAName!= null && !explicitedVGAName.Equals("") && explicitedVGAName.Length > 0)
                     {
-                        Ocelot.console("[!] -RESULT?- Found a manual inserted one: "+ explicitedVGAName);
+                        Ocelot.PrintToDebugConsole("[!] -RESULT?- Found a manual inserted one: "+ explicitedVGAName);
 
                         // Manually inserted
                         lst_vga_list.Items.Add(explicitedVGAName);
@@ -292,7 +306,7 @@ namespace mgs2_v_s_fix
                     {
                         // Prompt a message to V's Wiki
 
-                        Ocelot.console("[!] -RESULT?- NO MANUAL INPUT. SHOWING MANUAL and ABORTING.");
+                        Ocelot.PrintToDebugConsole("[!] -RESULT?- NO MANUAL INPUT. SHOWING MANUAL and ABORTING.");
 
                         Ocelot.showMessage("no_vga");
 
@@ -1415,6 +1429,11 @@ namespace mgs2_v_s_fix
             }
         }
 
+        private void help_compatibilityWarning_Click(object sender, EventArgs e)
+        {
+            Ocelot.showMessage("compatibilityWarning");
+        }
+
         #endregion
 
         #region UPDATE
@@ -1433,7 +1452,7 @@ namespace mgs2_v_s_fix
 
             UPDATE_checkInProgress = true;
 
-            lbl_checkForUpdate.Text = "Checking...";
+            lbl_checkForUpdate.Text = "...Checking...";
 
             // Set the async
             UPDATE_AVAILABILITY remoteStatus = await Task.Run(() => Ocelot.CheckForUpdatesAsync());

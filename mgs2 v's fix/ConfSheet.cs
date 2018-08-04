@@ -12,8 +12,9 @@ namespace mgs2_v_s_fix
         public Dictionary<string, string> Controls;
         public Dictionary<string, string> Graphics;
         public Dictionary<string, string> Sound;
+        public Dictionary<string, string> Others;
 
-        
+
         public ConfSheet()
         {
 
@@ -58,6 +59,12 @@ namespace mgs2_v_s_fix
                 {"SE",null},
                 {"SoundQuality",null},
                 {"FixAfterPlaying",null}
+
+            };
+
+            this.Others = new Dictionary<string, string>
+            {
+                {"CompatibilityWarningDisplayed",null},
 
             };
 

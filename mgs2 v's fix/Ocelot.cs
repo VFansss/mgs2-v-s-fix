@@ -24,7 +24,7 @@ namespace mgs2_v_s_fix
     {
 
         // Current version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "180614";
+        public const string VERSION = "180804";
 
         // UPDATE
 
@@ -113,7 +113,16 @@ namespace mgs2_v_s_fix
                 }
             }
 
-            if (needOfAutoConfig) { Ocelot.console("[+] Configuration_file.ini seem missing some key. Need to autoconfig!"); }
+            foreach (KeyValuePair<string, string> entry in InternalConfiguration.Others)
+            {
+                if (!ConfFile.KeyExists(entry.Key, "Others"))
+                {
+                    ConfFile.Write(entry.Key, "", "Others");
+                    needOfAutoConfig = true;
+                }
+            }
+
+            if (needOfAutoConfig) { Ocelot.PrintToDebugConsole("[+] Configuration_file.ini seem missing some key. Need to autoconfig!"); }
 
             return;
 
@@ -127,7 +136,7 @@ namespace mgs2_v_s_fix
             // Time to pair Key-Value from Configuration_file.ini and
             //  set it to Ocelot.dataFromConfFile
 
-            Ocelot.console("[ ] .ini contain a valid configuration. Loading from it...");
+            Ocelot.PrintToDebugConsole("[ ] .ini contain a valid configuration. Loading from it...");
 
             foreach(var entry in InternalConfiguration.Resolution.ToList())
             {
@@ -161,7 +170,15 @@ namespace mgs2_v_s_fix
 
             }
 
-            Ocelot.console("[ ] Information from .ini succesfully loaded into setupper!");
+            foreach (var entry in InternalConfiguration.Others.ToList())
+            {
+
+                var tempstring = ConfFile.Read(entry.Key.ToString(), "Others");
+                InternalConfiguration.Others[entry.Key] = tempstring;
+
+            }
+
+            Ocelot.PrintToDebugConsole("[ ] Information from .ini succesfully loaded into setupper!");
             return;
         }
 
@@ -196,7 +213,14 @@ namespace mgs2_v_s_fix
 
             }
 
-            Ocelot.console("[ ] InternalConfig succesfully exported into Configuration_file.ini");
+            foreach (KeyValuePair<string, string> entry in InternalConfiguration.Others)
+            {
+
+                ConfFile.Write(entry.Key, entry.Value, "Others");
+
+            }
+
+            Ocelot.PrintToDebugConsole("[ ] InternalConfig succesfully exported into Configuration_file.ini");
 
             return;
         }
@@ -770,27 +794,6 @@ namespace mgs2_v_s_fix
 
                         Unzip.UnZippa("V_s_sweetFX.zip");
 
-                        try
-                        {
-
-                            // 2: Trying to automatically apply the Windows XP SP3 Compatibility Mode
-
-                            string registry_path = "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\\";
-                            string game_exe_path = Application.StartupPath + "\\mgs2_sse.exe";
-                            Microsoft.Win32.RegistryKey key;
-
-                            key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(registry_path);
-
-                            key.SetValue(game_exe_path, "~ RUNASADMIN WINXPSP3", Microsoft.Win32.RegistryValueKind.String);
-                            key.Close();
-
-                        }
-
-                        catch
-                        {
-                            // BIG NOPE
-                        }
-
                     }
 
                     #endregion
@@ -950,6 +953,10 @@ namespace mgs2_v_s_fix
 
                 */
 
+                // Set the compatibility flags
+
+                setCompatibilityFlags();
+
             }
 
             catch
@@ -958,7 +965,7 @@ namespace mgs2_v_s_fix
 
             }
 
-            Ocelot.console("[ ] InternalConfig succesfully exported into mgs2.ini");
+            Ocelot.PrintToDebugConsole("[ ] InternalConfig succesfully exported into mgs2.ini");
 
             if (Ocelot.debugMode)
             {
@@ -973,7 +980,7 @@ namespace mgs2_v_s_fix
         public static void startAutoconfig()
         {
 
-            Ocelot.console("[ ] Autoconfig started. I'm looking for a nice config...");
+            Ocelot.PrintToDebugConsole("[ ] Autoconfig started. I'm looking for a nice config...");
             ConfSheet defaultConfig = new ConfSheet();
 
             // Resolution
@@ -1030,7 +1037,7 @@ namespace mgs2_v_s_fix
 
             }
 
-            Ocelot.console("[!] -VVV- No VGA Selected.");
+            Ocelot.PrintToDebugConsole("[!] -VVV- No VGA Selected.");
 
             if(vgaList.Count == 0)
             {
@@ -1050,7 +1057,7 @@ namespace mgs2_v_s_fix
 
                     defaultConfig.Resolution["GraphicAdapterName"] = explicitedVGAName;
 
-                    Ocelot.console("[!] -AUTOCONFIG- Found a manual inserted one: " + explicitedVGAName);
+                    Ocelot.PrintToDebugConsole("[!] -AUTOCONFIG- Found a manual inserted one: " + explicitedVGAName);
                 }
 
             }
@@ -1103,9 +1110,15 @@ namespace mgs2_v_s_fix
             defaultConfig.Sound["SoundQuality"]="high";
             defaultConfig.Sound["FixAfterPlaying"] = "true";
 
+            // Others
+
+            defaultConfig.Others["CompatibilityWarningDisplayed"] = "false";
+                
+            // Finished!
+
             InternalConfiguration = defaultConfig;
 
-            Ocelot.console("[+] Autoconfig finished. InternalConfiguration Filled");
+            Ocelot.PrintToDebugConsole("[+] Autoconfig finished. InternalConfiguration Filled");
 
             Ocelot.needOfAutoConfig = false;
 
@@ -1335,7 +1348,6 @@ namespace mgs2_v_s_fix
 
                 case "unzipping_error":
 
-                    // TODO change this
                     MessageBox.Show(
                     "V's Fix isn't able to create some files into game's directory.\nFix require full permission to create,delete and extract file into that directory. Try to run the fix using 'Admin rights'!",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1380,20 +1392,57 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                case "compatibilityWarning":
+
+                    MessageBox.Show(
+                        "CompatibilityWarning",
+                    "we", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
                 default:
 
-                    // TODO change this
                     MessageBox.Show("You shouldn't be able to read this message: /",
                     "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
 
-            Ocelot.console("[!] Showed a messagebox with code: "+code);
+            Ocelot.PrintToDebugConsole("[!] Showed a messagebox with code: "+code);
+        }
+
+        // Apply the 'Windows XP SP3 Compatibility Mode' and 'Run as Admin' flags
+
+        private static void setCompatibilityFlags()
+        {
+
+            try
+            {
+                string registry_path = "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\\";
+                string game_exe_path = Application.StartupPath + "\\mgs2_sse.exe";
+                Microsoft.Win32.RegistryKey key;
+
+                key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(registry_path);
+
+                key.SetValue(game_exe_path, "~ RUNASADMIN WINXPSP3", Microsoft.Win32.RegistryValueKind.String);
+                key.Close();
+
+                PrintToDebugConsole("[ :) ] Compatibility flags set!");
+
+            }
+
+            catch
+            {
+                // Signal to debugger
+
+                PrintToDebugConsole("[ :( ] Exception while setting compatibility flags!");
+
+            }
+
         }
 
         // write message into console (and into a file, if debug mode is enabled)
 
-        public static void console(string output)
+        public static void PrintToDebugConsole(string output)
         {
 
             output = DateTime.Now.ToString("hh.mm.ss.fff") + " -> " + output;
@@ -1409,38 +1458,43 @@ namespace mgs2_v_s_fix
         public static void debug_printInternalConfig()
         {
 
-            Ocelot.console("[D] ----------");
-            Ocelot.console("[D] Printing InternalConfig:");
+            Ocelot.PrintToDebugConsole("[D] ----------");
+            Ocelot.PrintToDebugConsole("[D] Printing InternalConfig:");
 
-            Ocelot.console("[D] - VGA List:");
+            Ocelot.PrintToDebugConsole("[D] - VGA List:");
 
             foreach (string single_vga in Ocelot.vgaList)
             {
-                Ocelot.console("[D] "+single_vga);
+                Ocelot.PrintToDebugConsole("[D] "+single_vga);
             }
 
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Resolution)
             {
-                Ocelot.console("[D] Key: "+entry.Key+" -> Value: "+entry.Value);
+                Ocelot.PrintToDebugConsole("[D] Key: "+entry.Key+" -> Value: "+entry.Value);
             }
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Controls)
             {
-                Ocelot.console("[D] Key: " + entry.Key + " -> Value: " + entry.Value);
+                Ocelot.PrintToDebugConsole("[D] Key: " + entry.Key + " -> Value: " + entry.Value);
             }
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Graphics)
             {
-                Ocelot.console("[D] Key: " + entry.Key + " -> Value: " + entry.Value);
+                Ocelot.PrintToDebugConsole("[D] Key: " + entry.Key + " -> Value: " + entry.Value);
             }
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Sound)
             {
-                Ocelot.console("[D] Key: " + entry.Key + " -> Value: " + entry.Value);
+                Ocelot.PrintToDebugConsole("[D] Key: " + entry.Key + " -> Value: " + entry.Value);
             }
 
-            Ocelot.console("[D] END");
+            foreach (KeyValuePair<string, string> entry in InternalConfiguration.Others)
+            {
+                Ocelot.PrintToDebugConsole("[D] Key: " + entry.Key + " -> Value: " + entry.Value);
+            }
+
+            Ocelot.PrintToDebugConsole("[D] END");
 
         }
 
@@ -1557,7 +1611,7 @@ namespace mgs2_v_s_fix
                     int localVersion = getIntFromThisString(VERSION);
                     int remoteVersion = getIntFromThisString(response.VERSION);
 
-                    console("CurrentVersion: "+ localVersion+"   LatestVersion: "+remoteVersion);
+                    PrintToDebugConsole("CurrentVersion: "+ localVersion+"   LatestVersion: "+remoteVersion);
 
                     if (remoteVersion>localVersion)
                     {
@@ -1605,7 +1659,7 @@ namespace mgs2_v_s_fix
             {
                 // Do nothing
 
-                Ocelot.console(e.Message);
+                Ocelot.PrintToDebugConsole(e.Message);
 
             }
 

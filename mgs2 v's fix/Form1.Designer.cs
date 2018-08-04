@@ -136,6 +136,8 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.help_compatibilityWarning = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             this.tab_Controls.SuspendLayout();
@@ -161,6 +163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -225,6 +228,8 @@
             // tab_Resolution
             // 
             this.tab_Resolution.BackColor = System.Drawing.Color.White;
+            this.tab_Resolution.Controls.Add(this.help_compatibilityWarning);
+            this.tab_Resolution.Controls.Add(this.pictureBox4);
             this.tab_Resolution.Controls.Add(this.help_resolution);
             this.tab_Resolution.Controls.Add(this.chb_OptimizedFOV);
             this.tab_Resolution.Controls.Add(this.lbl_OptimizedFOV);
@@ -1937,6 +1942,30 @@
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox4.Image = global::mgs2_v_s_fix.Properties.Resources.exclamation;
+            this.pictureBox4.Location = new System.Drawing.Point(99, 187);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(42, 42);
+            this.pictureBox4.TabIndex = 15;
+            this.pictureBox4.TabStop = false;
+            // 
+            // help_compatibilityWarning
+            // 
+            this.help_compatibilityWarning.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_compatibilityWarning.AutoSize = true;
+            this.help_compatibilityWarning.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_compatibilityWarning.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_compatibilityWarning.Location = new System.Drawing.Point(147, 199);
+            this.help_compatibilityWarning.Name = "help_compatibilityWarning";
+            this.help_compatibilityWarning.Size = new System.Drawing.Size(306, 19);
+            this.help_compatibilityWarning.TabIndex = 16;
+            this.help_compatibilityWarning.Text = "Check the compatibility flags! More info here!";
+            this.help_compatibilityWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.help_compatibilityWarning.Click += new System.EventHandler(this.help_compatibilityWarning_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2000,6 +2029,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2114,6 +2144,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox ptb_GitHubLogo;
         private System.Windows.Forms.Label lbl_checkForUpdate;
+        private System.Windows.Forms.Label help_compatibilityWarning;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
 
