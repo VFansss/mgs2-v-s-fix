@@ -1395,8 +1395,17 @@ namespace mgs2_v_s_fix
                 case "compatibilityWarning":
 
                     MessageBox.Show(
-                        "CompatibilityWarning",
-                    "we", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        "When applying your settings, V's Fix will automatically try to set these compatibility flags :" +
+                        "\n\n" +
+                        "- Run the game in WindowsXP SP3 Compatibility Mode" + "\n" +
+                        "- Execute the game with Admin rights" +
+                        "\n\n"+
+                        "to the main game executable (mgs2_sse.exe) but it may fail or be blocked by various actors, so please be sure that they have been succesfully activated!"+
+                        "\n\n" +
+                        "Running the game without these flags will results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
+                        "\n\n" +
+                        "You can see again this message from the 'Resolution tab'." + "\n",
+                    "*Suddenly green hills appear in the background*", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 

@@ -155,7 +155,7 @@ namespace mgs2_v_s_fix
 
             // Filling 'About'
 
-            abt_Contacts.Checked = true;
+            abt_Regards.Checked = true;
 
             // Must display the warning about winXP compatiblity?
 
@@ -1289,9 +1289,6 @@ namespace mgs2_v_s_fix
 
             if (chb_AA.Checked == true)
             {
-
-                Ocelot.showMessage("tip_AA");
-
 
                 if (ModelQuality_high.Checked == true)
                 {

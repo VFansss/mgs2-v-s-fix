@@ -1804,11 +1804,11 @@
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label16.Location = new System.Drawing.Point(124, 48);
+            this.label16.Location = new System.Drawing.Point(46, 48);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(290, 26);
+            this.label16.Size = new System.Drawing.Size(460, 26);
             this.label16.TabIndex = 11;
-            this.label16.Text = "Playing on multiple PCs at once?";
+            this.label16.Text = "Playing old and new games on multiple PCs at once?";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label12
@@ -1816,11 +1816,11 @@
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label12.Location = new System.Drawing.Point(117, 13);
+            this.label12.Location = new System.Drawing.Point(95, 13);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(300, 26);
+            this.label12.Size = new System.Drawing.Size(362, 26);
             this.label12.TabIndex = 10;
-            this.label12.Text = "Don\'t want to lose your progress?";
+            this.label12.Text = "Don\'t want to lose your MGS2 Savedata?";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ptb_comPLAY
