@@ -30,13 +30,13 @@ Name in hex. RIGHT padding of 0.
 
 Window mode
 0001  0001 if enabled
-missing if not
+missing if not enabled
 
 ---
 
 32 bit z-buffer
 0005  0001 if enabled
-missing if not
+missing if not enabled
 
 ////// 
 --------- Controls
@@ -44,13 +44,13 @@ missing if not
 
 ---------
 
-0060 0001 mouse = R stick
-missing if not
+0060 0001 mouse = R Stick
+missing if not enabled
 
 ---------
 
-0061 0001 first person mouse = R
-missing if not
+0061 0001 first person - mouse = R Stick
+missing if not enabled
 
 ////// 
 --------- Graphics 
@@ -178,19 +178,17 @@ BunchOfCoolEffetcs (Focus-stealth-codec-vrmode)
 
 if disabled
 
-0041 MISSING
-0042 MISSING
-0043 MISSING
-
-004A MISSING
+0041 MISSING // Stealth Effect
+0042 MISSING // Focus
+0043 MISSING // Codec Focus
+004A MISSING // VR MODE
 
 if enabled
 
-0041 0001
-0042 0001
-0043 0001
-
-004A 0001
+0041 0001 // Stealth Effect
+0042 0001 // Focus
+0043 0001 // Codec Focus
+004A 0001 // VR MODE
 
 ---------
 
