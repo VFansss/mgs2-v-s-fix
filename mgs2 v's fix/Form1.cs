@@ -36,7 +36,7 @@ namespace mgs2_v_s_fix
 
         private bool UPDATE_checkInProgress = false;
 
-        private string checkForUpdateDefaultString = "(Click on the GitHub logo above to check for updates)";
+        private string checkForUpdateDefaultString = "Click on the GitHub logo aside to check for V's Fix updates";
 
         public Form1()
         {

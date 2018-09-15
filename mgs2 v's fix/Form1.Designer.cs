@@ -97,10 +97,6 @@
             this.RenderingSize_medium = new System.Windows.Forms.RadioButton();
             this.RenderingSize_low = new System.Windows.Forms.RadioButton();
             this.tab_Sound = new System.Windows.Forms.TabPage();
-            this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
-            this.lbl_checkForUpdate = new System.Windows.Forms.Label();
-            this.chb_FixAfterPlaying = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lst_sound_list = new System.Windows.Forms.ListBox();
             this.pnl_Quality = new System.Windows.Forms.Panel();
@@ -118,6 +114,17 @@
             this.SE_high = new System.Windows.Forms.RadioButton();
             this.SE_medium = new System.Windows.Forms.RadioButton();
             this.SE_low = new System.Windows.Forms.RadioButton();
+            this.tab_Extra = new System.Windows.Forms.TabPage();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
+            this.lbl_checkForUpdate = new System.Windows.Forms.Label();
+            this.ptb_comPLAY = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.chb_FixAfterPlaying = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tab_About = new System.Windows.Forms.TabPage();
             this.lbl_donate = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -126,13 +133,6 @@
             this.abt_Licence = new System.Windows.Forms.RadioButton();
             this.abt_Contacts = new System.Windows.Forms.RadioButton();
             this.tbx_About = new System.Windows.Forms.RichTextBox();
-            this.tab_cP = new System.Windows.Forms.TabPage();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.ptb_comPLAY = new System.Windows.Forms.PictureBox();
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_saveSettings = new System.Windows.Forms.Button();
             this.lbl_debugMode = new System.Windows.Forms.Label();
@@ -154,15 +154,16 @@
             this.pnl_ShadowDetail.SuspendLayout();
             this.pnl_RenderingSize.SuspendLayout();
             this.tab_Sound.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
             this.pnl_Quality.SuspendLayout();
             this.pnl_SoundQuality.SuspendLayout();
             this.pnl_SE.SuspendLayout();
+            this.tab_Extra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).BeginInit();
             this.tab_About.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnl_about.SuspendLayout();
-            this.tab_cP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
@@ -216,8 +217,8 @@
             this.tabControl1.Controls.Add(this.tab_Controls);
             this.tabControl1.Controls.Add(this.tab_Graphics);
             this.tabControl1.Controls.Add(this.tab_Sound);
+            this.tabControl1.Controls.Add(this.tab_Extra);
             this.tabControl1.Controls.Add(this.tab_About);
-            this.tabControl1.Controls.Add(this.tab_cP);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabControl1.Location = new System.Drawing.Point(234, 20);
@@ -1311,10 +1312,6 @@
             // 
             // tab_Sound
             // 
-            this.tab_Sound.Controls.Add(this.ptb_GitHubLogo);
-            this.tab_Sound.Controls.Add(this.lbl_checkForUpdate);
-            this.tab_Sound.Controls.Add(this.chb_FixAfterPlaying);
-            this.tab_Sound.Controls.Add(this.label4);
             this.tab_Sound.Controls.Add(this.label6);
             this.tab_Sound.Controls.Add(this.lst_sound_list);
             this.tab_Sound.Controls.Add(this.pnl_Quality);
@@ -1324,75 +1321,20 @@
             this.tab_Sound.Name = "tab_Sound";
             this.tab_Sound.Size = new System.Drawing.Size(552, 379);
             this.tab_Sound.TabIndex = 3;
-            this.tab_Sound.Text = "Other";
+            this.tab_Sound.Text = "Sound";
             this.tab_Sound.UseVisualStyleBackColor = true;
-            // 
-            // ptb_GitHubLogo
-            // 
-            this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptb_GitHubLogo.Image = global::mgs2_v_s_fix.Properties.Resources.GitHubLogo;
-            this.ptb_GitHubLogo.Location = new System.Drawing.Point(246, 230);
-            this.ptb_GitHubLogo.Name = "ptb_GitHubLogo";
-            this.ptb_GitHubLogo.Size = new System.Drawing.Size(60, 60);
-            this.ptb_GitHubLogo.TabIndex = 19;
-            this.ptb_GitHubLogo.TabStop = false;
-            this.ptb_GitHubLogo.Click += new System.EventHandler(this.ptb_GitHubLogo_Click);
-            // 
-            // lbl_checkForUpdate
-            // 
-            this.lbl_checkForUpdate.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_checkForUpdate.Location = new System.Drawing.Point(6, 299);
-            this.lbl_checkForUpdate.Name = "lbl_checkForUpdate";
-            this.lbl_checkForUpdate.Size = new System.Drawing.Size(540, 33);
-            this.lbl_checkForUpdate.TabIndex = 20;
-            this.lbl_checkForUpdate.Text = "[RUNTIME]";
-            this.lbl_checkForUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chb_FixAfterPlaying
-            // 
-            this.chb_FixAfterPlaying.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chb_FixAfterPlaying.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chb_FixAfterPlaying.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chb_FixAfterPlaying.FlatAppearance.BorderSize = 0;
-            this.chb_FixAfterPlaying.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.chb_FixAfterPlaying.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.chb_FixAfterPlaying.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.chb_FixAfterPlaying.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chb_FixAfterPlaying.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(350, 30);
-            this.chb_FixAfterPlaying.Name = "chb_FixAfterPlaying";
-            this.chb_FixAfterPlaying.Size = new System.Drawing.Size(55, 26);
-            this.chb_FixAfterPlaying.TabIndex = 13;
-            this.chb_FixAfterPlaying.TabStop = false;
-            this.chb_FixAfterPlaying.Text = "XXX";
-            this.chb_FixAfterPlaying.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chb_FixAfterPlaying.UseVisualStyleBackColor = true;
-            this.chb_FixAfterPlaying.CheckedChanged += new System.EventHandler(this.setNewColor);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label4.Location = new System.Drawing.Point(109, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(235, 26);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Open V\'s Fix after playing:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label6.Location = new System.Drawing.Point(79, 348);
+            this.label6.Location = new System.Drawing.Point(79, 232);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 26);
             this.label6.TabIndex = 9;
             this.label6.Text = "Sound Adapter:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label6.Visible = false;
             // 
             // lst_sound_list
             // 
@@ -1402,11 +1344,10 @@
             this.lst_sound_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_sound_list.FormattingEnabled = true;
             this.lst_sound_list.ItemHeight = 18;
-            this.lst_sound_list.Location = new System.Drawing.Point(227, 353);
+            this.lst_sound_list.Location = new System.Drawing.Point(227, 237);
             this.lst_sound_list.Name = "lst_sound_list";
             this.lst_sound_list.Size = new System.Drawing.Size(245, 54);
             this.lst_sound_list.TabIndex = 8;
-            this.lst_sound_list.Visible = false;
             this.lst_sound_list.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lst_sound_list_DrawItem);
             // 
             // pnl_Quality
@@ -1416,7 +1357,7 @@
             this.pnl_Quality.Controls.Add(this.Quality_medium);
             this.pnl_Quality.Controls.Add(this.Quality_low);
             this.pnl_Quality.Controls.Add(this.label13);
-            this.pnl_Quality.Location = new System.Drawing.Point(66, 79);
+            this.pnl_Quality.Location = new System.Drawing.Point(66, 59);
             this.pnl_Quality.Name = "pnl_Quality";
             this.pnl_Quality.Size = new System.Drawing.Size(432, 32);
             this.pnl_Quality.TabIndex = 6;
@@ -1507,7 +1448,7 @@
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_medium);
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_low);
             this.pnl_SoundQuality.Controls.Add(this.label15);
-            this.pnl_SoundQuality.Location = new System.Drawing.Point(66, 181);
+            this.pnl_SoundQuality.Location = new System.Drawing.Point(66, 161);
             this.pnl_SoundQuality.Name = "pnl_SoundQuality";
             this.pnl_SoundQuality.Size = new System.Drawing.Size(432, 32);
             this.pnl_SoundQuality.TabIndex = 5;
@@ -1598,7 +1539,7 @@
             this.pnl_SE.Controls.Add(this.SE_high);
             this.pnl_SE.Controls.Add(this.SE_medium);
             this.pnl_SE.Controls.Add(this.SE_low);
-            this.pnl_SE.Location = new System.Drawing.Point(45, 132);
+            this.pnl_SE.Location = new System.Drawing.Point(45, 112);
             this.pnl_SE.Name = "pnl_SE";
             this.pnl_SE.Size = new System.Drawing.Size(453, 32);
             this.pnl_SE.TabIndex = 3;
@@ -1681,6 +1622,150 @@
             this.SE_low.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SE_low.UseVisualStyleBackColor = false;
             this.SE_low.CheckedChanged += new System.EventHandler(this.setNewColor);
+            // 
+            // tab_Extra
+            // 
+            this.tab_Extra.Controls.Add(this.pictureBox5);
+            this.tab_Extra.Controls.Add(this.label18);
+            this.tab_Extra.Controls.Add(this.label17);
+            this.tab_Extra.Controls.Add(this.ptb_GitHubLogo);
+            this.tab_Extra.Controls.Add(this.lbl_checkForUpdate);
+            this.tab_Extra.Controls.Add(this.ptb_comPLAY);
+            this.tab_Extra.Controls.Add(this.label16);
+            this.tab_Extra.Controls.Add(this.label12);
+            this.tab_Extra.Controls.Add(this.chb_FixAfterPlaying);
+            this.tab_Extra.Controls.Add(this.label4);
+            this.tab_Extra.Location = new System.Drawing.Point(4, 32);
+            this.tab_Extra.Name = "tab_Extra";
+            this.tab_Extra.Size = new System.Drawing.Size(552, 379);
+            this.tab_Extra.TabIndex = 6;
+            this.tab_Extra.Text = "Extra";
+            this.tab_Extra.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox5.Image = global::mgs2_v_s_fix.Properties.Resources.SteamLogo;
+            this.pictureBox5.Location = new System.Drawing.Point(62, 169);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(70, 70);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 40;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(159, 168);
+            this.label18.Margin = new System.Windows.Forms.Padding(0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(358, 71);
+            this.label18.TabIndex = 41;
+            this.label18.Text = "Click on the Steam logo aside to automatically add MGS2 to Steam";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(174, 341);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(358, 23);
+            this.label17.TabIndex = 39;
+            this.label17.Text = "Click the logo aside to open comPLAY Website";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ptb_GitHubLogo
+            // 
+            this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_GitHubLogo.Image = global::mgs2_v_s_fix.Properties.Resources.GitHubLogo;
+            this.ptb_GitHubLogo.Location = new System.Drawing.Point(62, 74);
+            this.ptb_GitHubLogo.Name = "ptb_GitHubLogo";
+            this.ptb_GitHubLogo.Size = new System.Drawing.Size(70, 70);
+            this.ptb_GitHubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_GitHubLogo.TabIndex = 33;
+            this.ptb_GitHubLogo.TabStop = false;
+            this.ptb_GitHubLogo.Click += new System.EventHandler(this.ptb_GitHubLogo_Click);
+            // 
+            // lbl_checkForUpdate
+            // 
+            this.lbl_checkForUpdate.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_checkForUpdate.Location = new System.Drawing.Point(155, 73);
+            this.lbl_checkForUpdate.Name = "lbl_checkForUpdate";
+            this.lbl_checkForUpdate.Size = new System.Drawing.Size(362, 71);
+            this.lbl_checkForUpdate.TabIndex = 34;
+            this.lbl_checkForUpdate.Text = "Click on the GitHub logo aside to check for V\'s Fix updates";
+            this.lbl_checkForUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ptb_comPLAY
+            // 
+            this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
+            this.ptb_comPLAY.Location = new System.Drawing.Point(24, 261);
+            this.ptb_comPLAY.Name = "ptb_comPLAY";
+            this.ptb_comPLAY.Size = new System.Drawing.Size(146, 103);
+            this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptb_comPLAY.TabIndex = 35;
+            this.ptb_comPLAY.TabStop = false;
+            this.ptb_comPLAY.Click += new System.EventHandler(this.ptb_comPLAY_Click);
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(188, 290);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(320, 49);
+            this.label16.TabIndex = 37;
+            this.label16.Text = "Playing on multiple PCs at once? Multiple users? Need to synchronize?";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(184, 261);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(326, 23);
+            this.label12.TabIndex = 36;
+            this.label12.Text = "Don\'t want to lose your games savedata?";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chb_FixAfterPlaying
+            // 
+            this.chb_FixAfterPlaying.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chb_FixAfterPlaying.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chb_FixAfterPlaying.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chb_FixAfterPlaying.FlatAppearance.BorderSize = 0;
+            this.chb_FixAfterPlaying.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.chb_FixAfterPlaying.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.chb_FixAfterPlaying.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.chb_FixAfterPlaying.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chb_FixAfterPlaying.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(408, 22);
+            this.chb_FixAfterPlaying.Name = "chb_FixAfterPlaying";
+            this.chb_FixAfterPlaying.Size = new System.Drawing.Size(55, 26);
+            this.chb_FixAfterPlaying.TabIndex = 24;
+            this.chb_FixAfterPlaying.TabStop = false;
+            this.chb_FixAfterPlaying.Text = "XXX";
+            this.chb_FixAfterPlaying.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chb_FixAfterPlaying.UseVisualStyleBackColor = true;
+            this.chb_FixAfterPlaying.CheckedChanged += new System.EventHandler(this.setNewColor);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label4.Location = new System.Drawing.Point(90, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(325, 26);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Open V\'s Fix after playing the game :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tab_About
             // 
@@ -1808,94 +1893,6 @@
             this.tbx_About.TabIndex = 1;
             this.tbx_About.Text = "In my restless dreams ; I see that town...";
             this.tbx_About.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.tbx_About_LinkClicked);
-            // 
-            // tab_cP
-            // 
-            this.tab_cP.Controls.Add(this.label19);
-            this.tab_cP.Controls.Add(this.label18);
-            this.tab_cP.Controls.Add(this.label17);
-            this.tab_cP.Controls.Add(this.label16);
-            this.tab_cP.Controls.Add(this.label12);
-            this.tab_cP.Controls.Add(this.ptb_comPLAY);
-            this.tab_cP.Location = new System.Drawing.Point(4, 32);
-            this.tab_cP.Name = "tab_cP";
-            this.tab_cP.Size = new System.Drawing.Size(552, 379);
-            this.tab_cP.TabIndex = 5;
-            this.tab_cP.Text = "Savedata";
-            this.tab_cP.UseVisualStyleBackColor = true;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label19.Location = new System.Drawing.Point(121, 322);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(310, 26);
-            this.label19.TabIndex = 15;
-            this.label19.Text = "I\'ve made a solution for both of us!";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label18
-            // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(82, 351);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(375, 19);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "( Click on the logo above to open the comPLAY Website )";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label17
-            // 
-            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label17.Location = new System.Drawing.Point(61, 83);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(432, 26);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "Are you sharing your PC with friends or brothers?";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label16
-            // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label16.Location = new System.Drawing.Point(46, 48);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(460, 26);
-            this.label16.TabIndex = 11;
-            this.label16.Text = "Playing old and new games on multiple PCs at once?";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label12.Location = new System.Drawing.Point(95, 13);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(362, 26);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Don\'t want to lose your MGS2 Savedata?";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ptb_comPLAY
-            // 
-            this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
-            this.ptb_comPLAY.Location = new System.Drawing.Point(59, 118);
-            this.ptb_comPLAY.Name = "ptb_comPLAY";
-            this.ptb_comPLAY.Size = new System.Drawing.Size(423, 196);
-            this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptb_comPLAY.TabIndex = 13;
-            this.ptb_comPLAY.TabStop = false;
-            this.ptb_comPLAY.Click += new System.EventHandler(this.ptb_comPLAY_Click);
             // 
             // btn_exit
             // 
@@ -2050,20 +2047,21 @@
             this.pnl_RenderingSize.PerformLayout();
             this.tab_Sound.ResumeLayout(false);
             this.tab_Sound.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
             this.pnl_Quality.ResumeLayout(false);
             this.pnl_Quality.PerformLayout();
             this.pnl_SoundQuality.ResumeLayout(false);
             this.pnl_SoundQuality.PerformLayout();
             this.pnl_SE.ResumeLayout(false);
             this.pnl_SE.PerformLayout();
+            this.tab_Extra.ResumeLayout(false);
+            this.tab_Extra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).EndInit();
             this.tab_About.ResumeLayout(false);
             this.tab_About.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnl_about.ResumeLayout(false);
-            this.tab_cP.ResumeLayout(false);
-            this.tab_cP.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
@@ -2145,8 +2143,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox chb_FullscreenCutscene;
         private System.Windows.Forms.Label lbl_FullscreenCutscene;
-        private System.Windows.Forms.CheckBox chb_FixAfterPlaying;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox chb_AA;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pnl_about;
@@ -2172,19 +2168,21 @@
         private System.Windows.Forms.RadioButton PreferredLayout_PS2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RadioButton PreferredLayout_V;
-        private System.Windows.Forms.TabPage tab_cP;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.PictureBox ptb_comPLAY;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.PictureBox ptb_GitHubLogo;
-        private System.Windows.Forms.Label lbl_checkForUpdate;
         private System.Windows.Forms.Label help_compatibilityWarning;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.CheckBox chb_DepthOfField;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TabPage tab_Extra;
+        private System.Windows.Forms.CheckBox chb_FixAfterPlaying;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.PictureBox ptb_GitHubLogo;
+        private System.Windows.Forms.Label lbl_checkForUpdate;
+        private System.Windows.Forms.PictureBox ptb_comPLAY;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label18;
     }
 }
 

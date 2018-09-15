@@ -24,7 +24,7 @@ namespace mgs2_v_s_fix
     {
 
         // Current version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "180804";
+        public const string VERSION = "180915";
 
         // UPDATE
 
