@@ -176,6 +176,8 @@ if high
 
 BunchOfCoolEffetcs (Focus-stealth-codec-vrmode)
 
+NB: From build 180915 I moved 'Focus' on a separate button
+
 if disabled
 
 0041 MISSING // Stealth Effect

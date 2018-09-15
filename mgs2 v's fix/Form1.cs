@@ -515,6 +515,18 @@ namespace mgs2_v_s_fix
                 chb_AA.Checked = false;
             }
 
+            if (Ocelot.InternalConfiguration.Graphics["DepthOfField"] == "true")
+            {
+                chb_DepthOfField.Text = "ON";
+                chb_DepthOfField.Checked = true;
+            }
+
+            else
+            {
+                chb_DepthOfField.Text = "OFF";
+                chb_DepthOfField.Checked = false;
+            }
+
             #endregion
 
             // Sound Settings
@@ -743,6 +755,17 @@ namespace mgs2_v_s_fix
             else
             {
                 Ocelot.InternalConfiguration.Graphics["AA"] = "false";
+            }
+
+            if (chb_DepthOfField.Checked == true)
+            {
+                Ocelot.InternalConfiguration.Graphics["DepthOfField"] = "true";
+
+            }
+
+            else
+            {
+                Ocelot.InternalConfiguration.Graphics["DepthOfField"] = "false";
             }
 
             #endregion

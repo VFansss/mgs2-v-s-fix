@@ -33,6 +33,8 @@
             this.btn_settings = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_Resolution = new System.Windows.Forms.TabPage();
+            this.help_compatibilityWarning = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.help_resolution = new System.Windows.Forms.Label();
             this.chb_OptimizedFOV = new System.Windows.Forms.CheckBox();
             this.lbl_OptimizedFOV = new System.Windows.Forms.Label();
@@ -61,6 +63,8 @@
             this.EnableController_NO = new System.Windows.Forms.RadioButton();
             this.help_controls = new System.Windows.Forms.Label();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
+            this.chb_DepthOfField = new System.Windows.Forms.CheckBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.chb_AA = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.chb_MotionBlur = new System.Windows.Forms.CheckBox();
@@ -136,10 +140,9 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.help_compatibilityWarning = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tab_Controls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_PreferredLayout.SuspendLayout();
@@ -163,7 +166,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -252,6 +254,30 @@
             this.tab_Resolution.Size = new System.Drawing.Size(552, 379);
             this.tab_Resolution.TabIndex = 0;
             this.tab_Resolution.Text = "Resolution";
+            // 
+            // help_compatibilityWarning
+            // 
+            this.help_compatibilityWarning.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_compatibilityWarning.AutoSize = true;
+            this.help_compatibilityWarning.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_compatibilityWarning.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_compatibilityWarning.Location = new System.Drawing.Point(147, 199);
+            this.help_compatibilityWarning.Name = "help_compatibilityWarning";
+            this.help_compatibilityWarning.Size = new System.Drawing.Size(306, 19);
+            this.help_compatibilityWarning.TabIndex = 16;
+            this.help_compatibilityWarning.Text = "Check the compatibility flags! More info here!";
+            this.help_compatibilityWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.help_compatibilityWarning.Click += new System.EventHandler(this.help_compatibilityWarning_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox4.Image = global::mgs2_v_s_fix.Properties.Resources.exclamation;
+            this.pictureBox4.Location = new System.Drawing.Point(99, 187);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(42, 42);
+            this.pictureBox4.TabIndex = 15;
+            this.pictureBox4.TabStop = false;
             // 
             // help_resolution
             // 
@@ -687,6 +713,8 @@
             // 
             // tab_Graphics
             // 
+            this.tab_Graphics.Controls.Add(this.chb_DepthOfField);
+            this.tab_Graphics.Controls.Add(this.label20);
             this.tab_Graphics.Controls.Add(this.chb_AA);
             this.tab_Graphics.Controls.Add(this.label9);
             this.tab_Graphics.Controls.Add(this.chb_MotionBlur);
@@ -704,6 +732,39 @@
             this.tab_Graphics.TabIndex = 2;
             this.tab_Graphics.Text = "Graphics";
             this.tab_Graphics.UseVisualStyleBackColor = true;
+            // 
+            // chb_DepthOfField
+            // 
+            this.chb_DepthOfField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chb_DepthOfField.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chb_DepthOfField.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chb_DepthOfField.FlatAppearance.BorderSize = 0;
+            this.chb_DepthOfField.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.chb_DepthOfField.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.chb_DepthOfField.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.chb_DepthOfField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chb_DepthOfField.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chb_DepthOfField.Location = new System.Drawing.Point(332, 281);
+            this.chb_DepthOfField.Name = "chb_DepthOfField";
+            this.chb_DepthOfField.Size = new System.Drawing.Size(55, 26);
+            this.chb_DepthOfField.TabIndex = 17;
+            this.chb_DepthOfField.TabStop = false;
+            this.chb_DepthOfField.Text = "XXX";
+            this.chb_DepthOfField.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chb_DepthOfField.UseVisualStyleBackColor = true;
+            this.chb_DepthOfField.CheckedChanged += new System.EventHandler(this.setNewColor);
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label20.Location = new System.Drawing.Point(193, 280);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(143, 26);
+            this.label20.TabIndex = 16;
+            this.label20.Text = "Depth of Field :";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // chb_AA
             // 
@@ -750,7 +811,7 @@
             this.chb_MotionBlur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_MotionBlur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_MotionBlur.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_MotionBlur.Location = new System.Drawing.Point(332, 280);
+            this.chb_MotionBlur.Location = new System.Drawing.Point(332, 309);
             this.chb_MotionBlur.Name = "chb_MotionBlur";
             this.chb_MotionBlur.Size = new System.Drawing.Size(55, 26);
             this.chb_MotionBlur.TabIndex = 13;
@@ -765,7 +826,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label7.Location = new System.Drawing.Point(216, 279);
+            this.label7.Location = new System.Drawing.Point(216, 308);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 26);
             this.label7.TabIndex = 12;
@@ -1942,30 +2003,6 @@
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox4.Image = global::mgs2_v_s_fix.Properties.Resources.exclamation;
-            this.pictureBox4.Location = new System.Drawing.Point(99, 187);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(42, 42);
-            this.pictureBox4.TabIndex = 15;
-            this.pictureBox4.TabStop = false;
-            // 
-            // help_compatibilityWarning
-            // 
-            this.help_compatibilityWarning.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.help_compatibilityWarning.AutoSize = true;
-            this.help_compatibilityWarning.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.help_compatibilityWarning.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_compatibilityWarning.Location = new System.Drawing.Point(147, 199);
-            this.help_compatibilityWarning.Name = "help_compatibilityWarning";
-            this.help_compatibilityWarning.Size = new System.Drawing.Size(306, 19);
-            this.help_compatibilityWarning.TabIndex = 16;
-            this.help_compatibilityWarning.Text = "Check the compatibility flags! More info here!";
-            this.help_compatibilityWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.help_compatibilityWarning.Click += new System.EventHandler(this.help_compatibilityWarning_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1991,6 +2028,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tab_Resolution.ResumeLayout(false);
             this.tab_Resolution.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tab_Controls.ResumeLayout(false);
             this.tab_Controls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -2029,7 +2067,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2146,6 +2183,8 @@
         private System.Windows.Forms.Label lbl_checkForUpdate;
         private System.Windows.Forms.Label help_compatibilityWarning;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.CheckBox chb_DepthOfField;
+        private System.Windows.Forms.Label label20;
     }
 }
 

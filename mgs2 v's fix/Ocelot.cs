@@ -756,10 +756,9 @@ namespace mgs2_v_s_fix
 
                     if (Ocelot.InternalConfiguration.Graphics["BunchOfCoolEffect"].Equals("true"))
                     {
-                        ini.WriteLine("0041" + "\t" + "0001");
-                        ini.WriteLine("0042" + "\t" + "0001");
-                        ini.WriteLine("0043" + "\t" + "0001");
-                        ini.WriteLine("004A" + "\t" + "0001");
+                        ini.WriteLine("0041" + "\t" + "0001"); // Stealth Effect
+                        ini.WriteLine("0043" + "\t" + "0001"); // Codec Focus
+                        ini.WriteLine("004A" + "\t" + "0001"); // VR MODE
                     }
 
                     // MotionBlur
@@ -770,6 +769,12 @@ namespace mgs2_v_s_fix
                         ini.WriteLine("0045" + "\t" + "0001");
                     }
 
+                    // DepthOfField
+
+                    if (Ocelot.InternalConfiguration.Graphics["DepthOfField"].Equals("true"))
+                    {
+                        ini.WriteLine("0042" + "\t" + "0001"); // Focus - Depth of Field
+                    }
 
                     // AA
 
@@ -1101,6 +1106,7 @@ namespace mgs2_v_s_fix
             defaultConfig.Graphics["BunchOfCoolEffect"] = "true";
             defaultConfig.Graphics["MotionBlur"] = "true";
             defaultConfig.Graphics["AA"] = "false";
+            defaultConfig.Graphics["DepthOfField"] = "true";
 
             // Sound
 
