@@ -954,7 +954,7 @@ namespace mgs2_v_s_fix
             int ran_number = 0;
 
             // CHANGE THIS IF MORE SCREENSHOT ARE AVAILABLE
-            int NUMBER_OF_SCREENSHOTS = 7;
+            int NUMBER_OF_SCREENSHOTS = 8;
 
             do { ran_number = rnd.Next(1, NUMBER_OF_SCREENSHOTS+1); }
             while (!(ran_number != bg_number));
@@ -1245,7 +1245,7 @@ namespace mgs2_v_s_fix
 
             else
             {
-                PreferredLayout_UpdateImage();
+                PreferredLayout_UpdateImageAndLayout();
             }
 
             // Set an help label for the different controllers
@@ -1264,7 +1264,7 @@ namespace mgs2_v_s_fix
                 }
                 else if (pressedRadio.Name.Equals("EnableController_STEAM"))
                 {
-                    lbl_controllerGuide.Text = "( If you are going to use STEAM drivers to use any controller supported by it )";
+                    lbl_controllerGuide.Text = "( If you are going to play on Steam AND use a controller through its drivers )";
                 }
                 else // Xbox
                 {
@@ -1279,10 +1279,10 @@ namespace mgs2_v_s_fix
 
         private void PreferredLayout_Click(object sender, EventArgs e)
         {
-            PreferredLayout_UpdateImage();
+            PreferredLayout_UpdateImageAndLayout();
         }
 
-        private void PreferredLayout_UpdateImage()
+        private void PreferredLayout_UpdateImageAndLayout()
         {
             // What controller, and what layout?
 
@@ -1290,6 +1290,8 @@ namespace mgs2_v_s_fix
 
             if (EnableController_XBOX.Checked)
             {
+                pnl_LayoutChooser.Visible = true;
+
                 if (PreferredLayout_PS2.Checked)
                 {
                     pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
@@ -1303,9 +1305,10 @@ namespace mgs2_v_s_fix
                 }
 
             }
-
             else if (EnableController_DS4.Checked)
             {
+                pnl_LayoutChooser.Visible = true;
+
                 if (PreferredLayout_PS2.Checked)
                 {
                     pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_PS2Layout;
@@ -1319,7 +1322,11 @@ namespace mgs2_v_s_fix
                 }
 
             }
-
+            else if (EnableController_STEAM.Checked)
+            {
+                pnl_LayoutChooser.Visible = false;
+                pictureBox1.Image = null;
+            }
             else
             {
                 // ??
