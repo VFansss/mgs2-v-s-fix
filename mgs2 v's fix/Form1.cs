@@ -581,7 +581,7 @@ namespace mgs2_v_s_fix
             return true;
         }
 
-            /* this will retrieve settings from setupper and storage in inside Ocelot.InternalConfiguration */
+            /* this will retrieve settings from setupper and will storage it inside Ocelot.InternalConfiguration */
 
         public void load_SetupperConfig_SetTo_InternalConfig()
         {
@@ -1587,6 +1587,12 @@ namespace mgs2_v_s_fix
             {
                 chb_FixAfterPlaying.Checked = false;
             }
+
+            // Save this inside the configuration .INI, even if the user didn't pressed the SAVE button
+
+            load_SetupperConfig_SetTo_InternalConfig();
+
+            Ocelot.load_InternalConfig_SetTo_INI();
 
 
             DialogResult startSteamAnswer = MessageBox.Show(
