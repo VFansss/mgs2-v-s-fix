@@ -38,6 +38,10 @@ namespace mgs2_v_s_fix
 
         private string checkForUpdateDefaultString = "Click on the GitHub logo aside to check for V's Fix updates";
 
+        // Don't show these warnings (until the next fix reboot, at least)
+        
+        private bool tip_antialiasingANDmodelquality_showed = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -459,7 +463,15 @@ namespace mgs2_v_s_fix
 
             #region lot_of_things
             foreach (Panel panel in tab_Graphics.Controls.OfType<Panel>()){
+                
+                if (panel.Name.Equals("pnl_AA"))
+                {
+                    // Note to myself after 2 years of developing
+                    // ok, in retrospective this wasn't a perfect idea
 
+                    // AA will be decided below
+                    continue;
+                }
 
                 String key = panel.Name.Remove(0, 4);
                 // NB: 'key' local variable now contain name of the settings key (ie: "MotionBlur")
@@ -503,18 +515,6 @@ namespace mgs2_v_s_fix
                 chb_MotionBlur.Checked = false;
             }
 
-            if (Ocelot.InternalConfiguration.Graphics["AA"] == "true")
-            {
-                chb_AA.Text = "ON";
-                chb_AA.Checked = true;
-            }
-
-            else
-            {
-                chb_AA.Text = "OFF";
-                chb_AA.Checked = false;
-            }
-
             if (Ocelot.InternalConfiguration.Graphics["DepthOfField"] == "true")
             {
                 chb_DepthOfField.Text = "ON";
@@ -525,6 +525,21 @@ namespace mgs2_v_s_fix
             {
                 chb_DepthOfField.Text = "OFF";
                 chb_DepthOfField.Checked = false;
+            }
+
+            // Anti-Aliasing
+            // I have to contemplate when AA was true or false in the old V's Fix version
+
+            if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("smaa") || Ocelot.InternalConfiguration.Graphics["AA"].Equals("true"))
+            {
+                AA_smaa.Checked = true;
+            }
+            else if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("fxaa"))
+            {
+                AA_fxaa.Checked = true;
+            }
+            else{
+                AA_no.Checked = true;
             }
 
             #endregion
@@ -746,17 +761,6 @@ namespace mgs2_v_s_fix
                 Ocelot.InternalConfiguration.Graphics["MotionBlur"] = "false";
             }
 
-            if (chb_AA.Checked == true)
-            {
-                Ocelot.InternalConfiguration.Graphics["AA"] = "true";
-
-            }
-
-            else
-            {
-                Ocelot.InternalConfiguration.Graphics["AA"] = "false";
-            }
-
             if (chb_DepthOfField.Checked == true)
             {
                 Ocelot.InternalConfiguration.Graphics["DepthOfField"] = "true";
@@ -766,6 +770,22 @@ namespace mgs2_v_s_fix
             else
             {
                 Ocelot.InternalConfiguration.Graphics["DepthOfField"] = "false";
+            }
+
+            // ANTI-ALIASING
+
+            if (AA_smaa.Checked)
+            {
+                Ocelot.InternalConfiguration.Graphics["AA"] = "smaa";
+
+            }
+            else if (AA_fxaa.Checked)
+            {
+                Ocelot.InternalConfiguration.Graphics["AA"] = "fxaa";
+            }
+            else
+            {
+                Ocelot.InternalConfiguration.Graphics["AA"] = "no";
             }
 
             #endregion
@@ -1265,6 +1285,12 @@ namespace mgs2_v_s_fix
                 else if (pressedRadio.Name.Equals("EnableController_STEAM"))
                 {
                     lbl_controllerGuide.Text = "( If you are going to play on Steam AND use a controller through its drivers )";
+
+                    // Check if user has selected the SMAA anti-aliasing
+
+                    AA_showNeededWarnings();
+
+
                 }
                 else // Xbox
                 {
@@ -1338,31 +1364,129 @@ namespace mgs2_v_s_fix
 
         #region GRAPHICS tab
 
-        // Exclusive toggle logic
+        // Show an helper
 
-        private void chb_AA_MouseClick(object sender, MouseEventArgs e)
+        private void AA_Click(object sender, EventArgs e)
         {
 
-            if (chb_AA.Checked == true)
+            if (sender.GetType() != typeof(RadioButton))
+            {
+                // ??
+                throw new Exception("Event raised by an unknow element");
+
+            }
+
+            RadioButton pressedRadio = (RadioButton)sender;
+
+            AA_showTheRightHelper();
+
+        }
+
+        private void AA_showTheRightHelper()
+        {
+            // See what AA option is selected
+
+            string selectedAAoption = "";
+
+            foreach (RadioButton singleRadioButton in pnl_AA.Controls.OfType<RadioButton>())
             {
 
-                if (ModelQuality_high.Checked == true)
+                if (singleRadioButton.Checked)
                 {
-                    ModelQuality_medium.Checked = true;
+                    selectedAAoption = singleRadioButton.Name;
+                    break;
                 }
 
             }
 
-        }
+            // Set an help label for the different controllers
 
-        private void ModelQuality_high_MouseClick(object sender, MouseEventArgs e)
-        {
-
-            if (ModelQuality_high.Checked == true)
+            if (selectedAAoption.Equals("AA_no"))
             {
-                chb_AA.Checked = false;
+                lbl_AAGuide.Visible = false;
             }
 
+            else
+            {
+
+                if (selectedAAoption.Equals("AA_fxaa"))
+                {
+                    lbl_AAGuide.Text = "( Lighter and faster, but less effective than SMAA. Raccomended for laptop )";
+                }
+                else if(selectedAAoption.Equals("AA_smaa")) 
+                {
+                    // SMAA
+                    lbl_AAGuide.Text = "( Better quality than FXAA, but heavier. NOT compatible with Steam overlay )";
+                }
+                else
+                {
+                    // ??
+                    throw new Exception("Seems that no AA radio button has been pressed");
+                }
+
+                lbl_AAGuide.Visible = true;
+
+                // Show warnings, if needed
+
+                AA_showNeededWarnings();
+
+            }
+        }
+
+        // Esclusive button logic
+
+        private void ModelQuality_high_Click(object sender, EventArgs e)
+        {
+            AA_showNeededWarnings();
+        }
+
+        private void AA_showNeededWarnings(bool imGoingToUseAddGame2Steam = false)
+        {
+            // CHECK: the user want to use Steam AND use SMAA?
+            // Action: must choose FXAA and warn the user
+            
+            if( AA_smaa.Checked && ( imGoingToUseAddGame2Steam || EnableController_STEAM.Checked ))
+            {
+
+                Ocelot.showMessage("tip_smaaANDsteam");
+
+                AA_fxaa.Checked = true;
+
+                AA_showTheRightHelper();
+
+            }
+
+
+            // CHECK: the user use any anti-aliasing AND Model quality to High?
+            // Action: warn the user
+
+            if( tip_antialiasingANDmodelquality_showed == false && ( AA_fxaa.Checked || AA_smaa.Checked) && ModelQuality_high.Checked)
+            {
+                Ocelot.showMessage("tip_antialiasingANDmodelquality");
+
+                // Don't show until next reboot
+                tip_antialiasingANDmodelquality_showed = true;
+
+            }
+
+
+        }
+
+        #endregion
+
+        #region SOUND tab
+
+        private void help_sound_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Troubleshooting-&-Debug-mode#common-problems--common-solutions");
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
         }
 
         #endregion
@@ -1616,10 +1740,9 @@ namespace mgs2_v_s_fix
 
             // Don't open the fix after playing
 
-            if (chb_FixAfterPlaying.Checked == true)
-            {
-                chb_FixAfterPlaying.Checked = false;
-            }
+            chb_FixAfterPlaying.Checked = false;
+
+            AA_showNeededWarnings(true);
 
             // Save this inside the configuration .INI, even if the user didn't pressed the SAVE button
 

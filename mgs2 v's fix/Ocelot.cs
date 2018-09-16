@@ -24,7 +24,7 @@ namespace mgs2_v_s_fix
     {
 
         // Current version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "180915";
+        public const string VERSION = "180916";
 
         // UPDATE
 
@@ -817,13 +817,20 @@ namespace mgs2_v_s_fix
                     File.Delete(Application.StartupPath + "\\d3d9.dll");
                     //File.Delete(Application.StartupPath + "\\d3d8.dll");
 
-                    if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("true"))
+                    if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("smaa"))
                     {
 
-                        // 1: V_s_sweetFX.zip must be extracted
-
                         Unzip.UnZippa("V_s_sweetFX.zip");
+                        Unzip.UnZippa("sweetFX_SMAA.zip");
 
+                    }
+                    else if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("fxaa"))
+                    {
+                        Unzip.UnZippa("V_s_sweetFX.zip");
+                        Unzip.UnZippa("sweetFX_FXAA.zip");
+                    }
+                    {
+                        // No anti-aliasing today, baby
                     }
 
                     #endregion
@@ -1298,13 +1305,6 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                case "tip_AA":
-
-                    MessageBox.Show("Activating anti-aliasing requires that game (mgs2_sse.exe) must run in WINDOWS XP SP3 compatibility mode.\n\nV's Fix will try to set it automatically but (like all things in life) may fail so check it out MANUALLY.\n\nRunning the game without XP compatibility will result in a BLACK SCREEN ON GAME STARTUP!\n\nAlso, it isn't compatible with 'High' model quality preset.",
-                    "Back to 2001!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
                 case "tip_vga":
 
                     MessageBox.Show("Please be aware that since more VGAs are installed on your system you have to be sure that the executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!\n\nThis MUST be done MANUALLY from your graphics adapter's control panel!",
@@ -1440,12 +1440,6 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                case "addGameToSteamMessage":
-
-                    
-
-                    break;
-
                 case "steamIsRunning":
 
                     MessageBox.Show(
@@ -1482,7 +1476,7 @@ namespace mgs2_v_s_fix
                     MessageBox.Show(
                         "Seems that MGS2 has already been added in the past."+
                         "\n\n"+
-                        "(?????)"+
+                        "( ????? )"+
                         "\n\n" +
                         "If you want to make V's Fix re-add the game, please delete it manually and launch this another time!"
                         );
@@ -1496,6 +1490,32 @@ namespace mgs2_v_s_fix
                         "\n\n" +
                         "Please activate the DEBUG MODE and report this to me!"
                         );
+
+                    break;
+
+                case "tip_antialiasingANDmodelquality":
+
+                    MessageBox.Show(
+                        "Model quality is set to 'High' and Anti-Aliasing is activated."+
+                        "\n\n"+
+                        "Having both activated at the same time can, on some configuration, cause graphical glitches or freezes."+
+                        "\n\n"+
+                        "If you have these problems during the game, please deactivate one of the two things mentioned above."
+                        + "\n\n"+
+                        "This message will not show up until a next fix reboot, so consider yourself warned :D",
+                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_smaaANDsteam":
+
+                    MessageBox.Show(
+                        "SMAA Anti-Aliasing is activated, and this can cause glitches with the Steam overlay, and consequently with the Steam controller(s)" +
+                        "\n\n" +
+                        "For this reason, FXAA Anti-Aliasing has been selected instead."+
+                        "\n\n" +
+                        "( HINT: If you want SMAA at all costs, unselect 'Steam' from the 'Controls' tab of the fix, or enable it manually from 'SweetFX_settings.txt' after you press 'SAVE' )",
+                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 

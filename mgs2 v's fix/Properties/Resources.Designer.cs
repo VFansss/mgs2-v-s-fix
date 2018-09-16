@@ -413,6 +413,26 @@ namespace mgs2_v_s_fix.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Byte[].
         /// </summary>
+        internal static byte[] sweetFX_FXAA {
+            get {
+                object obj = ResourceManager.GetObject("sweetFX_FXAA", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] sweetFX_SMAA {
+            get {
+                object obj = ResourceManager.GetObject("sweetFX_SMAA", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
         internal static byte[] V_s_sweetFX {
             get {
                 object obj = ResourceManager.GetObject("V_s_sweetFX", resourceCulture);

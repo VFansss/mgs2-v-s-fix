@@ -51,18 +51,28 @@
             this.txt_Width = new System.Windows.Forms.TextBox();
             this.lbl_des_00 = new System.Windows.Forms.Label();
             this.tab_Controls = new System.Windows.Forms.TabPage();
+            this.lbl_controllerGuide = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnl_PreferredLayout = new System.Windows.Forms.Panel();
+            this.pnl_LayoutChooser = new System.Windows.Forms.Panel();
+            this.PreferredLayout_PS2 = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.PreferredLayout_V = new System.Windows.Forms.RadioButton();
+            this.help_controls = new System.Windows.Forms.Label();
             this.pnl_EnableController = new System.Windows.Forms.Panel();
+            this.EnableController_STEAM = new System.Windows.Forms.RadioButton();
             this.EnableController_DS4 = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
             this.EnableController_NO = new System.Windows.Forms.RadioButton();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
+            this.pnl_AA = new System.Windows.Forms.Panel();
+            this.AA_smaa = new System.Windows.Forms.RadioButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.AA_fxaa = new System.Windows.Forms.RadioButton();
+            this.AA_no = new System.Windows.Forms.RadioButton();
             this.chb_DepthOfField = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.chb_AA = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.chb_MotionBlur = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.chb_BunchOfCoolEffect = new System.Windows.Forms.CheckBox();
@@ -136,21 +146,18 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
-            this.help_controls = new System.Windows.Forms.Label();
-            this.lbl_controllerGuide = new System.Windows.Forms.Label();
-            this.EnableController_STEAM = new System.Windows.Forms.RadioButton();
-            this.pnl_LayoutChooser = new System.Windows.Forms.Panel();
-            this.PreferredLayout_PS2 = new System.Windows.Forms.RadioButton();
-            this.label10 = new System.Windows.Forms.Label();
-            this.PreferredLayout_V = new System.Windows.Forms.RadioButton();
+            this.lbl_AAGuide = new System.Windows.Forms.Label();
+            this.help_sound = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tab_Controls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_PreferredLayout.SuspendLayout();
+            this.pnl_LayoutChooser.SuspendLayout();
             this.pnl_EnableController.SuspendLayout();
             this.tab_Graphics.SuspendLayout();
+            this.pnl_AA.SuspendLayout();
             this.pnl_EffectQuantity.SuspendLayout();
             this.pnl_RenderingClearness.SuspendLayout();
             this.pnl_ModelQuality.SuspendLayout();
@@ -170,7 +177,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
-            this.pnl_LayoutChooser.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -530,6 +536,19 @@
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
             // 
+            // lbl_controllerGuide
+            // 
+            this.lbl_controllerGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_controllerGuide.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbl_controllerGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_controllerGuide.Location = new System.Drawing.Point(6, 45);
+            this.lbl_controllerGuide.Name = "lbl_controllerGuide";
+            this.lbl_controllerGuide.Size = new System.Drawing.Size(540, 19);
+            this.lbl_controllerGuide.TabIndex = 12;
+            this.lbl_controllerGuide.Text = "[RUNTIME]";
+            this.lbl_controllerGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_controllerGuide.Visible = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -550,6 +569,88 @@
             this.pnl_PreferredLayout.Size = new System.Drawing.Size(546, 305);
             this.pnl_PreferredLayout.TabIndex = 12;
             // 
+            // pnl_LayoutChooser
+            // 
+            this.pnl_LayoutChooser.Controls.Add(this.PreferredLayout_PS2);
+            this.pnl_LayoutChooser.Controls.Add(this.label10);
+            this.pnl_LayoutChooser.Controls.Add(this.PreferredLayout_V);
+            this.pnl_LayoutChooser.Location = new System.Drawing.Point(133, 0);
+            this.pnl_LayoutChooser.Name = "pnl_LayoutChooser";
+            this.pnl_LayoutChooser.Size = new System.Drawing.Size(399, 39);
+            this.pnl_LayoutChooser.TabIndex = 12;
+            // 
+            // PreferredLayout_PS2
+            // 
+            this.PreferredLayout_PS2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PreferredLayout_PS2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.PreferredLayout_PS2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PreferredLayout_PS2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PreferredLayout_PS2.FlatAppearance.BorderSize = 0;
+            this.PreferredLayout_PS2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_PS2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PreferredLayout_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreferredLayout_PS2.Location = new System.Drawing.Point(279, 4);
+            this.PreferredLayout_PS2.Name = "PreferredLayout_PS2";
+            this.PreferredLayout_PS2.Size = new System.Drawing.Size(111, 30);
+            this.PreferredLayout_PS2.TabIndex = 7;
+            this.PreferredLayout_PS2.TabStop = true;
+            this.PreferredLayout_PS2.Text = "PS2 Type";
+            this.PreferredLayout_PS2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PreferredLayout_PS2.UseVisualStyleBackColor = false;
+            this.PreferredLayout_PS2.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.PreferredLayout_PS2.Click += new System.EventHandler(this.PreferredLayout_Click);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label10.Location = new System.Drawing.Point(9, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(146, 26);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Buttons Layout:";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // PreferredLayout_V
+            // 
+            this.PreferredLayout_V.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PreferredLayout_V.Appearance = System.Windows.Forms.Appearance.Button;
+            this.PreferredLayout_V.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PreferredLayout_V.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PreferredLayout_V.FlatAppearance.BorderSize = 0;
+            this.PreferredLayout_V.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_V.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.PreferredLayout_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PreferredLayout_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PreferredLayout_V.Location = new System.Drawing.Point(182, 4);
+            this.PreferredLayout_V.Name = "PreferredLayout_V";
+            this.PreferredLayout_V.Size = new System.Drawing.Size(94, 30);
+            this.PreferredLayout_V.TabIndex = 5;
+            this.PreferredLayout_V.TabStop = true;
+            this.PreferredLayout_V.Text = "V\'s Type";
+            this.PreferredLayout_V.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PreferredLayout_V.UseVisualStyleBackColor = false;
+            this.PreferredLayout_V.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.PreferredLayout_V.Click += new System.EventHandler(this.PreferredLayout_Click);
+            // 
+            // help_controls
+            // 
+            this.help_controls.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_controls.AutoSize = true;
+            this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_controls.Location = new System.Drawing.Point(34, 7);
+            this.help_controls.Name = "help_controls";
+            this.help_controls.Size = new System.Drawing.Size(93, 19);
+            this.help_controls.TabIndex = 11;
+            this.help_controls.Text = "Manual Here";
+            this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
+            // 
             // pnl_EnableController
             // 
             this.pnl_EnableController.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -562,6 +663,29 @@
             this.pnl_EnableController.Name = "pnl_EnableController";
             this.pnl_EnableController.Size = new System.Drawing.Size(540, 32);
             this.pnl_EnableController.TabIndex = 8;
+            // 
+            // EnableController_STEAM
+            // 
+            this.EnableController_STEAM.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EnableController_STEAM.Appearance = System.Windows.Forms.Appearance.Button;
+            this.EnableController_STEAM.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_STEAM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EnableController_STEAM.FlatAppearance.BorderSize = 0;
+            this.EnableController_STEAM.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_STEAM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_STEAM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_STEAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnableController_STEAM.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnableController_STEAM.Location = new System.Drawing.Point(431, 4);
+            this.EnableController_STEAM.Name = "EnableController_STEAM";
+            this.EnableController_STEAM.Size = new System.Drawing.Size(94, 30);
+            this.EnableController_STEAM.TabIndex = 5;
+            this.EnableController_STEAM.TabStop = true;
+            this.EnableController_STEAM.Text = "Steam";
+            this.EnableController_STEAM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_STEAM.UseVisualStyleBackColor = false;
+            this.EnableController_STEAM.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.EnableController_STEAM.Click += new System.EventHandler(this.EnableController_Click);
             // 
             // EnableController_DS4
             // 
@@ -646,10 +770,10 @@
             // 
             // tab_Graphics
             // 
+            this.tab_Graphics.Controls.Add(this.lbl_AAGuide);
+            this.tab_Graphics.Controls.Add(this.pnl_AA);
             this.tab_Graphics.Controls.Add(this.chb_DepthOfField);
             this.tab_Graphics.Controls.Add(this.label20);
-            this.tab_Graphics.Controls.Add(this.chb_AA);
-            this.tab_Graphics.Controls.Add(this.label9);
             this.tab_Graphics.Controls.Add(this.chb_MotionBlur);
             this.tab_Graphics.Controls.Add(this.label7);
             this.tab_Graphics.Controls.Add(this.chb_BunchOfCoolEffect);
@@ -666,6 +790,95 @@
             this.tab_Graphics.Text = "Graphics";
             this.tab_Graphics.UseVisualStyleBackColor = true;
             // 
+            // pnl_AA
+            // 
+            this.pnl_AA.Controls.Add(this.AA_smaa);
+            this.pnl_AA.Controls.Add(this.label9);
+            this.pnl_AA.Controls.Add(this.AA_fxaa);
+            this.pnl_AA.Controls.Add(this.AA_no);
+            this.pnl_AA.Location = new System.Drawing.Point(64, 226);
+            this.pnl_AA.Name = "pnl_AA";
+            this.pnl_AA.Size = new System.Drawing.Size(425, 32);
+            this.pnl_AA.TabIndex = 18;
+            // 
+            // AA_smaa
+            // 
+            this.AA_smaa.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AA_smaa.Appearance = System.Windows.Forms.Appearance.Button;
+            this.AA_smaa.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_smaa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AA_smaa.FlatAppearance.BorderSize = 0;
+            this.AA_smaa.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.AA_smaa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.AA_smaa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.AA_smaa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AA_smaa.Location = new System.Drawing.Point(347, 1);
+            this.AA_smaa.Name = "AA_smaa";
+            this.AA_smaa.Size = new System.Drawing.Size(75, 30);
+            this.AA_smaa.TabIndex = 7;
+            this.AA_smaa.TabStop = true;
+            this.AA_smaa.Text = "SMAA";
+            this.AA_smaa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_smaa.UseVisualStyleBackColor = true;
+            this.AA_smaa.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.AA_smaa.Click += new System.EventHandler(this.AA_Click);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label9.Location = new System.Drawing.Point(60, 3);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(124, 26);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Anti Aliasing:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // AA_fxaa
+            // 
+            this.AA_fxaa.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AA_fxaa.Appearance = System.Windows.Forms.Appearance.Button;
+            this.AA_fxaa.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_fxaa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AA_fxaa.FlatAppearance.BorderSize = 0;
+            this.AA_fxaa.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.AA_fxaa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.AA_fxaa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.AA_fxaa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AA_fxaa.Location = new System.Drawing.Point(247, 1);
+            this.AA_fxaa.Name = "AA_fxaa";
+            this.AA_fxaa.Size = new System.Drawing.Size(94, 30);
+            this.AA_fxaa.TabIndex = 6;
+            this.AA_fxaa.TabStop = true;
+            this.AA_fxaa.Text = "FXAA";
+            this.AA_fxaa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_fxaa.UseVisualStyleBackColor = true;
+            this.AA_fxaa.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.AA_fxaa.Click += new System.EventHandler(this.AA_Click);
+            // 
+            // AA_no
+            // 
+            this.AA_no.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AA_no.Appearance = System.Windows.Forms.Appearance.Button;
+            this.AA_no.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_no.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AA_no.FlatAppearance.BorderSize = 0;
+            this.AA_no.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.AA_no.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.AA_no.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.AA_no.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AA_no.Location = new System.Drawing.Point(186, 1);
+            this.AA_no.Name = "AA_no";
+            this.AA_no.Size = new System.Drawing.Size(58, 30);
+            this.AA_no.TabIndex = 5;
+            this.AA_no.TabStop = true;
+            this.AA_no.Text = "NO";
+            this.AA_no.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_no.UseVisualStyleBackColor = true;
+            this.AA_no.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.AA_no.Click += new System.EventHandler(this.AA_Click);
+            // 
             // chb_DepthOfField
             // 
             this.chb_DepthOfField.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -677,7 +890,7 @@
             this.chb_DepthOfField.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_DepthOfField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_DepthOfField.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_DepthOfField.Location = new System.Drawing.Point(332, 281);
+            this.chb_DepthOfField.Location = new System.Drawing.Point(332, 319);
             this.chb_DepthOfField.Name = "chb_DepthOfField";
             this.chb_DepthOfField.Size = new System.Drawing.Size(55, 26);
             this.chb_DepthOfField.TabIndex = 17;
@@ -692,46 +905,12 @@
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label20.Location = new System.Drawing.Point(193, 280);
+            this.label20.Location = new System.Drawing.Point(193, 318);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(143, 26);
             this.label20.TabIndex = 16;
             this.label20.Text = "Depth of Field :";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // chb_AA
-            // 
-            this.chb_AA.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chb_AA.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chb_AA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chb_AA.FlatAppearance.BorderSize = 0;
-            this.chb_AA.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.chb_AA.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.chb_AA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.chb_AA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chb_AA.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_AA.Location = new System.Drawing.Point(332, 226);
-            this.chb_AA.Name = "chb_AA";
-            this.chb_AA.Size = new System.Drawing.Size(55, 26);
-            this.chb_AA.TabIndex = 15;
-            this.chb_AA.TabStop = false;
-            this.chb_AA.Text = "XXX";
-            this.chb_AA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chb_AA.UseVisualStyleBackColor = true;
-            this.chb_AA.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.chb_AA.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chb_AA_MouseClick);
-            // 
-            // label9
-            // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label9.Location = new System.Drawing.Point(143, 225);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(193, 26);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Anti Aliasing (SMAA):";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // chb_MotionBlur
             // 
@@ -744,7 +923,7 @@
             this.chb_MotionBlur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_MotionBlur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_MotionBlur.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_MotionBlur.Location = new System.Drawing.Point(332, 309);
+            this.chb_MotionBlur.Location = new System.Drawing.Point(332, 347);
             this.chb_MotionBlur.Name = "chb_MotionBlur";
             this.chb_MotionBlur.Size = new System.Drawing.Size(55, 26);
             this.chb_MotionBlur.TabIndex = 13;
@@ -759,7 +938,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label7.Location = new System.Drawing.Point(216, 308);
+            this.label7.Location = new System.Drawing.Point(216, 346);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 26);
             this.label7.TabIndex = 12;
@@ -777,7 +956,7 @@
             this.chb_BunchOfCoolEffect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_BunchOfCoolEffect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_BunchOfCoolEffect.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(332, 254);
+            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(332, 292);
             this.chb_BunchOfCoolEffect.Name = "chb_BunchOfCoolEffect";
             this.chb_BunchOfCoolEffect.Size = new System.Drawing.Size(55, 26);
             this.chb_BunchOfCoolEffect.TabIndex = 11;
@@ -792,7 +971,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label11.Location = new System.Drawing.Point(173, 253);
+            this.label11.Location = new System.Drawing.Point(173, 291);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(163, 26);
             this.label11.TabIndex = 10;
@@ -806,7 +985,7 @@
             this.pnl_EffectQuantity.Controls.Add(this.label5);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_medium);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_low);
-            this.pnl_EffectQuantity.Location = new System.Drawing.Point(64, 177);
+            this.pnl_EffectQuantity.Location = new System.Drawing.Point(64, 169);
             this.pnl_EffectQuantity.Name = "pnl_EffectQuantity";
             this.pnl_EffectQuantity.Size = new System.Drawing.Size(425, 32);
             this.pnl_EffectQuantity.TabIndex = 5;
@@ -893,7 +1072,7 @@
             this.pnl_RenderingClearness.Controls.Add(this.label3);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_medium);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_low);
-            this.pnl_RenderingClearness.Location = new System.Drawing.Point(64, 139);
+            this.pnl_RenderingClearness.Location = new System.Drawing.Point(64, 131);
             this.pnl_RenderingClearness.Name = "pnl_RenderingClearness";
             this.pnl_RenderingClearness.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingClearness.TabIndex = 5;
@@ -980,7 +1159,7 @@
             this.pnl_ModelQuality.Controls.Add(this.label2);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_medium);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_low);
-            this.pnl_ModelQuality.Location = new System.Drawing.Point(64, 101);
+            this.pnl_ModelQuality.Location = new System.Drawing.Point(64, 93);
             this.pnl_ModelQuality.Name = "pnl_ModelQuality";
             this.pnl_ModelQuality.Size = new System.Drawing.Size(425, 32);
             this.pnl_ModelQuality.TabIndex = 5;
@@ -1005,7 +1184,7 @@
             this.ModelQuality_high.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ModelQuality_high.UseVisualStyleBackColor = true;
             this.ModelQuality_high.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.ModelQuality_high.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ModelQuality_high_MouseClick);
+            this.ModelQuality_high.Click += new System.EventHandler(this.ModelQuality_high_Click);
             // 
             // label2
             // 
@@ -1068,7 +1247,7 @@
             this.pnl_ShadowDetail.Controls.Add(this.label1);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_medium);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_low);
-            this.pnl_ShadowDetail.Location = new System.Drawing.Point(64, 63);
+            this.pnl_ShadowDetail.Location = new System.Drawing.Point(64, 55);
             this.pnl_ShadowDetail.Name = "pnl_ShadowDetail";
             this.pnl_ShadowDetail.Size = new System.Drawing.Size(425, 32);
             this.pnl_ShadowDetail.TabIndex = 5;
@@ -1158,7 +1337,7 @@
             this.pnl_RenderingSize.Controls.Add(this.lbl_descr);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_medium);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_low);
-            this.pnl_RenderingSize.Location = new System.Drawing.Point(64, 27);
+            this.pnl_RenderingSize.Location = new System.Drawing.Point(64, 19);
             this.pnl_RenderingSize.Name = "pnl_RenderingSize";
             this.pnl_RenderingSize.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingSize.TabIndex = 2;
@@ -1244,6 +1423,7 @@
             // 
             // tab_Sound
             // 
+            this.tab_Sound.Controls.Add(this.help_sound);
             this.tab_Sound.Controls.Add(this.label6);
             this.tab_Sound.Controls.Add(this.lst_sound_list);
             this.tab_Sound.Controls.Add(this.pnl_Quality);
@@ -1289,7 +1469,7 @@
             this.pnl_Quality.Controls.Add(this.Quality_medium);
             this.pnl_Quality.Controls.Add(this.Quality_low);
             this.pnl_Quality.Controls.Add(this.label13);
-            this.pnl_Quality.Location = new System.Drawing.Point(66, 59);
+            this.pnl_Quality.Location = new System.Drawing.Point(66, 37);
             this.pnl_Quality.Name = "pnl_Quality";
             this.pnl_Quality.Size = new System.Drawing.Size(432, 32);
             this.pnl_Quality.TabIndex = 6;
@@ -1380,7 +1560,7 @@
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_medium);
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_low);
             this.pnl_SoundQuality.Controls.Add(this.label15);
-            this.pnl_SoundQuality.Location = new System.Drawing.Point(66, 161);
+            this.pnl_SoundQuality.Location = new System.Drawing.Point(66, 139);
             this.pnl_SoundQuality.Name = "pnl_SoundQuality";
             this.pnl_SoundQuality.Size = new System.Drawing.Size(432, 32);
             this.pnl_SoundQuality.TabIndex = 5;
@@ -1471,7 +1651,7 @@
             this.pnl_SE.Controls.Add(this.SE_high);
             this.pnl_SE.Controls.Add(this.SE_medium);
             this.pnl_SE.Controls.Add(this.SE_low);
-            this.pnl_SE.Location = new System.Drawing.Point(45, 112);
+            this.pnl_SE.Location = new System.Drawing.Point(45, 90);
             this.pnl_SE.Name = "pnl_SE";
             this.pnl_SE.Size = new System.Drawing.Size(453, 32);
             this.pnl_SE.TabIndex = 3;
@@ -1933,123 +2113,31 @@
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
-            // help_controls
+            // lbl_AAGuide
             // 
-            this.help_controls.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.help_controls.AutoSize = true;
-            this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_controls.Location = new System.Drawing.Point(34, 7);
-            this.help_controls.Name = "help_controls";
-            this.help_controls.Size = new System.Drawing.Size(93, 19);
-            this.help_controls.TabIndex = 11;
-            this.help_controls.Text = "Manual Here";
-            this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
+            this.lbl_AAGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_AAGuide.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbl_AAGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AAGuide.Location = new System.Drawing.Point(6, 263);
+            this.lbl_AAGuide.Name = "lbl_AAGuide";
+            this.lbl_AAGuide.Size = new System.Drawing.Size(540, 19);
+            this.lbl_AAGuide.TabIndex = 19;
+            this.lbl_AAGuide.Text = "[RUNTIME]";
+            this.lbl_AAGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_AAGuide.Visible = false;
             // 
-            // lbl_controllerGuide
+            // help_sound
             // 
-            this.lbl_controllerGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_controllerGuide.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lbl_controllerGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_controllerGuide.Location = new System.Drawing.Point(6, 45);
-            this.lbl_controllerGuide.Name = "lbl_controllerGuide";
-            this.lbl_controllerGuide.Size = new System.Drawing.Size(540, 19);
-            this.lbl_controllerGuide.TabIndex = 12;
-            this.lbl_controllerGuide.Text = "[RUNTIME]";
-            this.lbl_controllerGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_controllerGuide.Visible = false;
-            // 
-            // EnableController_STEAM
-            // 
-            this.EnableController_STEAM.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.EnableController_STEAM.Appearance = System.Windows.Forms.Appearance.Button;
-            this.EnableController_STEAM.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.EnableController_STEAM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.EnableController_STEAM.FlatAppearance.BorderSize = 0;
-            this.EnableController_STEAM.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.EnableController_STEAM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.EnableController_STEAM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.EnableController_STEAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EnableController_STEAM.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableController_STEAM.Location = new System.Drawing.Point(431, 4);
-            this.EnableController_STEAM.Name = "EnableController_STEAM";
-            this.EnableController_STEAM.Size = new System.Drawing.Size(94, 30);
-            this.EnableController_STEAM.TabIndex = 5;
-            this.EnableController_STEAM.TabStop = true;
-            this.EnableController_STEAM.Text = "Steam";
-            this.EnableController_STEAM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.EnableController_STEAM.UseVisualStyleBackColor = false;
-            this.EnableController_STEAM.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.EnableController_STEAM.Click += new System.EventHandler(this.EnableController_Click);
-            // 
-            // pnl_LayoutChooser
-            // 
-            this.pnl_LayoutChooser.Controls.Add(this.PreferredLayout_PS2);
-            this.pnl_LayoutChooser.Controls.Add(this.label10);
-            this.pnl_LayoutChooser.Controls.Add(this.PreferredLayout_V);
-            this.pnl_LayoutChooser.Location = new System.Drawing.Point(133, 0);
-            this.pnl_LayoutChooser.Name = "pnl_LayoutChooser";
-            this.pnl_LayoutChooser.Size = new System.Drawing.Size(399, 39);
-            this.pnl_LayoutChooser.TabIndex = 12;
-            // 
-            // PreferredLayout_PS2
-            // 
-            this.PreferredLayout_PS2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PreferredLayout_PS2.Appearance = System.Windows.Forms.Appearance.Button;
-            this.PreferredLayout_PS2.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PreferredLayout_PS2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PreferredLayout_PS2.FlatAppearance.BorderSize = 0;
-            this.PreferredLayout_PS2.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.PreferredLayout_PS2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.PreferredLayout_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.PreferredLayout_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PreferredLayout_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_PS2.Location = new System.Drawing.Point(279, 4);
-            this.PreferredLayout_PS2.Name = "PreferredLayout_PS2";
-            this.PreferredLayout_PS2.Size = new System.Drawing.Size(111, 30);
-            this.PreferredLayout_PS2.TabIndex = 7;
-            this.PreferredLayout_PS2.TabStop = true;
-            this.PreferredLayout_PS2.Text = "PS2 Type";
-            this.PreferredLayout_PS2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PreferredLayout_PS2.UseVisualStyleBackColor = false;
-            this.PreferredLayout_PS2.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.PreferredLayout_PS2.Click += new System.EventHandler(this.PreferredLayout_Click);
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label10.Location = new System.Drawing.Point(9, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(146, 26);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Buttons Layout:";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // PreferredLayout_V
-            // 
-            this.PreferredLayout_V.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PreferredLayout_V.Appearance = System.Windows.Forms.Appearance.Button;
-            this.PreferredLayout_V.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PreferredLayout_V.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PreferredLayout_V.FlatAppearance.BorderSize = 0;
-            this.PreferredLayout_V.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.PreferredLayout_V.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.PreferredLayout_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.PreferredLayout_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PreferredLayout_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_V.Location = new System.Drawing.Point(182, 4);
-            this.PreferredLayout_V.Name = "PreferredLayout_V";
-            this.PreferredLayout_V.Size = new System.Drawing.Size(94, 30);
-            this.PreferredLayout_V.TabIndex = 5;
-            this.PreferredLayout_V.TabStop = true;
-            this.PreferredLayout_V.Text = "V\'s Type";
-            this.PreferredLayout_V.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.PreferredLayout_V.UseVisualStyleBackColor = false;
-            this.PreferredLayout_V.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.PreferredLayout_V.Click += new System.EventHandler(this.PreferredLayout_Click);
+            this.help_sound.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_sound.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_sound.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_sound.Location = new System.Drawing.Point(32, 196);
+            this.help_sound.Name = "help_sound";
+            this.help_sound.Size = new System.Drawing.Size(489, 19);
+            this.help_sound.TabIndex = 15;
+            this.help_sound.Text = "Missing audio? Press here to check the manual for a workaround";
+            this.help_sound.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.help_sound.Click += new System.EventHandler(this.help_sound_Click);
             // 
             // Form1
             // 
@@ -2081,10 +2169,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_PreferredLayout.ResumeLayout(false);
             this.pnl_PreferredLayout.PerformLayout();
+            this.pnl_LayoutChooser.ResumeLayout(false);
+            this.pnl_LayoutChooser.PerformLayout();
             this.pnl_EnableController.ResumeLayout(false);
             this.pnl_EnableController.PerformLayout();
             this.tab_Graphics.ResumeLayout(false);
             this.tab_Graphics.PerformLayout();
+            this.pnl_AA.ResumeLayout(false);
+            this.pnl_AA.PerformLayout();
             this.pnl_EffectQuantity.ResumeLayout(false);
             this.pnl_EffectQuantity.PerformLayout();
             this.pnl_RenderingClearness.ResumeLayout(false);
@@ -2115,8 +2207,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
-            this.pnl_LayoutChooser.ResumeLayout(false);
-            this.pnl_LayoutChooser.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2195,8 +2285,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox chb_FullscreenCutscene;
         private System.Windows.Forms.Label lbl_FullscreenCutscene;
-        private System.Windows.Forms.CheckBox chb_AA;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pnl_about;
         private System.Windows.Forms.RadioButton abt_Regards;
         private System.Windows.Forms.RadioButton abt_Licence;
@@ -2238,6 +2326,13 @@
         private System.Windows.Forms.RadioButton PreferredLayout_PS2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RadioButton PreferredLayout_V;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel pnl_AA;
+        private System.Windows.Forms.RadioButton AA_smaa;
+        private System.Windows.Forms.RadioButton AA_fxaa;
+        private System.Windows.Forms.RadioButton AA_no;
+        private System.Windows.Forms.Label lbl_AAGuide;
+        private System.Windows.Forms.Label help_sound;
     }
 }
 
