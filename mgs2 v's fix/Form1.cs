@@ -1456,7 +1456,7 @@ namespace mgs2_v_s_fix
 
         #endregion
 
-        #region UPDATE
+        #region EXTRA
 
         // UPDATE
 
@@ -1521,6 +1521,82 @@ namespace mgs2_v_s_fix
 
             lbl_checkForUpdate.Text = checkForUpdateDefaultString;
             UPDATE_checkInProgress = false;
+        }
+
+        // 'Add-To-Steam' button
+
+        private void ptb_Steam_Click(object sender, EventArgs e)
+        {
+            if (Ocelot.IsThisProcessRunning("Steam"))
+            {
+                Ocelot.showMessage("steamIsRunning");
+                return;
+            }
+
+
+            DialogResult doYouWantToProceed = MessageBox.Show(
+                "V's Fix will now try to add on your Steam the game :"+
+                "\n\n" +
+                "METAL GEAR SOLID 2: SUBSTANCE"+
+                "\n\n"+
+                "Also, it will automatically set 'Open V's Fix after playing the game' to false, so you can interact with the game directly from Steam"+
+                "\n\n"+
+                "Are you sure you want to continue?","Add the game on Steam", MessageBoxButtons.YesNo);
+
+            if(doYouWantToProceed != DialogResult.Yes)
+            {
+                return;
+            }
+
+            // Let's go
+
+            ADD2STEAMSTATUS workResult = Ocelot.AddMGS2ToSteam();
+
+            Ocelot.PrintToDebugConsole("[ STEAM ] Add2Steam has returned "+workResult.ToString());
+
+            switch (workResult)
+            {
+                case ADD2STEAMSTATUS.AddedForOneUser:
+
+                    Ocelot.showMessage("AddedForOneUser");
+
+                    break;
+
+                case ADD2STEAMSTATUS.AddedForMoreUsers:
+
+                    Ocelot.showMessage("AddedForMoreUsers");
+
+                    break;
+
+                case ADD2STEAMSTATUS.NothingDone:
+
+                    Ocelot.showMessage("NothingDone");
+
+                    break;
+
+                default:
+
+                    Ocelot.showMessage("Add2SteamError");
+
+                    break;
+            }
+
+            // Don't open the fix after playing
+
+            if (chb_FixAfterPlaying.Checked == true)
+            {
+                chb_FixAfterPlaying.Checked = false;
+            }
+
+
+            DialogResult startSteamAnswer = MessageBox.Show(
+                "Do you want to launch Steam?", "Answer wisely", MessageBoxButtons.YesNo);
+
+            if (startSteamAnswer == DialogResult.Yes)
+            {
+                Ocelot.StartSteam();
+            }
+
         }
 
         #endregion

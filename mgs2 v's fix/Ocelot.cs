@@ -66,6 +66,30 @@ namespace mgs2_v_s_fix
             
         }
 
+        public static void StartSteam()
+        {
+            Process cmd;
+
+            try
+            {
+                string steamFolder = RetrieveSteamInstallationFolder();
+
+                string steamExePath = steamFolder + "\\steam.exe";
+
+                if (File.Exists(steamExePath))
+                {
+                    cmd = Process.Start(new ProcessStartInfo(steamExePath));
+                }
+
+                
+            }
+            catch
+            {
+                // UAC Blocked?
+                Ocelot.showMessage("UAC_error");
+            }
+        }
+
         /// Settings Menu Function
 
         public static void checkConfFileIntegrity()
@@ -1415,6 +1439,65 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                case "addGameToSteamMessage":
+
+                    
+
+                    break;
+
+                case "steamIsRunning":
+
+                    MessageBox.Show(
+                        "Steam is actually running!"+
+                        "\n\n"+
+                        "To let V's Fix working, is safer to close if before proceeding."
+                        +"\n\n"+
+                        "Please manually close it and try again :)");
+
+                    break;
+
+                case "AddedForOneUser":
+
+                    MessageBox.Show(
+                        "MGS2 has been added for one Steam user!"+
+                        "\n\n"+
+                        "Start Steam, and have fun :D","Yeah"                 
+                        );
+
+                    break;
+
+                case "AddedForMoreUsers":
+
+                    MessageBox.Show(
+                        "MGS2 has been added for more Steam users!" +
+                        "\n\n" +
+                        "Start Steam, and have fun :D", "Yeah"
+                        );
+
+                    break;
+
+                case "NothingDone":
+
+                    MessageBox.Show(
+                        "Seems that MGS2 has already been added in the past."+
+                        "\n\n"+
+                        "(?????)"+
+                        "\n\n" +
+                        "If you want to make V's Fix re-add the game, please delete it manually and launch this another time!"
+                        );
+
+                    break;
+
+                case "Add2SteamError":
+
+                    MessageBox.Show(
+                        "Add2Steam has caused an error, and nothing has been added." +
+                        "\n\n" +
+                        "Please activate the DEBUG MODE and report this to me!"
+                        );
+
+                    break;
+
                 default:
 
                     MessageBox.Show("You shouldn't be able to read this message: /",
@@ -1681,8 +1764,297 @@ namespace mgs2_v_s_fix
             return returnValue;
         }
 
-        // END CLASS
+        // Add-To-Steam Functions
 
-    }
+        public static ADD2STEAMSTATUS AddMGS2ToSteam()
+        {
+            
+            try
+            {
+                // Retrieve Steam path
+
+                string SteamPath = RetrieveSteamInstallationFolder();
+
+                // Retrieve the current MGS2 location
+
+                string MGS2Path = AppDomain.CurrentDomain.BaseDirectory;
+
+                if(!Directory.Exists(SteamPath) || !Directory.Exists(MGS2Path))
+                {
+                    return ADD2STEAMSTATUS.CantFindNecessaryPaths;
+                }
+
+                // Ok, we can work
+
+                // Retrieve all Steam profiles
+
+                string SteamProfilesDir = Path.Combine(SteamPath, "userdata");
+
+                string[] steamProfiles = Directory.GetDirectories(SteamProfilesDir);
+
+                int numberOfMGS2Added = 0;
+
+                foreach (string singleProfileFolder in steamProfiles)
+                {
+                    // Find the shortcut.vdf file
+
+                    string vdfLocation = Path.Combine(singleProfileFolder+ "\\config\\shortcuts.vdf");
+
+                    // Useful Byte constant
+                    byte NUL = 0x00;
+                    byte SOH = 0x01;
+                    byte STX = 0x02;
+                    byte BS = 0x08;
+                    
+
+                    if (!File.Exists(vdfLocation))
+                    {
+                        // Create a base shortcuts.vdf
+
+                        using (var fs = new FileStream(vdfLocation, FileMode.Create, FileAccess.ReadWrite))
+                        {
+                            
+                            
+                            List<byte> shortcuts = Encoding.Default.GetBytes("shortcuts").ToList();
+
+                            List<byte> writeThis = new List<byte>();
+
+                            writeThis.Add(NUL);
+                            writeThis.AddRange(shortcuts);
+                            writeThis.Add(NUL);
+                            writeThis.Add(BS);
+                            writeThis.Add(BS);
+
+                            fs.Write(writeThis.ToArray(), 0, writeThis.Count);
+
+                        }
+
+                    }
+
+                    // Count existing games
+
+                    int nonSteamGames;
+
+                    string entireFile = File.ReadAllText(vdfLocation, Encoding.ASCII);
+
+                    string[] split = entireFile.Split(new string[] { "tags\0" }, StringSplitOptions.None);
+
+                    nonSteamGames = split.Count() - 1;
+
+                    // CHECK: Is METAL GEAR SOLID 2: SUBSTANCE already inserted in the past?
+
+                    if (entireFile.Contains("METAL GEAR SOLID 2: SUBSTANCE") && entireFile.Contains("mgs2_sse.exe"))
+                    {
+                        // Yup :D
+                        continue;
+                    }
+
+                    // Delete the last 2 BS at the end of the file
+
+                    entireFile = entireFile.Substring(0,entireFile.Length - 2);
+
+                    File.WriteAllText(vdfLocation, entireFile,Encoding.ASCII);
+
+                    // Append to the end of the file the hyper string for the new game
+
+                    using (var fs = new FileStream(vdfLocation, FileMode.Append, FileAccess.Write))
+                    {
+
+                        List<byte> writeThis = new List<byte>();
+
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes(nonSteamGames.ToString()).ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("appname").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes("METAL GEAR SOLID 2: SUBSTANCE").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("exe").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path+"mgs2_sse.exe")).ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("StartDir").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path)).ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("icon").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path + "MGS2SSetup.exe")).ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("ShortcutPath").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("LaunchOption").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("IsHidden").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("AllowDesktopConfig").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("AllowOverlay").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("OpenVR").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("LastPlayTime").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes("tags").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(BS);
+                        writeThis.Add(BS);
+
+                        // Append the 2 BS at the end to terminate the file
+                        writeThis.Add(BS);
+                        writeThis.Add(BS);
+
+                        fs.Write(writeThis.ToArray(), 0 , writeThis.Count);
+
+                    }
+
+                    // THE END!
+                    // for this profile, at least...
+
+                    numberOfMGS2Added = numberOfMGS2Added + 1;
+
+                }
+
+                // Signal something to UI
+
+                if(numberOfMGS2Added > 1)
+                {
+                    return ADD2STEAMSTATUS.AddedForMoreUsers;
+                }
+                else if(numberOfMGS2Added == 1)
+                {
+                    return ADD2STEAMSTATUS.AddedForOneUser;
+                }
+                else
+                {
+                    return ADD2STEAMSTATUS.NothingDone;
+                }
+
+            }
+
+            catch(Exception ex)
+            {
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
+
+                return ADD2STEAMSTATUS.AccessError;
+            }
+          
+
+        }
+
+        // Find Steam Location
+
+        public static string RetrieveSteamInstallationFolder()
+        {
+            string SteamPath = "";
+
+            try
+            {
+                string possible_path = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Valve\\Steam", "InstallPath", new Object().ToString());
+
+                if (Directory.Exists(possible_path) && File.Exists(possible_path+"\\Steam.exe"))
+                {
+                    Ocelot.PrintToDebugConsole("[ STEAM ] Steam is installed in this location: " + SteamPath);
+                    SteamPath = possible_path;
+                }
+
+                else
+                {
+                    Ocelot.PrintToDebugConsole("[ STEAM ] Steam not found ");
+                }
+
+            }
+
+            catch
+            {
+                Ocelot.PrintToDebugConsole("[ STEAM ] Exception while searching for Steam location");
+
+                // Do nothing
+            }
+
+
+            return SteamPath;
+
+        }
+
+        // Check if a process is running
+
+        public static bool IsThisProcessRunning(string processName)
+        {
+
+            bool processFound = false;
+
+            try
+            {
+                Process[] pname = Process.GetProcessesByName(processName);
+
+                if (pname.Length != 0)
+                {
+                    processFound = true;
+                }
+
+            }
+
+            catch
+            {
+                Ocelot.PrintToDebugConsole("[ ERROR-ERROR-ERROR ] Error while detecting if "+processName+" is running");
+
+            }
+
+            Ocelot.PrintToDebugConsole("[ IsThisProcessRunning ] "+processName+" isRunning value is "+processFound);
+
+            return processFound;
+
+        }
+
+        // Append " at a dir path
+        public static string Sanitize_pathForCMD(string originalPath)
+        {
+            if (originalPath.Contains(' '))
+            {
+                return "\"" + originalPath + "\"";
+            }
+
+            else
+            {
+                return originalPath;
+            }
+        }
+
+    }// END CLASS
 
 }

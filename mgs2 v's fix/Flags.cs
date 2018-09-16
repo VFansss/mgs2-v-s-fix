@@ -17,6 +17,18 @@ namespace mgs2_v_s_fix
             UpdateAvailable,
         };
 
+        public enum ADD2STEAMSTATUS
+        {
+            SteamIsRunning = 0,
+            CantFindNecessaryPaths,
+            CantFindVdfFile,
+            AddedForOneUser,
+            AddedForMoreUsers,
+            NothingDone,
+            AccessError
+
+        };
+
 
     }
 }

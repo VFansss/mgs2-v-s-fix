@@ -115,7 +115,7 @@
             this.SE_medium = new System.Windows.Forms.RadioButton();
             this.SE_low = new System.Windows.Forms.RadioButton();
             this.tab_Extra = new System.Windows.Forms.TabPage();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.ptb_Steam = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
@@ -158,7 +158,7 @@
             this.pnl_SoundQuality.SuspendLayout();
             this.pnl_SE.SuspendLayout();
             this.tab_Extra.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_Steam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).BeginInit();
             this.tab_About.SuspendLayout();
@@ -1625,7 +1625,7 @@
             // 
             // tab_Extra
             // 
-            this.tab_Extra.Controls.Add(this.pictureBox5);
+            this.tab_Extra.Controls.Add(this.ptb_Steam);
             this.tab_Extra.Controls.Add(this.label18);
             this.tab_Extra.Controls.Add(this.label17);
             this.tab_Extra.Controls.Add(this.ptb_GitHubLogo);
@@ -1642,16 +1642,17 @@
             this.tab_Extra.Text = "Extra";
             this.tab_Extra.UseVisualStyleBackColor = true;
             // 
-            // pictureBox5
+            // ptb_Steam
             // 
-            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox5.Image = global::mgs2_v_s_fix.Properties.Resources.SteamLogo;
-            this.pictureBox5.Location = new System.Drawing.Point(62, 169);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(70, 70);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 40;
-            this.pictureBox5.TabStop = false;
+            this.ptb_Steam.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_Steam.Image = global::mgs2_v_s_fix.Properties.Resources.SteamLogo;
+            this.ptb_Steam.Location = new System.Drawing.Point(62, 169);
+            this.ptb_Steam.Name = "ptb_Steam";
+            this.ptb_Steam.Size = new System.Drawing.Size(70, 70);
+            this.ptb_Steam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_Steam.TabIndex = 40;
+            this.ptb_Steam.TabStop = false;
+            this.ptb_Steam.Click += new System.EventHandler(this.ptb_Steam_Click);
             // 
             // label18
             // 
@@ -2055,7 +2056,7 @@
             this.pnl_SE.PerformLayout();
             this.tab_Extra.ResumeLayout(false);
             this.tab_Extra.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_Steam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).EndInit();
             this.tab_About.ResumeLayout(false);
@@ -2181,7 +2182,7 @@
         private System.Windows.Forms.PictureBox ptb_comPLAY;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox ptb_Steam;
         private System.Windows.Forms.Label label18;
     }
 }
