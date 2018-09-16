@@ -278,6 +278,7 @@ namespace mgs2_v_s_fix
                     // Extract DX Wrapper
 
                     File.Delete(Application.StartupPath + "\\d3d8.dll");
+                    // Is not present anymore, but I've retained it to ensure backward compatibility
                     File.Delete(Application.StartupPath + "\\enbconvertor.ini");
 
                     Unzip.UnZippa("DXWrapper.zip",true);
