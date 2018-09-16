@@ -1248,6 +1248,32 @@ namespace mgs2_v_s_fix
                 PreferredLayout_UpdateImage();
             }
 
+            // Set an help label for the different controllers
+
+            if (pressedRadio.Name.Equals("EnableController_NO"))
+            {
+                lbl_controllerGuide.Visible = false;
+            }
+
+            else
+            {
+
+                if (pressedRadio.Name.Equals("EnableController_DS4"))
+                {
+                    lbl_controllerGuide.Text = "( ONLY if using a DS4 WITHOUT external software. Otherwise, choose 'XBOX' )";
+                }
+                else if (pressedRadio.Name.Equals("EnableController_STEAM"))
+                {
+                    lbl_controllerGuide.Text = "( If you are going to use STEAM drivers to use any controller supported by it )";
+                }
+                else // Xbox
+                {
+                    lbl_controllerGuide.Text = "( For original Xbox controllers, and those who emulate them )";
+                }
+
+                lbl_controllerGuide.Visible = true;
+
+            }
 
         }
 

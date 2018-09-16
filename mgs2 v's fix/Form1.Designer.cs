@@ -61,7 +61,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
             this.EnableController_NO = new System.Windows.Forms.RadioButton();
-            this.help_controls = new System.Windows.Forms.Label();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
             this.chb_DepthOfField = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -140,6 +139,8 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
+            this.help_controls = new System.Windows.Forms.Label();
+            this.lbl_controllerGuide = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -514,10 +515,10 @@
             // 
             // tab_Controls
             // 
+            this.tab_Controls.Controls.Add(this.lbl_controllerGuide);
             this.tab_Controls.Controls.Add(this.pictureBox1);
             this.tab_Controls.Controls.Add(this.pnl_PreferredLayout);
             this.tab_Controls.Controls.Add(this.pnl_EnableController);
-            this.tab_Controls.Controls.Add(this.help_controls);
             this.tab_Controls.Location = new System.Drawing.Point(4, 32);
             this.tab_Controls.Name = "tab_Controls";
             this.tab_Controls.Padding = new System.Windows.Forms.Padding(3);
@@ -529,7 +530,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 86);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 110);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(515, 270);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -542,9 +543,10 @@
             this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_PS2);
             this.pnl_PreferredLayout.Controls.Add(this.label10);
             this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_V);
-            this.pnl_PreferredLayout.Location = new System.Drawing.Point(13, 49);
+            this.pnl_PreferredLayout.Controls.Add(this.help_controls);
+            this.pnl_PreferredLayout.Location = new System.Drawing.Point(3, 73);
             this.pnl_PreferredLayout.Name = "pnl_PreferredLayout";
-            this.pnl_PreferredLayout.Size = new System.Drawing.Size(526, 305);
+            this.pnl_PreferredLayout.Size = new System.Drawing.Size(546, 305);
             this.pnl_PreferredLayout.TabIndex = 12;
             // 
             // PreferredLayout_PS2
@@ -559,7 +561,7 @@
             this.PreferredLayout_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_PS2.Location = new System.Drawing.Point(343, 1);
+            this.PreferredLayout_PS2.Location = new System.Drawing.Point(401, 1);
             this.PreferredLayout_PS2.Name = "PreferredLayout_PS2";
             this.PreferredLayout_PS2.Size = new System.Drawing.Size(111, 30);
             this.PreferredLayout_PS2.TabIndex = 4;
@@ -575,7 +577,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label10.Location = new System.Drawing.Point(73, 3);
+            this.label10.Location = new System.Drawing.Point(131, 3);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(146, 26);
             this.label10.TabIndex = 3;
@@ -594,7 +596,7 @@
             this.PreferredLayout_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_V.Location = new System.Drawing.Point(246, 1);
+            this.PreferredLayout_V.Location = new System.Drawing.Point(304, 1);
             this.PreferredLayout_V.Name = "PreferredLayout_V";
             this.PreferredLayout_V.Size = new System.Drawing.Size(94, 30);
             this.PreferredLayout_V.TabIndex = 1;
@@ -612,7 +614,7 @@
             this.pnl_EnableController.Controls.Add(this.label8);
             this.pnl_EnableController.Controls.Add(this.EnableController_XBOX);
             this.pnl_EnableController.Controls.Add(this.EnableController_NO);
-            this.pnl_EnableController.Location = new System.Drawing.Point(48, 7);
+            this.pnl_EnableController.Location = new System.Drawing.Point(48, 8);
             this.pnl_EnableController.Name = "pnl_EnableController";
             this.pnl_EnableController.Size = new System.Drawing.Size(469, 32);
             this.pnl_EnableController.TabIndex = 8;
@@ -697,20 +699,6 @@
             this.EnableController_NO.UseVisualStyleBackColor = false;
             this.EnableController_NO.CheckedChanged += new System.EventHandler(this.setNewColor);
             this.EnableController_NO.Click += new System.EventHandler(this.EnableController_Click);
-            // 
-            // help_controls
-            // 
-            this.help_controls.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.help_controls.AutoSize = true;
-            this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_controls.Location = new System.Drawing.Point(82, 357);
-            this.help_controls.Name = "help_controls";
-            this.help_controls.Size = new System.Drawing.Size(390, 19);
-            this.help_controls.TabIndex = 11;
-            this.help_controls.Text = "Issues with controller? Need help with buttons? Click here!";
-            this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
             // 
             // tab_Graphics
             // 
@@ -2001,6 +1989,33 @@
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
+            // help_controls
+            // 
+            this.help_controls.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_controls.AutoSize = true;
+            this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_controls.Location = new System.Drawing.Point(34, 7);
+            this.help_controls.Name = "help_controls";
+            this.help_controls.Size = new System.Drawing.Size(93, 19);
+            this.help_controls.TabIndex = 11;
+            this.help_controls.Text = "Manual Here";
+            this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
+            // 
+            // lbl_controllerGuide
+            // 
+            this.lbl_controllerGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_controllerGuide.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbl_controllerGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_controllerGuide.Location = new System.Drawing.Point(6, 45);
+            this.lbl_controllerGuide.Name = "lbl_controllerGuide";
+            this.lbl_controllerGuide.Size = new System.Drawing.Size(540, 19);
+            this.lbl_controllerGuide.TabIndex = 12;
+            this.lbl_controllerGuide.Text = "[RUNTIME]";
+            this.lbl_controllerGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_controllerGuide.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2028,7 +2043,6 @@
             this.tab_Resolution.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tab_Controls.ResumeLayout(false);
-            this.tab_Controls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_PreferredLayout.ResumeLayout(false);
             this.pnl_PreferredLayout.PerformLayout();
@@ -2158,7 +2172,6 @@
         private System.Windows.Forms.Label lbl_OptimizedFOV;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lbl_donate;
-        private System.Windows.Forms.Label help_controls;
         private System.Windows.Forms.Label help_resolution;
         private System.Windows.Forms.Panel pnl_EnableController;
         private System.Windows.Forms.RadioButton EnableController_DS4;
@@ -2184,6 +2197,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox ptb_Steam;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lbl_controllerGuide;
+        private System.Windows.Forms.Label help_controls;
     }
 }
 
