@@ -147,6 +147,7 @@
     <EmbeddedResource Include="Resources\DXWrapper.zip" />
     <EmbeddedResource Include="Resources\ControllerDS4_PS2Layout.zip" />
     <EmbeddedResource Include="Resources\ControllerDS4_VLayout.zip" />
+    <EmbeddedResource Include="Resources\GreenScreenFix.zip" />
     <None Include="Resources\MGS2.ttf" />
     <EmbeddedResource Include="Resources\sweetFX_FXAA.zip" />
     <EmbeddedResource Include="Resources\sweetFX_SMAA.zip" />

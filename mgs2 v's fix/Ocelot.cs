@@ -275,13 +275,24 @@ namespace mgs2_v_s_fix
                     // PRELIMINARY ACTIONS
 
                     #region lot_of_things
+
                     // Extract DX Wrapper
 
                     File.Delete(Application.StartupPath + "\\d3d8.dll");
-                    // Is not present anymore, but I've retained it to ensure backward compatibility
+
+                    // 'enbconvertor.ini' is not used anymore, but I've retained its deletion
+                    // to ensure backward compatibility
                     File.Delete(Application.StartupPath + "\\enbconvertor.ini");
 
                     Unzip.UnZippa("DXWrapper.zip",true);
+
+                    // Extract fixed files for the "Green screen" bug (Issue #26), if not already there
+
+                    if (!File.Exists("quartz.dll") || !File.Exists("winmm.dll"))
+                    {
+                        Unzip.UnZippa("GreenScreenFix.zip", true);
+                    }
+                    
 
                     #endregion
 
