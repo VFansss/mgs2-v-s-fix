@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 using System.IO;
 using System.Diagnostics;
+using System.Text;
 
 namespace mgs2_v_s_fix
 {
@@ -19,17 +20,17 @@ namespace mgs2_v_s_fix
 
             // ENTRY POINT 
 
-            // Set to unzipper my working path
+            // Set my working path for unzipper
             Unzip.ApplicationPath = Application.StartupPath;
 
-            // All patch must be applied to start the fix!
+            // To start the fix ALL patch MUST be applied!
             bool forbidStart = false;
 
             // Check: it's a debug mode?
             // NB: if debug mode is enabled it will write all console log into
-            // a .txt file to desktop
+            // a .txt file on user desktop
 
-            if(System.IO.File.Exists(Application.StartupPath + "\\debug.sss") ||
+            if(File.Exists(Application.StartupPath + "\\debug.sss") ||
                (args.Length != 0 && args[0].Contains("-debug")) ){
 
                 // Debug mode enabled!
@@ -41,8 +42,47 @@ namespace mgs2_v_s_fix
 
                 Ocelot.PrintToDebugConsole("[!][!][!][!][!][!][!][!][!][!][!][!]");
                 Ocelot.PrintToDebugConsole("[!]");
-                Ocelot.PrintToDebugConsole("[!] Fix started at "+ DateTime.UtcNow+" (UCT)");
-                
+                Ocelot.PrintToDebugConsole("[!] Fix started at " + DateTime.UtcNow + " (UCT)");
+                Ocelot.PrintToDebugConsole("[!] Fix internal version: " + Ocelot.VERSION);
+
+                // Print last game execution log, if exist
+
+                if (File.Exists("last.log"))
+                {
+
+                    Ocelot.PrintToDebugConsole("[LAST.LOG] A last.log file exist. Reading it...");
+
+                    try
+                    {
+                        string entireFile = File.ReadAllText("last.log", Encoding.ASCII);
+
+                        Ocelot.PrintToDebugConsole("[LAST.LOG] " + entireFile);
+                    }
+
+                    catch
+                    {
+                        Ocelot.PrintToDebugConsole("[LAST.LOG] EXCEPTION WHILE READING LAST.LOG");
+                    }
+
+                }
+
+                else
+                {
+                    Ocelot.PrintToDebugConsole("[LAST.LOG] No last.log file found. Game has never started!");
+                }
+
+            }
+
+            // CHECK: start 'Nosy Mode'?
+            // Is used to hide graphical things, allowing me to program the Fix
+            // around people in peace and without looking like a total weirdo
+            // to un-educated people
+
+            if(File.Exists("nosyaround.sss")){
+
+                Ocelot.NOSYMODE = true;
+
+                Ocelot.PrintToDebugConsole("[NOSY] NOSY MODE ACTIVATED!");
 
             }
 
