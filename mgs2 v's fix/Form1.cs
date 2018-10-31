@@ -147,13 +147,24 @@ namespace mgs2_v_s_fix
             btn_saveSettings.Visible = true;
             tabControl1.Visible = true;
             pic_background.BackgroundImage = null;
-            otagif.Image = mgs2_v_s_fix.Properties.Resources.otagif;
-            otagif.Enabled = true;
-            otagif.Visible = true;
 
+            if (Ocelot.NOSYMODE)
+            {
+                // Don't show the gif.
+                otagif.Enabled = false;
+                otagif.Visible = false;
+            }
+            else
+            {
+                otagif.Image = mgs2_v_s_fix.Properties.Resources.otagif;
 
-            setNewIcon();
+                otagif.Enabled = true;
+                otagif.Visible = true;
 
+                setNewIcon();
+
+            }
+  
             lbl_ManualLink.Visible = true;
             pictureBox2.Visible = true;
 
@@ -455,6 +466,12 @@ namespace mgs2_v_s_fix
 
                 PreferredLayout_V.Checked = true;
 
+            }
+
+            if (Ocelot.NOSYMODE)
+            {
+                // Don't show the gamepad image because...reasons
+                pictureBox1.Visible = false;
             }
 
             #endregion
@@ -970,6 +987,13 @@ namespace mgs2_v_s_fix
         private void setNewBackground()
         {
 
+            if (Ocelot.NOSYMODE)
+            {
+                // Don't show anything because people are spying below your shoulder
+                pic_background.BackgroundImage = null;
+                return;
+            }
+
             Random rnd = new Random();
             int ran_number = 0;
 
@@ -989,6 +1013,13 @@ namespace mgs2_v_s_fix
 
         private void setNewIcon()
         {
+
+            if (Ocelot.NOSYMODE)
+            {
+                // Don't show anything because people are spying below your shoulder
+                pictureBox2.Image = null;
+                return;
+            }
 
             Random rnd = new Random();
             int ran_number = 0;
@@ -1088,7 +1119,7 @@ namespace mgs2_v_s_fix
 
             #endregion
 
-            this.pictureBox2.Image = ohi.ToBitmap();
+            pictureBox2.Image = ohi.ToBitmap();
 
             return;
 
@@ -1358,6 +1389,15 @@ namespace mgs2_v_s_fix
                 // ??
                 throw new Exception("ERROR: A layout has been selected without knowing your kind of controller!");
             }
+
+
+            if (Ocelot.NOSYMODE)
+            {
+                // Decide to not show the image because...reasons
+
+                pictureBox1.Visible = false;
+            }
+
         }
 
         #endregion

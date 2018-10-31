@@ -23,8 +23,11 @@ namespace mgs2_v_s_fix
     class Ocelot
     {
 
-        // Current version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "180916";
+        // Internal version of the V's Fix - Format is YYMMDD
+        public const string VERSION = "181031";
+
+        // Hide background images and more "appariscent" graphical things
+        public static bool NOSYMODE = false;
 
         // UPDATE
 
@@ -1300,11 +1303,23 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                case "debug_mode":
+                case "debugModeEnabled":
 
                     MessageBox.Show(
-                    "Debug mode enabled!",
-                    "Entering the matrix", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "Debug mode is ENABLED!"+"\n\n"+
+                    "You can find the debug log on your Desktop"+ "\n\n" +
+                    "You can analize it yourself and/or send it to me on GitHub!",
+                    "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "debugModeDisabled":
+
+                    MessageBox.Show(
+                    "Debug mode is DISABLED!" + "\n\n" +
+                    "Please go to V's Fix Wiki - Chapter 'Troubleshooting & Debug mode'" + "\n\n" +
+                    "to learn how to enable debug mode and let us understand better what is going wrong!",
+                    "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
@@ -1414,22 +1429,25 @@ namespace mgs2_v_s_fix
 
                 case "UAC_error":
 
-                    MessageBox.Show("Some operation has been blocked by operating system, and is a bad thing: current action has been aborted.\n\nCheck out UAC or your Admin rights and retry again!",
+                    MessageBox.Show("Some operation has been blocked by operating system :( \n\n" +
+                        "You have few things you can do:" + "\n\n" +
+                        "I) Start the fix using 'Admin rights'" + "\n\n"+
+                        "II) Install game in another directory that isn't 'Program Files'"+ "\n\n" +
+                        "III) Ensure that you have enough read/write permissions on the game folder" + "\n\n" +
+                        "If you can't solve in any way, you have to choose the last option:"+"\n\n"+
+                        "IV) Start the V's Fix in 'debug mode'\n\n" +
+                        "   a) creating a \"debug.sss\" file (without quote) inside your game folder\n" +
+                        "OR\n" +
+                        "   b) starting MGS2SSetup.exe with -debug argument\n\n" +
+                        "and see the log saved in your desktop (that you could also send to me for troubleshooting)" + "\n\n" +
+                        "Please read the V's Fix Wiki - Chapter 'Troubleshooting & Debug mode' for extra info",
                     "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
 
-                case "initiating_error":
+                case "forbidStartIsTrue":
 
-                    MessageBox.Show("Some operation has been blocked by operating system, and is a VERY bad thing: V's Fix cannot start without applying all preliminary actions, and thus it will close :( \n\n"+
-                        "You have few option:\n"+
-                        "1) Check out UAC or your Admin rights and retry again!\n\n"+
-                        "2) Try to start the V's Fix in 'debug mode'\n\n"+
-                        "   a) creating a \"debug.sss\" file (without quote) inside you game folder\n" +
-                        "OR\n"+
-                        "   b) starting MGS2SSetup.exe with -debug argument\n\n"+
-                        "and see the log saved in your desktop\n\n" +
-                        "If you cannot succeed to start it in any way read the V's Fix manual for some extra help.",
+                    MessageBox.Show("Not all preliminary actions has been completed by V's Fix, and is a VERY bad thing: V's Fix cannot start without, and thus it will close after these messages :(",
                     "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
