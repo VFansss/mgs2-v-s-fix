@@ -1279,6 +1279,15 @@ namespace mgs2_v_s_fix
 
                 // INFORMATION TIP    
 
+                case "gameNeverConfigured":
+
+                    MessageBox.Show(
+                    "To start the game, you have to configure it at least once!"+"\n\n"+
+                    "Please press 'SETTINGS' and configure the game, then retry :)",
+                    "And that's why it doesn't work...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
                 case "update_crashedinfire":
 
                     MessageBox.Show(

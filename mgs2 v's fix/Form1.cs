@@ -97,9 +97,24 @@ namespace mgs2_v_s_fix
 
         private void btn_startGame_Click(object sender, EventArgs e)
         {
-            Ocelot.startGame();
 
-            Ocelot.PrintToDebugConsole("[+] Start game button pressed");
+            // CHECK: the game has been configured at least once?
+            // I honestly hope that no one try to start the game without doing it, but...
+
+            if (File.Exists("mgs2.ini"))
+            {
+                Ocelot.startGame();
+
+                Ocelot.PrintToDebugConsole("[+] Start game button pressed");
+            }
+
+            else
+            {
+                Ocelot.showMessage("gameNeverConfigured");
+
+            }
+
+            
 
         }
 
