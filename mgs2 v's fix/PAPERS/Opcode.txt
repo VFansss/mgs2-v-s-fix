@@ -176,17 +176,19 @@ if high
 
 BunchOfCoolEffetcs (Focus-stealth-codec-vrmode)
 
+NB: From build 180915 I moved 'Focus' on a separate button
+
 if disabled
 
 0041 MISSING // Stealth Effect
-0042 MISSING // Focus
+0042 MISSING // Focus - Depth of Field
 0043 MISSING // Codec Focus
 004A MISSING // VR MODE
 
 if enabled
 
 0041 0001 // Stealth Effect
-0042 0001 // Focus
+0042 0001 // Focus - Depth of Field
 0043 0001 // Codec Focus
 004A 0001 // VR MODE
 

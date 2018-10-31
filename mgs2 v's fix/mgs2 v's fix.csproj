@@ -13,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,15 +30,13 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Program Files %28x86%29\KONAMI\MetalGearSolid2 Substance\bin\</OutputPath>
+    <OutputPath>..\..\..\Program Files %28x86%29\KONAMI22\MetalGearSolid2 Substance\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -147,7 +147,10 @@
     <EmbeddedResource Include="Resources\DXWrapper.zip" />
     <EmbeddedResource Include="Resources\ControllerDS4_PS2Layout.zip" />
     <EmbeddedResource Include="Resources\ControllerDS4_VLayout.zip" />
+    <EmbeddedResource Include="Resources\GreenScreenFix.zip" />
     <None Include="Resources\MGS2.ttf" />
+    <EmbeddedResource Include="Resources\sweetFX_FXAA.zip" />
+    <EmbeddedResource Include="Resources\sweetFX_SMAA.zip" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -184,6 +187,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
+    <None Include="Resources\bg8.png" />
+    <None Include="Resources\SteamLogo.png" />
     <None Include="Resources\exclamation.png" />
     <None Include="Resources\GitHubLogo.png" />
     <None Include="Resources\bg7.png" />

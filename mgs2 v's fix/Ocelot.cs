@@ -23,8 +23,11 @@ namespace mgs2_v_s_fix
     class Ocelot
     {
 
-        // Current version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "180804";
+        // Internal version of the V's Fix - Format is YYMMDD
+        public const string VERSION = "181031";
+
+        // Hide background images and more "appariscent" graphical things
+        public static bool NOSYMODE = false;
 
         // UPDATE
 
@@ -64,6 +67,30 @@ namespace mgs2_v_s_fix
                 Ocelot.showMessage("UAC_error");
             }
             
+        }
+
+        public static void StartSteam()
+        {
+            Process cmd;
+
+            try
+            {
+                string steamFolder = RetrieveSteamInstallationFolder();
+
+                string steamExePath = steamFolder + "\\steam.exe";
+
+                if (File.Exists(steamExePath))
+                {
+                    cmd = Process.Start(new ProcessStartInfo(steamExePath));
+                }
+
+                
+            }
+            catch
+            {
+                // UAC Blocked?
+                Ocelot.showMessage("UAC_error");
+            }
         }
 
         /// Settings Menu Function
@@ -251,12 +278,24 @@ namespace mgs2_v_s_fix
                     // PRELIMINARY ACTIONS
 
                     #region lot_of_things
+
                     // Extract DX Wrapper
 
                     File.Delete(Application.StartupPath + "\\d3d8.dll");
+
+                    // 'enbconvertor.ini' is not used anymore, but I've retained its deletion
+                    // to ensure backward compatibility
                     File.Delete(Application.StartupPath + "\\enbconvertor.ini");
 
                     Unzip.UnZippa("DXWrapper.zip",true);
+
+                    // Extract fixed files for the "Green screen" bug (Issue #26), if not already there
+
+                    if (!File.Exists("quartz.dll") || !File.Exists("winmm.dll"))
+                    {
+                        Unzip.UnZippa("GreenScreenFix.zip", true);
+                    }
+                    
 
                     #endregion
 
@@ -756,10 +795,9 @@ namespace mgs2_v_s_fix
 
                     if (Ocelot.InternalConfiguration.Graphics["BunchOfCoolEffect"].Equals("true"))
                     {
-                        ini.WriteLine("0041" + "\t" + "0001");
-                        ini.WriteLine("0042" + "\t" + "0001");
-                        ini.WriteLine("0043" + "\t" + "0001");
-                        ini.WriteLine("004A" + "\t" + "0001");
+                        ini.WriteLine("0041" + "\t" + "0001"); // Stealth Effect
+                        ini.WriteLine("0043" + "\t" + "0001"); // Codec Focus
+                        ini.WriteLine("004A" + "\t" + "0001"); // VR MODE
                     }
 
                     // MotionBlur
@@ -770,6 +808,12 @@ namespace mgs2_v_s_fix
                         ini.WriteLine("0045" + "\t" + "0001");
                     }
 
+                    // DepthOfField
+
+                    if (Ocelot.InternalConfiguration.Graphics["DepthOfField"].Equals("true"))
+                    {
+                        ini.WriteLine("0042" + "\t" + "0001"); // Focus - Depth of Field
+                    }
 
                     // AA
 
@@ -787,13 +831,20 @@ namespace mgs2_v_s_fix
                     File.Delete(Application.StartupPath + "\\d3d9.dll");
                     //File.Delete(Application.StartupPath + "\\d3d8.dll");
 
-                    if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("true"))
+                    if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("smaa"))
                     {
 
-                        // 1: V_s_sweetFX.zip must be extracted
-
                         Unzip.UnZippa("V_s_sweetFX.zip");
+                        Unzip.UnZippa("sweetFX_SMAA.zip");
 
+                    }
+                    else if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("fxaa"))
+                    {
+                        Unzip.UnZippa("V_s_sweetFX.zip");
+                        Unzip.UnZippa("sweetFX_FXAA.zip");
+                    }
+                    {
+                        // No anti-aliasing today, baby
                     }
 
                     #endregion
@@ -1101,6 +1152,7 @@ namespace mgs2_v_s_fix
             defaultConfig.Graphics["BunchOfCoolEffect"] = "true";
             defaultConfig.Graphics["MotionBlur"] = "true";
             defaultConfig.Graphics["AA"] = "false";
+            defaultConfig.Graphics["DepthOfField"] = "true";
 
             // Sound
 
@@ -1251,11 +1303,23 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                case "debug_mode":
+                case "debugModeEnabled":
 
                     MessageBox.Show(
-                    "Debug mode enabled!",
-                    "Entering the matrix", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "Debug mode is ENABLED!"+"\n\n"+
+                    "You can find the debug log on your Desktop"+ "\n\n" +
+                    "You can analize it yourself and/or send it to me on GitHub!",
+                    "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "debugModeDisabled":
+
+                    MessageBox.Show(
+                    "Debug mode is DISABLED!" + "\n\n" +
+                    "Please go to V's Fix Wiki - Chapter 'Troubleshooting & Debug mode'" + "\n\n" +
+                    "to learn how to enable debug mode and let us understand better what is going wrong!",
+                    "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
@@ -1264,13 +1328,6 @@ namespace mgs2_v_s_fix
                     MessageBox.Show(
                     "V's Fix will now run some extra applications for patching the game into 2.0 Version.\n\nOn some system it can prompt an UAC warning.\nIsn't doing anything harmful; let it do its job!",
                     "Just an info...", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
-                case "tip_AA":
-
-                    MessageBox.Show("Activating anti-aliasing requires that game (mgs2_sse.exe) must run in WINDOWS XP SP3 compatibility mode.\n\nV's Fix will try to set it automatically but (like all things in life) may fail so check it out MANUALLY.\n\nRunning the game without XP compatibility will result in a BLACK SCREEN ON GAME STARTUP!\n\nAlso, it isn't compatible with 'High' model quality preset.",
-                    "Back to 2001!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
@@ -1372,22 +1429,25 @@ namespace mgs2_v_s_fix
 
                 case "UAC_error":
 
-                    MessageBox.Show("Some operation has been blocked by operating system, and is a bad thing: current action has been aborted.\n\nCheck out UAC or your Admin rights and retry again!",
+                    MessageBox.Show("Some operation has been blocked by operating system :( \n\n" +
+                        "You have few things you can do:" + "\n\n" +
+                        "I) Start the fix using 'Admin rights'" + "\n\n"+
+                        "II) Install game in another directory that isn't 'Program Files'"+ "\n\n" +
+                        "III) Ensure that you have enough read/write permissions on the game folder" + "\n\n" +
+                        "If you can't solve in any way, you have to choose the last option:"+"\n\n"+
+                        "IV) Start the V's Fix in 'debug mode'\n\n" +
+                        "   a) creating a \"debug.sss\" file (without quote) inside your game folder\n" +
+                        "OR\n" +
+                        "   b) starting MGS2SSetup.exe with -debug argument\n\n" +
+                        "and see the log saved in your desktop (that you could also send to me for troubleshooting)" + "\n\n" +
+                        "Please read the V's Fix Wiki - Chapter 'Troubleshooting & Debug mode' for extra info",
                     "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
 
-                case "initiating_error":
+                case "forbidStartIsTrue":
 
-                    MessageBox.Show("Some operation has been blocked by operating system, and is a VERY bad thing: V's Fix cannot start without applying all preliminary actions, and thus it will close :( \n\n"+
-                        "You have few option:\n"+
-                        "1) Check out UAC or your Admin rights and retry again!\n\n"+
-                        "2) Try to start the V's Fix in 'debug mode'\n\n"+
-                        "   a) creating a \"debug.sss\" file (without quote) inside you game folder\n" +
-                        "OR\n"+
-                        "   b) starting MGS2SSetup.exe with -debug argument\n\n"+
-                        "and see the log saved in your desktop\n\n" +
-                        "If you cannot succeed to start it in any way read the V's Fix manual for some extra help.",
+                    MessageBox.Show("Not all preliminary actions has been completed by V's Fix, and is a VERY bad thing: V's Fix cannot start without, and thus it will close after these messages :(",
                     "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1406,6 +1466,85 @@ namespace mgs2_v_s_fix
                         "\n\n" +
                         "You can see again this message from the 'Resolution tab'." + "\n",
                     "*Suddenly green hills appear in the background*", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "steamIsRunning":
+
+                    MessageBox.Show(
+                        "Steam is actually running!"+
+                        "\n\n"+
+                        "To let V's Fix working, is safer to close if before proceeding."
+                        +"\n\n"+
+                        "Please manually close it and try again :)");
+
+                    break;
+
+                case "AddedForOneUser":
+
+                    MessageBox.Show(
+                        "MGS2 has been added for one Steam user!"+
+                        "\n\n"+
+                        "Start Steam, and have fun :D","Yeah"                 
+                        );
+
+                    break;
+
+                case "AddedForMoreUsers":
+
+                    MessageBox.Show(
+                        "MGS2 has been added for more Steam users!" +
+                        "\n\n" +
+                        "Start Steam, and have fun :D", "Yeah"
+                        );
+
+                    break;
+
+                case "NothingDone":
+
+                    MessageBox.Show(
+                        "Seems that MGS2 has already been added in the past."+
+                        "\n\n"+
+                        "( ????? )"+
+                        "\n\n" +
+                        "If you want to make V's Fix re-add the game, please delete it manually and launch this another time!"
+                        );
+
+                    break;
+
+                case "Add2SteamError":
+
+                    MessageBox.Show(
+                        "Add2Steam has caused an error, and nothing has been added." +
+                        "\n\n" +
+                        "Please activate the DEBUG MODE and report this to me!"
+                        );
+
+                    break;
+
+                case "tip_antialiasingANDmodelquality":
+
+                    MessageBox.Show(
+                        "Model quality is set to 'High' and Anti-Aliasing is activated."+
+                        "\n\n"+
+                        "Having both activated at the same time can, on some configuration, cause graphical glitches or freezes."+
+                        "\n\n"+
+                        "If you have these problems during the game, please deactivate one of the two things mentioned above."
+                        + "\n\n"+
+                        "This message will not show up until a next fix reboot, so consider yourself warned :D",
+                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_smaaANDsteam":
+
+                    MessageBox.Show(
+                        "SMAA Anti-Aliasing is activated, and this can cause glitches with the Steam overlay, and consequently with the Steam controller(s)" +
+                        "\n\n" +
+                        "For this reason, FXAA Anti-Aliasing has been selected instead."+
+                        "\n\n" +
+                        "( HINT: If you want SMAA at all costs, unselect 'Steam' from the 'Controls' tab of the fix, or enable it manually from 'SweetFX_settings.txt' after you press 'SAVE' )",
+                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
@@ -1675,8 +1814,297 @@ namespace mgs2_v_s_fix
             return returnValue;
         }
 
-        // END CLASS
+        // Add-To-Steam Functions
 
-    }
+        public static ADD2STEAMSTATUS AddMGS2ToSteam()
+        {
+            
+            try
+            {
+                // Retrieve Steam path
+
+                string SteamPath = RetrieveSteamInstallationFolder();
+
+                // Retrieve the current MGS2 location
+
+                string MGS2Path = AppDomain.CurrentDomain.BaseDirectory;
+
+                if(!Directory.Exists(SteamPath) || !Directory.Exists(MGS2Path))
+                {
+                    return ADD2STEAMSTATUS.CantFindNecessaryPaths;
+                }
+
+                // Ok, we can work
+
+                // Retrieve all Steam profiles
+
+                string SteamProfilesDir = Path.Combine(SteamPath, "userdata");
+
+                string[] steamProfiles = Directory.GetDirectories(SteamProfilesDir);
+
+                int numberOfMGS2Added = 0;
+
+                foreach (string singleProfileFolder in steamProfiles)
+                {
+                    // Find the shortcut.vdf file
+
+                    string vdfLocation = Path.Combine(singleProfileFolder+ "\\config\\shortcuts.vdf");
+
+                    // Useful Byte constant
+                    byte NUL = 0x00;
+                    byte SOH = 0x01;
+                    byte STX = 0x02;
+                    byte BS = 0x08;
+                    
+
+                    if (!File.Exists(vdfLocation))
+                    {
+                        // Create a base shortcuts.vdf
+
+                        using (var fs = new FileStream(vdfLocation, FileMode.Create, FileAccess.ReadWrite))
+                        {
+                            
+                            
+                            List<byte> shortcuts = Encoding.Default.GetBytes("shortcuts").ToList();
+
+                            List<byte> writeThis = new List<byte>();
+
+                            writeThis.Add(NUL);
+                            writeThis.AddRange(shortcuts);
+                            writeThis.Add(NUL);
+                            writeThis.Add(BS);
+                            writeThis.Add(BS);
+
+                            fs.Write(writeThis.ToArray(), 0, writeThis.Count);
+
+                        }
+
+                    }
+
+                    // Count existing games
+
+                    int nonSteamGames;
+
+                    string entireFile = File.ReadAllText(vdfLocation, Encoding.ASCII);
+
+                    string[] split = entireFile.Split(new string[] { "tags\0" }, StringSplitOptions.None);
+
+                    nonSteamGames = split.Count() - 1;
+
+                    // CHECK: Is METAL GEAR SOLID 2: SUBSTANCE already inserted in the past?
+
+                    if (entireFile.Contains("METAL GEAR SOLID 2: SUBSTANCE") && entireFile.Contains("mgs2_sse.exe"))
+                    {
+                        // Yup :D
+                        continue;
+                    }
+
+                    // Delete the last 2 BS at the end of the file
+
+                    entireFile = entireFile.Substring(0,entireFile.Length - 2);
+
+                    File.WriteAllText(vdfLocation, entireFile,Encoding.ASCII);
+
+                    // Append to the end of the file the hyper string for the new game
+
+                    using (var fs = new FileStream(vdfLocation, FileMode.Append, FileAccess.Write))
+                    {
+
+                        List<byte> writeThis = new List<byte>();
+
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes(nonSteamGames.ToString()).ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("appname").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes("METAL GEAR SOLID 2: SUBSTANCE").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("exe").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path+"mgs2_sse.exe")).ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("StartDir").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path)).ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("icon").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path + "MGS2SSetup.exe")).ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("ShortcutPath").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.AddRange(Encoding.Default.GetBytes("LaunchOption").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("IsHidden").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("AllowDesktopConfig").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("AllowOverlay").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(SOH);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("OpenVR").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(STX);
+                        writeThis.AddRange(Encoding.Default.GetBytes("LastPlayTime").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.Add(NUL);
+                        writeThis.AddRange(Encoding.Default.GetBytes("tags").ToList());
+                        writeThis.Add(NUL);
+                        writeThis.Add(BS);
+                        writeThis.Add(BS);
+
+                        // Append the 2 BS at the end to terminate the file
+                        writeThis.Add(BS);
+                        writeThis.Add(BS);
+
+                        fs.Write(writeThis.ToArray(), 0 , writeThis.Count);
+
+                    }
+
+                    // THE END!
+                    // for this profile, at least...
+
+                    numberOfMGS2Added = numberOfMGS2Added + 1;
+
+                }
+
+                // Signal something to UI
+
+                if(numberOfMGS2Added > 1)
+                {
+                    return ADD2STEAMSTATUS.AddedForMoreUsers;
+                }
+                else if(numberOfMGS2Added == 1)
+                {
+                    return ADD2STEAMSTATUS.AddedForOneUser;
+                }
+                else
+                {
+                    return ADD2STEAMSTATUS.NothingDone;
+                }
+
+            }
+
+            catch(Exception ex)
+            {
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
+
+                return ADD2STEAMSTATUS.AccessError;
+            }
+          
+
+        }
+
+        // Find Steam Location
+
+        public static string RetrieveSteamInstallationFolder()
+        {
+            string SteamPath = "";
+
+            try
+            {
+                string possible_path = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Valve\\Steam", "InstallPath", new Object().ToString());
+
+                if (Directory.Exists(possible_path) && File.Exists(possible_path+"\\Steam.exe"))
+                {
+                    Ocelot.PrintToDebugConsole("[ STEAM ] Steam is installed in this location: " + SteamPath);
+                    SteamPath = possible_path;
+                }
+
+                else
+                {
+                    Ocelot.PrintToDebugConsole("[ STEAM ] Steam not found ");
+                }
+
+            }
+
+            catch
+            {
+                Ocelot.PrintToDebugConsole("[ STEAM ] Exception while searching for Steam location");
+
+                // Do nothing
+            }
+
+
+            return SteamPath;
+
+        }
+
+        // Check if a process is running
+
+        public static bool IsThisProcessRunning(string processName)
+        {
+
+            bool processFound = false;
+
+            try
+            {
+                Process[] pname = Process.GetProcessesByName(processName);
+
+                if (pname.Length != 0)
+                {
+                    processFound = true;
+                }
+
+            }
+
+            catch
+            {
+                Ocelot.PrintToDebugConsole("[ ERROR-ERROR-ERROR ] Error while detecting if "+processName+" is running");
+
+            }
+
+            Ocelot.PrintToDebugConsole("[ IsThisProcessRunning ] "+processName+" isRunning value is "+processFound);
+
+            return processFound;
+
+        }
+
+        // Append " at a dir path
+        public static string Sanitize_pathForCMD(string originalPath)
+        {
+            if (originalPath.Contains(' '))
+            {
+                return "\"" + originalPath + "\"";
+            }
+
+            else
+            {
+                return originalPath;
+            }
+        }
+
+    }// END CLASS
 
 }

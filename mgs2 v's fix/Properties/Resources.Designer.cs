@@ -131,6 +131,16 @@ namespace mgs2_v_s_fix.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg8 {
+            get {
+                object obj = ResourceManager.GetObject("bg8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Byte[].
         /// </summary>
         internal static byte[] configuration_file {
@@ -387,6 +397,36 @@ namespace mgs2_v_s_fix.Properties {
             get {
                 object obj = ResourceManager.GetObject("otagif", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SteamLogo {
+            get {
+                object obj = ResourceManager.GetObject("SteamLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] sweetFX_FXAA {
+            get {
+                object obj = ResourceManager.GetObject("sweetFX_FXAA", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] sweetFX_SMAA {
+            get {
+                object obj = ResourceManager.GetObject("sweetFX_SMAA", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

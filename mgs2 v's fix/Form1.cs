@@ -36,7 +36,11 @@ namespace mgs2_v_s_fix
 
         private bool UPDATE_checkInProgress = false;
 
-        private string checkForUpdateDefaultString = "(Click on the GitHub logo above to check for updates)";
+        private string checkForUpdateDefaultString = "Click on the GitHub logo aside to check for V's Fix updates";
+
+        // Don't show these warnings (until the next fix reboot, at least)
+        
+        private bool tip_antialiasingANDmodelquality_showed = false;
 
         public Form1()
         {
@@ -143,13 +147,24 @@ namespace mgs2_v_s_fix
             btn_saveSettings.Visible = true;
             tabControl1.Visible = true;
             pic_background.BackgroundImage = null;
-            otagif.Image = mgs2_v_s_fix.Properties.Resources.otagif;
-            otagif.Enabled = true;
-            otagif.Visible = true;
 
+            if (Ocelot.NOSYMODE)
+            {
+                // Don't show the gif.
+                otagif.Enabled = false;
+                otagif.Visible = false;
+            }
+            else
+            {
+                otagif.Image = mgs2_v_s_fix.Properties.Resources.otagif;
 
-            setNewIcon();
+                otagif.Enabled = true;
+                otagif.Visible = true;
 
+                setNewIcon();
+
+            }
+  
             lbl_ManualLink.Visible = true;
             pictureBox2.Visible = true;
 
@@ -453,13 +468,27 @@ namespace mgs2_v_s_fix
 
             }
 
+            if (Ocelot.NOSYMODE)
+            {
+                // Don't show the gamepad image because...reasons
+                pictureBox1.Visible = false;
+            }
+
             #endregion
 
             // Graphics Settings
 
             #region lot_of_things
             foreach (Panel panel in tab_Graphics.Controls.OfType<Panel>()){
+                
+                if (panel.Name.Equals("pnl_AA"))
+                {
+                    // Note to myself after 2 years of developing
+                    // ok, in retrospective this wasn't a perfect idea
 
+                    // AA will be decided below
+                    continue;
+                }
 
                 String key = panel.Name.Remove(0, 4);
                 // NB: 'key' local variable now contain name of the settings key (ie: "MotionBlur")
@@ -503,16 +532,31 @@ namespace mgs2_v_s_fix
                 chb_MotionBlur.Checked = false;
             }
 
-            if (Ocelot.InternalConfiguration.Graphics["AA"] == "true")
+            if (Ocelot.InternalConfiguration.Graphics["DepthOfField"] == "true")
             {
-                chb_AA.Text = "ON";
-                chb_AA.Checked = true;
+                chb_DepthOfField.Text = "ON";
+                chb_DepthOfField.Checked = true;
             }
 
             else
             {
-                chb_AA.Text = "OFF";
-                chb_AA.Checked = false;
+                chb_DepthOfField.Text = "OFF";
+                chb_DepthOfField.Checked = false;
+            }
+
+            // Anti-Aliasing
+            // I have to contemplate when AA was true or false in the old V's Fix version
+
+            if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("smaa") || Ocelot.InternalConfiguration.Graphics["AA"].Equals("true"))
+            {
+                AA_smaa.Checked = true;
+            }
+            else if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("fxaa"))
+            {
+                AA_fxaa.Checked = true;
+            }
+            else{
+                AA_no.Checked = true;
             }
 
             #endregion
@@ -569,7 +613,7 @@ namespace mgs2_v_s_fix
             return true;
         }
 
-            /* this will retrieve settings from setupper and storage in inside Ocelot.InternalConfiguration */
+            /* this will retrieve settings from setupper and will storage it inside Ocelot.InternalConfiguration */
 
         public void load_SetupperConfig_SetTo_InternalConfig()
         {
@@ -734,15 +778,31 @@ namespace mgs2_v_s_fix
                 Ocelot.InternalConfiguration.Graphics["MotionBlur"] = "false";
             }
 
-            if (chb_AA.Checked == true)
+            if (chb_DepthOfField.Checked == true)
             {
-                Ocelot.InternalConfiguration.Graphics["AA"] = "true";
+                Ocelot.InternalConfiguration.Graphics["DepthOfField"] = "true";
 
             }
 
             else
             {
-                Ocelot.InternalConfiguration.Graphics["AA"] = "false";
+                Ocelot.InternalConfiguration.Graphics["DepthOfField"] = "false";
+            }
+
+            // ANTI-ALIASING
+
+            if (AA_smaa.Checked)
+            {
+                Ocelot.InternalConfiguration.Graphics["AA"] = "smaa";
+
+            }
+            else if (AA_fxaa.Checked)
+            {
+                Ocelot.InternalConfiguration.Graphics["AA"] = "fxaa";
+            }
+            else
+            {
+                Ocelot.InternalConfiguration.Graphics["AA"] = "no";
             }
 
             #endregion
@@ -927,11 +987,18 @@ namespace mgs2_v_s_fix
         private void setNewBackground()
         {
 
+            if (Ocelot.NOSYMODE)
+            {
+                // Don't show anything because people are spying below your shoulder
+                pic_background.BackgroundImage = null;
+                return;
+            }
+
             Random rnd = new Random();
             int ran_number = 0;
 
             // CHANGE THIS IF MORE SCREENSHOT ARE AVAILABLE
-            int NUMBER_OF_SCREENSHOTS = 7;
+            int NUMBER_OF_SCREENSHOTS = 8;
 
             do { ran_number = rnd.Next(1, NUMBER_OF_SCREENSHOTS+1); }
             while (!(ran_number != bg_number));
@@ -946,6 +1013,13 @@ namespace mgs2_v_s_fix
 
         private void setNewIcon()
         {
+
+            if (Ocelot.NOSYMODE)
+            {
+                // Don't show anything because people are spying below your shoulder
+                pictureBox2.Image = null;
+                return;
+            }
 
             Random rnd = new Random();
             int ran_number = 0;
@@ -1045,7 +1119,7 @@ namespace mgs2_v_s_fix
 
             #endregion
 
-            this.pictureBox2.Image = ohi.ToBitmap();
+            pictureBox2.Image = ohi.ToBitmap();
 
             return;
 
@@ -1222,18 +1296,50 @@ namespace mgs2_v_s_fix
 
             else
             {
-                PreferredLayout_UpdateImage();
+                PreferredLayout_UpdateImageAndLayout();
             }
 
+            // Set an help label for the different controllers
+
+            if (pressedRadio.Name.Equals("EnableController_NO"))
+            {
+                lbl_controllerGuide.Visible = false;
+            }
+
+            else
+            {
+
+                if (pressedRadio.Name.Equals("EnableController_DS4"))
+                {
+                    lbl_controllerGuide.Text = "( ONLY if using a DS4 WITHOUT external software. Otherwise, choose 'XBOX' )";
+                }
+                else if (pressedRadio.Name.Equals("EnableController_STEAM"))
+                {
+                    lbl_controllerGuide.Text = "( If you are going to play on Steam AND use a controller through its drivers )";
+
+                    // Check if user has selected the SMAA anti-aliasing
+
+                    AA_showNeededWarnings();
+
+
+                }
+                else // Xbox
+                {
+                    lbl_controllerGuide.Text = "( For original Xbox controllers, and those who emulate them )";
+                }
+
+                lbl_controllerGuide.Visible = true;
+
+            }
 
         }
 
         private void PreferredLayout_Click(object sender, EventArgs e)
         {
-            PreferredLayout_UpdateImage();
+            PreferredLayout_UpdateImageAndLayout();
         }
 
-        private void PreferredLayout_UpdateImage()
+        private void PreferredLayout_UpdateImageAndLayout()
         {
             // What controller, and what layout?
 
@@ -1241,6 +1347,8 @@ namespace mgs2_v_s_fix
 
             if (EnableController_XBOX.Checked)
             {
+                pnl_LayoutChooser.Visible = true;
+
                 if (PreferredLayout_PS2.Checked)
                 {
                     pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
@@ -1254,9 +1362,10 @@ namespace mgs2_v_s_fix
                 }
 
             }
-
             else if (EnableController_DS4.Checked)
             {
+                pnl_LayoutChooser.Visible = true;
+
                 if (PreferredLayout_PS2.Checked)
                 {
                     pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_PS2Layout;
@@ -1270,43 +1379,154 @@ namespace mgs2_v_s_fix
                 }
 
             }
-
+            else if (EnableController_STEAM.Checked)
+            {
+                pnl_LayoutChooser.Visible = false;
+                pictureBox1.Image = null;
+            }
             else
             {
                 // ??
                 throw new Exception("ERROR: A layout has been selected without knowing your kind of controller!");
             }
+
+
+            if (Ocelot.NOSYMODE)
+            {
+                // Decide to not show the image because...reasons
+
+                pictureBox1.Visible = false;
+            }
+
         }
 
         #endregion
 
         #region GRAPHICS tab
 
-        // Exclusive toggle logic
+        // Show an helper
 
-        private void chb_AA_MouseClick(object sender, MouseEventArgs e)
+        private void AA_Click(object sender, EventArgs e)
         {
 
-            if (chb_AA.Checked == true)
+            if (sender.GetType() != typeof(RadioButton))
+            {
+                // ??
+                throw new Exception("Event raised by an unknow element");
+
+            }
+
+            RadioButton pressedRadio = (RadioButton)sender;
+
+            AA_showTheRightHelper();
+
+        }
+
+        private void AA_showTheRightHelper()
+        {
+            // See what AA option is selected
+
+            string selectedAAoption = "";
+
+            foreach (RadioButton singleRadioButton in pnl_AA.Controls.OfType<RadioButton>())
             {
 
-                if (ModelQuality_high.Checked == true)
+                if (singleRadioButton.Checked)
                 {
-                    ModelQuality_medium.Checked = true;
+                    selectedAAoption = singleRadioButton.Name;
+                    break;
                 }
 
             }
 
-        }
+            // Set an help label for the different controllers
 
-        private void ModelQuality_high_MouseClick(object sender, MouseEventArgs e)
-        {
-
-            if (ModelQuality_high.Checked == true)
+            if (selectedAAoption.Equals("AA_no"))
             {
-                chb_AA.Checked = false;
+                lbl_AAGuide.Visible = false;
             }
 
+            else
+            {
+
+                if (selectedAAoption.Equals("AA_fxaa"))
+                {
+                    lbl_AAGuide.Text = "( Lighter and faster, but less effective than SMAA. Raccomended for laptop )";
+                }
+                else if(selectedAAoption.Equals("AA_smaa")) 
+                {
+                    // SMAA
+                    lbl_AAGuide.Text = "( Better quality than FXAA, but heavier. NOT compatible with Steam overlay )";
+                }
+                else
+                {
+                    // ??
+                    throw new Exception("Seems that no AA radio button has been pressed");
+                }
+
+                lbl_AAGuide.Visible = true;
+
+                // Show warnings, if needed
+
+                AA_showNeededWarnings();
+
+            }
+        }
+
+        // Esclusive button logic
+
+        private void ModelQuality_high_Click(object sender, EventArgs e)
+        {
+            AA_showNeededWarnings();
+        }
+
+        private void AA_showNeededWarnings(bool imGoingToUseAddGame2Steam = false)
+        {
+            // CHECK: the user want to use Steam AND use SMAA?
+            // Action: must choose FXAA and warn the user
+            
+            if( AA_smaa.Checked && ( imGoingToUseAddGame2Steam || EnableController_STEAM.Checked ))
+            {
+
+                Ocelot.showMessage("tip_smaaANDsteam");
+
+                AA_fxaa.Checked = true;
+
+                AA_showTheRightHelper();
+
+            }
+
+
+            // CHECK: the user use any anti-aliasing AND Model quality to High?
+            // Action: warn the user
+
+            if( tip_antialiasingANDmodelquality_showed == false && ( AA_fxaa.Checked || AA_smaa.Checked) && ModelQuality_high.Checked)
+            {
+                Ocelot.showMessage("tip_antialiasingANDmodelquality");
+
+                // Don't show until next reboot
+                tip_antialiasingANDmodelquality_showed = true;
+
+            }
+
+
+        }
+
+        #endregion
+
+        #region SOUND tab
+
+        private void help_sound_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Troubleshooting-&-Debug-mode#common-problems--common-solutions");
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
         }
 
         #endregion
@@ -1433,7 +1653,7 @@ namespace mgs2_v_s_fix
 
         #endregion
 
-        #region UPDATE
+        #region EXTRA
 
         // UPDATE
 
@@ -1498,6 +1718,87 @@ namespace mgs2_v_s_fix
 
             lbl_checkForUpdate.Text = checkForUpdateDefaultString;
             UPDATE_checkInProgress = false;
+        }
+
+        // 'Add-To-Steam' button
+
+        private void ptb_Steam_Click(object sender, EventArgs e)
+        {
+            if (Ocelot.IsThisProcessRunning("Steam"))
+            {
+                Ocelot.showMessage("steamIsRunning");
+                return;
+            }
+
+
+            DialogResult doYouWantToProceed = MessageBox.Show(
+                "V's Fix will now try to add on your Steam the game :"+
+                "\n\n" +
+                "METAL GEAR SOLID 2: SUBSTANCE"+
+                "\n\n"+
+                "Also, it will automatically set 'Open V's Fix after playing the game' to false, so you can interact with the game directly from Steam"+
+                "\n\n"+
+                "Are you sure you want to continue?","Add the game on Steam", MessageBoxButtons.YesNo);
+
+            if(doYouWantToProceed != DialogResult.Yes)
+            {
+                return;
+            }
+
+            // Let's go
+
+            ADD2STEAMSTATUS workResult = Ocelot.AddMGS2ToSteam();
+
+            Ocelot.PrintToDebugConsole("[ STEAM ] Add2Steam has returned "+workResult.ToString());
+
+            switch (workResult)
+            {
+                case ADD2STEAMSTATUS.AddedForOneUser:
+
+                    Ocelot.showMessage("AddedForOneUser");
+
+                    break;
+
+                case ADD2STEAMSTATUS.AddedForMoreUsers:
+
+                    Ocelot.showMessage("AddedForMoreUsers");
+
+                    break;
+
+                case ADD2STEAMSTATUS.NothingDone:
+
+                    Ocelot.showMessage("NothingDone");
+
+                    break;
+
+                default:
+
+                    Ocelot.showMessage("Add2SteamError");
+
+                    break;
+            }
+
+            // Don't open the fix after playing
+
+            chb_FixAfterPlaying.Checked = false;
+
+            AA_showNeededWarnings(true);
+
+            // Save this inside the configuration .INI, even if the user didn't pressed the SAVE button
+
+            load_SetupperConfig_SetTo_InternalConfig();
+
+            Ocelot.load_InternalConfig_SetTo_INI();
+
+
+            DialogResult startSteamAnswer = MessageBox.Show(
+                "Do you want to launch Steam?", "Answer wisely", MessageBoxButtons.YesNo);
+
+            if (startSteamAnswer == DialogResult.Yes)
+            {
+                Ocelot.StartSteam();
+            }
+
         }
 
         #endregion

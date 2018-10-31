@@ -48,7 +48,8 @@ namespace mgs2_v_s_fix
                 {"EffectQuantity",null},
                 {"BunchOfCoolEffect",null},
                 {"MotionBlur",null},
-                {"AA",null}
+                {"AA",null},
+                {"DepthOfField",null}
 
             };
 

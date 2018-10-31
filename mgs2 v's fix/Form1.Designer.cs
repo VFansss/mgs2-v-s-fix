@@ -33,6 +33,8 @@
             this.btn_settings = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_Resolution = new System.Windows.Forms.TabPage();
+            this.help_compatibilityWarning = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.help_resolution = new System.Windows.Forms.Label();
             this.chb_OptimizedFOV = new System.Windows.Forms.CheckBox();
             this.lbl_OptimizedFOV = new System.Windows.Forms.Label();
@@ -49,20 +51,28 @@
             this.txt_Width = new System.Windows.Forms.TextBox();
             this.lbl_des_00 = new System.Windows.Forms.Label();
             this.tab_Controls = new System.Windows.Forms.TabPage();
+            this.lbl_controllerGuide = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnl_PreferredLayout = new System.Windows.Forms.Panel();
+            this.pnl_LayoutChooser = new System.Windows.Forms.Panel();
             this.PreferredLayout_PS2 = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
             this.PreferredLayout_V = new System.Windows.Forms.RadioButton();
+            this.help_controls = new System.Windows.Forms.Label();
             this.pnl_EnableController = new System.Windows.Forms.Panel();
+            this.EnableController_STEAM = new System.Windows.Forms.RadioButton();
             this.EnableController_DS4 = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
             this.EnableController_NO = new System.Windows.Forms.RadioButton();
-            this.help_controls = new System.Windows.Forms.Label();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
-            this.chb_AA = new System.Windows.Forms.CheckBox();
+            this.pnl_AA = new System.Windows.Forms.Panel();
+            this.AA_smaa = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
+            this.AA_fxaa = new System.Windows.Forms.RadioButton();
+            this.AA_no = new System.Windows.Forms.RadioButton();
+            this.chb_DepthOfField = new System.Windows.Forms.CheckBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.chb_MotionBlur = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.chb_BunchOfCoolEffect = new System.Windows.Forms.CheckBox();
@@ -93,10 +103,6 @@
             this.RenderingSize_medium = new System.Windows.Forms.RadioButton();
             this.RenderingSize_low = new System.Windows.Forms.RadioButton();
             this.tab_Sound = new System.Windows.Forms.TabPage();
-            this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
-            this.lbl_checkForUpdate = new System.Windows.Forms.Label();
-            this.chb_FixAfterPlaying = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lst_sound_list = new System.Windows.Forms.ListBox();
             this.pnl_Quality = new System.Windows.Forms.Panel();
@@ -114,6 +120,17 @@
             this.SE_high = new System.Windows.Forms.RadioButton();
             this.SE_medium = new System.Windows.Forms.RadioButton();
             this.SE_low = new System.Windows.Forms.RadioButton();
+            this.tab_Extra = new System.Windows.Forms.TabPage();
+            this.ptb_Steam = new System.Windows.Forms.PictureBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
+            this.lbl_checkForUpdate = new System.Windows.Forms.Label();
+            this.ptb_comPLAY = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.chb_FixAfterPlaying = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tab_About = new System.Windows.Forms.TabPage();
             this.lbl_donate = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -122,13 +139,6 @@
             this.abt_Licence = new System.Windows.Forms.RadioButton();
             this.abt_Contacts = new System.Windows.Forms.RadioButton();
             this.tbx_About = new System.Windows.Forms.RichTextBox();
-            this.tab_cP = new System.Windows.Forms.TabPage();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.ptb_comPLAY = new System.Windows.Forms.PictureBox();
             this.btn_exit = new System.Windows.Forms.Button();
             this.btn_saveSettings = new System.Windows.Forms.Button();
             this.lbl_debugMode = new System.Windows.Forms.Label();
@@ -136,34 +146,37 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.help_compatibilityWarning = new System.Windows.Forms.Label();
+            this.lbl_AAGuide = new System.Windows.Forms.Label();
+            this.help_sound = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tab_Controls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_PreferredLayout.SuspendLayout();
+            this.pnl_LayoutChooser.SuspendLayout();
             this.pnl_EnableController.SuspendLayout();
             this.tab_Graphics.SuspendLayout();
+            this.pnl_AA.SuspendLayout();
             this.pnl_EffectQuantity.SuspendLayout();
             this.pnl_RenderingClearness.SuspendLayout();
             this.pnl_ModelQuality.SuspendLayout();
             this.pnl_ShadowDetail.SuspendLayout();
             this.pnl_RenderingSize.SuspendLayout();
             this.tab_Sound.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
             this.pnl_Quality.SuspendLayout();
             this.pnl_SoundQuality.SuspendLayout();
             this.pnl_SE.SuspendLayout();
+            this.tab_Extra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_Steam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).BeginInit();
             this.tab_About.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnl_about.SuspendLayout();
-            this.tab_cP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -214,8 +227,8 @@
             this.tabControl1.Controls.Add(this.tab_Controls);
             this.tabControl1.Controls.Add(this.tab_Graphics);
             this.tabControl1.Controls.Add(this.tab_Sound);
+            this.tabControl1.Controls.Add(this.tab_Extra);
             this.tabControl1.Controls.Add(this.tab_About);
-            this.tabControl1.Controls.Add(this.tab_cP);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabControl1.Location = new System.Drawing.Point(234, 20);
@@ -252,6 +265,30 @@
             this.tab_Resolution.Size = new System.Drawing.Size(552, 379);
             this.tab_Resolution.TabIndex = 0;
             this.tab_Resolution.Text = "Resolution";
+            // 
+            // help_compatibilityWarning
+            // 
+            this.help_compatibilityWarning.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_compatibilityWarning.AutoSize = true;
+            this.help_compatibilityWarning.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_compatibilityWarning.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_compatibilityWarning.Location = new System.Drawing.Point(147, 199);
+            this.help_compatibilityWarning.Name = "help_compatibilityWarning";
+            this.help_compatibilityWarning.Size = new System.Drawing.Size(306, 19);
+            this.help_compatibilityWarning.TabIndex = 16;
+            this.help_compatibilityWarning.Text = "Check the compatibility flags! More info here!";
+            this.help_compatibilityWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.help_compatibilityWarning.Click += new System.EventHandler(this.help_compatibilityWarning_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox4.Image = global::mgs2_v_s_fix.Properties.Resources.exclamation;
+            this.pictureBox4.Location = new System.Drawing.Point(99, 187);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(42, 42);
+            this.pictureBox4.TabIndex = 15;
+            this.pictureBox4.TabStop = false;
             // 
             // help_resolution
             // 
@@ -487,10 +524,10 @@
             // 
             // tab_Controls
             // 
+            this.tab_Controls.Controls.Add(this.lbl_controllerGuide);
             this.tab_Controls.Controls.Add(this.pictureBox1);
             this.tab_Controls.Controls.Add(this.pnl_PreferredLayout);
             this.tab_Controls.Controls.Add(this.pnl_EnableController);
-            this.tab_Controls.Controls.Add(this.help_controls);
             this.tab_Controls.Location = new System.Drawing.Point(4, 32);
             this.tab_Controls.Name = "tab_Controls";
             this.tab_Controls.Padding = new System.Windows.Forms.Padding(3);
@@ -499,10 +536,23 @@
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
             // 
+            // lbl_controllerGuide
+            // 
+            this.lbl_controllerGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_controllerGuide.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbl_controllerGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_controllerGuide.Location = new System.Drawing.Point(6, 45);
+            this.lbl_controllerGuide.Name = "lbl_controllerGuide";
+            this.lbl_controllerGuide.Size = new System.Drawing.Size(540, 19);
+            this.lbl_controllerGuide.TabIndex = 12;
+            this.lbl_controllerGuide.Text = "[RUNTIME]";
+            this.lbl_controllerGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_controllerGuide.Visible = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 86);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 110);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(515, 270);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -512,13 +562,22 @@
             // pnl_PreferredLayout
             // 
             this.pnl_PreferredLayout.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_PS2);
-            this.pnl_PreferredLayout.Controls.Add(this.label10);
-            this.pnl_PreferredLayout.Controls.Add(this.PreferredLayout_V);
-            this.pnl_PreferredLayout.Location = new System.Drawing.Point(13, 49);
+            this.pnl_PreferredLayout.Controls.Add(this.pnl_LayoutChooser);
+            this.pnl_PreferredLayout.Controls.Add(this.help_controls);
+            this.pnl_PreferredLayout.Location = new System.Drawing.Point(3, 73);
             this.pnl_PreferredLayout.Name = "pnl_PreferredLayout";
-            this.pnl_PreferredLayout.Size = new System.Drawing.Size(526, 305);
+            this.pnl_PreferredLayout.Size = new System.Drawing.Size(546, 305);
             this.pnl_PreferredLayout.TabIndex = 12;
+            // 
+            // pnl_LayoutChooser
+            // 
+            this.pnl_LayoutChooser.Controls.Add(this.PreferredLayout_PS2);
+            this.pnl_LayoutChooser.Controls.Add(this.label10);
+            this.pnl_LayoutChooser.Controls.Add(this.PreferredLayout_V);
+            this.pnl_LayoutChooser.Location = new System.Drawing.Point(133, 0);
+            this.pnl_LayoutChooser.Name = "pnl_LayoutChooser";
+            this.pnl_LayoutChooser.Size = new System.Drawing.Size(399, 39);
+            this.pnl_LayoutChooser.TabIndex = 12;
             // 
             // PreferredLayout_PS2
             // 
@@ -532,10 +591,10 @@
             this.PreferredLayout_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_PS2.Location = new System.Drawing.Point(343, 1);
+            this.PreferredLayout_PS2.Location = new System.Drawing.Point(279, 4);
             this.PreferredLayout_PS2.Name = "PreferredLayout_PS2";
             this.PreferredLayout_PS2.Size = new System.Drawing.Size(111, 30);
-            this.PreferredLayout_PS2.TabIndex = 4;
+            this.PreferredLayout_PS2.TabIndex = 7;
             this.PreferredLayout_PS2.TabStop = true;
             this.PreferredLayout_PS2.Text = "PS2 Type";
             this.PreferredLayout_PS2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -548,10 +607,10 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label10.Location = new System.Drawing.Point(73, 3);
+            this.label10.Location = new System.Drawing.Point(9, 6);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(146, 26);
-            this.label10.TabIndex = 3;
+            this.label10.TabIndex = 6;
             this.label10.Text = "Buttons Layout:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -567,10 +626,10 @@
             this.PreferredLayout_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_V.Location = new System.Drawing.Point(246, 1);
+            this.PreferredLayout_V.Location = new System.Drawing.Point(182, 4);
             this.PreferredLayout_V.Name = "PreferredLayout_V";
             this.PreferredLayout_V.Size = new System.Drawing.Size(94, 30);
-            this.PreferredLayout_V.TabIndex = 1;
+            this.PreferredLayout_V.TabIndex = 5;
             this.PreferredLayout_V.TabStop = true;
             this.PreferredLayout_V.Text = "V\'s Type";
             this.PreferredLayout_V.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -578,17 +637,55 @@
             this.PreferredLayout_V.CheckedChanged += new System.EventHandler(this.setNewColor);
             this.PreferredLayout_V.Click += new System.EventHandler(this.PreferredLayout_Click);
             // 
+            // help_controls
+            // 
+            this.help_controls.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_controls.AutoSize = true;
+            this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_controls.Location = new System.Drawing.Point(34, 7);
+            this.help_controls.Name = "help_controls";
+            this.help_controls.Size = new System.Drawing.Size(93, 19);
+            this.help_controls.TabIndex = 11;
+            this.help_controls.Text = "Manual Here";
+            this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
+            // 
             // pnl_EnableController
             // 
             this.pnl_EnableController.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnl_EnableController.Controls.Add(this.EnableController_STEAM);
             this.pnl_EnableController.Controls.Add(this.EnableController_DS4);
             this.pnl_EnableController.Controls.Add(this.label8);
             this.pnl_EnableController.Controls.Add(this.EnableController_XBOX);
             this.pnl_EnableController.Controls.Add(this.EnableController_NO);
-            this.pnl_EnableController.Location = new System.Drawing.Point(48, 7);
+            this.pnl_EnableController.Location = new System.Drawing.Point(6, 8);
             this.pnl_EnableController.Name = "pnl_EnableController";
-            this.pnl_EnableController.Size = new System.Drawing.Size(469, 32);
+            this.pnl_EnableController.Size = new System.Drawing.Size(540, 32);
             this.pnl_EnableController.TabIndex = 8;
+            // 
+            // EnableController_STEAM
+            // 
+            this.EnableController_STEAM.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EnableController_STEAM.Appearance = System.Windows.Forms.Appearance.Button;
+            this.EnableController_STEAM.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_STEAM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EnableController_STEAM.FlatAppearance.BorderSize = 0;
+            this.EnableController_STEAM.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_STEAM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_STEAM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_STEAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnableController_STEAM.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnableController_STEAM.Location = new System.Drawing.Point(431, 4);
+            this.EnableController_STEAM.Name = "EnableController_STEAM";
+            this.EnableController_STEAM.Size = new System.Drawing.Size(94, 30);
+            this.EnableController_STEAM.TabIndex = 5;
+            this.EnableController_STEAM.TabStop = true;
+            this.EnableController_STEAM.Text = "Steam";
+            this.EnableController_STEAM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_STEAM.UseVisualStyleBackColor = false;
+            this.EnableController_STEAM.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.EnableController_STEAM.Click += new System.EventHandler(this.EnableController_Click);
             // 
             // EnableController_DS4
             // 
@@ -671,24 +768,12 @@
             this.EnableController_NO.CheckedChanged += new System.EventHandler(this.setNewColor);
             this.EnableController_NO.Click += new System.EventHandler(this.EnableController_Click);
             // 
-            // help_controls
-            // 
-            this.help_controls.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.help_controls.AutoSize = true;
-            this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_controls.Location = new System.Drawing.Point(82, 357);
-            this.help_controls.Name = "help_controls";
-            this.help_controls.Size = new System.Drawing.Size(390, 19);
-            this.help_controls.TabIndex = 11;
-            this.help_controls.Text = "Issues with controller? Need help with buttons? Click here!";
-            this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
-            // 
             // tab_Graphics
             // 
-            this.tab_Graphics.Controls.Add(this.chb_AA);
-            this.tab_Graphics.Controls.Add(this.label9);
+            this.tab_Graphics.Controls.Add(this.lbl_AAGuide);
+            this.tab_Graphics.Controls.Add(this.pnl_AA);
+            this.tab_Graphics.Controls.Add(this.chb_DepthOfField);
+            this.tab_Graphics.Controls.Add(this.label20);
             this.tab_Graphics.Controls.Add(this.chb_MotionBlur);
             this.tab_Graphics.Controls.Add(this.label7);
             this.tab_Graphics.Controls.Add(this.chb_BunchOfCoolEffect);
@@ -705,39 +790,127 @@
             this.tab_Graphics.Text = "Graphics";
             this.tab_Graphics.UseVisualStyleBackColor = true;
             // 
-            // chb_AA
+            // pnl_AA
             // 
-            this.chb_AA.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chb_AA.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chb_AA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chb_AA.FlatAppearance.BorderSize = 0;
-            this.chb_AA.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.chb_AA.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.chb_AA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.chb_AA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chb_AA.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_AA.Location = new System.Drawing.Point(332, 226);
-            this.chb_AA.Name = "chb_AA";
-            this.chb_AA.Size = new System.Drawing.Size(55, 26);
-            this.chb_AA.TabIndex = 15;
-            this.chb_AA.TabStop = false;
-            this.chb_AA.Text = "XXX";
-            this.chb_AA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chb_AA.UseVisualStyleBackColor = true;
-            this.chb_AA.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.chb_AA.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chb_AA_MouseClick);
+            this.pnl_AA.Controls.Add(this.AA_smaa);
+            this.pnl_AA.Controls.Add(this.label9);
+            this.pnl_AA.Controls.Add(this.AA_fxaa);
+            this.pnl_AA.Controls.Add(this.AA_no);
+            this.pnl_AA.Location = new System.Drawing.Point(64, 226);
+            this.pnl_AA.Name = "pnl_AA";
+            this.pnl_AA.Size = new System.Drawing.Size(425, 32);
+            this.pnl_AA.TabIndex = 18;
+            // 
+            // AA_smaa
+            // 
+            this.AA_smaa.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AA_smaa.Appearance = System.Windows.Forms.Appearance.Button;
+            this.AA_smaa.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_smaa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AA_smaa.FlatAppearance.BorderSize = 0;
+            this.AA_smaa.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.AA_smaa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.AA_smaa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.AA_smaa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AA_smaa.Location = new System.Drawing.Point(347, 1);
+            this.AA_smaa.Name = "AA_smaa";
+            this.AA_smaa.Size = new System.Drawing.Size(75, 30);
+            this.AA_smaa.TabIndex = 7;
+            this.AA_smaa.TabStop = true;
+            this.AA_smaa.Text = "SMAA";
+            this.AA_smaa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_smaa.UseVisualStyleBackColor = true;
+            this.AA_smaa.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.AA_smaa.Click += new System.EventHandler(this.AA_Click);
             // 
             // label9
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label9.Location = new System.Drawing.Point(143, 225);
+            this.label9.Location = new System.Drawing.Point(60, 3);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(193, 26);
+            this.label9.Size = new System.Drawing.Size(124, 26);
             this.label9.TabIndex = 14;
-            this.label9.Text = "Anti Aliasing (SMAA):";
+            this.label9.Text = "Anti Aliasing:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // AA_fxaa
+            // 
+            this.AA_fxaa.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AA_fxaa.Appearance = System.Windows.Forms.Appearance.Button;
+            this.AA_fxaa.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_fxaa.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AA_fxaa.FlatAppearance.BorderSize = 0;
+            this.AA_fxaa.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.AA_fxaa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.AA_fxaa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.AA_fxaa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AA_fxaa.Location = new System.Drawing.Point(247, 1);
+            this.AA_fxaa.Name = "AA_fxaa";
+            this.AA_fxaa.Size = new System.Drawing.Size(94, 30);
+            this.AA_fxaa.TabIndex = 6;
+            this.AA_fxaa.TabStop = true;
+            this.AA_fxaa.Text = "FXAA";
+            this.AA_fxaa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_fxaa.UseVisualStyleBackColor = true;
+            this.AA_fxaa.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.AA_fxaa.Click += new System.EventHandler(this.AA_Click);
+            // 
+            // AA_no
+            // 
+            this.AA_no.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.AA_no.Appearance = System.Windows.Forms.Appearance.Button;
+            this.AA_no.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_no.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AA_no.FlatAppearance.BorderSize = 0;
+            this.AA_no.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.AA_no.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.AA_no.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.AA_no.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AA_no.Location = new System.Drawing.Point(186, 1);
+            this.AA_no.Name = "AA_no";
+            this.AA_no.Size = new System.Drawing.Size(58, 30);
+            this.AA_no.TabIndex = 5;
+            this.AA_no.TabStop = true;
+            this.AA_no.Text = "NO";
+            this.AA_no.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AA_no.UseVisualStyleBackColor = true;
+            this.AA_no.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.AA_no.Click += new System.EventHandler(this.AA_Click);
+            // 
+            // chb_DepthOfField
+            // 
+            this.chb_DepthOfField.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chb_DepthOfField.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chb_DepthOfField.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chb_DepthOfField.FlatAppearance.BorderSize = 0;
+            this.chb_DepthOfField.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.chb_DepthOfField.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.chb_DepthOfField.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.chb_DepthOfField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chb_DepthOfField.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chb_DepthOfField.Location = new System.Drawing.Point(332, 319);
+            this.chb_DepthOfField.Name = "chb_DepthOfField";
+            this.chb_DepthOfField.Size = new System.Drawing.Size(55, 26);
+            this.chb_DepthOfField.TabIndex = 17;
+            this.chb_DepthOfField.TabStop = false;
+            this.chb_DepthOfField.Text = "XXX";
+            this.chb_DepthOfField.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chb_DepthOfField.UseVisualStyleBackColor = true;
+            this.chb_DepthOfField.CheckedChanged += new System.EventHandler(this.setNewColor);
+            // 
+            // label20
+            // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label20.Location = new System.Drawing.Point(193, 318);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(143, 26);
+            this.label20.TabIndex = 16;
+            this.label20.Text = "Depth of Field :";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // chb_MotionBlur
             // 
@@ -750,7 +923,7 @@
             this.chb_MotionBlur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_MotionBlur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_MotionBlur.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_MotionBlur.Location = new System.Drawing.Point(332, 280);
+            this.chb_MotionBlur.Location = new System.Drawing.Point(332, 347);
             this.chb_MotionBlur.Name = "chb_MotionBlur";
             this.chb_MotionBlur.Size = new System.Drawing.Size(55, 26);
             this.chb_MotionBlur.TabIndex = 13;
@@ -765,7 +938,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label7.Location = new System.Drawing.Point(216, 279);
+            this.label7.Location = new System.Drawing.Point(216, 346);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 26);
             this.label7.TabIndex = 12;
@@ -783,7 +956,7 @@
             this.chb_BunchOfCoolEffect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_BunchOfCoolEffect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_BunchOfCoolEffect.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(332, 254);
+            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(332, 292);
             this.chb_BunchOfCoolEffect.Name = "chb_BunchOfCoolEffect";
             this.chb_BunchOfCoolEffect.Size = new System.Drawing.Size(55, 26);
             this.chb_BunchOfCoolEffect.TabIndex = 11;
@@ -798,7 +971,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label11.Location = new System.Drawing.Point(173, 253);
+            this.label11.Location = new System.Drawing.Point(173, 291);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(163, 26);
             this.label11.TabIndex = 10;
@@ -812,7 +985,7 @@
             this.pnl_EffectQuantity.Controls.Add(this.label5);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_medium);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_low);
-            this.pnl_EffectQuantity.Location = new System.Drawing.Point(64, 177);
+            this.pnl_EffectQuantity.Location = new System.Drawing.Point(64, 169);
             this.pnl_EffectQuantity.Name = "pnl_EffectQuantity";
             this.pnl_EffectQuantity.Size = new System.Drawing.Size(425, 32);
             this.pnl_EffectQuantity.TabIndex = 5;
@@ -899,7 +1072,7 @@
             this.pnl_RenderingClearness.Controls.Add(this.label3);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_medium);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_low);
-            this.pnl_RenderingClearness.Location = new System.Drawing.Point(64, 139);
+            this.pnl_RenderingClearness.Location = new System.Drawing.Point(64, 131);
             this.pnl_RenderingClearness.Name = "pnl_RenderingClearness";
             this.pnl_RenderingClearness.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingClearness.TabIndex = 5;
@@ -986,7 +1159,7 @@
             this.pnl_ModelQuality.Controls.Add(this.label2);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_medium);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_low);
-            this.pnl_ModelQuality.Location = new System.Drawing.Point(64, 101);
+            this.pnl_ModelQuality.Location = new System.Drawing.Point(64, 93);
             this.pnl_ModelQuality.Name = "pnl_ModelQuality";
             this.pnl_ModelQuality.Size = new System.Drawing.Size(425, 32);
             this.pnl_ModelQuality.TabIndex = 5;
@@ -1011,7 +1184,7 @@
             this.ModelQuality_high.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ModelQuality_high.UseVisualStyleBackColor = true;
             this.ModelQuality_high.CheckedChanged += new System.EventHandler(this.setNewColor);
-            this.ModelQuality_high.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ModelQuality_high_MouseClick);
+            this.ModelQuality_high.Click += new System.EventHandler(this.ModelQuality_high_Click);
             // 
             // label2
             // 
@@ -1074,7 +1247,7 @@
             this.pnl_ShadowDetail.Controls.Add(this.label1);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_medium);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_low);
-            this.pnl_ShadowDetail.Location = new System.Drawing.Point(64, 63);
+            this.pnl_ShadowDetail.Location = new System.Drawing.Point(64, 55);
             this.pnl_ShadowDetail.Name = "pnl_ShadowDetail";
             this.pnl_ShadowDetail.Size = new System.Drawing.Size(425, 32);
             this.pnl_ShadowDetail.TabIndex = 5;
@@ -1164,7 +1337,7 @@
             this.pnl_RenderingSize.Controls.Add(this.lbl_descr);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_medium);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_low);
-            this.pnl_RenderingSize.Location = new System.Drawing.Point(64, 27);
+            this.pnl_RenderingSize.Location = new System.Drawing.Point(64, 19);
             this.pnl_RenderingSize.Name = "pnl_RenderingSize";
             this.pnl_RenderingSize.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingSize.TabIndex = 2;
@@ -1250,10 +1423,7 @@
             // 
             // tab_Sound
             // 
-            this.tab_Sound.Controls.Add(this.ptb_GitHubLogo);
-            this.tab_Sound.Controls.Add(this.lbl_checkForUpdate);
-            this.tab_Sound.Controls.Add(this.chb_FixAfterPlaying);
-            this.tab_Sound.Controls.Add(this.label4);
+            this.tab_Sound.Controls.Add(this.help_sound);
             this.tab_Sound.Controls.Add(this.label6);
             this.tab_Sound.Controls.Add(this.lst_sound_list);
             this.tab_Sound.Controls.Add(this.pnl_Quality);
@@ -1263,75 +1433,20 @@
             this.tab_Sound.Name = "tab_Sound";
             this.tab_Sound.Size = new System.Drawing.Size(552, 379);
             this.tab_Sound.TabIndex = 3;
-            this.tab_Sound.Text = "Other";
+            this.tab_Sound.Text = "Sound";
             this.tab_Sound.UseVisualStyleBackColor = true;
-            // 
-            // ptb_GitHubLogo
-            // 
-            this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptb_GitHubLogo.Image = global::mgs2_v_s_fix.Properties.Resources.GitHubLogo;
-            this.ptb_GitHubLogo.Location = new System.Drawing.Point(246, 230);
-            this.ptb_GitHubLogo.Name = "ptb_GitHubLogo";
-            this.ptb_GitHubLogo.Size = new System.Drawing.Size(60, 60);
-            this.ptb_GitHubLogo.TabIndex = 19;
-            this.ptb_GitHubLogo.TabStop = false;
-            this.ptb_GitHubLogo.Click += new System.EventHandler(this.ptb_GitHubLogo_Click);
-            // 
-            // lbl_checkForUpdate
-            // 
-            this.lbl_checkForUpdate.Font = new System.Drawing.Font("Calibri Light", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_checkForUpdate.Location = new System.Drawing.Point(6, 299);
-            this.lbl_checkForUpdate.Name = "lbl_checkForUpdate";
-            this.lbl_checkForUpdate.Size = new System.Drawing.Size(540, 33);
-            this.lbl_checkForUpdate.TabIndex = 20;
-            this.lbl_checkForUpdate.Text = "[RUNTIME]";
-            this.lbl_checkForUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chb_FixAfterPlaying
-            // 
-            this.chb_FixAfterPlaying.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chb_FixAfterPlaying.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chb_FixAfterPlaying.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chb_FixAfterPlaying.FlatAppearance.BorderSize = 0;
-            this.chb_FixAfterPlaying.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.chb_FixAfterPlaying.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.chb_FixAfterPlaying.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.chb_FixAfterPlaying.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chb_FixAfterPlaying.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(350, 30);
-            this.chb_FixAfterPlaying.Name = "chb_FixAfterPlaying";
-            this.chb_FixAfterPlaying.Size = new System.Drawing.Size(55, 26);
-            this.chb_FixAfterPlaying.TabIndex = 13;
-            this.chb_FixAfterPlaying.TabStop = false;
-            this.chb_FixAfterPlaying.Text = "XXX";
-            this.chb_FixAfterPlaying.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chb_FixAfterPlaying.UseVisualStyleBackColor = true;
-            this.chb_FixAfterPlaying.CheckedChanged += new System.EventHandler(this.setNewColor);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label4.Location = new System.Drawing.Point(109, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(235, 26);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Open V\'s Fix after playing:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label6.Location = new System.Drawing.Point(79, 348);
+            this.label6.Location = new System.Drawing.Point(79, 232);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 26);
             this.label6.TabIndex = 9;
             this.label6.Text = "Sound Adapter:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label6.Visible = false;
             // 
             // lst_sound_list
             // 
@@ -1341,11 +1456,10 @@
             this.lst_sound_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_sound_list.FormattingEnabled = true;
             this.lst_sound_list.ItemHeight = 18;
-            this.lst_sound_list.Location = new System.Drawing.Point(227, 353);
+            this.lst_sound_list.Location = new System.Drawing.Point(227, 237);
             this.lst_sound_list.Name = "lst_sound_list";
             this.lst_sound_list.Size = new System.Drawing.Size(245, 54);
             this.lst_sound_list.TabIndex = 8;
-            this.lst_sound_list.Visible = false;
             this.lst_sound_list.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lst_sound_list_DrawItem);
             // 
             // pnl_Quality
@@ -1355,7 +1469,7 @@
             this.pnl_Quality.Controls.Add(this.Quality_medium);
             this.pnl_Quality.Controls.Add(this.Quality_low);
             this.pnl_Quality.Controls.Add(this.label13);
-            this.pnl_Quality.Location = new System.Drawing.Point(66, 79);
+            this.pnl_Quality.Location = new System.Drawing.Point(66, 37);
             this.pnl_Quality.Name = "pnl_Quality";
             this.pnl_Quality.Size = new System.Drawing.Size(432, 32);
             this.pnl_Quality.TabIndex = 6;
@@ -1446,7 +1560,7 @@
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_medium);
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_low);
             this.pnl_SoundQuality.Controls.Add(this.label15);
-            this.pnl_SoundQuality.Location = new System.Drawing.Point(66, 181);
+            this.pnl_SoundQuality.Location = new System.Drawing.Point(66, 139);
             this.pnl_SoundQuality.Name = "pnl_SoundQuality";
             this.pnl_SoundQuality.Size = new System.Drawing.Size(432, 32);
             this.pnl_SoundQuality.TabIndex = 5;
@@ -1537,7 +1651,7 @@
             this.pnl_SE.Controls.Add(this.SE_high);
             this.pnl_SE.Controls.Add(this.SE_medium);
             this.pnl_SE.Controls.Add(this.SE_low);
-            this.pnl_SE.Location = new System.Drawing.Point(45, 132);
+            this.pnl_SE.Location = new System.Drawing.Point(45, 90);
             this.pnl_SE.Name = "pnl_SE";
             this.pnl_SE.Size = new System.Drawing.Size(453, 32);
             this.pnl_SE.TabIndex = 3;
@@ -1620,6 +1734,151 @@
             this.SE_low.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SE_low.UseVisualStyleBackColor = false;
             this.SE_low.CheckedChanged += new System.EventHandler(this.setNewColor);
+            // 
+            // tab_Extra
+            // 
+            this.tab_Extra.Controls.Add(this.ptb_Steam);
+            this.tab_Extra.Controls.Add(this.label18);
+            this.tab_Extra.Controls.Add(this.label17);
+            this.tab_Extra.Controls.Add(this.ptb_GitHubLogo);
+            this.tab_Extra.Controls.Add(this.lbl_checkForUpdate);
+            this.tab_Extra.Controls.Add(this.ptb_comPLAY);
+            this.tab_Extra.Controls.Add(this.label16);
+            this.tab_Extra.Controls.Add(this.label12);
+            this.tab_Extra.Controls.Add(this.chb_FixAfterPlaying);
+            this.tab_Extra.Controls.Add(this.label4);
+            this.tab_Extra.Location = new System.Drawing.Point(4, 32);
+            this.tab_Extra.Name = "tab_Extra";
+            this.tab_Extra.Size = new System.Drawing.Size(552, 379);
+            this.tab_Extra.TabIndex = 6;
+            this.tab_Extra.Text = "Extra";
+            this.tab_Extra.UseVisualStyleBackColor = true;
+            // 
+            // ptb_Steam
+            // 
+            this.ptb_Steam.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_Steam.Image = global::mgs2_v_s_fix.Properties.Resources.SteamLogo;
+            this.ptb_Steam.Location = new System.Drawing.Point(62, 169);
+            this.ptb_Steam.Name = "ptb_Steam";
+            this.ptb_Steam.Size = new System.Drawing.Size(70, 70);
+            this.ptb_Steam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_Steam.TabIndex = 40;
+            this.ptb_Steam.TabStop = false;
+            this.ptb_Steam.Click += new System.EventHandler(this.ptb_Steam_Click);
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(159, 168);
+            this.label18.Margin = new System.Windows.Forms.Padding(0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(358, 71);
+            this.label18.TabIndex = 41;
+            this.label18.Text = "Click on the Steam logo aside to automatically add MGS2 to Steam";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(174, 341);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(358, 23);
+            this.label17.TabIndex = 39;
+            this.label17.Text = "Click the logo aside to open comPLAY Website";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ptb_GitHubLogo
+            // 
+            this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_GitHubLogo.Image = global::mgs2_v_s_fix.Properties.Resources.GitHubLogo;
+            this.ptb_GitHubLogo.Location = new System.Drawing.Point(62, 74);
+            this.ptb_GitHubLogo.Name = "ptb_GitHubLogo";
+            this.ptb_GitHubLogo.Size = new System.Drawing.Size(70, 70);
+            this.ptb_GitHubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_GitHubLogo.TabIndex = 33;
+            this.ptb_GitHubLogo.TabStop = false;
+            this.ptb_GitHubLogo.Click += new System.EventHandler(this.ptb_GitHubLogo_Click);
+            // 
+            // lbl_checkForUpdate
+            // 
+            this.lbl_checkForUpdate.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_checkForUpdate.Location = new System.Drawing.Point(155, 73);
+            this.lbl_checkForUpdate.Name = "lbl_checkForUpdate";
+            this.lbl_checkForUpdate.Size = new System.Drawing.Size(362, 71);
+            this.lbl_checkForUpdate.TabIndex = 34;
+            this.lbl_checkForUpdate.Text = "Click on the GitHub logo aside to check for V\'s Fix updates";
+            this.lbl_checkForUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ptb_comPLAY
+            // 
+            this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
+            this.ptb_comPLAY.Location = new System.Drawing.Point(24, 261);
+            this.ptb_comPLAY.Name = "ptb_comPLAY";
+            this.ptb_comPLAY.Size = new System.Drawing.Size(146, 103);
+            this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptb_comPLAY.TabIndex = 35;
+            this.ptb_comPLAY.TabStop = false;
+            this.ptb_comPLAY.Click += new System.EventHandler(this.ptb_comPLAY_Click);
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(188, 290);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(320, 49);
+            this.label16.TabIndex = 37;
+            this.label16.Text = "Playing on multiple PCs at once? Multiple users? Need to synchronize?";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(184, 261);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(326, 23);
+            this.label12.TabIndex = 36;
+            this.label12.Text = "Don\'t want to lose your games savedata?";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chb_FixAfterPlaying
+            // 
+            this.chb_FixAfterPlaying.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chb_FixAfterPlaying.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chb_FixAfterPlaying.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chb_FixAfterPlaying.FlatAppearance.BorderSize = 0;
+            this.chb_FixAfterPlaying.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.chb_FixAfterPlaying.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.chb_FixAfterPlaying.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.chb_FixAfterPlaying.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chb_FixAfterPlaying.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(408, 22);
+            this.chb_FixAfterPlaying.Name = "chb_FixAfterPlaying";
+            this.chb_FixAfterPlaying.Size = new System.Drawing.Size(55, 26);
+            this.chb_FixAfterPlaying.TabIndex = 24;
+            this.chb_FixAfterPlaying.TabStop = false;
+            this.chb_FixAfterPlaying.Text = "XXX";
+            this.chb_FixAfterPlaying.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chb_FixAfterPlaying.UseVisualStyleBackColor = true;
+            this.chb_FixAfterPlaying.CheckedChanged += new System.EventHandler(this.setNewColor);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label4.Location = new System.Drawing.Point(90, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(325, 26);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Open V\'s Fix after playing the game :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tab_About
             // 
@@ -1748,94 +2007,6 @@
             this.tbx_About.Text = "In my restless dreams ; I see that town...";
             this.tbx_About.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.tbx_About_LinkClicked);
             // 
-            // tab_cP
-            // 
-            this.tab_cP.Controls.Add(this.label19);
-            this.tab_cP.Controls.Add(this.label18);
-            this.tab_cP.Controls.Add(this.label17);
-            this.tab_cP.Controls.Add(this.label16);
-            this.tab_cP.Controls.Add(this.label12);
-            this.tab_cP.Controls.Add(this.ptb_comPLAY);
-            this.tab_cP.Location = new System.Drawing.Point(4, 32);
-            this.tab_cP.Name = "tab_cP";
-            this.tab_cP.Size = new System.Drawing.Size(552, 379);
-            this.tab_cP.TabIndex = 5;
-            this.tab_cP.Text = "Savedata";
-            this.tab_cP.UseVisualStyleBackColor = true;
-            // 
-            // label19
-            // 
-            this.label19.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label19.Location = new System.Drawing.Point(121, 322);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(310, 26);
-            this.label19.TabIndex = 15;
-            this.label19.Text = "I\'ve made a solution for both of us!";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label18
-            // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(82, 351);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(375, 19);
-            this.label18.TabIndex = 14;
-            this.label18.Text = "( Click on the logo above to open the comPLAY Website )";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label17
-            // 
-            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label17.Location = new System.Drawing.Point(61, 83);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(432, 26);
-            this.label17.TabIndex = 12;
-            this.label17.Text = "Are you sharing your PC with friends or brothers?";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label16
-            // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label16.Location = new System.Drawing.Point(46, 48);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(460, 26);
-            this.label16.TabIndex = 11;
-            this.label16.Text = "Playing old and new games on multiple PCs at once?";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label12.Location = new System.Drawing.Point(95, 13);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(362, 26);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "Don\'t want to lose your MGS2 Savedata?";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ptb_comPLAY
-            // 
-            this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
-            this.ptb_comPLAY.Location = new System.Drawing.Point(59, 118);
-            this.ptb_comPLAY.Name = "ptb_comPLAY";
-            this.ptb_comPLAY.Size = new System.Drawing.Size(423, 196);
-            this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptb_comPLAY.TabIndex = 13;
-            this.ptb_comPLAY.TabStop = false;
-            this.ptb_comPLAY.Click += new System.EventHandler(this.ptb_comPLAY_Click);
-            // 
             // btn_exit
             // 
             this.btn_exit.BackColor = System.Drawing.Color.White;
@@ -1942,29 +2113,31 @@
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
-            // pictureBox4
+            // lbl_AAGuide
             // 
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox4.Image = global::mgs2_v_s_fix.Properties.Resources.exclamation;
-            this.pictureBox4.Location = new System.Drawing.Point(99, 187);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(42, 42);
-            this.pictureBox4.TabIndex = 15;
-            this.pictureBox4.TabStop = false;
+            this.lbl_AAGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_AAGuide.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbl_AAGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AAGuide.Location = new System.Drawing.Point(6, 263);
+            this.lbl_AAGuide.Name = "lbl_AAGuide";
+            this.lbl_AAGuide.Size = new System.Drawing.Size(540, 19);
+            this.lbl_AAGuide.TabIndex = 19;
+            this.lbl_AAGuide.Text = "[RUNTIME]";
+            this.lbl_AAGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_AAGuide.Visible = false;
             // 
-            // help_compatibilityWarning
+            // help_sound
             // 
-            this.help_compatibilityWarning.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.help_compatibilityWarning.AutoSize = true;
-            this.help_compatibilityWarning.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.help_compatibilityWarning.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_compatibilityWarning.Location = new System.Drawing.Point(147, 199);
-            this.help_compatibilityWarning.Name = "help_compatibilityWarning";
-            this.help_compatibilityWarning.Size = new System.Drawing.Size(306, 19);
-            this.help_compatibilityWarning.TabIndex = 16;
-            this.help_compatibilityWarning.Text = "Check the compatibility flags! More info here!";
-            this.help_compatibilityWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.help_compatibilityWarning.Click += new System.EventHandler(this.help_compatibilityWarning_Click);
+            this.help_sound.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_sound.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_sound.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_sound.Location = new System.Drawing.Point(32, 196);
+            this.help_sound.Name = "help_sound";
+            this.help_sound.Size = new System.Drawing.Size(489, 19);
+            this.help_sound.TabIndex = 15;
+            this.help_sound.Text = "Missing audio? Press here to check the manual for a workaround";
+            this.help_sound.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.help_sound.Click += new System.EventHandler(this.help_sound_Click);
             // 
             // Form1
             // 
@@ -1991,15 +2164,19 @@
             this.tabControl1.ResumeLayout(false);
             this.tab_Resolution.ResumeLayout(false);
             this.tab_Resolution.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tab_Controls.ResumeLayout(false);
-            this.tab_Controls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_PreferredLayout.ResumeLayout(false);
             this.pnl_PreferredLayout.PerformLayout();
+            this.pnl_LayoutChooser.ResumeLayout(false);
+            this.pnl_LayoutChooser.PerformLayout();
             this.pnl_EnableController.ResumeLayout(false);
             this.pnl_EnableController.PerformLayout();
             this.tab_Graphics.ResumeLayout(false);
             this.tab_Graphics.PerformLayout();
+            this.pnl_AA.ResumeLayout(false);
+            this.pnl_AA.PerformLayout();
             this.pnl_EffectQuantity.ResumeLayout(false);
             this.pnl_EffectQuantity.PerformLayout();
             this.pnl_RenderingClearness.ResumeLayout(false);
@@ -2012,24 +2189,24 @@
             this.pnl_RenderingSize.PerformLayout();
             this.tab_Sound.ResumeLayout(false);
             this.tab_Sound.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
             this.pnl_Quality.ResumeLayout(false);
             this.pnl_Quality.PerformLayout();
             this.pnl_SoundQuality.ResumeLayout(false);
             this.pnl_SoundQuality.PerformLayout();
             this.pnl_SE.ResumeLayout(false);
             this.pnl_SE.PerformLayout();
+            this.tab_Extra.ResumeLayout(false);
+            this.tab_Extra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_Steam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).EndInit();
             this.tab_About.ResumeLayout(false);
             this.tab_About.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnl_about.ResumeLayout(false);
-            this.tab_cP.ResumeLayout(false);
-            this.tab_cP.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2108,10 +2285,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox chb_FullscreenCutscene;
         private System.Windows.Forms.Label lbl_FullscreenCutscene;
-        private System.Windows.Forms.CheckBox chb_FixAfterPlaying;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox chb_AA;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pnl_about;
         private System.Windows.Forms.RadioButton abt_Regards;
         private System.Windows.Forms.RadioButton abt_Licence;
@@ -2124,7 +2297,6 @@
         private System.Windows.Forms.Label lbl_OptimizedFOV;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label lbl_donate;
-        private System.Windows.Forms.Label help_controls;
         private System.Windows.Forms.Label help_resolution;
         private System.Windows.Forms.Panel pnl_EnableController;
         private System.Windows.Forms.RadioButton EnableController_DS4;
@@ -2132,20 +2304,35 @@
         private System.Windows.Forms.RadioButton EnableController_XBOX;
         private System.Windows.Forms.RadioButton EnableController_NO;
         private System.Windows.Forms.Panel pnl_PreferredLayout;
+        private System.Windows.Forms.Label help_compatibilityWarning;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.CheckBox chb_DepthOfField;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TabPage tab_Extra;
+        private System.Windows.Forms.CheckBox chb_FixAfterPlaying;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.PictureBox ptb_GitHubLogo;
+        private System.Windows.Forms.Label lbl_checkForUpdate;
+        private System.Windows.Forms.PictureBox ptb_comPLAY;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.PictureBox ptb_Steam;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lbl_controllerGuide;
+        private System.Windows.Forms.Label help_controls;
+        private System.Windows.Forms.RadioButton EnableController_STEAM;
+        private System.Windows.Forms.Panel pnl_LayoutChooser;
         private System.Windows.Forms.RadioButton PreferredLayout_PS2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RadioButton PreferredLayout_V;
-        private System.Windows.Forms.TabPage tab_cP;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.PictureBox ptb_comPLAY;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.PictureBox ptb_GitHubLogo;
-        private System.Windows.Forms.Label lbl_checkForUpdate;
-        private System.Windows.Forms.Label help_compatibilityWarning;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel pnl_AA;
+        private System.Windows.Forms.RadioButton AA_smaa;
+        private System.Windows.Forms.RadioButton AA_fxaa;
+        private System.Windows.Forms.RadioButton AA_no;
+        private System.Windows.Forms.Label lbl_AAGuide;
+        private System.Windows.Forms.Label help_sound;
     }
 }
 

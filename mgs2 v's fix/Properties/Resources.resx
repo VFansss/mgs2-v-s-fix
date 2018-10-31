@@ -127,11 +127,23 @@
   <data name="otagif" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\otagif.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GitHubLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GitHubLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ControllerXBOX_VLayout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ControllerXBOX_VLayout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ico7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico7.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="configuration_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Configuration_file.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bg4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ico1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,14 +154,23 @@
   <data name="ico2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iceCream" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iceCream.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ico11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico11.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ControllerXBOX_PS2Layout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ControllerXBOX_PS2Layout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ico6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico6.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fixed_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3_fixed_exe.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="bg7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="V_s_sweetFX" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\V_s_sweetFX.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -157,11 +178,17 @@
   <data name="ico5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico5.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cP" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ico10" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico10.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hm_patcher" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1_homemade_patcher.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ControllerDS4_PS2Layout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ControllerDS4_PS2Layout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ico4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico4.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,58 +196,43 @@
   <data name="ico12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico12.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="exclamation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exclamation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NoController" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NoController.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ControllerDS4_VLayout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ControllerDS4_VLayout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ico9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico9.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ico8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ico8.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iceCream" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iceCream.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="NoController" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NoController.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ControllerDS4_PS2Layout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ControllerDS4_PS2Layout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ControllerXBOX_VLayout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ControllerXBOX_VLayout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ControllerXBOX_PS2Layout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ControllerXBOX_PS2Layout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ControllerDS4_VLayout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ControllerDS4_VLayout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cP" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cP.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bg2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bg5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bg3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bg4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fixed_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3_fixed_exe.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="bg5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SteamLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SteamLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bg6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bg8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bg8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bg7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bg7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sweetFX_FXAA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sweetFX_FXAA.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GitHubLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GitHubLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="exclamation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exclamation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sweetFX_SMAA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sweetFX_SMAA.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

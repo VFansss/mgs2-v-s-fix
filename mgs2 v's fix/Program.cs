@@ -206,8 +206,6 @@ namespace mgs2_v_s_fix
                     forbidStart = true;
 	            }
 
-
-
                 if (forbidStart == false)
                 {
                     // All file cleaned.
@@ -223,10 +221,21 @@ namespace mgs2_v_s_fix
 
                 else
                 {
-
-                    if (Ocelot.debugMode) Ocelot.showMessage("debug_mode");
                     
-                    Ocelot.showMessage("initiating_error");
+                    Ocelot.showMessage("UAC_error");
+
+                    // Tell the user about "Debug mode"
+
+                    if (Ocelot.debugMode)
+                    {
+                        Ocelot.showMessage("debugModeEnabled");
+                    }
+                    else
+                    {
+                        Ocelot.showMessage("debugModeDisabled");
+                    }
+                        
+
                     Ocelot.PrintToDebugConsole("[!] forbidStart is true. Closing.");
 
                 }
