@@ -315,11 +315,9 @@ namespace mgs2_v_s_fix
 
                         File.Delete(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi");
 
-                        Unzip.UnZippa("SavegameLocationChanger.zip", true);
-
                     }
 
-                    
+                    Unzip.UnZippa("SavegameLocationChanger.zip", true);
 
                     #endregion
 
