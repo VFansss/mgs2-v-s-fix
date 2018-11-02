@@ -252,7 +252,9 @@ namespace mgs2_v_s_fix
             return;
         }
 
+        // !!!!
         // !!!! Big function that apply V's Fix settings
+        // !!!!
         internal static void load_InternalConfig_SetTo_MGS()
         {
             
@@ -295,7 +297,18 @@ namespace mgs2_v_s_fix
                     {
                         Unzip.UnZippa("GreenScreenFix.zip", true);
                     }
-                    
+
+                    // Extract Ultimate ASI Loader, and folder for scripts
+                    // ( Used for Widescreen Fix and Savegame Location Changer )
+
+                    if (!File.Exists("msacm32.dll"))
+                    {
+
+                        Unzip.UnZippa("UltimateASILoader.zip", true);
+
+                        Directory.CreateDirectory(Application.StartupPath + "\\scripts");  
+
+                    }
 
                     #endregion
 
@@ -334,27 +347,28 @@ namespace mgs2_v_s_fix
 
                     // WideScreenFIX
 
-                    // 0: delete all (if present) existing WideScreenFIX files/directory
+                    // 0: delete all (if present) WideScreenFIX files
 
                     if (Directory.Exists(Application.StartupPath + "\\scripts"))
                     {
-                        Directory.Delete(Application.StartupPath + "\\scripts", true);
-                        File.Delete(Application.StartupPath + "\\msacm32.dll");
+                        File.Delete(Application.StartupPath + "\\scripts\\fov.data");
+                        File.Delete(Application.StartupPath + "\\scripts\\mgs2w.asi");
+                        File.Delete(Application.StartupPath + "\\scripts\\mgs2w.ini");
                         File.Delete(Application.StartupPath + "\\dsound_x64.dll");
                         // This is an old library used in version <= 1.02
-                        // better delete it if exist
+                        // better delete it, if present
                         File.Delete(Application.StartupPath + "\\winmmbase.dll");
                     }
 
                     if (Ocelot.InternalConfiguration.Resolution["WideScreenFIX"].Equals("true"))
                     {
 
-                        // 1: WSF.zip must be extracted
+                        // 1: WidescreenFix.zip must be extracted
                         // 2: Resolution must be set inside scripts/mgs2w.ini
 
 
                         // 1
-                        Unzip.UnZippa("WSF.zip");
+                        Unzip.UnZippa("WidescreenFix.zip");
 
                         // 2
 
