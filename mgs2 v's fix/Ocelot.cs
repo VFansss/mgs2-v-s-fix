@@ -252,9 +252,7 @@ namespace mgs2_v_s_fix
             return;
         }
 
-        // !!!!
-        // !!!! Big function that apply V's Fix settings
-        // !!!!
+        // !!!! Big function that apply V's Fix settings !!!!!!!!!!!!!!!!!!!!!!!!!!!
         internal static void load_InternalConfig_SetTo_MGS()
         {
             
@@ -309,6 +307,19 @@ namespace mgs2_v_s_fix
                         Directory.CreateDirectory(Application.StartupPath + "\\scripts");  
 
                     }
+
+                    // Extract SavegameLocationChanger.asi
+
+                    if (File.Exists(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi"))
+                    {
+
+                        File.Delete(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi");
+
+                        Unzip.UnZippa("SavegameLocationChanger.zip", true);
+
+                    }
+
+                    
 
                     #endregion
 
