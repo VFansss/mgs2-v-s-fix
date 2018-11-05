@@ -1264,8 +1264,7 @@ namespace mgs2_v_s_fix
 
         }
 
-        // Make MGS2 files readable by every user on the system
-
+        // Legacy method: Too risky - Make MGS2 files readable by every user on the system
         private static bool grantAccessToEveryUser(string fullPath)
         {
 
@@ -1299,7 +1298,37 @@ namespace mgs2_v_s_fix
             switch (code)
             {
 
-                // INFORMATION TIP    
+                // COMPATIBILITY FLAGS INFO    
+
+                case "compatibilityFlagsNotNeeded":
+
+                    MessageBox.Show(
+                    "From this version of the Fix, the game doesn't need anymore any compatibility flags."+"\n\n"+
+                    "This will greatly enhance the game compatibility, expecially with Win10 and Steam!"+"\n\n"+
+                    "Next time you press 'SAVE', these compatibility flags will be automatically removed."+"\n\n"+
+                    "Happy playing, and have fun :)",
+                    "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "compatibilityWarning": // NB: Not used anymore
+
+                    MessageBox.Show(
+                    "When applying your settings, V's Fix will automatically try to set these compatibility flags :" +
+                    "\n\n" +
+                    "- Run the game in WindowsXP SP3 Compatibility Mode" + "\n" +
+                    "- Execute the game with Admin rights" +
+                    "\n\n" +
+                    "to the main game executable (mgs2_sse.exe) but it may fail or be blocked by various actors, so please be sure that they have been succesfully activated!" +
+                    "\n\n" +
+                    "Running the game without these flags will results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
+                    "\n\n" +
+                    "You can see again this message from the 'Resolution tab'." + "\n",
+                    "*Suddenly green hills appear in the background*", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                // GENERAL INFOS
 
                 case "savegameWillBeMoved":
 
@@ -1397,7 +1426,7 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                    // FATAL ERROR WHILE STARTING THE GAME
+                // FATAL ERROR WHILE STARTING THE GAME
 
                 case "fatalError_WrongVideoAdapter":
 
@@ -1526,24 +1555,7 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                case "compatibilityWarning":
-
-                    MessageBox.Show(
-                        "When applying your settings, V's Fix will automatically try to set these compatibility flags :" +
-                        "\n\n" +
-                        "- Run the game in WindowsXP SP3 Compatibility Mode" + "\n" +
-                        "- Execute the game with Admin rights" +
-                        "\n\n"+
-                        "to the main game executable (mgs2_sse.exe) but it may fail or be blocked by various actors, so please be sure that they have been succesfully activated!"+
-                        "\n\n" +
-                        "Running the game without these flags will results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
-                        "\n\n" +
-                        "You can see again this message from the 'Resolution tab'." + "\n",
-                    "*Suddenly green hills appear in the background*", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
-                    // STEAM
+                // STEAM
 
                 case "steamIsRunning":
 
@@ -1598,7 +1610,7 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                    // TIPS
+                // TIPS
 
                 case "tip_antialiasingANDmodelquality":
 
@@ -1626,7 +1638,7 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                    // DEFAULT MESSAGE
+                // DEFAULT MESSAGE
 
                 default:
 
@@ -1665,6 +1677,56 @@ namespace mgs2_v_s_fix
                 PrintToDebugConsole("[ :( ] Exception while setting compatibility flags!");
 
             }
+
+        }
+
+        // Check if any compatibility flag is set
+        public static bool CheckForCompabilityFlags()
+        {
+            // Set a default value
+            bool returnValue = false;
+
+            PrintToDebugConsole("[C.FLAGS CHECK] Checking for compatibility flags...");
+
+            try
+            {
+                string registry_path = "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\\";
+                string game_exe_path = Application.StartupPath + "\\mgs2_sse.exe";
+                Microsoft.Win32.RegistryKey key;
+
+                key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(registry_path);
+
+                object retrievedValue = key.GetValue(game_exe_path, null);
+
+                if (retrievedValue != null)
+                {
+                    // Something exist. Cast value to string
+                    string actualValue = retrievedValue.ToString();
+
+                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags found: "+ retrievedValue);
+
+                    key.Close();
+
+                    // Set the return value for method caller
+                    returnValue = true;
+
+                }
+                else
+                {
+                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags NOT found :)");
+                }
+
+            }
+
+            catch
+            {
+                // Signal to debugger
+
+                PrintToDebugConsole("[C.FLAGS CHECK] Exception while checking compatibility flags!");
+
+            }
+
+            return returnValue;
 
         }
 

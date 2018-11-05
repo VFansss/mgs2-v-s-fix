@@ -226,8 +226,9 @@ namespace mgs2_v_s_fix
             abt_Regards.Checked = true;
 
             // Must display the warning about winXP compatiblity?
+            // NOT NEEDED ANYMORE FROM 1.7 FIX VERSION
 
-            if (!Ocelot.InternalConfiguration.Others["CompatibilityWarningDisplayed"].Equals("true"))
+            /*if (!Ocelot.InternalConfiguration.Others["CompatibilityWarningDisplayed"].Equals("true"))
             {
                 // Display it!
 
@@ -236,6 +237,16 @@ namespace mgs2_v_s_fix
                 // Not display anymore
 
                 Ocelot.InternalConfiguration.Others["CompatibilityWarningDisplayed"] = "true";
+
+            }*/
+
+            // Check if any compatibility flags are set on the mgs2_sse.exe, and warn the user
+            // that aren't needed anymore
+
+            if (Ocelot.CheckForCompabilityFlags() == true)
+            {
+                // Warn the user
+                Ocelot.showMessage("compatibilityFlagsNotNeeded");
 
             }
 
