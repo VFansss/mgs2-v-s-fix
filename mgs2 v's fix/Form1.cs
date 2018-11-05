@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Drawing.Text;
 using System.IO;
 using System.Reflection;
-using static mgs2_v_s_fix.Flags;
 using System.Threading.Tasks;
 
 namespace mgs2_v_s_fix
@@ -85,11 +84,50 @@ namespace mgs2_v_s_fix
 
             setNewBackground();
 
-            Ocelot.PrintToDebugConsole("[+] Form1 constructor has done. Waiting user input.");
-
             // Bind lbl_checkForUpdate.Text to default text
 
             lbl_checkForUpdate.Text = checkForUpdateDefaultString;
+
+            // Check for fatal errors
+
+            Ocelot.PrintToDebugConsole("[FATALERROR CHECKING] Checking for fatal errors...");
+
+            FATALERRORSFOUND errorsFound = Ocelot.CheckForFatalErrors();
+
+            Ocelot.PrintToDebugConsole("[FATALERROR CHECKING] Check has returned this code: "+errorsFound.ToString());
+
+            if (errorsFound != FATALERRORSFOUND.NoneDetected)
+            {
+                // Trouble incoming
+
+                if (errorsFound.HasFlag(FATALERRORSFOUND.ErrorWhileReadingFile))
+                {
+                    Ocelot.showMessage("UAC_error");
+                }
+
+                if (errorsFound.HasFlag(FATALERRORSFOUND.WrongVideoAdapter))
+                {
+
+                    // Open the guide to the right chapter
+
+                    Ocelot.showMessage("fatalError_WrongVideoAdapter");
+
+                    try
+                    {
+                        System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
+                    }
+
+                    catch
+                    {
+                        Ocelot.showMessage("UAC_error");
+                    }
+                }
+
+            }
+
+            // Show the form
+
+            Ocelot.PrintToDebugConsole("[+] Form1 constructor has done. Waiting user input.");
 
         }
 
@@ -97,9 +135,24 @@ namespace mgs2_v_s_fix
 
         private void btn_startGame_Click(object sender, EventArgs e)
         {
-            Ocelot.startGame();
 
-            Ocelot.PrintToDebugConsole("[+] Start game button pressed");
+            // CHECK: the game has been configured at least once?
+            // I honestly hope that no one try to start the game without doing it, but...
+
+            if (File.Exists("mgs2.ini"))
+            {
+                Ocelot.startGame();
+
+                Ocelot.PrintToDebugConsole("[+] Start game button pressed");
+            }
+
+            else
+            {
+                Ocelot.showMessage("gameNeverConfigured");
+
+            }
+
+            
 
         }
 
@@ -173,8 +226,9 @@ namespace mgs2_v_s_fix
             abt_Regards.Checked = true;
 
             // Must display the warning about winXP compatiblity?
+            // NOT NEEDED ANYMORE FROM 1.7 FIX VERSION
 
-            if (!Ocelot.InternalConfiguration.Others["CompatibilityWarningDisplayed"].Equals("true"))
+            /*if (!Ocelot.InternalConfiguration.Others["CompatibilityWarningDisplayed"].Equals("true"))
             {
                 // Display it!
 
@@ -184,6 +238,48 @@ namespace mgs2_v_s_fix
 
                 Ocelot.InternalConfiguration.Others["CompatibilityWarningDisplayed"] = "true";
 
+            }*/
+
+            // Check if any compatibility flags are set on the mgs2_sse.exe, and warn the user
+            // that aren't needed anymore
+
+            if (Ocelot.CheckForCompabilityFlags() == true)
+            {
+                // Warn the user
+                Ocelot.showMessage("compatibilityFlagsNotNeeded");
+
+            }
+
+            // Check if savegame must be moved to the new location in "My Games", and warn the user if so
+
+            if (Directory.Exists(Application.StartupPath + "\\..\\savedata"))
+            {
+                // Must move things
+
+                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                if (Directory.Exists(Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE")))
+                {
+                    // Trouble incoming...
+
+                    Ocelot.showMessage("savegameCantBeMoved");
+
+                    // About everything until user solve the situation
+
+                    Application.Exit();
+
+                }
+
+                else
+                {
+                    // Situation is clear...
+
+                    Ocelot.showMessage("savegameWillBeMoved");
+
+                    Ocelot.MoveSavegamesToNewLocation();
+
+                }
+                
             }
 
             Ocelot.PrintToDebugConsole("[+] Settings has been displayed.");
@@ -216,7 +312,7 @@ namespace mgs2_v_s_fix
             pictureBox2.Visible = false;
             lbl_ManualLink.Visible = false;
 
-            Ocelot.PrintToDebugConsole("[+] Save has been saved (!)");
+            Ocelot.PrintToDebugConsole("[+] 'SAVE' has finished saving (!)");
 
         }
 

@@ -15,7 +15,6 @@ using System.Net.Http.Headers;
 using System.Net;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using static mgs2_v_s_fix.Flags;
 using Newtonsoft.Json.Linq;
 
 namespace mgs2_v_s_fix
@@ -24,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "181031";
+        public const string VERSION = "181105";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -252,7 +251,7 @@ namespace mgs2_v_s_fix
             return;
         }
 
-        // !!!! Big function that apply V's Fix settings
+        // !!!! Big function that apply V's Fix settings !!!!!!!!!!!!!!!!!!!!!!!!!!!
         internal static void load_InternalConfig_SetTo_MGS()
         {
             
@@ -295,7 +294,29 @@ namespace mgs2_v_s_fix
                     {
                         Unzip.UnZippa("GreenScreenFix.zip", true);
                     }
-                    
+
+                    // Extract Ultimate ASI Loader, and folder for scripts
+                    // ( Used for Widescreen Fix and Savegame Location Changer )
+
+                    if (!File.Exists("msacm32.dll"))
+                    {
+
+                        Unzip.UnZippa("UltimateASILoader.zip", true);
+
+                        Directory.CreateDirectory(Application.StartupPath + "\\scripts");  
+
+                    }
+
+                    // Extract SavegameLocationChanger.asi
+
+                    if (File.Exists(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi"))
+                    {
+
+                        File.Delete(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi");
+
+                    }
+
+                    Unzip.UnZippa("SavegameLocationChanger.zip", true);
 
                     #endregion
 
@@ -334,27 +355,28 @@ namespace mgs2_v_s_fix
 
                     // WideScreenFIX
 
-                    // 0: delete all (if present) existing WideScreenFIX files/directory
+                    // 0: delete all (if present) WideScreenFIX files
 
                     if (Directory.Exists(Application.StartupPath + "\\scripts"))
                     {
-                        Directory.Delete(Application.StartupPath + "\\scripts", true);
-                        File.Delete(Application.StartupPath + "\\msacm32.dll");
+                        File.Delete(Application.StartupPath + "\\scripts\\fov.data");
+                        File.Delete(Application.StartupPath + "\\scripts\\mgs2w.asi");
+                        File.Delete(Application.StartupPath + "\\scripts\\mgs2w.ini");
                         File.Delete(Application.StartupPath + "\\dsound_x64.dll");
                         // This is an old library used in version <= 1.02
-                        // better delete it if exist
+                        // better delete it, if present
                         File.Delete(Application.StartupPath + "\\winmmbase.dll");
                     }
 
                     if (Ocelot.InternalConfiguration.Resolution["WideScreenFIX"].Equals("true"))
                     {
 
-                        // 1: WSF.zip must be extracted
+                        // 1: WidescreenFix.zip must be extracted
                         // 2: Resolution must be set inside scripts/mgs2w.ini
 
 
                         // 1
-                        Unzip.UnZippa("WSF.zip");
+                        Unzip.UnZippa("WidescreenFix.zip");
 
                         // 2
 
@@ -1004,9 +1026,14 @@ namespace mgs2_v_s_fix
 
                 */
 
-                // Set the compatibility flags
+                // DEPRECATED FROM VERSION 1.7 - Set the compatibility flags
 
-                setCompatibilityFlags();
+                //SetCompatibilityFlags();
+
+                if (Ocelot.CheckForCompabilityFlags() == true)
+                {
+                    Ocelot.RemoveCompatibilityFlags();
+                }
 
             }
 
@@ -1242,8 +1269,7 @@ namespace mgs2_v_s_fix
 
         }
 
-        // Make MGS2 files readable by every user on the system
-
+        // Legacy method: Too risky - Make MGS2 files readable by every user on the system
         private static bool grantAccessToEveryUser(string fullPath)
         {
 
@@ -1277,7 +1303,74 @@ namespace mgs2_v_s_fix
             switch (code)
             {
 
-                // INFORMATION TIP    
+                // COMPATIBILITY FLAGS INFO    
+
+                case "compatibilityFlagsNotNeeded":
+
+                    MessageBox.Show(
+                    "From this version of the Fix, the game doesn't need anymore any compatibility flags."+"\n\n"+
+                    "This will greatly enhance the game compatibility, expecially with Win10 and Steam!"+"\n\n"+
+                    "Next time you press 'SAVE', these compatibility flags will be automatically removed."+"\n\n"+
+                    "Happy playing, and have fun :)",
+                    "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "compatibilityWarning": // NB: Not used anymore
+
+                    MessageBox.Show(
+                    "When applying your settings, V's Fix will automatically try to set these compatibility flags :" +
+                    "\n\n" +
+                    "- Run the game in WindowsXP SP3 Compatibility Mode" + "\n" +
+                    "- Execute the game with Admin rights" +
+                    "\n\n" +
+                    "to the main game executable (mgs2_sse.exe) but it may fail or be blocked by various actors, so please be sure that they have been succesfully activated!" +
+                    "\n\n" +
+                    "Running the game without these flags will results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
+                    "\n\n" +
+                    "You can see again this message from the 'Resolution tab'." + "\n",
+                    "*Suddenly green hills appear in the background*", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                // GENERAL INFOS
+
+                case "savegameWillBeMoved":
+
+                    MessageBox.Show(
+                    "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
+                    "From now on, your save data will be contained in this folder:" + "\n\n"+
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE",
+                    "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "savegameCantBeMoved":
+
+                    string oldFolderPath = Directory.GetParent(Application.StartupPath).FullName+"\\savedata";
+                    string newFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
+
+                    MessageBox.Show(
+                    "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
+                    "The fix has also detected that you could move savedata from old directory to new, but a folder already exist in the new location."+"\n\n"+
+                    "I don't know what are your most recent savedata so please delete one of the following folder:"+ "\n\n" +
+                    oldFolderPath + "\n\n"+
+                    "( or )" + "\n\n" +
+                    newFolderPath + "" + "\n\n"+
+                    "Please manually fix this situation, and reopen the fix."+"\n\n"+
+                    "Now the fix will close. Sorry dude :(",
+                    "Trouble incoming...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    break;
+
+                case "gameNeverConfigured":
+
+                    MessageBox.Show(
+                    "To start the game, you have to configure it at least once!"+"\n\n"+
+                    "Please press 'SETTINGS' and configure the game, then retry :)",
+                    "And that's why it doesn't work...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
 
                 case "update_crashedinfire":
 
@@ -1338,7 +1431,22 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                    // ERROR MESSAGE
+                // FATAL ERROR WHILE STARTING THE GAME
+
+                case "fatalError_WrongVideoAdapter":
+
+                    MessageBox.Show(
+                    "V's has detected that your game has started with a different VGA from the one selected from the V's Fix."+"\n\n"+
+                    "This can cause glitches and bugs."+"\n\n"+
+                    "V's Fix can't solve this for you, so to quickly solve the issue (in less than 30 seconds) please read the V's Fix manual"+"\n\n"+
+                    "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter"+"\n\n"+
+                    "Closing this message will open your browser pointing to V's Guide"+"\n\n"+
+                    "Would you kindly press the 'OK' button?",
+                    "Helper in action...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    break;
+
+                // ERROR MESSAGE WHILE USING FIX
 
                 case "wrong_folder_error":
 
@@ -1414,7 +1522,7 @@ namespace mgs2_v_s_fix
                 case "no_vga":
 
                     MessageBox.Show(
-                    "V's hasn't found any VGA installed in your system.\n\nIF you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
+                    "V's hasn't found any VGA installed in your system.\n\nIf you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1452,22 +1560,7 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                case "compatibilityWarning":
-
-                    MessageBox.Show(
-                        "When applying your settings, V's Fix will automatically try to set these compatibility flags :" +
-                        "\n\n" +
-                        "- Run the game in WindowsXP SP3 Compatibility Mode" + "\n" +
-                        "- Execute the game with Admin rights" +
-                        "\n\n"+
-                        "to the main game executable (mgs2_sse.exe) but it may fail or be blocked by various actors, so please be sure that they have been succesfully activated!"+
-                        "\n\n" +
-                        "Running the game without these flags will results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
-                        "\n\n" +
-                        "You can see again this message from the 'Resolution tab'." + "\n",
-                    "*Suddenly green hills appear in the background*", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
+                // STEAM
 
                 case "steamIsRunning":
 
@@ -1522,6 +1615,8 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                // TIPS
+
                 case "tip_antialiasingANDmodelquality":
 
                     MessageBox.Show(
@@ -1548,6 +1643,8 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                // DEFAULT MESSAGE
+
                 default:
 
                     MessageBox.Show("You shouldn't be able to read this message: /",
@@ -1560,7 +1657,7 @@ namespace mgs2_v_s_fix
 
         // Apply the 'Windows XP SP3 Compatibility Mode' and 'Run as Admin' flags
 
-        private static void setCompatibilityFlags()
+        private static void SetCompatibilityFlags()
         {
 
             try
@@ -1584,6 +1681,188 @@ namespace mgs2_v_s_fix
 
                 PrintToDebugConsole("[ :( ] Exception while setting compatibility flags!");
 
+            }
+
+        }
+
+        // Check if any compatibility flag is set
+        public static bool CheckForCompabilityFlags()
+        {
+            // Set a default value
+            bool returnValue = false;
+
+            PrintToDebugConsole("[C.FLAGS CHECK] Checking for compatibility flags...");
+
+            try
+            {
+                string registry_path = "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\\";
+                string game_exe_path = Application.StartupPath + "\\mgs2_sse.exe";
+                Microsoft.Win32.RegistryKey key;
+
+                key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(registry_path);
+
+                object retrievedValue = key.GetValue(game_exe_path, null);
+
+                if (retrievedValue != null)
+                {
+                    // Something exist. Cast value to string
+                    string actualValue = retrievedValue.ToString();
+
+                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags found: "+ retrievedValue);
+
+                    key.Close();
+
+                    // Set the return value for method caller
+                    returnValue = true;
+
+                }
+                else
+                {
+                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags NOT found :)");
+                }
+
+            }
+
+            catch
+            {
+                // Signal to debugger
+
+                PrintToDebugConsole("[C.FLAGS CHECK] Exception while checking compatibility flags!");
+
+            }
+
+            return returnValue;
+
+        }
+
+        // Remove compatibility flags, if any
+        private static void RemoveCompatibilityFlags()
+        {
+            PrintToDebugConsole("[C.FLAGS REMOVAL] Starting...");
+
+            try
+            {
+                string registry_path = "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\\";
+                string game_exe_path = Application.StartupPath + "\\mgs2_sse.exe";
+                Microsoft.Win32.RegistryKey key;
+
+                key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(registry_path);
+
+                key.DeleteValue(game_exe_path, false);
+
+                PrintToDebugConsole("[C.FLAGS REMOVAL] Compatibility flags removed!");
+
+            }
+
+            catch
+            {
+                // Signal to debugger
+
+                PrintToDebugConsole("[C.FLAGS REMOVAL] Exception while removing compatibility flags!");
+
+            }
+
+        }
+
+        // Move savegames to new location in "My Games"
+
+        public static void MoveSavegamesToNewLocation()
+        {
+
+            try
+            {
+                string oldSavedataPath = Directory.GetParent(Application.StartupPath).FullName + "\\savedata";
+                string newSavedataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
+
+                Directory.Move(oldSavedataPath, newSavedataPath);
+
+                // Create a file to remember the user to check to new location
+
+                File.Create(Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER");
+
+            }
+
+            catch
+            {
+                showMessage("UAC_error");
+
+                Application.Exit();
+
+            }
+
+        }
+
+        // Check for fatal errors, and prompt an aid to the user
+
+        public static FATALERRORSFOUND CheckForFatalErrors()
+        {
+
+            // Set a default value
+            FATALERRORSFOUND returnValue = default(FATALERRORSFOUND);
+
+            try
+            {
+
+                // Read the last.log file in both possible location
+
+                string lastLogPath = RecoverLastLogPath();
+
+                if (!File.Exists(lastLogPath))
+                {
+                    // last.log has never been created
+                    return FATALERRORSFOUND.NoneDetected;
+                }
+
+                // last.log actually exist. Read it and memorize locally
+
+                string contents = File.ReadAllText(lastLogPath);
+
+                // Check for a wrong bound VGA
+
+                if (contents.Contains("Can't Find Device:"))
+                {
+                    returnValue = returnValue.Add(FATALERRORSFOUND.WrongVideoAdapter);
+                }
+
+                // TODO check for others kind of issues
+
+            }
+            catch
+            {
+                showMessage("UAC_error");
+
+                return FATALERRORSFOUND.ErrorWhileReadingFile;
+
+            }
+
+            return returnValue;
+
+        }
+
+        // Recover the last.log in the right path
+
+        public static string RecoverLastLogPath()
+        {
+            string PathOfLastLogInVirtualStore = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3) + "\\last.log";
+            string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
+
+            // Check the last.log created from the >1.7 version of the fix
+            if (File.Exists(PathOfLastLogInVirtualStore))
+            {
+                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
+                return PathOfLastLogInVirtualStore;
+            }
+            // Check the last.log created from the <1.7 version of the fix
+            else if (File.Exists(PathOfLastLogInApplicationFolder))
+            {
+                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
+                return PathOfLastLogInApplicationFolder;
+            }
+            else
+            {
+                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
+                // last.log has never been created. Return an empty path
+                return "";
             }
 
         }
@@ -2103,6 +2382,12 @@ namespace mgs2_v_s_fix
             {
                 return originalPath;
             }
+        }
+
+        // Check if a directory is empty
+        public static bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
         }
 
     }// END CLASS

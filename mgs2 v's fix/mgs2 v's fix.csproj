@@ -36,7 +36,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Program Files %28x86%29\KONAMI22\MetalGearSolid2 Substance\bin\</OutputPath>
+    <OutputPath>..\..\..\Program Files %28x86%29\MetalGearSolid2 Substance\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -142,7 +142,7 @@
     <EmbeddedResource Include="Resources\2_audio_fix.zip" />
     <EmbeddedResource Include="Resources\3_fixed_exe.zip" />
     <EmbeddedResource Include="Resources\Configuration_file.zip" />
-    <EmbeddedResource Include="Resources\WSF.zip" />
+    <EmbeddedResource Include="Resources\WidescreenFix.zip" />
     <EmbeddedResource Include="Resources\XInputPlus.zip" />
     <EmbeddedResource Include="Resources\DXWrapper.zip" />
     <EmbeddedResource Include="Resources\ControllerDS4_PS2Layout.zip" />
@@ -151,6 +151,7 @@
     <None Include="Resources\MGS2.ttf" />
     <EmbeddedResource Include="Resources\sweetFX_FXAA.zip" />
     <EmbeddedResource Include="Resources\sweetFX_SMAA.zip" />
+    <EmbeddedResource Include="Resources\UltimateASILoader.zip" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -188,6 +189,7 @@
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
     <None Include="Resources\bg8.png" />
+    <EmbeddedResource Include="Resources\SavegameLocationChanger.zip" />
     <None Include="Resources\SteamLogo.png" />
     <None Include="Resources\exclamation.png" />
     <None Include="Resources\GitHubLogo.png" />
