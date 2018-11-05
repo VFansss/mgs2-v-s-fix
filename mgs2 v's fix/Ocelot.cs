@@ -1302,6 +1302,34 @@ namespace mgs2_v_s_fix
 
                 // INFORMATION TIP    
 
+                case "savegameWillBeMoved":
+
+                    MessageBox.Show(
+                    "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
+                    "From now on, your save data will be contained in this folder:" + "\n\n"+
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE",
+                    "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "savegameCantBeMoved":
+
+                    string oldFolderPath = Directory.GetParent(Application.StartupPath).FullName+"\\savedata";
+                    string newFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
+
+                    MessageBox.Show(
+                    "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
+                    "The fix has also detected that you could move savedata from old directory to new, but a folder already exist in the new location."+"\n\n"+
+                    "I don't know what are your most recent savedata so please delete one of the following folder:"+ "\n\n" +
+                    oldFolderPath + "\n\n"+
+                    "( or )" + "\n\n" +
+                    newFolderPath + "" + "\n\n"+
+                    "Please manually fix this situation, and reopen the fix."+"\n\n"+
+                    "Now the fix will close. Sorry dude :(",
+                    "Trouble incoming...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    break;
+
                 case "gameNeverConfigured":
 
                     MessageBox.Show(
@@ -1615,6 +1643,34 @@ namespace mgs2_v_s_fix
                 // Signal to debugger
 
                 PrintToDebugConsole("[ :( ] Exception while setting compatibility flags!");
+
+            }
+
+        }
+
+        // Move savegames to new location in "My Games"
+
+        public static void MoveSavegamesToNewLocation()
+        {
+
+            try
+            {
+                string oldSavedataPath = Directory.GetParent(Application.StartupPath).FullName + "\\savedata";
+                string newSavedataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
+
+                Directory.Move(oldSavedataPath, newSavedataPath);
+
+                // Create a file to remember the user to check to new location
+
+                File.Create(Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER");
+
+            }
+
+            catch
+            {
+                showMessage("UAC_error");
+
+                Application.Exit();
 
             }
 
@@ -2135,6 +2191,12 @@ namespace mgs2_v_s_fix
             {
                 return originalPath;
             }
+        }
+
+        // Check if a directory is empty
+        public static bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
         }
 
     }// END CLASS

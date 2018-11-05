@@ -201,6 +201,38 @@ namespace mgs2_v_s_fix
 
             }
 
+            // Check if savegame must be moved to the new location in "My Games", and warn the user if so
+
+            if (Directory.Exists(Application.StartupPath + "\\..\\savedata"))
+            {
+                // Must move things
+
+                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                if (Directory.Exists(Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE")))
+                {
+                    // Trouble incoming...
+
+                    Ocelot.showMessage("savegameCantBeMoved");
+
+                    // About everything until user solve the situation
+
+                    Application.Exit();
+
+                }
+
+                else
+                {
+                    // Situation is clear...
+
+                    Ocelot.showMessage("savegameWillBeMoved");
+
+                    Ocelot.MoveSavegamesToNewLocation();
+
+                }
+                
+            }
+
             Ocelot.PrintToDebugConsole("[+] Settings has been displayed.");
 
         }
