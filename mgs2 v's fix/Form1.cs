@@ -84,15 +84,17 @@ namespace mgs2_v_s_fix
 
             setNewBackground();
 
-            Ocelot.PrintToDebugConsole("[+] Form1 constructor has done. Waiting user input.");
-
             // Bind lbl_checkForUpdate.Text to default text
 
             lbl_checkForUpdate.Text = checkForUpdateDefaultString;
 
             // Check for fatal errors
 
+            Ocelot.PrintToDebugConsole("[FATALERROR CHECKING] Checking for fatal errors...");
+
             FATALERRORSFOUND errorsFound = Ocelot.CheckForFatalErrors();
+
+            Ocelot.PrintToDebugConsole("[FATALERROR CHECKING] Check has returned this code: "+errorsFound.ToString());
 
             if (errorsFound != FATALERRORSFOUND.NoneDetected)
             {
@@ -124,6 +126,8 @@ namespace mgs2_v_s_fix
             }
 
             // Show the form
+
+            Ocelot.PrintToDebugConsole("[+] Form1 constructor has done. Waiting user input.");
 
         }
 
@@ -297,7 +301,7 @@ namespace mgs2_v_s_fix
             pictureBox2.Visible = false;
             lbl_ManualLink.Visible = false;
 
-            Ocelot.PrintToDebugConsole("[+] Save has been saved (!)");
+            Ocelot.PrintToDebugConsole("[+] 'SAVE' has finished saving (!)");
 
         }
 

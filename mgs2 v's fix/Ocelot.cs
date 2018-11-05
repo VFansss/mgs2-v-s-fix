@@ -1700,36 +1700,35 @@ namespace mgs2_v_s_fix
 
         public static FATALERRORSFOUND CheckForFatalErrors()
         {
+
             // Set a default value
             FATALERRORSFOUND returnValue = default(FATALERRORSFOUND);
 
             try
             {
-                string lastLogPath = Application.StartupPath + "\\last.log";
+
+                // Read the last.log file in both possible location
+
+                string lastLogPath = RecoverLastLogPath();
 
                 if (!File.Exists(lastLogPath))
                 {
-                    // Well, who cares
-
+                    // last.log has never been created
                     return FATALERRORSFOUND.NoneDetected;
-
                 }
-                else
+
+                // last.log actually exist. Read it and memorize locally
+
+                string contents = File.ReadAllText(lastLogPath);
+
+                // Check for a wrong bound VGA
+
+                if (contents.Contains("Can't Find Device:"))
                 {
-                    // Last.log actually exist. Read it and memorize locally
-
-                    string contents = File.ReadAllText(lastLogPath);
-
-                    // Check for a wrong bound VGA
-
-                    if (contents.Contains("Can't Find Device:"))
-                    {
-                        returnValue = returnValue.Add(FATALERRORSFOUND.WrongVideoAdapter);
-                    }
-
-                    // TODO check for others kind of issues
-
+                    returnValue = returnValue.Add(FATALERRORSFOUND.WrongVideoAdapter);
                 }
+
+                // TODO check for others kind of issues
 
             }
             catch
@@ -1741,6 +1740,34 @@ namespace mgs2_v_s_fix
             }
 
             return returnValue;
+
+        }
+
+        // Recover the last.log in the right path
+
+        public static string RecoverLastLogPath()
+        {
+            string PathOfLastLogInVirtualStore = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3) + "\\last.log";
+            string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
+
+            // Check the last.log created from the >1.7 version of the fix
+            if (File.Exists(PathOfLastLogInVirtualStore))
+            {
+                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
+                return PathOfLastLogInVirtualStore;
+            }
+            // Check the last.log created from the <1.7 version of the fix
+            else if (File.Exists(PathOfLastLogInApplicationFolder))
+            {
+                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
+                return PathOfLastLogInApplicationFolder;
+            }
+            else
+            {
+                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
+                // last.log has never been created. Return an empty path
+                return "";
+            }
 
         }
 

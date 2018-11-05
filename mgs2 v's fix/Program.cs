@@ -47,28 +47,30 @@ namespace mgs2_v_s_fix
 
                 // Print last game execution log, if exist
 
-                if (File.Exists("last.log"))
+                string latestLastLogPath = Ocelot.RecoverLastLogPath();
+
+                if (File.Exists(latestLastLogPath))
                 {
 
-                    Ocelot.PrintToDebugConsole("[LAST.LOG] A last.log file exist. Reading it...");
+                    Ocelot.PrintToDebugConsole("[PRINT LAST.LOG] A last.log file exist. Reading it...");
 
                     try
                     {
-                        string entireFile = File.ReadAllText("last.log", Encoding.ASCII);
+                        string entireFile = File.ReadAllText(latestLastLogPath, Encoding.ASCII);
 
-                        Ocelot.PrintToDebugConsole("[LAST.LOG] " + entireFile);
+                        Ocelot.PrintToDebugConsole("[PRINT LAST.LOG] " + entireFile);
                     }
 
                     catch
                     {
-                        Ocelot.PrintToDebugConsole("[LAST.LOG] EXCEPTION WHILE READING LAST.LOG");
+                        Ocelot.PrintToDebugConsole("[PRINT LAST.LOG] EXCEPTION WHILE READING LAST.LOG");
                     }
 
                 }
 
                 else
                 {
-                    Ocelot.PrintToDebugConsole("[LAST.LOG] No last.log file found. Game has never started!");
+                    Ocelot.PrintToDebugConsole("[PRINT LAST.LOG] No last.log file found. Game has never started!");
                 }
 
             }
