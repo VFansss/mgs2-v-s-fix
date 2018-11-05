@@ -6,28 +6,46 @@ using System.Threading.Tasks;
 
 namespace mgs2_v_s_fix
 {
-    class Flags
+    public enum UPDATE_AVAILABILITY
+    {
+        ResponseMismatch = 0,
+        NetworkError,
+        NoUpdates,
+        UpdateAvailable,
+    };
+
+    public enum ADD2STEAMSTATUS
+    {
+        SteamIsRunning = 0,
+        CantFindNecessaryPaths,
+        CantFindVdfFile,
+        AddedForOneUser,
+        AddedForMoreUsers,
+        NothingDone,
+        AccessError
+
+    };
+
+    [Flags]
+    public enum FATALERRORSFOUND
+    {
+        NoneDetected = 0,
+        WrongVideoAdapter,
+        ErrorWhileReadingFile
+    }
+
+    public static class FlagExtension
     {
 
-        public enum UPDATE_AVAILABILITY
+        public static FATALERRORSFOUND Add(this FATALERRORSFOUND baseEnum, FATALERRORSFOUND addThis)
         {
-            ResponseMismatch = 0,
-            NetworkError,
-            NoUpdates,
-            UpdateAvailable,
-        };
+            return baseEnum | addThis;
+        }
 
-        public enum ADD2STEAMSTATUS
+        public static FATALERRORSFOUND Remove(this FATALERRORSFOUND baseEnum, FATALERRORSFOUND removeThis)
         {
-            SteamIsRunning = 0,
-            CantFindNecessaryPaths,
-            CantFindVdfFile,
-            AddedForOneUser,
-            AddedForMoreUsers,
-            NothingDone,
-            AccessError
-
-        };
+            return baseEnum &= ~removeThis;
+        }
 
 
     }

@@ -15,7 +15,6 @@ using System.Net.Http.Headers;
 using System.Net;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using static mgs2_v_s_fix.Flags;
 using Newtonsoft.Json.Linq;
 
 namespace mgs2_v_s_fix
@@ -1398,7 +1397,22 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                    // ERROR MESSAGE
+                    // FATAL ERROR WHILE STARTING THE GAME
+
+                case "fatalError_WrongVideoAdapter":
+
+                    MessageBox.Show(
+                    "V's has detected that your game has started with a different VGA from the one selected from the V's Fix."+"\n\n"+
+                    "This can cause glitches and bugs."+"\n\n"+
+                    "V's Fix can't solve this for you, so to quickly solve the issue (in less than 30 seconds) please read the V's Fix manual"+"\n\n"+
+                    "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter"+"\n\n"+
+                    "Closing this message will open your browser pointing to V's Guide"+"\n\n"+
+                    "Would you kindly press the 'OK' button?",
+                    "Helper in action...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    break;
+
+                // ERROR MESSAGE WHILE USING FIX
 
                 case "wrong_folder_error":
 
@@ -1474,7 +1488,7 @@ namespace mgs2_v_s_fix
                 case "no_vga":
 
                     MessageBox.Show(
-                    "V's hasn't found any VGA installed in your system.\n\nIF you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
+                    "V's hasn't found any VGA installed in your system.\n\nIf you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1529,6 +1543,8 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                    // STEAM
+
                 case "steamIsRunning":
 
                     MessageBox.Show(
@@ -1582,6 +1598,8 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                    // TIPS
+
                 case "tip_antialiasingANDmodelquality":
 
                     MessageBox.Show(
@@ -1607,6 +1625,8 @@ namespace mgs2_v_s_fix
                     "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
+
+                    // DEFAULT MESSAGE
 
                 default:
 
@@ -1673,6 +1693,54 @@ namespace mgs2_v_s_fix
                 Application.Exit();
 
             }
+
+        }
+
+        // Check for fatal errors, and prompt an aid to the user
+
+        public static FATALERRORSFOUND CheckForFatalErrors()
+        {
+            // Set a default value
+            FATALERRORSFOUND returnValue = default(FATALERRORSFOUND);
+
+            try
+            {
+                string lastLogPath = Application.StartupPath + "\\last.log";
+
+                if (!File.Exists(lastLogPath))
+                {
+                    // Well, who cares
+
+                    return FATALERRORSFOUND.NoneDetected;
+
+                }
+                else
+                {
+                    // Last.log actually exist. Read it and memorize locally
+
+                    string contents = File.ReadAllText(lastLogPath);
+
+                    // Check for a wrong bound VGA
+
+                    if (contents.Contains("Can't Find Device:"))
+                    {
+                        returnValue = returnValue.Add(FATALERRORSFOUND.WrongVideoAdapter);
+                    }
+
+                    // TODO check for others kind of issues
+
+                }
+
+            }
+            catch
+            {
+                showMessage("UAC_error");
+
+                return FATALERRORSFOUND.ErrorWhileReadingFile;
+
+            }
+
+            return returnValue;
 
         }
 

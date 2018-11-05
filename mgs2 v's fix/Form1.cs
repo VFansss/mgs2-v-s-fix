@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Drawing.Text;
 using System.IO;
 using System.Reflection;
-using static mgs2_v_s_fix.Flags;
 using System.Threading.Tasks;
 
 namespace mgs2_v_s_fix
@@ -90,6 +89,41 @@ namespace mgs2_v_s_fix
             // Bind lbl_checkForUpdate.Text to default text
 
             lbl_checkForUpdate.Text = checkForUpdateDefaultString;
+
+            // Check for fatal errors
+
+            FATALERRORSFOUND errorsFound = Ocelot.CheckForFatalErrors();
+
+            if (errorsFound != FATALERRORSFOUND.NoneDetected)
+            {
+                // Trouble incoming
+
+                if (errorsFound.HasFlag(FATALERRORSFOUND.ErrorWhileReadingFile))
+                {
+                    Ocelot.showMessage("UAC_error");
+                }
+
+                if (errorsFound.HasFlag(FATALERRORSFOUND.WrongVideoAdapter))
+                {
+
+                    // Open the guide to the right chapter
+
+                    Ocelot.showMessage("fatalError_WrongVideoAdapter");
+
+                    try
+                    {
+                        System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
+                    }
+
+                    catch
+                    {
+                        Ocelot.showMessage("UAC_error");
+                    }
+                }
+
+            }
+
+            // Show the form
 
         }
 
