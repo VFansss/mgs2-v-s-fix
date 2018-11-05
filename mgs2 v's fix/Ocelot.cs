@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "181031";
+        public const string VERSION = "181105";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -1026,9 +1026,14 @@ namespace mgs2_v_s_fix
 
                 */
 
-                // Set the compatibility flags
+                // DEPRECATED FROM VERSION 1.7 - Set the compatibility flags
 
-                setCompatibilityFlags();
+                //SetCompatibilityFlags();
+
+                if (Ocelot.CheckForCompabilityFlags() == true)
+                {
+                    Ocelot.RemoveCompatibilityFlags();
+                }
 
             }
 
@@ -1652,7 +1657,7 @@ namespace mgs2_v_s_fix
 
         // Apply the 'Windows XP SP3 Compatibility Mode' and 'Run as Admin' flags
 
-        private static void setCompatibilityFlags()
+        private static void SetCompatibilityFlags()
         {
 
             try
@@ -1727,6 +1732,35 @@ namespace mgs2_v_s_fix
             }
 
             return returnValue;
+
+        }
+
+        // Remove compatibility flags, if any
+        private static void RemoveCompatibilityFlags()
+        {
+            PrintToDebugConsole("[C.FLAGS REMOVAL] Starting...");
+
+            try
+            {
+                string registry_path = "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\\";
+                string game_exe_path = Application.StartupPath + "\\mgs2_sse.exe";
+                Microsoft.Win32.RegistryKey key;
+
+                key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(registry_path);
+
+                key.DeleteValue(game_exe_path, false);
+
+                PrintToDebugConsole("[C.FLAGS REMOVAL] Compatibility flags removed!");
+
+            }
+
+            catch
+            {
+                // Signal to debugger
+
+                PrintToDebugConsole("[C.FLAGS REMOVAL] Exception while removing compatibility flags!");
+
+            }
 
         }
 
