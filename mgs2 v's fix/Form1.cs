@@ -108,19 +108,23 @@ namespace mgs2_v_s_fix
                 if (errorsFound.HasFlag(FATALERRORSFOUND.WrongVideoAdapter))
                 {
 
-                    // Open the guide to the right chapter
+                    // Open the guide to the right chapter?
 
-                    Ocelot.showMessage("fatalError_WrongVideoAdapter");
+                    DialogResult answer = Ocelot.showMessage("fatalError_WrongVideoAdapter");
 
-                    try
+                    if(answer == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
-                    }
+                        try
+                        {
+                            System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
+                        }
 
-                    catch
-                    {
-                        Ocelot.showMessage("UAC_error");
+                        catch
+                        {
+                            Ocelot.showMessage("UAC_error");
+                        }
                     }
+                  
                 }
 
             }

@@ -66,6 +66,7 @@
             this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
             this.EnableController_NO = new System.Windows.Forms.RadioButton();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
+            this.lbl_AAGuide = new System.Windows.Forms.Label();
             this.pnl_AA = new System.Windows.Forms.Panel();
             this.AA_smaa = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
@@ -103,6 +104,7 @@
             this.RenderingSize_medium = new System.Windows.Forms.RadioButton();
             this.RenderingSize_low = new System.Windows.Forms.RadioButton();
             this.tab_Sound = new System.Windows.Forms.TabPage();
+            this.help_sound = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lst_sound_list = new System.Windows.Forms.ListBox();
             this.pnl_Quality = new System.Windows.Forms.Panel();
@@ -146,8 +148,6 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
-            this.lbl_AAGuide = new System.Windows.Forms.Label();
-            this.help_sound = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -272,11 +272,11 @@
             this.help_compatibilityWarning.AutoSize = true;
             this.help_compatibilityWarning.Cursor = System.Windows.Forms.Cursors.Hand;
             this.help_compatibilityWarning.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_compatibilityWarning.Location = new System.Drawing.Point(147, 199);
+            this.help_compatibilityWarning.Location = new System.Drawing.Point(79, 199);
             this.help_compatibilityWarning.Name = "help_compatibilityWarning";
-            this.help_compatibilityWarning.Size = new System.Drawing.Size(306, 19);
+            this.help_compatibilityWarning.Size = new System.Drawing.Size(443, 19);
             this.help_compatibilityWarning.TabIndex = 16;
-            this.help_compatibilityWarning.Text = "Check the compatibility flags! More info here!";
+            this.help_compatibilityWarning.Text = "Be sure to check the right VGA from the list below! More info here!";
             this.help_compatibilityWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.help_compatibilityWarning.Click += new System.EventHandler(this.help_compatibilityWarning_Click);
             // 
@@ -284,7 +284,7 @@
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox4.Image = global::mgs2_v_s_fix.Properties.Resources.exclamation;
-            this.pictureBox4.Location = new System.Drawing.Point(99, 187);
+            this.pictureBox4.Location = new System.Drawing.Point(31, 187);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(42, 42);
             this.pictureBox4.TabIndex = 15;
@@ -789,6 +789,19 @@
             this.tab_Graphics.TabIndex = 2;
             this.tab_Graphics.Text = "Graphics";
             this.tab_Graphics.UseVisualStyleBackColor = true;
+            // 
+            // lbl_AAGuide
+            // 
+            this.lbl_AAGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_AAGuide.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbl_AAGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_AAGuide.Location = new System.Drawing.Point(6, 263);
+            this.lbl_AAGuide.Name = "lbl_AAGuide";
+            this.lbl_AAGuide.Size = new System.Drawing.Size(540, 19);
+            this.lbl_AAGuide.TabIndex = 19;
+            this.lbl_AAGuide.Text = "[RUNTIME]";
+            this.lbl_AAGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_AAGuide.Visible = false;
             // 
             // pnl_AA
             // 
@@ -1435,6 +1448,19 @@
             this.tab_Sound.TabIndex = 3;
             this.tab_Sound.Text = "Sound";
             this.tab_Sound.UseVisualStyleBackColor = true;
+            // 
+            // help_sound
+            // 
+            this.help_sound.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_sound.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_sound.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_sound.Location = new System.Drawing.Point(32, 196);
+            this.help_sound.Name = "help_sound";
+            this.help_sound.Size = new System.Drawing.Size(489, 19);
+            this.help_sound.TabIndex = 15;
+            this.help_sound.Text = "Missing audio? Press here to check the manual for a workaround";
+            this.help_sound.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.help_sound.Click += new System.EventHandler(this.help_sound_Click);
             // 
             // label6
             // 
@@ -2112,32 +2138,6 @@
             this.pic_background.Size = new System.Drawing.Size(800, 444);
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
-            // 
-            // lbl_AAGuide
-            // 
-            this.lbl_AAGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_AAGuide.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lbl_AAGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AAGuide.Location = new System.Drawing.Point(6, 263);
-            this.lbl_AAGuide.Name = "lbl_AAGuide";
-            this.lbl_AAGuide.Size = new System.Drawing.Size(540, 19);
-            this.lbl_AAGuide.TabIndex = 19;
-            this.lbl_AAGuide.Text = "[RUNTIME]";
-            this.lbl_AAGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_AAGuide.Visible = false;
-            // 
-            // help_sound
-            // 
-            this.help_sound.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.help_sound.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.help_sound.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_sound.Location = new System.Drawing.Point(32, 196);
-            this.help_sound.Name = "help_sound";
-            this.help_sound.Size = new System.Drawing.Size(489, 19);
-            this.help_sound.TabIndex = 15;
-            this.help_sound.Text = "Missing audio? Press here to check the manual for a workaround";
-            this.help_sound.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.help_sound.Click += new System.EventHandler(this.help_sound_Click);
             // 
             // Form1
             // 
