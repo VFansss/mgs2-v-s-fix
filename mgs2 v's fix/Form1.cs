@@ -1746,9 +1746,23 @@ namespace mgs2_v_s_fix
             }
         }
 
-        private void help_compatibilityWarning_Click(object sender, EventArgs e)
+        private void help_resolutionMenuWarning_Click(object sender, EventArgs e)
         {
-            Ocelot.showMessage("compatibilityWarning");
+            DialogResult openTheWiki = Ocelot.showMessage("tip_explainSelectionForVGAs");
+
+            if(openTheWiki == DialogResult.Yes)
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
+                }
+
+                catch
+                {
+                    Ocelot.showMessage("UAC_error");
+                }
+            }
+
         }
 
         #endregion

@@ -1143,7 +1143,7 @@ namespace mgs2_v_s_fix
             else if (vgaList.Count > 1)
             {
 
-                Ocelot.showMessage("tip_vga");
+                Ocelot.showMessage("tip_moreVGAs");
                 
             }
 
@@ -1373,6 +1373,8 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                // UPDATE messages
+
                 case "update_crashedinfire":
 
                     answer = MessageBox.Show(
@@ -1398,6 +1400,8 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                // DEBUG Mode messages
+
                 case "debugModeEnabled":
 
                     answer = MessageBox.Show(
@@ -1418,25 +1422,7 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                case "tip_patcher":
-
-                    answer = MessageBox.Show(
-                    "V's Fix will now run some extra applications for patching the game into 2.0 Version.\n\nOn some system it can prompt an UAC warning.\nIsn't doing anything harmful; let it do its job!",
-                    "Just an info...", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
-                case "tip_vga":
-
-                    answer = MessageBox.Show(
-                        "Please be aware that since more VGAs are installed on your system you have to be sure that the executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!"+
-                        "\n\n"+
-                        "This MUST be done MANUALLY from your graphics adapter's control panel!",
-                    "More graphics adapter detected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
-                // FATAL ERROR WHILE STARTING THE GAME
+                // FATAL ERROR(s) WHILE STARTING THE GAME
 
                 case "fatalError_WrongVideoAdapter":
 
@@ -1445,7 +1431,7 @@ namespace mgs2_v_s_fix
                     "This can cause glitches and bugs."+"\n\n"+
                     "V's Fix can't solve this for you, so to quickly solve the issue (in less than 30 seconds) please read the V's Fix manual"+"\n\n"+
                     "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter"+"\n\n"+
-                    "Do you want to open the V's Fix Wiki on that page?" + "\n\n",
+                    "Do you want to open the V's Fix Wiki on that page?",
                     "Helper in action...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     break;
@@ -1638,12 +1624,56 @@ namespace mgs2_v_s_fix
                 case "tip_smaaANDsteam":
 
                     answer = MessageBox.Show(
-                        "SMAA Anti-Aliasing is activated, and this can cause glitches with the Steam overlay, and consequently with the Steam controller(s)" +
-                        "\n\n" +
-                        "For this reason, FXAA Anti-Aliasing has been selected instead."+
-                        "\n\n" +
-                        "( HINT: If you want SMAA at all costs, unselect 'Steam' from the 'Controls' tab of the fix, or enable it manually from 'SweetFX_settings.txt' after you press 'SAVE' )",
+                    "SMAA Anti-Aliasing is activated, and this can cause glitches with the Steam overlay, and consequently with the Steam controller(s)" +
+                    "\n\n" +
+                    "For this reason, FXAA Anti-Aliasing has been selected instead."+
+                    "\n\n" +
+                    "( HINT: If you want SMAA at all costs, unselect 'Steam' from the 'Controls' tab of the fix, or enable it manually from 'SweetFX_settings.txt' after you press 'SAVE' )",
                     "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_patcher":
+
+                    answer = MessageBox.Show(
+                    "V's Fix will now run some extra applications for patching the game into 2.0 Version.\n\nOn some system it can prompt an UAC warning.\nIsn't doing anything harmful; let it do its job!",
+                    "Just an info...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_moreVGAs":
+
+                    answer = MessageBox.Show(
+                    "Please be aware that since more VGAs are installed on your system you have to be sure that the executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!" +
+                    "\n\n" +
+                    "This MUST be done MANUALLY from your graphics adapter's control panel!",
+                    "More graphics adapter detected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_explainSelectionForVGAs":
+
+                    answer = MessageBox.Show(
+                    "To make the game work flawlessly, V's Fix must know your video graphic adapters (VGA) model/brand to apply certain fixes to the game."+
+                    "\n\n"+
+                    "Below, you can find the list of detected VGAs on your system."+
+                    "\n\n"+
+                    "If you have a SINGLE VGA ON YOUR PC, you can stop reading here :D"+
+                    "\n\n"+
+                    "If you have MORE THAN ONE VGA ON YOUR PC, below you can select the one that will run the game." +
+                    "\n\n"+
+                    "In that case, simply selecting a VGA from the fix MAY not be enough, though."+
+                    "\n\n"+
+                    "Some 'power saving' settings from your VGAs driver could interfere with that decision, based on how the driver has decided to run the game (i.e. on your laptop integrated GPU to save power)"+
+                    "\n\n"+
+                    "You have to be sure that your VGA driver is reflecting the decision you made below, and this MUST be done MANUALLY from your ATI/Intel/NVidia VGA control panel!"+
+                    "V's Fix can't do it for you, unfortunatelly!"+
+                    "\n\n"+
+                    "If you never done it before, on the V's Fix manual I wrote some examples (with images) for various VGA brands!" +
+                    "\n\n" +
+                    "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter" + "\n\n" +
+                    "Do you want to open the V's Fix Wiki on that page?",
+                    "Estimated time for reading: 1 minute", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                     break;
 
