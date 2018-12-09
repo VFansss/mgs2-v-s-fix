@@ -1309,7 +1309,7 @@ namespace mgs2_v_s_fix
                 case "compatibilityFlagsNotNeeded":
 
                     answer = MessageBox.Show(
-                    "From this version of the Fix, the game doesn't need anymore any compatibility flags."+"\n\n"+
+                    "IN this version of the Fix, the game doesn't need any compatibility flags anymore"+"\n\n"+
                     "This will greatly enhance the game compatibility, expecially with Win10 and Steam!"+"\n\n"+
                     "Next time you press 'SAVE', these compatibility flags will be automatically removed."+"\n\n"+
                     "Happy playing, and have fun :)",
@@ -1327,9 +1327,9 @@ namespace mgs2_v_s_fix
                     "\n\n" +
                     "to the main game executable (mgs2_sse.exe) but it may fail or be blocked by various actors, so please be sure that they have been succesfully activated!" +
                     "\n\n" +
-                    "Running the game without these flags will results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
+                    "Running the game without these flags WILL results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
                     "\n\n" +
-                    "You can see again this message from the 'Resolution tab'." + "\n",
+                    "You can read again this message once again from the 'Resolution tab'." + "\n",
                     "*Suddenly green hills appear in the background*", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
@@ -1353,13 +1353,13 @@ namespace mgs2_v_s_fix
 
                     answer = MessageBox.Show(
                     "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
-                    "The fix has also detected that you could move savedata from old directory to new, but a folder already exist in the new location."+"\n\n"+
+                    "The fix has also detected that you could move savedata from old directory to new, but a folder already exists in the new location."+"\n\n"+
                     "I don't know what are your most recent savedata so please delete one of the following folder:"+ "\n\n" +
                     oldFolderPath + "\n\n"+
                     "( or )" + "\n\n" +
                     newFolderPath + "" + "\n\n"+
                     "Please manually fix this situation, and reopen the fix."+"\n\n"+
-                    "Now the fix will close. Sorry dude :(",
+                    "Now the fix is going to close. Sorry dude :(",
                     "Trouble incoming...", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1379,15 +1379,15 @@ namespace mgs2_v_s_fix
 
                     answer = MessageBox.Show(
                     "Can't reach GitHub for updates (Are you offline?)",
-                    "Ehi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "Hey!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "update_noupdates":
 
                     answer = MessageBox.Show(
-                    "Seems that there isn't any updates for the V's Fix.\n\nHappy playing :)",
-                    "Ehi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "Seems that there aren't any updates for the V's Fix.\n\nHappy playing :)",
+                    "Hey!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
@@ -1407,7 +1407,7 @@ namespace mgs2_v_s_fix
                     answer = MessageBox.Show(
                     "Debug mode is ENABLED!"+"\n\n"+
                     "You can find the debug log on your Desktop"+ "\n\n" +
-                    "You can analize it yourself and/or send it to me on GitHub!",
+                    "You can analize it by yourself and/or report it to me on GitHub!",
                     "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
@@ -1417,7 +1417,7 @@ namespace mgs2_v_s_fix
                     answer = MessageBox.Show(
                     "Debug mode is DISABLED!" + "\n\n" +
                     "Please go to V's Fix Wiki - Chapter 'Troubleshooting & Debug mode'" + "\n\n" +
-                    "to learn how to enable debug mode and let us understand better what is going wrong!",
+                    "to learn how to enable debug mode and let us understand better what is going on!",
                     "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
@@ -1646,7 +1646,9 @@ namespace mgs2_v_s_fix
                     answer = MessageBox.Show(
                     "Please be aware that since more VGAs are installed on your system you have to be sure that the executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!" +
                     "\n\n" +
-                    "This MUST be done MANUALLY from your graphics adapter's control panel!",
+                    "This MUST be done MANUALLY from your graphics adapter's control panel!"+
+                    "\n\n" +
+                    "To better understand why, please press the link on the right of the red ! sign on 'Resolution tab' ",
                     "More graphics adapter detected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
