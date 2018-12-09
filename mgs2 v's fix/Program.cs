@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Text;
+using System.Security.Principal;
 
 namespace mgs2_v_s_fix
 {
@@ -30,7 +31,7 @@ namespace mgs2_v_s_fix
             // NB: if debug mode is enabled it will write all console log into
             // a .txt file on user desktop
 
-            if(File.Exists(Application.StartupPath + "\\debug.sss") ||
+            if (File.Exists(Application.StartupPath + "\\debug.sss") ||
                (args.Length != 0 && args[0].Contains("-debug")) ){
 
                 // Debug mode enabled!
@@ -44,6 +45,19 @@ namespace mgs2_v_s_fix
                 Ocelot.PrintToDebugConsole("[!]");
                 Ocelot.PrintToDebugConsole("[!] Fix started at " + DateTime.UtcNow + " (UCT)");
                 Ocelot.PrintToDebugConsole("[!] Fix internal version: " + Ocelot.VERSION);
+
+                // Check if admin has right privileges
+
+                bool adminRights = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
+
+                if (adminRights)
+                {
+                    Ocelot.PrintToDebugConsole("[!] V's Fix has admin rights");
+                }
+                else
+                {
+                    Ocelot.PrintToDebugConsole("[!] V's Fix HASN'T admin rights");
+                }
 
                 // Print last game execution log, if exist
 
