@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace mgs2_v_s_fix
 {
@@ -23,7 +19,6 @@ namespace mgs2_v_s_fix
         AddedForMoreUsers,
         NothingDone,
         AccessError
-
     };
 
     [Flags]
@@ -36,7 +31,6 @@ namespace mgs2_v_s_fix
 
     public static class FlagExtension
     {
-
         public static FATALERRORSFOUND Add(this FATALERRORSFOUND baseEnum, FATALERRORSFOUND addThis)
         {
             return baseEnum | addThis;
@@ -46,7 +40,5 @@ namespace mgs2_v_s_fix
         {
             return baseEnum &= ~removeThis;
         }
-
-
     }
 }

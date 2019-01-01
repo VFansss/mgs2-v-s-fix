@@ -18,8 +18,6 @@
 
         public string Changelog { get; set; }
 
-        
-
 
         public UpdateSoftwareSheet()
         {
@@ -32,7 +30,5 @@
             SizeInByte = "-1";
             Changelog = "-1";
         }
-
-    }// End class
-
+    } // End class
 }

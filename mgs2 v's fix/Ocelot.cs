@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Management;
@@ -21,9 +20,8 @@ namespace mgs2_v_s_fix
 {
     class Ocelot
     {
-
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "181105";
+        public const string VERSION = "181208";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -38,7 +36,7 @@ namespace mgs2_v_s_fix
         public static ConfSheet InternalConfiguration = new ConfSheet();
 
         // List of Graphics Adapter present in the machine
-        public static LinkedList<string> vgaList= new LinkedList<string>();
+        public static LinkedList<string> vgaList = new LinkedList<string>();
 
         public static bool needOfAutoConfig = false;
 
@@ -47,10 +45,11 @@ namespace mgs2_v_s_fix
         // debug mode flag
 
         public static bool debugMode = false;
-        public static string debugMode_filePath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\MGS2_VFix_debug.txt";
+
+        public static string debugMode_filePath =
+            Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\MGS2_VFix_debug.txt";
 
         /// Main Menu Function
-
         public static void startGame()
         {
             Process cmd;
@@ -65,7 +64,6 @@ namespace mgs2_v_s_fix
                 // UAC Blocked?
                 Ocelot.showMessage("UAC_error");
             }
-            
         }
 
         public static void StartSteam()
@@ -82,8 +80,6 @@ namespace mgs2_v_s_fix
                 {
                     cmd = Process.Start(new ProcessStartInfo(steamExePath));
                 }
-
-                
             }
             catch
             {
@@ -93,10 +89,8 @@ namespace mgs2_v_s_fix
         }
 
         /// Settings Menu Function
-
         public static void checkConfFileIntegrity()
         {
-
             // If key field doesn't exist inside Configuration_file.ini
             // V's fix will create it
             // THEN flag Autoconfigurator to do something later
@@ -107,8 +101,8 @@ namespace mgs2_v_s_fix
             {
                 if (!ConfFile.KeyExists(entry.Key, "Resolution"))
                 {
-                 ConfFile.Write(entry.Key, "", "Resolution");
-                 needOfAutoConfig = true;
+                    ConfFile.Write(entry.Key, "", "Resolution");
+                    needOfAutoConfig = true;
                 }
             }
 
@@ -148,60 +142,50 @@ namespace mgs2_v_s_fix
                 }
             }
 
-            if (needOfAutoConfig) { Ocelot.PrintToDebugConsole("[+] Configuration_file.ini seem missing some key. Need to autoconfig!"); }
+            if (needOfAutoConfig)
+            {
+                Ocelot.PrintToDebugConsole("[+] Configuration_file.ini seem missing some key. Need to autoconfig!");
+            }
 
             return;
-
-
         }
 
         // I don't think these 2 need to be edited frequently
         public static void load_INI_SetTo_InternalConfig()
         {
-
             // Time to pair Key-Value from Configuration_file.ini and
             //  set it to Ocelot.dataFromConfFile
 
             Ocelot.PrintToDebugConsole("[ ] .ini contain a valid configuration. Loading from it...");
 
-            foreach(var entry in InternalConfiguration.Resolution.ToList())
+            foreach (var entry in InternalConfiguration.Resolution.ToList())
             {
-                
-                var tempstring = ConfFile.Read(entry.Key.ToString(),"Resolution");
+                var tempstring = ConfFile.Read(entry.Key.ToString(), "Resolution");
                 InternalConfiguration.Resolution[entry.Key] = tempstring;
-
             }
 
             foreach (var entry in InternalConfiguration.Controls.ToList())
             {
-
                 var tempstring = ConfFile.Read(entry.Key.ToString(), "Controls");
                 InternalConfiguration.Controls[entry.Key] = tempstring;
-
             }
 
             foreach (var entry in InternalConfiguration.Graphics.ToList())
             {
-
                 var tempstring = ConfFile.Read(entry.Key.ToString(), "Graphics");
                 InternalConfiguration.Graphics[entry.Key] = tempstring;
-
             }
 
             foreach (var entry in InternalConfiguration.Sound.ToList())
             {
-
                 var tempstring = ConfFile.Read(entry.Key.ToString(), "Sound");
                 InternalConfiguration.Sound[entry.Key] = tempstring;
-
             }
 
             foreach (var entry in InternalConfiguration.Others.ToList())
             {
-
                 var tempstring = ConfFile.Read(entry.Key.ToString(), "Others");
                 InternalConfiguration.Others[entry.Key] = tempstring;
-
             }
 
             Ocelot.PrintToDebugConsole("[ ] Information from .ini succesfully loaded into setupper!");
@@ -210,40 +194,29 @@ namespace mgs2_v_s_fix
 
         internal static void load_InternalConfig_SetTo_INI()
         {
-
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Resolution)
             {
-
                 ConfFile.Write(entry.Key, entry.Value, "Resolution");
-
             }
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Controls)
             {
-
                 ConfFile.Write(entry.Key, entry.Value, "Controls");
-
             }
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Graphics)
             {
-
                 ConfFile.Write(entry.Key, entry.Value, "Graphics");
-
             }
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Sound)
             {
-
                 ConfFile.Write(entry.Key, entry.Value, "Sound");
-
             }
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Others)
             {
-
                 ConfFile.Write(entry.Key, entry.Value, "Others");
-
             }
 
             Ocelot.PrintToDebugConsole("[ ] InternalConfig succesfully exported into Configuration_file.ini");
@@ -254,12 +227,10 @@ namespace mgs2_v_s_fix
         // !!!! Big function that apply V's Fix settings !!!!!!!!!!!!!!!!!!!!!!!!!!!
         internal static void load_InternalConfig_SetTo_MGS()
         {
-            
             // Delete already existing mgs.ini
 
             try
             {
-
                 File.Delete(Application.StartupPath + "\\mgs2.ini");
 
                 File.Create(Application.StartupPath + "\\mgs2.ini").Close();
@@ -269,7 +240,6 @@ namespace mgs2_v_s_fix
 
                 using (StreamWriter ini = new StreamWriter(Application.StartupPath + "\\mgs2.ini", true))
                 {
-
                     byte[] ba;
                     StringBuilder hexString = new StringBuilder();
                     int opcode;
@@ -286,7 +256,7 @@ namespace mgs2_v_s_fix
                     // to ensure backward compatibility
                     File.Delete(Application.StartupPath + "\\enbconvertor.ini");
 
-                    Unzip.UnZippa("DXWrapper.zip",true);
+                    Unzip.UnZippa("DXWrapper.zip", true);
 
                     // Extract fixed files for the "Green screen" bug (Issue #26), if not already there
 
@@ -300,20 +270,16 @@ namespace mgs2_v_s_fix
 
                     if (!File.Exists("msacm32.dll"))
                     {
-
                         Unzip.UnZippa("UltimateASILoader.zip", true);
 
-                        Directory.CreateDirectory(Application.StartupPath + "\\scripts");  
-
+                        Directory.CreateDirectory(Application.StartupPath + "\\scripts");
                     }
 
                     // Extract SavegameLocationChanger.asi
 
                     if (File.Exists(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi"))
                     {
-
                         File.Delete(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi");
-
                     }
 
                     Unzip.UnZippa("SavegameLocationChanger.zip", true);
@@ -325,10 +291,12 @@ namespace mgs2_v_s_fix
                     ////// 
 
                     #region lot_of_things
+
                     // Width
 
                     hexString.Clear();
-                    hexString.Append(string.Format("{0:x}", Int32.Parse(Ocelot.InternalConfiguration.Resolution["Width"])).ToUpper());
+                    hexString.Append(string
+                        .Format("{0:x}", Int32.Parse(Ocelot.InternalConfiguration.Resolution["Width"])).ToUpper());
 
                     while (hexString.Length < 4)
                     {
@@ -341,7 +309,8 @@ namespace mgs2_v_s_fix
                     // Heigth
 
                     hexString.Clear();
-                    hexString.Append(string.Format("{0:x}", Int32.Parse(Ocelot.InternalConfiguration.Resolution["Height"])).ToUpper());
+                    hexString.Append(string
+                        .Format("{0:x}", Int32.Parse(Ocelot.InternalConfiguration.Resolution["Height"])).ToUpper());
 
                     while (hexString.Length < 4)
                     {
@@ -370,7 +339,6 @@ namespace mgs2_v_s_fix
 
                     if (Ocelot.InternalConfiguration.Resolution["WideScreenFIX"].Equals("true"))
                     {
-
                         // 1: WidescreenFix.zip must be extracted
                         // 2: Resolution must be set inside scripts/mgs2w.ini
 
@@ -404,7 +372,6 @@ namespace mgs2_v_s_fix
                         {
                             ws_ini.Write("custom_fov", "0", "MISC");
                         }
-
                     }
 
                     // GraphicAdapterName
@@ -426,7 +393,6 @@ namespace mgs2_v_s_fix
 
                     if (hexString.Length <= 8)
                     {
-
                         while (hexString.Length < 8)
                         {
                             // Need 0 padding to right
@@ -434,15 +400,15 @@ namespace mgs2_v_s_fix
                         }
 
                         ini.WriteLine("00" + opcode + "\t" + hexString.ToString());
-
                     }
 
                     // FIX FOR ATI/NVIDIA
 
                     #region TANTAROBA
-                    using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
-                    {
 
+                    using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open,
+                        FileAccess.ReadWrite))
+                    {
                         // First things to do: sabotage certain API call
 
                         // P
@@ -500,7 +466,6 @@ namespace mgs2_v_s_fix
                             // c
                             stream.Position = 0x5FD839;
                             stream.WriteByte(0x63);
-
                         }
 
                         if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Radeon"))
@@ -530,7 +495,6 @@ namespace mgs2_v_s_fix
                             // n
                             stream.Position = 0x5FD839;
                             stream.WriteByte(0x6E);
-
                         }
 
                         if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Intel"))
@@ -560,7 +524,6 @@ namespace mgs2_v_s_fix
                             // (
                             stream.Position = 0x5FD839;
                             stream.WriteByte(0x28);
-
                         }
 
                         // Laptop FIX
@@ -612,7 +575,6 @@ namespace mgs2_v_s_fix
                             }
 
                         }*/
-
                     }
 
                     #endregion
@@ -667,7 +629,6 @@ namespace mgs2_v_s_fix
                             {
                                 Unzip.UnZippa("ControllerDS4_VLayout.zip", true);
                             }
-
                         }
 
                         else // XBOX
@@ -683,9 +644,7 @@ namespace mgs2_v_s_fix
                             {
                                 Unzip.UnZippa("ControllerXBOX_VLayout.zip", true);
                             }
-
                         }
-
                     }
 
                     #endregion
@@ -720,7 +679,6 @@ namespace mgs2_v_s_fix
                             ini.WriteLine("0006" + "\t" + "0800");
                             ini.WriteLine("0007" + "\t" + "0400");
                             break;
-
                     }
 
                     // ShadowDetail
@@ -743,7 +701,6 @@ namespace mgs2_v_s_fix
                             ini.WriteLine("0032" + "\t" + "0200");
                             ini.WriteLine("0040" + "\t" + "0001");
                             break;
-
                     }
 
                     // ModelQuality
@@ -764,7 +721,6 @@ namespace mgs2_v_s_fix
                             ini.WriteLine("0020" + "\t" + "0001");
                             ini.WriteLine("0021" + "\t" + "0001");
                             break;
-
                     }
 
                     // RenderingClearness
@@ -784,7 +740,6 @@ namespace mgs2_v_s_fix
                         case "high":
                             // Do nothing
                             break;
-
                     }
 
                     // EffectQuantity
@@ -810,7 +765,6 @@ namespace mgs2_v_s_fix
                             // below are CrossFade opcode
                             ini.WriteLine("0047" + "\t" + "0001");
                             break;
-
                     }
 
                     // BunchOfCoolEffect
@@ -855,16 +809,15 @@ namespace mgs2_v_s_fix
 
                     if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("smaa"))
                     {
-
                         Unzip.UnZippa("V_s_sweetFX.zip");
                         Unzip.UnZippa("sweetFX_SMAA.zip");
-
                     }
                     else if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("fxaa"))
                     {
                         Unzip.UnZippa("V_s_sweetFX.zip");
                         Unzip.UnZippa("sweetFX_FXAA.zip");
                     }
+
                     {
                         // No anti-aliasing today, baby
                     }
@@ -896,7 +849,6 @@ namespace mgs2_v_s_fix
 
                     if (hexString.Length <= 8)
                     {
-
                         while (hexString.Length < 8)
                         {
                             // Need 0 padding to right
@@ -904,7 +856,6 @@ namespace mgs2_v_s_fix
                         }
 
                         ini.WriteLine("00" + opcode + "\t" + hexString.ToString());
-
                     }
 
                     // Quality
@@ -922,7 +873,6 @@ namespace mgs2_v_s_fix
                         case "high":
                             ini.WriteLine("009D" + "\t" + "0002");
                             break;
-
                     }
 
                     // SE
@@ -940,7 +890,6 @@ namespace mgs2_v_s_fix
                         case "high":
                             ini.WriteLine("009E" + "\t" + "0009");
                             break;
-
                     }
 
                     // Sound Quality
@@ -958,25 +907,22 @@ namespace mgs2_v_s_fix
                         case "high":
                             ini.WriteLine("009F" + "\t" + "0002");
                             break;
-
                     }
 
                     // FixAfterPlaying
 
                     // If is set to FALSE it will sabotage automatical V's Fix opening after game quit
 
-                    using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
+                    using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open,
+                        FileAccess.ReadWrite))
                     {
-
                         if (Ocelot.InternalConfiguration.Sound["FixAfterPlaying"].Equals("true"))
                         {
-
                             // Fix must be opened. Restoring original .exe condition
 
                             // 2
                             stream.Position = 0x60213E;
                             stream.WriteByte(0x32);
-
                         }
 
                         else
@@ -987,9 +933,7 @@ namespace mgs2_v_s_fix
                             stream.Position = 0x60213E;
                             stream.WriteByte(0x58);
                         }
-
                     }
-
 
                     #endregion
 
@@ -1034,13 +978,11 @@ namespace mgs2_v_s_fix
                 {
                     Ocelot.RemoveCompatibilityFlags();
                 }
-
             }
 
             catch
             {
                 Ocelot.showMessage("UAC_error");
-
             }
 
             Ocelot.PrintToDebugConsole("[ ] InternalConfig succesfully exported into mgs2.ini");
@@ -1054,21 +996,21 @@ namespace mgs2_v_s_fix
         }
 
         /// Autoconfig
-
         public static void startAutoconfig()
         {
-
             Ocelot.PrintToDebugConsole("[ ] Autoconfig started. I'm looking for a nice config...");
             ConfSheet defaultConfig = new ConfSheet();
 
             // Resolution
             defaultConfig.Resolution["Height"] = Screen.PrimaryScreen.Bounds.Size.Height.ToString();
-            defaultConfig.Resolution["Width"] = Screen.PrimaryScreen.Bounds.Size.Width.ToString(); ;
+            defaultConfig.Resolution["Width"] = Screen.PrimaryScreen.Bounds.Size.Width.ToString();
+            ;
 
             System.Drawing.Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
 
 
-            double rapporto = (Double.Parse(defaultConfig.Resolution["Width"]) / Double.Parse(defaultConfig.Resolution["Height"]));
+            double rapporto = (Double.Parse(defaultConfig.Resolution["Width"]) /
+                               Double.Parse(defaultConfig.Resolution["Height"]));
 
             // NB: This is replied in Form1.checkIfWSElegible
 
@@ -1078,14 +1020,16 @@ namespace mgs2_v_s_fix
                 (rapporto == 1.7786458333333333d) ||
                 (rapporto == 2.3703703703703703d) ||
                 (rapporto == 2.3888888888888888d)
-                )
-            {   
+            )
+            {
                 defaultConfig.Resolution["WideScreenFIX"] = "true";
             }
             else
             {
                 defaultConfig.Resolution["WideScreenFIX"] = "false";
-            };
+            }
+
+            ;
 
             // Set 16:9 optimized FOV multiplier
 
@@ -1096,7 +1040,9 @@ namespace mgs2_v_s_fix
             else
             {
                 defaultConfig.Resolution["OptimizedFOV"] = "16:9";
-            };
+            }
+
+            ;
 
             Ocelot.getGraphicsAdapterList();
 
@@ -1106,18 +1052,18 @@ namespace mgs2_v_s_fix
 
             foreach (string vganame in vgaList)
             {
-                if(vganame.Contains("Intel")){
-                    defaultConfig.Resolution["GraphicAdapterName"]= vganame;
+                if (vganame.Contains("Intel"))
+                {
+                    defaultConfig.Resolution["GraphicAdapterName"] = vganame;
                     break;
                 }
 
                 defaultConfig.Resolution["GraphicAdapterName"] = vganame;
-
             }
 
             Ocelot.PrintToDebugConsole("[!] -VVV- No VGA Selected.");
 
-            if(vgaList.Count == 0)
+            if (vgaList.Count == 0)
             {
                 // No found VGA on the system. User has inserted one manually into configuration ini file?
 
@@ -1137,14 +1083,11 @@ namespace mgs2_v_s_fix
 
                     Ocelot.PrintToDebugConsole("[!] -AUTOCONFIG- Found a manual inserted one: " + explicitedVGAName);
                 }
-
             }
 
             else if (vgaList.Count > 1)
             {
-
-                Ocelot.showMessage("tip_vga");
-                
+                Ocelot.showMessage("tip_moreVGAs");
             }
 
 
@@ -1171,7 +1114,7 @@ namespace mgs2_v_s_fix
 
             // Graphics
 
-            defaultConfig.Graphics["RenderingSize"]="high";
+            defaultConfig.Graphics["RenderingSize"] = "high";
             defaultConfig.Graphics["ShadowDetail"] = "high";
             defaultConfig.Graphics["ModelQuality"] = "medium";
             defaultConfig.Graphics["RenderingClearness"] = "high";
@@ -1183,16 +1126,16 @@ namespace mgs2_v_s_fix
 
             // Sound
 
-            defaultConfig.Sound["SoundAdapterName"]="Primary Sound Driver";
-            defaultConfig.Sound["Quality"]="high";
-            defaultConfig.Sound["SE"]="high";
-            defaultConfig.Sound["SoundQuality"]="high";
+            defaultConfig.Sound["SoundAdapterName"] = "Primary Sound Driver";
+            defaultConfig.Sound["Quality"] = "high";
+            defaultConfig.Sound["SE"] = "high";
+            defaultConfig.Sound["SoundQuality"] = "high";
             defaultConfig.Sound["FixAfterPlaying"] = "true";
 
             // Others
 
             defaultConfig.Others["CompatibilityWarningDisplayed"] = "false";
-                
+
             // Finished!
 
             InternalConfiguration = defaultConfig;
@@ -1221,9 +1164,7 @@ namespace mgs2_v_s_fix
                     PropertyData description = mo.Properties["Description"];
 
                     vgaList.AddLast(description.Value.ToString());
-
                 }
-
             }
 
             catch
@@ -1239,7 +1180,8 @@ namespace mgs2_v_s_fix
 
                 try // Method 2
                 {
-                    ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT * FROM Win32_DisplayControllerConfiguration");
+                    ManagementObjectSearcher searcher =
+                        new ManagementObjectSearcher("SELECT * FROM Win32_DisplayControllerConfiguration");
                     foreach (ManagementObject mo in searcher.Get())
                     {
                         PropertyData currentBitsPerPixel = mo.Properties["CurrentBitsPerPixel"];
@@ -1247,7 +1189,6 @@ namespace mgs2_v_s_fix
 
                         vgaList.AddLast(description.Value.ToString());
                     }
-
                 }
 
                 catch
@@ -1255,7 +1196,6 @@ namespace mgs2_v_s_fix
                     // Try another method
                     notYetSnake = true;
                 }
-
             }
 
             if (notYetSnake)
@@ -1263,27 +1203,25 @@ namespace mgs2_v_s_fix
                 vgaList.Clear();
 
                 // I give up. A message will be prompt to the user
-
             }
-
-
         }
 
         // Legacy method: Too risky - Make MGS2 files readable by every user on the system
         private static bool grantAccessToEveryUser(string fullPath)
         {
-
             bool success = false;
 
-            try{
-
+            try
+            {
                 DirectorySecurity sec = Directory.GetAccessControl(fullPath);
                 SecurityIdentifier everyone = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
-                sec.AddAccessRule(new FileSystemAccessRule(everyone, FileSystemRights.Modify | FileSystemRights.Synchronize, InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None, AccessControlType.Allow));
+                sec.AddAccessRule(new FileSystemAccessRule(everyone,
+                    FileSystemRights.Modify | FileSystemRights.Synchronize,
+                    InheritanceFlags.ContainerInherit | InheritanceFlags.ObjectInherit, PropagationFlags.None,
+                    AccessControlType.Allow));
                 Directory.SetAccessControl(fullPath, sec);
 
                 success = true;
-
             }
 
             catch
@@ -1292,44 +1230,45 @@ namespace mgs2_v_s_fix
             }
 
             return success;
-
         }
 
         // show a MessageBox with custom message based on a string code
 
-        public static void showMessage(string code)
+        public static DialogResult showMessage(string code)
         {
+            DialogResult answer = DialogResult.OK;
 
             switch (code)
             {
-
                 // COMPATIBILITY FLAGS INFO    
 
                 case "compatibilityFlagsNotNeeded":
 
-                    MessageBox.Show(
-                    "From this version of the Fix, the game doesn't need anymore any compatibility flags."+"\n\n"+
-                    "This will greatly enhance the game compatibility, expecially with Win10 and Steam!"+"\n\n"+
-                    "Next time you press 'SAVE', these compatibility flags will be automatically removed."+"\n\n"+
-                    "Happy playing, and have fun :)",
-                    "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                        "IN this version of the Fix, the game doesn't need any compatibility flags anymore" + "\n\n" +
+                        "This will greatly enhance the game compatibility, expecially with Win10 and Steam!" + "\n\n" +
+                        "Next time you press 'SAVE', these compatibility flags will be automatically removed." +
+                        "\n\n" +
+                        "Happy playing, and have fun :)",
+                        "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "compatibilityWarning": // NB: Not used anymore
 
-                    MessageBox.Show(
-                    "When applying your settings, V's Fix will automatically try to set these compatibility flags :" +
-                    "\n\n" +
-                    "- Run the game in WindowsXP SP3 Compatibility Mode" + "\n" +
-                    "- Execute the game with Admin rights" +
-                    "\n\n" +
-                    "to the main game executable (mgs2_sse.exe) but it may fail or be blocked by various actors, so please be sure that they have been succesfully activated!" +
-                    "\n\n" +
-                    "Running the game without these flags will results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
-                    "\n\n" +
-                    "You can see again this message from the 'Resolution tab'." + "\n",
-                    "*Suddenly green hills appear in the background*", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                        "When applying your settings, V's Fix will automatically try to set these compatibility flags :" +
+                        "\n\n" +
+                        "- Run the game in WindowsXP SP3 Compatibility Mode" + "\n" +
+                        "- Execute the game with Admin rights" +
+                        "\n\n" +
+                        "to the main game executable (mgs2_sse.exe) but it may fail or be blocked by various actors, so please be sure that they have been succesfully activated!" +
+                        "\n\n" +
+                        "Running the game without these flags WILL results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
+                        "\n\n" +
+                        "You can read again this message once again from the 'Resolution tab'." + "\n",
+                        "*Suddenly green hills appear in the background*", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
                     break;
 
@@ -1337,112 +1276,109 @@ namespace mgs2_v_s_fix
 
                 case "savegameWillBeMoved":
 
-                    MessageBox.Show(
-                    "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
-                    "From now on, your save data will be contained in this folder:" + "\n\n"+
-                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE",
-                    "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                        "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" +
+                        "\n\n" +
+                        "From now on, your save data will be contained in this folder:" + "\n\n" +
+                        Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                        "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE",
+                        "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "savegameCantBeMoved":
 
-                    string oldFolderPath = Directory.GetParent(Application.StartupPath).FullName+"\\savedata";
-                    string newFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
+                    string oldFolderPath = Directory.GetParent(Application.StartupPath).FullName + "\\savedata";
+                    string newFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                           "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
 
-                    MessageBox.Show(
-                    "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
-                    "The fix has also detected that you could move savedata from old directory to new, but a folder already exist in the new location."+"\n\n"+
-                    "I don't know what are your most recent savedata so please delete one of the following folder:"+ "\n\n" +
-                    oldFolderPath + "\n\n"+
-                    "( or )" + "\n\n" +
-                    newFolderPath + "" + "\n\n"+
-                    "Please manually fix this situation, and reopen the fix."+"\n\n"+
-                    "Now the fix will close. Sorry dude :(",
-                    "Trouble incoming...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    answer = MessageBox.Show(
+                        "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" +
+                        "\n\n" +
+                        "The fix has also detected that you could move savedata from old directory to new, but a folder already exists in the new location." +
+                        "\n\n" +
+                        "I don't know what are your most recent savedata so please delete one of the following folder:" +
+                        "\n\n" +
+                        oldFolderPath + "\n\n" +
+                        "( or )" + "\n\n" +
+                        newFolderPath + "" + "\n\n" +
+                        "Please manually fix this situation, and reopen the fix." + "\n\n" +
+                        "Now the fix is going to close. Sorry dude :(",
+                        "Trouble incoming...", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
 
                 case "gameNeverConfigured":
 
-                    MessageBox.Show(
-                    "To start the game, you have to configure it at least once!"+"\n\n"+
-                    "Please press 'SETTINGS' and configure the game, then retry :)",
-                    "And that's why it doesn't work...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                        "To start the game, you have to configure it at least once!" + "\n\n" +
+                        "Please press 'SETTINGS' and configure the game, then retry :)",
+                        "And that's why it doesn't work...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
+                // UPDATE messages
+
                 case "update_crashedinfire":
 
-                    MessageBox.Show(
-                    "Can't reach GitHub for updates (Are you offline?)",
-                    "Ehi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                        "Can't reach GitHub for updates (Are you offline?)",
+                        "Hey!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "update_noupdates":
 
-                    MessageBox.Show(
-                    "Seems that there isn't any updates for the V's Fix.\n\nHappy playing :)",
-                    "Ehi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                        "Seems that there aren't any updates for the V's Fix.\n\nHappy playing :)",
+                        "Hey!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "update_available":
 
-                    MessageBox.Show(
-                    "It seems that someone has actually worked!\n\nPress 'OK' to open the V's Fix GitHub Release page to download the latest release!",
-                    "UPDATE AVAILABLE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                        "It seems that someone has actually worked!\n\nPress 'OK' to open the V's Fix GitHub Release page to download the latest release!",
+                        "UPDATE AVAILABLE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                     break;
 
+                // DEBUG Mode messages
+
                 case "debugModeEnabled":
 
-                    MessageBox.Show(
-                    "Debug mode is ENABLED!"+"\n\n"+
-                    "You can find the debug log on your Desktop"+ "\n\n" +
-                    "You can analize it yourself and/or send it to me on GitHub!",
-                    "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                        "Debug mode is ENABLED!" + "\n\n" +
+                        "You can find the debug log on your Desktop" + "\n\n" +
+                        "You can analize it by yourself and/or report it to me on GitHub!",
+                        "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "debugModeDisabled":
 
-                    MessageBox.Show(
-                    "Debug mode is DISABLED!" + "\n\n" +
-                    "Please go to V's Fix Wiki - Chapter 'Troubleshooting & Debug mode'" + "\n\n" +
-                    "to learn how to enable debug mode and let us understand better what is going wrong!",
-                    "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                        "Debug mode is DISABLED!" + "\n\n" +
+                        "Please go to V's Fix Wiki - Chapter 'Troubleshooting & Debug mode'" + "\n\n" +
+                        "to learn how to enable debug mode and let us understand better what is going on!",
+                        "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
-                case "tip_patcher":
-
-                    MessageBox.Show(
-                    "V's Fix will now run some extra applications for patching the game into 2.0 Version.\n\nOn some system it can prompt an UAC warning.\nIsn't doing anything harmful; let it do its job!",
-                    "Just an info...", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
-                case "tip_vga":
-
-                    MessageBox.Show("Please be aware that since more VGAs are installed on your system you have to be sure that the executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!\n\nThis MUST be done MANUALLY from your graphics adapter's control panel!",
-                    "More graphics adapter detected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
-                // FATAL ERROR WHILE STARTING THE GAME
+                // FATAL ERROR(s) WHILE STARTING THE GAME
 
                 case "fatalError_WrongVideoAdapter":
 
-                    MessageBox.Show(
-                    "V's has detected that your game has started with a different VGA from the one selected from the V's Fix."+"\n\n"+
-                    "This can cause glitches and bugs."+"\n\n"+
-                    "V's Fix can't solve this for you, so to quickly solve the issue (in less than 30 seconds) please read the V's Fix manual"+"\n\n"+
-                    "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter"+"\n\n"+
-                    "Closing this message will open your browser pointing to V's Guide"+"\n\n"+
-                    "Would you kindly press the 'OK' button?",
-                    "Helper in action...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    answer = MessageBox.Show(
+                        "V's has detected that your game has started with a different VGA from the one selected from the V's Fix." +
+                        "\n\n" +
+                        "This can cause glitches and bugs." + "\n\n" +
+                        "V's Fix can't solve this for you, so to quickly solve the issue (in less than 30 seconds) please read the V's Fix manual" +
+                        "\n\n" +
+                        "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter" + "\n\n" +
+                        "Do you want to open the V's Fix Wiki on that page?",
+                        "Helper in action...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     break;
 
@@ -1458,12 +1394,13 @@ namespace mgs2_v_s_fix
                     string possible_path = "";
                     string extra_hint = "";
 
-                    try{
-
+                    try
+                    {
                         // I have only 2 idea 
 
                         possible_path = "HKEY_CURRENT_USER\\SOFTWARE\\KONAMI\\MGS2S";
-                        possible_path = (string)Registry.GetValue(possible_path, "InstallDir", new Object().ToString());
+                        possible_path =
+                            (string) Registry.GetValue(possible_path, "InstallDir", new Object().ToString());
 
                         if (Directory.Exists(possible_path + "\\bin"))
                         {
@@ -1473,90 +1410,96 @@ namespace mgs2_v_s_fix
                         else
                         {
                             possible_path = "HKEY_LOCAL_MACHINE\\SOFTWARE\\KONAMI\\MGS2S";
-                            possible_path = (string)Registry.GetValue(possible_path, "InstallDir", new Object().ToString());
+                            possible_path =
+                                (string) Registry.GetValue(possible_path, "InstallDir", new Object().ToString());
 
                             if (Directory.Exists(possible_path + "\\bin"))
                             {
                                 directory_found = true;
                             }
-
                         }
-
                     }
-                    catch{
-
+                    catch
+                    {
                         // Ok, at least I've tried. No need to manage anything
-
                     }
 
                     #endregion
 
-                    finally{
-
+                    finally
+                    {
                         if (directory_found)
                         {
-                            extra_hint = "Doing some magic I've discovered that you have to put MGS2SSetup.exe inside:\n\n" + possible_path+"\\bin"+"\n\nDon't waste time and do it now!";
+                            extra_hint =
+                                "Doing some magic I've discovered that you have to put MGS2SSetup.exe inside:\n\n" +
+                                possible_path + "\\bin" + "\n\nDon't waste time and do it now!";
                         }
 
                         else
                         {
-                            extra_hint = "I've tried (I swear) but I didn't found myself the install directory of the game. Check the manual on GitHub for extra help.";
+                            extra_hint =
+                                "I've tried (I swear) but I didn't found myself the install directory of the game. Check the manual on GitHub for extra help.";
                         }
 
-                        MessageBox.Show(
-                    "V's Fix isn't in the correct place.\nPut it into GAME DIRECTORY\\bin folder\n\n"+extra_hint,
-                    "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        answer = MessageBox.Show(
+                            "V's Fix isn't in the correct place.\nPut it into GAME DIRECTORY\\bin folder\n\n" +
+                            extra_hint,
+                            "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     break;
 
                 case "unzipping_error":
 
-                    MessageBox.Show(
-                    "V's Fix isn't able to create some files into game's directory.\nFix require full permission to create,delete and extract file into that directory. Try to run the fix using 'Admin rights'!",
-                    "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    answer = MessageBox.Show(
+                        "V's Fix isn't able to create some files into game's directory.\nFix require full permission to create,delete and extract file into that directory. Try to run the fix using 'Admin rights'!",
+                        "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
 
                 case "no_vga":
 
-                    MessageBox.Show(
-                    "V's hasn't found any VGA installed in your system.\n\nIf you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
-                    "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    answer = MessageBox.Show(
+                        "V's hasn't found any VGA installed in your system.\n\nIf you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
+                        "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
 
                 case "no_donate":
 
-                    MessageBox.Show(
-                    "V's Fix isn't able to open PayPal website! Please don't give up :(",
-                    "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    answer = MessageBox.Show(
+                        "V's Fix isn't able to open PayPal website! Please don't give up :(",
+                        "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
 
                 case "UAC_error":
 
-                    MessageBox.Show("Some operation has been blocked by operating system :( \n\n" +
-                        "You have few things you can do:" + "\n\n" +
-                        "I) Start the fix using 'Admin rights'" + "\n\n"+
-                        "II) Install game in another directory that isn't 'Program Files'"+ "\n\n" +
-                        "III) Ensure that you have enough read/write permissions on the game folder" + "\n\n" +
-                        "If you can't solve in any way, you have to choose the last option:"+"\n\n"+
-                        "IV) Start the V's Fix in 'debug mode'\n\n" +
-                        "   a) creating a \"debug.sss\" file (without quote) inside your game folder\n" +
-                        "OR\n" +
-                        "   b) starting MGS2SSetup.exe with -debug argument\n\n" +
-                        "and see the log saved in your desktop (that you could also send to me for troubleshooting)" + "\n\n" +
-                        "Please read the V's Fix Wiki - Chapter 'Troubleshooting & Debug mode' for extra info",
-                    "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    answer = MessageBox.Show("Some operation has been blocked by operating system :( \n\n" +
+                                             "You have few things you can do:" + "\n\n" +
+                                             "I) Start the fix using 'Admin rights'" + "\n\n" +
+                                             "II) Install game in another directory that isn't 'Program Files'" +
+                                             "\n\n" +
+                                             "III) Ensure that you have enough read/write permissions on the game folder" +
+                                             "\n\n" +
+                                             "If you can't solve in any way, you have to choose the last option:" +
+                                             "\n\n" +
+                                             "IV) Start the V's Fix in 'debug mode'\n\n" +
+                                             "   a) creating a \"debug.sss\" file (without quote) inside your game folder\n" +
+                                             "OR\n" +
+                                             "   b) starting MGS2SSetup.exe with -debug argument\n\n" +
+                                             "and see the log saved in your desktop (that you could also send to me for troubleshooting)" +
+                                             "\n\n" +
+                                             "Please read the V's Fix Wiki - Chapter 'Troubleshooting & Debug mode' for extra info",
+                        "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
 
                 case "forbidStartIsTrue":
 
-                    MessageBox.Show("Not all preliminary actions has been completed by V's Fix, and is a VERY bad thing: V's Fix cannot start without, and thus it will close after these messages :(",
-                    "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    answer = MessageBox.Show(
+                        "Not all preliminary actions has been completed by V's Fix, and is a VERY bad thing: V's Fix cannot start without, and thus it will close after these messages :(",
+                        "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
 
@@ -1564,54 +1507,54 @@ namespace mgs2_v_s_fix
 
                 case "steamIsRunning":
 
-                    MessageBox.Show(
-                        "Steam is actually running!"+
-                        "\n\n"+
+                    answer = MessageBox.Show(
+                        "Steam is actually running!" +
+                        "\n\n" +
                         "To let V's Fix working, is safer to close if before proceeding."
-                        +"\n\n"+
+                        + "\n\n" +
                         "Please manually close it and try again :)");
 
                     break;
 
                 case "AddedForOneUser":
 
-                    MessageBox.Show(
-                        "MGS2 has been added for one Steam user!"+
-                        "\n\n"+
-                        "Start Steam, and have fun :D","Yeah"                 
-                        );
+                    answer = MessageBox.Show(
+                        "MGS2 has been added for one Steam user!" +
+                        "\n\n" +
+                        "Start Steam, and have fun :D", "Yeah"
+                    );
 
                     break;
 
                 case "AddedForMoreUsers":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                         "MGS2 has been added for more Steam users!" +
                         "\n\n" +
                         "Start Steam, and have fun :D", "Yeah"
-                        );
+                    );
 
                     break;
 
                 case "NothingDone":
 
-                    MessageBox.Show(
-                        "Seems that MGS2 has already been added in the past."+
-                        "\n\n"+
-                        "( ????? )"+
+                    answer = MessageBox.Show(
+                        "Seems that MGS2 has already been added in the past." +
+                        "\n\n" +
+                        "( ????? )" +
                         "\n\n" +
                         "If you want to make V's Fix re-add the game, please delete it manually and launch this another time!"
-                        );
+                    );
 
                     break;
 
                 case "Add2SteamError":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                         "Add2Steam has caused an error, and nothing has been added." +
                         "\n\n" +
                         "Please activate the DEBUG MODE and report this to me!"
-                        );
+                    );
 
                     break;
 
@@ -1619,27 +1562,73 @@ namespace mgs2_v_s_fix
 
                 case "tip_antialiasingANDmodelquality":
 
-                    MessageBox.Show(
-                        "Model quality is set to 'High' and Anti-Aliasing is activated."+
-                        "\n\n"+
-                        "Having both activated at the same time can, on some configuration, cause graphical glitches or freezes."+
-                        "\n\n"+
+                    answer = MessageBox.Show(
+                        "Model quality is set to 'High' and Anti-Aliasing is activated." +
+                        "\n\n" +
+                        "Having both activated at the same time can, on some configuration, cause graphical glitches or freezes." +
+                        "\n\n" +
                         "If you have these problems during the game, please deactivate one of the two things mentioned above."
-                        + "\n\n"+
+                        + "\n\n" +
                         "This message will not show up until a next fix reboot, so consider yourself warned :D",
-                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "tip_smaaANDsteam":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                         "SMAA Anti-Aliasing is activated, and this can cause glitches with the Steam overlay, and consequently with the Steam controller(s)" +
                         "\n\n" +
-                        "For this reason, FXAA Anti-Aliasing has been selected instead."+
+                        "For this reason, FXAA Anti-Aliasing has been selected instead." +
                         "\n\n" +
                         "( HINT: If you want SMAA at all costs, unselect 'Steam' from the 'Controls' tab of the fix, or enable it manually from 'SweetFX_settings.txt' after you press 'SAVE' )",
-                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_patcher":
+
+                    answer = MessageBox.Show(
+                        "V's Fix will now run some extra applications for patching the game into 2.0 Version.\n\nOn some system it can prompt an UAC warning.\nIsn't doing anything harmful; let it do its job!",
+                        "Just an info...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_moreVGAs":
+
+                    answer = MessageBox.Show(
+                        "Please be aware that since more VGAs are installed on your system you have to be sure that the executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!" +
+                        "\n\n" +
+                        "This MUST be done MANUALLY from your graphics adapter's control panel!" +
+                        "\n\n" +
+                        "To better understand why, please press the link on the right of the red ! sign on 'Resolution tab' ",
+                        "More graphics adapter detected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_explainSelectionForVGAs":
+
+                    answer = MessageBox.Show(
+                        "To make the game work flawlessly, V's Fix must know your video graphic adapters (VGA) model/brand to apply certain fixes to the game." +
+                        "\n\n" +
+                        "Below, you can find the list of detected VGAs on your system." +
+                        "\n\n" +
+                        "If you have a SINGLE VGA ON YOUR PC, you can stop reading here :D" +
+                        "\n\n" +
+                        "If you have MORE THAN ONE VGA ON YOUR PC, below you can select the one that will run the game." +
+                        "\n\n" +
+                        "In that case, simply selecting a VGA from the fix MAY not be enough, though." +
+                        "\n\n" +
+                        "Some 'power saving' settings from your VGAs driver could interfere with that decision, based on how the driver has decided to run the game (i.e. on your laptop integrated GPU to save power)" +
+                        "\n\n" +
+                        "You have to be sure that your VGA driver is reflecting the decision you made below, and this MUST be done MANUALLY from your ATI/Intel/NVidia VGA control panel!" +
+                        "V's Fix can't do it for you, unfortunatelly!" +
+                        "\n\n" +
+                        "If you never done it before, on the V's Fix manual I wrote some examples (with images) for various VGA brands!" +
+                        "\n\n" +
+                        "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter" + "\n\n" +
+                        "Do you want to open the V's Fix Wiki on that page?",
+                        "Estimated time for reading: 1 minute", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                     break;
 
@@ -1647,19 +1636,20 @@ namespace mgs2_v_s_fix
 
                 default:
 
-                    MessageBox.Show("You shouldn't be able to read this message: /",
-                    "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    answer = MessageBox.Show("You shouldn't be able to read this message: /",
+                        "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
 
-            Ocelot.PrintToDebugConsole("[!] Showed a messagebox with code: "+code);
+            Ocelot.PrintToDebugConsole("[!] Showed a messagebox with code: " + code);
+
+            return answer;
         }
 
         // Apply the 'Windows XP SP3 Compatibility Mode' and 'Run as Admin' flags
 
         private static void SetCompatibilityFlags()
         {
-
             try
             {
                 string registry_path = "Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers\\";
@@ -1672,7 +1662,6 @@ namespace mgs2_v_s_fix
                 key.Close();
 
                 PrintToDebugConsole("[ :) ] Compatibility flags set!");
-
             }
 
             catch
@@ -1680,9 +1669,7 @@ namespace mgs2_v_s_fix
                 // Signal to debugger
 
                 PrintToDebugConsole("[ :( ] Exception while setting compatibility flags!");
-
             }
-
         }
 
         // Check if any compatibility flag is set
@@ -1708,19 +1695,17 @@ namespace mgs2_v_s_fix
                     // Something exist. Cast value to string
                     string actualValue = retrievedValue.ToString();
 
-                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags found: "+ retrievedValue);
+                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags found: " + retrievedValue);
 
                     key.Close();
 
                     // Set the return value for method caller
                     returnValue = true;
-
                 }
                 else
                 {
                     PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags NOT found :)");
                 }
-
             }
 
             catch
@@ -1728,11 +1713,9 @@ namespace mgs2_v_s_fix
                 // Signal to debugger
 
                 PrintToDebugConsole("[C.FLAGS CHECK] Exception while checking compatibility flags!");
-
             }
 
             return returnValue;
-
         }
 
         // Remove compatibility flags, if any
@@ -1751,7 +1734,6 @@ namespace mgs2_v_s_fix
                 key.DeleteValue(game_exe_path, false);
 
                 PrintToDebugConsole("[C.FLAGS REMOVAL] Compatibility flags removed!");
-
             }
 
             catch
@@ -1759,27 +1741,25 @@ namespace mgs2_v_s_fix
                 // Signal to debugger
 
                 PrintToDebugConsole("[C.FLAGS REMOVAL] Exception while removing compatibility flags!");
-
             }
-
         }
 
         // Move savegames to new location in "My Games"
 
         public static void MoveSavegamesToNewLocation()
         {
-
             try
             {
                 string oldSavedataPath = Directory.GetParent(Application.StartupPath).FullName + "\\savedata";
-                string newSavedataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
+                string newSavedataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
+                                         "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
 
                 Directory.Move(oldSavedataPath, newSavedataPath);
 
                 // Create a file to remember the user to check to new location
 
-                File.Create(Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER");
-
+                File.Create(Directory.GetParent(Application.StartupPath).FullName +
+                            "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER");
             }
 
             catch
@@ -1787,22 +1767,18 @@ namespace mgs2_v_s_fix
                 showMessage("UAC_error");
 
                 Application.Exit();
-
             }
-
         }
 
         // Check for fatal errors, and prompt an aid to the user
 
         public static FATALERRORSFOUND CheckForFatalErrors()
         {
-
             // Set a default value
             FATALERRORSFOUND returnValue = default(FATALERRORSFOUND);
 
             try
             {
-
                 // Read the last.log file in both possible location
 
                 string lastLogPath = RecoverLastLogPath();
@@ -1825,66 +1801,90 @@ namespace mgs2_v_s_fix
                 }
 
                 // TODO check for others kind of issues
-
             }
             catch
             {
                 showMessage("UAC_error");
 
                 return FATALERRORSFOUND.ErrorWhileReadingFile;
-
             }
 
             return returnValue;
-
         }
 
         // Recover the last.log in the right path
 
         public static string RecoverLastLogPath()
         {
-            string PathOfLastLogInVirtualStore = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3) + "\\last.log";
-            string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
+            {
+                string PathOfLastLogInVirtualStore =
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" +
+                    Application.StartupPath.Substring(3) + "\\last.log";
+                bool TheseIsVirtualStoreLog = File.Exists(PathOfLastLogInVirtualStore);
 
-            // Check the last.log created from the >1.7 version of the fix
-            if (File.Exists(PathOfLastLogInVirtualStore))
-            {
-                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
-                return PathOfLastLogInVirtualStore;
-            }
-            // Check the last.log created from the <1.7 version of the fix
-            else if (File.Exists(PathOfLastLogInApplicationFolder))
-            {
-                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
-                return PathOfLastLogInApplicationFolder;
-            }
-            else
-            {
-                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
-                // last.log has never been created. Return an empty path
-                return "";
-            }
+                string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
+                bool TheseIsApplicationFolderLog = File.Exists(PathOfLastLogInApplicationFolder);
 
+                if (TheseIsVirtualStoreLog && TheseIsApplicationFolderLog)
+                {
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] More Last.log detected");
+
+                    // Decide what Log is the most recent
+
+                    if (File.GetLastWriteTimeUtc(PathOfLastLogInApplicationFolder) >
+                        File.GetLastWriteTimeUtc(PathOfLastLogInVirtualStore))
+                    {
+                        // Application Folder log is more recent. Chose it.
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in Application Folder");
+                        return PathOfLastLogInApplicationFolder;
+                    }
+                    else
+                    {
+                        // Chose VirtualStore log
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in VirtualStore");
+                        return PathOfLastLogInVirtualStore;
+                    }
+                }
+                else
+                {
+                    // There is only one log, or none.
+
+                    if (TheseIsVirtualStoreLog)
+                    {
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
+                        return PathOfLastLogInVirtualStore;
+                    }
+                    else if (TheseIsApplicationFolderLog)
+                    {
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
+                        return PathOfLastLogInApplicationFolder;
+                    }
+                    else
+                    {
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
+                        // last.log has never been created. Return an empty path
+                        return "";
+                    }
+                }
+            }
         }
 
         // write message into console (and into a file, if debug mode is enabled)
 
         public static void PrintToDebugConsole(string output)
         {
-
             output = DateTime.Now.ToString("hh.mm.ss.fff") + " -> " + output;
 
             Console.WriteLine(output);
 
             if (debugMode)
             {
-                File.AppendAllText(debugMode_filePath, output+Environment.NewLine);
+                File.AppendAllText(debugMode_filePath, output + Environment.NewLine);
             }
         }
 
         public static void debug_printInternalConfig()
         {
-
             Ocelot.PrintToDebugConsole("[D] ----------");
             Ocelot.PrintToDebugConsole("[D] Printing InternalConfig:");
 
@@ -1892,13 +1892,13 @@ namespace mgs2_v_s_fix
 
             foreach (string single_vga in Ocelot.vgaList)
             {
-                Ocelot.PrintToDebugConsole("[D] "+single_vga);
+                Ocelot.PrintToDebugConsole("[D] " + single_vga);
             }
 
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Resolution)
             {
-                Ocelot.PrintToDebugConsole("[D] Key: "+entry.Key+" -> Value: "+entry.Value);
+                Ocelot.PrintToDebugConsole("[D] Key: " + entry.Key + " -> Value: " + entry.Value);
             }
 
             foreach (KeyValuePair<string, string> entry in InternalConfiguration.Controls)
@@ -1922,14 +1922,12 @@ namespace mgs2_v_s_fix
             }
 
             Ocelot.PrintToDebugConsole("[D] END");
-
         }
 
         // UPDATE action
 
         public static async Task<UPDATE_AVAILABILITY> CheckForUpdatesAsync()
         {
-
             // NB: It will become a JSON
             dynamic remoteResponse = null;
             bool validResponse = false;
@@ -1943,7 +1941,8 @@ namespace mgs2_v_s_fix
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 // Add TLS support
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+                ServicePointManager.SecurityProtocol =
+                    SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
 
                 try
                 {
@@ -1969,7 +1968,6 @@ namespace mgs2_v_s_fix
                         {
                             validResponse = true;
                         }
-
                     }
 
                     else
@@ -1977,7 +1975,6 @@ namespace mgs2_v_s_fix
                         // Server has responsed, but with an HTML code different from 200
                         return UPDATE_AVAILABILITY.NetworkError;
                     }
-
                 }
                 catch
                 {
@@ -1991,12 +1988,10 @@ namespace mgs2_v_s_fix
 
                     return UPDATE_AVAILABILITY.NetworkError;
                 }
-
             }
 
             if (validResponse)
             {
-
                 // Copy remote version data into a local copy
 
                 try
@@ -2017,7 +2012,7 @@ namespace mgs2_v_s_fix
 
                     response.VERSION = myDate.ToString("yyMMdd");
 
-                    JObject ohi = (JObject)remoteResponse;
+                    JObject ohi = (JObject) remoteResponse;
                     int assetsOnGitHub = ohi["assets"].Count();
 
                     if (assetsOnGitHub > 1)
@@ -2038,9 +2033,9 @@ namespace mgs2_v_s_fix
                     int localVersion = getIntFromThisString(VERSION);
                     int remoteVersion = getIntFromThisString(response.VERSION);
 
-                    PrintToDebugConsole("CurrentVersion: "+ localVersion+"   LatestVersion: "+remoteVersion);
+                    PrintToDebugConsole("CurrentVersion: " + localVersion + "   LatestVersion: " + remoteVersion);
 
-                    if (remoteVersion>localVersion)
+                    if (remoteVersion > localVersion)
                     {
                         // Yeah!
                         return UPDATE_AVAILABILITY.UpdateAvailable;
@@ -2050,7 +2045,6 @@ namespace mgs2_v_s_fix
                     {
                         return UPDATE_AVAILABILITY.NoUpdates;
                     }
-
                 }
 
                 catch
@@ -2058,9 +2052,7 @@ namespace mgs2_v_s_fix
                     // Response mismatch! Server has send somethings unexpected
 
                     return UPDATE_AVAILABILITY.ResponseMismatch;
-
                 }
-
             }
 
             else
@@ -2068,7 +2060,6 @@ namespace mgs2_v_s_fix
                 // Server has responsed something, but isn't well formatted
                 return UPDATE_AVAILABILITY.ResponseMismatch;
             }
-
         }
 
         public static int getIntFromThisString(string inputString)
@@ -2082,12 +2073,11 @@ namespace mgs2_v_s_fix
                 returnValue = Convert.ToInt32(numericPhone);
             }
 
-            catch(Exception e)
+            catch (Exception e)
             {
                 // Do nothing
 
                 Ocelot.PrintToDebugConsole(e.Message);
-
             }
 
             return returnValue;
@@ -2097,7 +2087,6 @@ namespace mgs2_v_s_fix
 
         public static ADD2STEAMSTATUS AddMGS2ToSteam()
         {
-            
             try
             {
                 // Retrieve Steam path
@@ -2108,7 +2097,7 @@ namespace mgs2_v_s_fix
 
                 string MGS2Path = AppDomain.CurrentDomain.BaseDirectory;
 
-                if(!Directory.Exists(SteamPath) || !Directory.Exists(MGS2Path))
+                if (!Directory.Exists(SteamPath) || !Directory.Exists(MGS2Path))
                 {
                     return ADD2STEAMSTATUS.CantFindNecessaryPaths;
                 }
@@ -2127,14 +2116,14 @@ namespace mgs2_v_s_fix
                 {
                     // Find the shortcut.vdf file
 
-                    string vdfLocation = Path.Combine(singleProfileFolder+ "\\config\\shortcuts.vdf");
+                    string vdfLocation = Path.Combine(singleProfileFolder + "\\config\\shortcuts.vdf");
 
                     // Useful Byte constant
                     byte NUL = 0x00;
                     byte SOH = 0x01;
                     byte STX = 0x02;
                     byte BS = 0x08;
-                    
+
 
                     if (!File.Exists(vdfLocation))
                     {
@@ -2142,8 +2131,6 @@ namespace mgs2_v_s_fix
 
                         using (var fs = new FileStream(vdfLocation, FileMode.Create, FileAccess.ReadWrite))
                         {
-                            
-                            
                             List<byte> shortcuts = Encoding.Default.GetBytes("shortcuts").ToList();
 
                             List<byte> writeThis = new List<byte>();
@@ -2155,9 +2142,7 @@ namespace mgs2_v_s_fix
                             writeThis.Add(BS);
 
                             fs.Write(writeThis.ToArray(), 0, writeThis.Count);
-
                         }
-
                     }
 
                     // Count existing games
@@ -2166,7 +2151,7 @@ namespace mgs2_v_s_fix
 
                     string entireFile = File.ReadAllText(vdfLocation, Encoding.ASCII);
 
-                    string[] split = entireFile.Split(new string[] { "tags\0" }, StringSplitOptions.None);
+                    string[] split = entireFile.Split(new string[] {"tags\0"}, StringSplitOptions.None);
 
                     nonSteamGames = split.Count() - 1;
 
@@ -2180,15 +2165,14 @@ namespace mgs2_v_s_fix
 
                     // Delete the last 2 BS at the end of the file
 
-                    entireFile = entireFile.Substring(0,entireFile.Length - 2);
+                    entireFile = entireFile.Substring(0, entireFile.Length - 2);
 
-                    File.WriteAllText(vdfLocation, entireFile,Encoding.ASCII);
+                    File.WriteAllText(vdfLocation, entireFile, Encoding.ASCII);
 
                     // Append to the end of the file the hyper string for the new game
 
                     using (var fs = new FileStream(vdfLocation, FileMode.Append, FileAccess.Write))
                     {
-
                         List<byte> writeThis = new List<byte>();
 
                         writeThis.Add(NUL);
@@ -2202,7 +2186,8 @@ namespace mgs2_v_s_fix
                         writeThis.Add(SOH);
                         writeThis.AddRange(Encoding.Default.GetBytes("exe").ToList());
                         writeThis.Add(NUL);
-                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path+"mgs2_sse.exe")).ToList());
+                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path + "mgs2_sse.exe"))
+                            .ToList());
                         writeThis.Add(NUL);
                         writeThis.Add(SOH);
                         writeThis.AddRange(Encoding.Default.GetBytes("StartDir").ToList());
@@ -2212,7 +2197,8 @@ namespace mgs2_v_s_fix
                         writeThis.Add(SOH);
                         writeThis.AddRange(Encoding.Default.GetBytes("icon").ToList());
                         writeThis.Add(NUL);
-                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path + "MGS2SSetup.exe")).ToList());
+                        writeThis.AddRange(Encoding.Default.GetBytes(Sanitize_pathForCMD(MGS2Path + "MGS2SSetup.exe"))
+                            .ToList());
                         writeThis.Add(NUL);
                         writeThis.Add(SOH);
                         writeThis.AddRange(Encoding.Default.GetBytes("ShortcutPath").ToList());
@@ -2267,24 +2253,22 @@ namespace mgs2_v_s_fix
                         writeThis.Add(BS);
                         writeThis.Add(BS);
 
-                        fs.Write(writeThis.ToArray(), 0 , writeThis.Count);
-
+                        fs.Write(writeThis.ToArray(), 0, writeThis.Count);
                     }
 
                     // THE END!
                     // for this profile, at least...
 
                     numberOfMGS2Added = numberOfMGS2Added + 1;
-
                 }
 
                 // Signal something to UI
 
-                if(numberOfMGS2Added > 1)
+                if (numberOfMGS2Added > 1)
                 {
                     return ADD2STEAMSTATUS.AddedForMoreUsers;
                 }
-                else if(numberOfMGS2Added == 1)
+                else if (numberOfMGS2Added == 1)
                 {
                     return ADD2STEAMSTATUS.AddedForOneUser;
                 }
@@ -2292,17 +2276,14 @@ namespace mgs2_v_s_fix
                 {
                     return ADD2STEAMSTATUS.NothingDone;
                 }
-
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
 
                 return ADD2STEAMSTATUS.AccessError;
             }
-          
-
         }
 
         // Find Steam Location
@@ -2313,9 +2294,10 @@ namespace mgs2_v_s_fix
 
             try
             {
-                string possible_path = (string)Registry.GetValue("HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Valve\\Steam", "InstallPath", new Object().ToString());
+                string possible_path = (string) Registry.GetValue(
+                    "HKEY_LOCAL_MACHINE\\SOFTWARE\\WOW6432Node\\Valve\\Steam", "InstallPath", new Object().ToString());
 
-                if (Directory.Exists(possible_path) && File.Exists(possible_path+"\\Steam.exe"))
+                if (Directory.Exists(possible_path) && File.Exists(possible_path + "\\Steam.exe"))
                 {
                     Ocelot.PrintToDebugConsole("[ STEAM ] Steam is installed in this location: " + SteamPath);
                     SteamPath = possible_path;
@@ -2325,7 +2307,6 @@ namespace mgs2_v_s_fix
                 {
                     Ocelot.PrintToDebugConsole("[ STEAM ] Steam not found ");
                 }
-
             }
 
             catch
@@ -2337,14 +2318,12 @@ namespace mgs2_v_s_fix
 
 
             return SteamPath;
-
         }
 
         // Check if a process is running
 
         public static bool IsThisProcessRunning(string processName)
         {
-
             bool processFound = false;
 
             try
@@ -2355,19 +2334,18 @@ namespace mgs2_v_s_fix
                 {
                     processFound = true;
                 }
-
             }
 
             catch
             {
-                Ocelot.PrintToDebugConsole("[ ERROR-ERROR-ERROR ] Error while detecting if "+processName+" is running");
-
+                Ocelot.PrintToDebugConsole("[ ERROR-ERROR-ERROR ] Error while detecting if " + processName +
+                                           " is running");
             }
 
-            Ocelot.PrintToDebugConsole("[ IsThisProcessRunning ] "+processName+" isRunning value is "+processFound);
+            Ocelot.PrintToDebugConsole(
+                "[ IsThisProcessRunning ] " + processName + " isRunning value is " + processFound);
 
             return processFound;
-
         }
 
         // Append " at a dir path
@@ -2389,7 +2367,5 @@ namespace mgs2_v_s_fix
         {
             return !Directory.EnumerateFileSystemEntries(path).Any();
         }
-
-    }// END CLASS
-
+    } // END CLASS
 }

@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿using System.Text;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace mgs2_v_s_fix
 {
-
-    class IniFile   // revision 11 // From StackOverflow
+    class IniFile // revision 11 // From StackOverflow
     {
         string Path;
         string EXE = Assembly.GetExecutingAssembly().GetName().Name;
@@ -19,7 +14,8 @@ namespace mgs2_v_s_fix
         static extern long WritePrivateProfileString(string Section, string Key, string Value, string FilePath);
 
         [DllImport("kernel32", CharSet = CharSet.Unicode)]
-        static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
+        static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal,
+            int Size, string FilePath);
 
         public IniFile(string IniPath = null)
         {
@@ -53,7 +49,4 @@ namespace mgs2_v_s_fix
             return Read(Key, Section).Length > 0;
         }
     }
-
-
-
 }

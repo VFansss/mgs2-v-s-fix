@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 using System.Drawing.Text;
 using System.IO;
 using System.Reflection;
@@ -38,7 +37,7 @@ namespace mgs2_v_s_fix
         private string checkForUpdateDefaultString = "Click on the GitHub logo aside to check for V's Fix updates";
 
         // Don't show these warnings (until the next fix reboot, at least)
-        
+
         private bool tip_antialiasingANDmodelquality_showed = false;
 
         public Form1()
@@ -52,7 +51,7 @@ namespace mgs2_v_s_fix
             System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
             uint dummy = 0;
             fonts.AddMemoryFont(fontPtr, Properties.Resources.MGS2_ttf.Length);
-            AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.MGS2_ttf.Length, IntPtr.Zero, ref dummy);
+            AddFontMemResourceEx(fontPtr, (uint) Properties.Resources.MGS2_ttf.Length, IntPtr.Zero, ref dummy);
             System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
 
             myFont = new Font(fonts.Families[0], 27.75F);
@@ -64,13 +63,13 @@ namespace mgs2_v_s_fix
 
             // Tooltip for WideScreenFIX
 
-                // Create the ToolTip and associate with the Form container.
+            // Create the ToolTip and associate with the Form container.
             ToolTip toolTip1 = new ToolTip();
 
-                // Set up the delays for the ToolTip.
+            // Set up the delays for the ToolTip.
             toolTip1.InitialDelay = 200;
             toolTip1.ReshowDelay = 200;
-                // Force the ToolTip text to be displayed whether or not the form is active.
+            // Force the ToolTip text to be displayed whether or not the form is active.
             toolTip1.ShowAlways = true;
 
             // SET DEBUG label on main menu 
@@ -94,7 +93,7 @@ namespace mgs2_v_s_fix
 
             FATALERRORSFOUND errorsFound = Ocelot.CheckForFatalErrors();
 
-            Ocelot.PrintToDebugConsole("[FATALERROR CHECKING] Check has returned this code: "+errorsFound.ToString());
+            Ocelot.PrintToDebugConsole("[FATALERROR CHECKING] Check has returned this code: " + errorsFound.ToString());
 
             if (errorsFound != FATALERRORSFOUND.NoneDetected)
             {
@@ -107,35 +106,35 @@ namespace mgs2_v_s_fix
 
                 if (errorsFound.HasFlag(FATALERRORSFOUND.WrongVideoAdapter))
                 {
+                    // Open the guide to the right chapter?
 
-                    // Open the guide to the right chapter
+                    DialogResult answer = Ocelot.showMessage("fatalError_WrongVideoAdapter");
 
-                    Ocelot.showMessage("fatalError_WrongVideoAdapter");
-
-                    try
+                    if (answer == DialogResult.Yes)
                     {
-                        System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
-                    }
+                        try
+                        {
+                            System.Diagnostics.Process.Start(
+                                "https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
+                        }
 
-                    catch
-                    {
-                        Ocelot.showMessage("UAC_error");
+                        catch
+                        {
+                            Ocelot.showMessage("UAC_error");
+                        }
                     }
                 }
-
             }
 
             // Show the form
 
             Ocelot.PrintToDebugConsole("[+] Form1 constructor has done. Waiting user input.");
-
         }
 
         #region MAIN MENU
 
         private void btn_startGame_Click(object sender, EventArgs e)
         {
-
             // CHECK: the game has been configured at least once?
             // I honestly hope that no one try to start the game without doing it, but...
 
@@ -149,16 +148,11 @@ namespace mgs2_v_s_fix
             else
             {
                 Ocelot.showMessage("gameNeverConfigured");
-
             }
-
-            
-
         }
 
         private void btn_settings_Click(object sender, EventArgs e)
         {
-
             Ocelot.PrintToDebugConsole("[ ] Settings button pressed");
 
             // Check if INI contain all field and/or uncompiled fields
@@ -168,11 +162,9 @@ namespace mgs2_v_s_fix
             // If there's need to autoconfig (= missing field/s inside .ini file)
             if (Ocelot.needOfAutoConfig == true)
             {
-
                 //  V's will understand best config
 
                 Ocelot.startAutoconfig();
-
             }
 
             else
@@ -182,7 +174,6 @@ namespace mgs2_v_s_fix
                 // Load already existent settings done in the past
 
                 Ocelot.load_INI_SetTo_InternalConfig();
-
             }
 
             // Transfering internal setting to graphic setupper
@@ -215,9 +206,8 @@ namespace mgs2_v_s_fix
                 otagif.Visible = true;
 
                 setNewIcon();
-
             }
-  
+
             lbl_ManualLink.Visible = true;
             pictureBox2.Visible = true;
 
@@ -247,7 +237,6 @@ namespace mgs2_v_s_fix
             {
                 // Warn the user
                 Ocelot.showMessage("compatibilityFlagsNotNeeded");
-
             }
 
             // Check if savegame must be moved to the new location in "My Games", and warn the user if so
@@ -267,7 +256,6 @@ namespace mgs2_v_s_fix
                     // About everything until user solve the situation
 
                     Application.Exit();
-
                 }
 
                 else
@@ -277,18 +265,14 @@ namespace mgs2_v_s_fix
                     Ocelot.showMessage("savegameWillBeMoved");
 
                     Ocelot.MoveSavegamesToNewLocation();
-
                 }
-                
             }
 
             Ocelot.PrintToDebugConsole("[+] Settings has been displayed.");
-
         }
 
         private void btn_saveSettings_Click(object sender, EventArgs e)
         {
-
             Ocelot.PrintToDebugConsole("[ ] Save button pressed");
 
             load_SetupperConfig_SetTo_InternalConfig();
@@ -313,7 +297,6 @@ namespace mgs2_v_s_fix
             lbl_ManualLink.Visible = false;
 
             Ocelot.PrintToDebugConsole("[+] 'SAVE' has finished saving (!)");
-
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -321,7 +304,6 @@ namespace mgs2_v_s_fix
             Application.Exit();
 
             Ocelot.PrintToDebugConsole("[+] Exit button pressed");
-
         }
 
         #endregion
@@ -332,10 +314,10 @@ namespace mgs2_v_s_fix
 
         public bool load_InternalConfig_SetTo_SetupperConfig()
         {
-
             // Loading Resolution Settings
 
             #region lot_of_things
+
             txt_Height.Text = Ocelot.InternalConfiguration.Resolution["Height"];
             txt_Width.Text = Ocelot.InternalConfiguration.Resolution["Width"];
 
@@ -380,33 +362,32 @@ namespace mgs2_v_s_fix
 
             lst_vga_list.Items.Clear();
 
-            foreach(string s in Ocelot.vgaList){
-
+            foreach (string s in Ocelot.vgaList)
+            {
                 lst_vga_list.Items.Add(s);
-
             }
 
-            lst_vga_list.SelectedIndex = lst_vga_list.FindString(Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"]);
+            lst_vga_list.SelectedIndex =
+                lst_vga_list.FindString(Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"]);
 
             if (lst_vga_list.SelectedIndex == -1)
             {
-
                 Ocelot.PrintToDebugConsole("[!] -VVV- No VGA Selected.");
 
                 if (Ocelot.vgaList.Count == 0)
                 {
-
                     Ocelot.PrintToDebugConsole("[!] -WHY?- No VGA found on system. Awaiting manual input.");
 
                     // Strange case:
                     //  V's wasn't able to understand which video cards are available
                     //   User need to do a manual insertion, if it hasn't already done it
 
-                    Ocelot.InternalConfiguration.Resolution.TryGetValue("GraphicAdapterName", out string explicitedVGAName);
+                    Ocelot.InternalConfiguration.Resolution.TryGetValue("GraphicAdapterName",
+                        out string explicitedVGAName);
 
-                    if (explicitedVGAName!= null && !explicitedVGAName.Equals("") && explicitedVGAName.Length > 0)
+                    if (explicitedVGAName != null && !explicitedVGAName.Equals("") && explicitedVGAName.Length > 0)
                     {
-                        Ocelot.PrintToDebugConsole("[!] -RESULT?- Found a manual inserted one: "+ explicitedVGAName);
+                        Ocelot.PrintToDebugConsole("[!] -RESULT?- Found a manual inserted one: " + explicitedVGAName);
 
                         // Manually inserted
                         lst_vga_list.Items.Add(explicitedVGAName);
@@ -423,7 +404,8 @@ namespace mgs2_v_s_fix
 
                         try
                         {
-                            System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
+                            System.Diagnostics.Process.Start(
+                                "https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
                         }
 
                         catch
@@ -432,14 +414,11 @@ namespace mgs2_v_s_fix
                         }
 
                         return false;
-
                     }
-
                 }
 
                 else
                 {
-
                     // Strange case:
                     //  InternalConfig contain a VGA AdapterName that isn't installed on the machine
                     //   Probably someone has fucked with .ini
@@ -453,9 +432,7 @@ namespace mgs2_v_s_fix
 
                         lst_vga_list.SelectedIndex = lst_vga_list.FindString(Ocelot.vgaList.Last.Value);
                     }
-
                 }
-
             }
 
             // IF WSF is enabled
@@ -466,14 +443,14 @@ namespace mgs2_v_s_fix
 
                 // Just "FullscreenCutscene" things...
                 if (Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"] == "true")
-                { 
-                chb_FullscreenCutscene.Text = "ON";
-                chb_FullscreenCutscene.Checked = true;
+                {
+                    chb_FullscreenCutscene.Text = "ON";
+                    chb_FullscreenCutscene.Checked = true;
                 }
                 else
                 {
-                chb_FullscreenCutscene.Text = "OFF";
-                chb_FullscreenCutscene.Checked = false;
+                    chb_FullscreenCutscene.Text = "OFF";
+                    chb_FullscreenCutscene.Checked = false;
                 }
 
                 // OptimizedFOV
@@ -487,7 +464,6 @@ namespace mgs2_v_s_fix
                     chb_OptimizedFOV.Text = "OFF";
                     chb_OptimizedFOV.Checked = false;
                 }
-
             }
 
             else
@@ -501,7 +477,6 @@ namespace mgs2_v_s_fix
                 chb_OptimizedFOV.Visible = false;
                 chb_OptimizedFOV.Text = "OFF";
                 chb_OptimizedFOV.Checked = false;
-
             }
 
             #endregion
@@ -529,7 +504,6 @@ namespace mgs2_v_s_fix
                     PreferredLayout_V.Checked = true;
                     pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
                 }
-
             }
 
             else if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("DS4"))
@@ -549,7 +523,6 @@ namespace mgs2_v_s_fix
                     PreferredLayout_V.Checked = true;
                     pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_VLayout;
                 }
-
             }
 
             else
@@ -561,7 +534,6 @@ namespace mgs2_v_s_fix
                 // Set a default layout value for saving it a first time
 
                 PreferredLayout_V.Checked = true;
-
             }
 
             if (Ocelot.NOSYMODE)
@@ -575,8 +547,9 @@ namespace mgs2_v_s_fix
             // Graphics Settings
 
             #region lot_of_things
-            foreach (Panel panel in tab_Graphics.Controls.OfType<Panel>()){
-                
+
+            foreach (Panel panel in tab_Graphics.Controls.OfType<Panel>())
+            {
                 if (panel.Name.Equals("pnl_AA"))
                 {
                     // Note to myself after 2 years of developing
@@ -589,19 +562,18 @@ namespace mgs2_v_s_fix
                 String key = panel.Name.Remove(0, 4);
                 // NB: 'key' local variable now contain name of the settings key (ie: "MotionBlur")
 
-                
+
                 String value = Ocelot.InternalConfiguration.Graphics[key];
                 // NB: 'value' contain value get from InternalSetting corresponding to the 'key' (ie: "high")
-  
-                String rad_name = key+"_"+value;
+
+                String rad_name = key + "_" + value;
                 // rad_name=MotionBlur_high
                 //  or rad_name=MotionBlur_medium
                 //   or rad_name=MotionBlur_low
 
-                RadioButton rad = (RadioButton)panel.Controls.Find(rad_name,true).GetValue(0);
+                RadioButton rad = (RadioButton) panel.Controls.Find(rad_name, true).GetValue(0);
 
                 rad.Checked = true;
-
             }
 
             if (Ocelot.InternalConfiguration.Graphics["BunchOfCoolEffect"] == "true")
@@ -643,7 +615,8 @@ namespace mgs2_v_s_fix
             // Anti-Aliasing
             // I have to contemplate when AA was true or false in the old V's Fix version
 
-            if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("smaa") || Ocelot.InternalConfiguration.Graphics["AA"].Equals("true"))
+            if (Ocelot.InternalConfiguration.Graphics["AA"].Equals("smaa") ||
+                Ocelot.InternalConfiguration.Graphics["AA"].Equals("true"))
             {
                 AA_smaa.Checked = true;
             }
@@ -651,7 +624,8 @@ namespace mgs2_v_s_fix
             {
                 AA_fxaa.Checked = true;
             }
-            else{
+            else
+            {
                 AA_no.Checked = true;
             }
 
@@ -663,7 +637,6 @@ namespace mgs2_v_s_fix
 
             foreach (Panel panel in tab_Sound.Controls.OfType<Panel>())
             {
-
                 String key = panel.Name.Remove(0, 4);
                 // NB: 'key' local variable now contain name of the settings key (ie: "SoundQuality")
 
@@ -676,9 +649,8 @@ namespace mgs2_v_s_fix
                 //  or rad_name=SoundQuality_medium
                 //   or rad_name=SoundQuality_low
 
-                RadioButton rad = (RadioButton)panel.Controls.Find(rad_name, true).GetValue(0);
+                RadioButton rad = (RadioButton) panel.Controls.Find(rad_name, true).GetValue(0);
                 rad.Checked = true;
-
             }
 
             lst_sound_list.Items.Clear();
@@ -709,11 +681,10 @@ namespace mgs2_v_s_fix
             return true;
         }
 
-            /* this will retrieve settings from setupper and will storage it inside Ocelot.InternalConfiguration */
+        /* this will retrieve settings from setupper and will storage it inside Ocelot.InternalConfiguration */
 
         public void load_SetupperConfig_SetTo_InternalConfig()
         {
-
             // Resolution Settings
 
             #region lot_of_things
@@ -723,9 +694,7 @@ namespace mgs2_v_s_fix
 
             if (chb_WideScreenFIX.Checked == true)
             {
-
                 Ocelot.InternalConfiguration.Resolution["WideScreenFIX"] = "true";
-
             }
 
             else
@@ -736,7 +705,6 @@ namespace mgs2_v_s_fix
             if (chb_WindowMode.Checked == true)
             {
                 Ocelot.InternalConfiguration.Resolution["WindowMode"] = "true";
-
             }
 
             else
@@ -763,9 +731,7 @@ namespace mgs2_v_s_fix
 
             if ((chb_WideScreenFIX.Checked == true) && (chb_FullscreenCutscene.Checked == true))
             {
-
                 Ocelot.InternalConfiguration.Resolution["FullscreenCutscene"] = "true";
-
             }
             else
             {
@@ -834,13 +800,11 @@ namespace mgs2_v_s_fix
 
             foreach (Panel panel in tab_Graphics.Controls.OfType<Panel>())
             {
-
-
                 String key = panel.Name.Remove(0, 4);
                 // NB: 'key' local variable now contain name of the settings key (ie: "MotionBlur")
 
                 var checkedButton = panel.Controls.OfType<RadioButton>()
-                                      .FirstOrDefault(r => r.Checked);
+                    .FirstOrDefault(r => r.Checked);
 
                 string checkedButtonName = checkedButton.Name.ToString();
 
@@ -848,14 +812,11 @@ namespace mgs2_v_s_fix
                 // NB: 'value' contain value get from SetupperConfig corresponding to the 'key' (ie: "high")
 
                 Ocelot.InternalConfiguration.Graphics[key] = value;
-
             }
 
             if (chb_BunchOfCoolEffect.Checked == true)
             {
-
                 Ocelot.InternalConfiguration.Graphics["BunchOfCoolEffect"] = "true";
-
             }
 
             else
@@ -866,7 +827,6 @@ namespace mgs2_v_s_fix
             if (chb_MotionBlur.Checked == true)
             {
                 Ocelot.InternalConfiguration.Graphics["MotionBlur"] = "true";
-
             }
 
             else
@@ -877,7 +837,6 @@ namespace mgs2_v_s_fix
             if (chb_DepthOfField.Checked == true)
             {
                 Ocelot.InternalConfiguration.Graphics["DepthOfField"] = "true";
-
             }
 
             else
@@ -890,7 +849,6 @@ namespace mgs2_v_s_fix
             if (AA_smaa.Checked)
             {
                 Ocelot.InternalConfiguration.Graphics["AA"] = "smaa";
-
             }
             else if (AA_fxaa.Checked)
             {
@@ -909,13 +867,11 @@ namespace mgs2_v_s_fix
 
             foreach (Panel panel in tab_Sound.Controls.OfType<Panel>())
             {
-
-
                 String key = panel.Name.Remove(0, 4);
                 // NB: 'key' local variable now contain name of the settings key (ie: "MotionBlur")
 
                 var checkedButton = panel.Controls.OfType<RadioButton>()
-                                      .FirstOrDefault(r => r.Checked);
+                    .FirstOrDefault(r => r.Checked);
 
                 string checkedButtonName = checkedButton.Name.ToString();
 
@@ -923,7 +879,6 @@ namespace mgs2_v_s_fix
                 // NB: 'value' contain value get from SetupperConfig corresponding to the 'key' (ie: "high")
 
                 Ocelot.InternalConfiguration.Sound[key] = value;
-
             }
 
             // NB: Something shoud every be selected inside the Listbox now
@@ -934,9 +889,7 @@ namespace mgs2_v_s_fix
 
             if (chb_FixAfterPlaying.Checked == true)
             {
-
                 Ocelot.InternalConfiguration.Sound["FixAfterPlaying"] = "true";
-
             }
 
             else
@@ -944,11 +897,9 @@ namespace mgs2_v_s_fix
                 Ocelot.InternalConfiguration.Sound["FixAfterPlaying"] = "false";
             }
 
-
             #endregion
 
             return;
-          
         }
 
         #endregion
@@ -957,50 +908,46 @@ namespace mgs2_v_s_fix
 
         private void lst_vga_list_DrawItem(object sender, DrawItemEventArgs e)
         {
-
             if (e.Index < 0) return;
             //if the item state is selected them change the back color 
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
                 e = new DrawItemEventArgs(e.Graphics,
-                                          e.Font,
-                                          e.Bounds,
-                                          e.Index,
-                                          e.State ^ DrawItemState.Selected,
-                                          e.ForeColor,
-                                          Color.DarkOrange);//Choose the color
+                    e.Font,
+                    e.Bounds,
+                    e.Index,
+                    e.State ^ DrawItemState.Selected,
+                    e.ForeColor,
+                    Color.DarkOrange); //Choose the color
 
             // Draw the background of the ListBox control for each item.
             e.DrawBackground();
             // Draw the current item text
-            e.Graphics.DrawString(lst_vga_list.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
+            e.Graphics.DrawString(lst_vga_list.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds,
+                StringFormat.GenericDefault);
             // If the ListBox has focus, draw a focus rectangle around the selected item.
             e.DrawFocusRectangle();
-
-
         }
 
         private void lst_sound_list_DrawItem(object sender, DrawItemEventArgs e)
         {
-
             if (e.Index < 0) return;
             //if the item state is selected them change the back color 
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
                 e = new DrawItemEventArgs(e.Graphics,
-                                          e.Font,
-                                          e.Bounds,
-                                          e.Index,
-                                          e.State ^ DrawItemState.Selected,
-                                          e.ForeColor,
-                                          Color.DarkOrange);//Choose the color
+                    e.Font,
+                    e.Bounds,
+                    e.Index,
+                    e.State ^ DrawItemState.Selected,
+                    e.ForeColor,
+                    Color.DarkOrange); //Choose the color
 
             // Draw the background of the ListBox control for each item.
             e.DrawBackground();
             // Draw the current item text
-            e.Graphics.DrawString(lst_sound_list.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault);
+            e.Graphics.DrawString(lst_sound_list.Items[e.Index].ToString(), e.Font, Brushes.Black, e.Bounds,
+                StringFormat.GenericDefault);
             // If the ListBox has focus, draw a focus rectangle around the selected item.
             e.DrawFocusRectangle();
-
-
         }
 
         private void setNewColor(object sender, EventArgs e)
@@ -1017,7 +964,7 @@ namespace mgs2_v_s_fix
 
             if (typeof(Button).IsAssignableFrom(type))
             {
-                Button btn = (Button)obj;
+                Button btn = (Button) obj;
 
                 if (btn.ForeColor.Name == System.Drawing.Color.DarkOrange.Name)
                 {
@@ -1025,16 +972,15 @@ namespace mgs2_v_s_fix
                     btn.ForeColor = System.Drawing.Color.Black;
                 }
                 else
-                {   //ForeColor is Black OR SOME OTHER UNDEFINED COLOR
+                {
+                    //ForeColor is Black OR SOME OTHER UNDEFINED COLOR
                     btn.ForeColor = System.Drawing.Color.DarkOrange;
                 }
-
             }
 
             if (typeof(CheckBox).IsAssignableFrom(type))
             {
-
-                CheckBox chb = (CheckBox)obj;
+                CheckBox chb = (CheckBox) obj;
 
                 if (chb.ForeColor.Name == System.Drawing.Color.DarkOrange.Name)
                 {
@@ -1043,7 +989,6 @@ namespace mgs2_v_s_fix
                     chb.Text = "OFF";
 
                     //if (chb.Name == "chb_LaptopMode") { chb.Text = "NO"; }
-
                 }
                 else
                 {
@@ -1052,14 +997,12 @@ namespace mgs2_v_s_fix
                     chb.Text = "ON";
 
                     //if (chb.Name == "chb_LaptopMode") { chb.Text = "YUP"; }
-
                 }
-
             }
 
             if (typeof(RadioButton).IsAssignableFrom(type))
             {
-                RadioButton radiob = (RadioButton)sender;
+                RadioButton radiob = (RadioButton) sender;
 
                 if (radiob.Checked == true)
                 {
@@ -1073,16 +1016,13 @@ namespace mgs2_v_s_fix
                     radiob.Font = new Font(radiob.Font, FontStyle.Regular);
                     radiob.ForeColor = System.Drawing.Color.Black;
                 }
-
             }
-
         }
 
         // Background chooser
 
         private void setNewBackground()
         {
-
             if (Ocelot.NOSYMODE)
             {
                 // Don't show anything because people are spying below your shoulder
@@ -1096,20 +1036,22 @@ namespace mgs2_v_s_fix
             // CHANGE THIS IF MORE SCREENSHOT ARE AVAILABLE
             int NUMBER_OF_SCREENSHOTS = 8;
 
-            do { ran_number = rnd.Next(1, NUMBER_OF_SCREENSHOTS+1); }
-            while (!(ran_number != bg_number));
+            do
+            {
+                ran_number = rnd.Next(1, NUMBER_OF_SCREENSHOTS + 1);
+            } while (!(ran_number != bg_number));
 
             string resourceName = "bg" + ran_number;
 
             bg_number = ran_number;
-            pic_background.BackgroundImage = (System.Drawing.Image)mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
+            pic_background.BackgroundImage =
+                (System.Drawing.Image) mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
 
             return;
         }
 
         private void setNewIcon()
         {
-
             if (Ocelot.NOSYMODE)
             {
                 // Don't show anything because people are spying below your shoulder
@@ -1122,14 +1064,16 @@ namespace mgs2_v_s_fix
 
             // From 1 to 12! 
 
-            do { ran_number = rnd.Next(1, 13); }
-            while (!(ran_number != ico_number));
+            do
+            {
+                ran_number = rnd.Next(1, 13);
+            } while (!(ran_number != ico_number));
 
             string resourceName = "ico" + ran_number;
 
             ico_number = ran_number;
 
-            Icon ohi = (Icon)mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
+            Icon ohi = (Icon) mgs2_v_s_fix.Properties.Resources.ResourceManager.GetObject(resourceName);
 
             #region Changing label next to icon
 
@@ -1208,7 +1152,6 @@ namespace mgs2_v_s_fix
                     name = "Vamp";
 
                     break;
-
             }
 
             lbl_ManualLink.Text = name + " says: read the manual!";
@@ -1218,8 +1161,6 @@ namespace mgs2_v_s_fix
             pictureBox2.Image = ohi.ToBitmap();
 
             return;
-
-
         }
 
         #endregion
@@ -1244,8 +1185,7 @@ namespace mgs2_v_s_fix
             {
                 // Bad input
                 e.Handled = true;
-            }              
-
+            }
         }
 
         private void txt_Height_KeyPress(object sender, KeyPressEventArgs e)
@@ -1263,9 +1203,7 @@ namespace mgs2_v_s_fix
             {
                 txt_Width.Text = Ocelot.InternalConfiguration.Resolution["Width"];
                 txt_Height.Text = Ocelot.InternalConfiguration.Resolution["Height"];
-
             }
-
         }
 
         private void txt_Height_Leave(object sender, EventArgs e)
@@ -1274,7 +1212,6 @@ namespace mgs2_v_s_fix
             {
                 txt_Width.Text = Ocelot.InternalConfiguration.Resolution["Width"];
                 txt_Height.Text = Ocelot.InternalConfiguration.Resolution["Height"];
-
             }
         }
 
@@ -1282,14 +1219,13 @@ namespace mgs2_v_s_fix
 
         private void checkIfWSElegible(object sender, KeyEventArgs e)
         {
-            if (txt_Width.Text.Equals("")||(txt_Height.Text.Equals("")))
+            if (txt_Width.Text.Equals("") || (txt_Height.Text.Equals("")))
             {
                 // Empty String
             }
 
             else
             {
-
                 double rapporto = (Double.Parse(txt_Width.Text) / Double.Parse(txt_Height.Text));
 
                 // NB: This is replied in Ocelot.startAutoconfig
@@ -1307,8 +1243,8 @@ namespace mgs2_v_s_fix
                     (rapporto == 1.7786458333333333d) ||
                     (rapporto == 2.3703703703703703d) ||
                     (rapporto == 2.3888888888888888d)
-                    )
-                {                 
+                )
+                {
                     chb_WideScreenFIX.Checked = true;
                 }
 
@@ -1327,8 +1263,8 @@ namespace mgs2_v_s_fix
                     chb_OptimizedFOV.Checked = false;
                 }
 
-                FullscreenCutscene_setVisibility(this,new MouseEventArgs(System.Windows.Forms.MouseButtons.None,1,1,1,1));
-
+                FullscreenCutscene_setVisibility(this,
+                    new MouseEventArgs(System.Windows.Forms.MouseButtons.None, 1, 1, 1, 1));
             }
         }
 
@@ -1336,7 +1272,6 @@ namespace mgs2_v_s_fix
 
         private void FullscreenCutscene_setVisibility(object sender, MouseEventArgs e)
         {
-
             if (chb_WideScreenFIX.Checked == true)
             {
                 lbl_FullscreenCutscene.Visible = true;
@@ -1344,7 +1279,6 @@ namespace mgs2_v_s_fix
 
                 lbl_OptimizedFOV.Visible = true;
                 chb_OptimizedFOV.Visible = true;
-
             }
 
             else
@@ -1367,14 +1301,13 @@ namespace mgs2_v_s_fix
         {
             // Click on one of the EnableController radio buttons
 
-            if(sender.GetType() != typeof(RadioButton))
+            if (sender.GetType() != typeof(RadioButton))
             {
                 // ??
                 throw new Exception("Event raised by an unknow element");
-
             }
 
-            RadioButton pressedRadio = (RadioButton)sender;
+            RadioButton pressedRadio = (RadioButton) sender;
 
             // What controller, and what layout?
 
@@ -1387,7 +1320,6 @@ namespace mgs2_v_s_fix
 
                 // Set a default value
                 PreferredLayout_V.Checked = true;
-
             }
 
             else
@@ -1404,20 +1336,19 @@ namespace mgs2_v_s_fix
 
             else
             {
-
                 if (pressedRadio.Name.Equals("EnableController_DS4"))
                 {
-                    lbl_controllerGuide.Text = "( ONLY if using a DS4 WITHOUT external software. Otherwise, choose 'XBOX' )";
+                    lbl_controllerGuide.Text =
+                        "( ONLY if using a DS4 WITHOUT external software. Otherwise, choose 'XBOX' )";
                 }
                 else if (pressedRadio.Name.Equals("EnableController_STEAM"))
                 {
-                    lbl_controllerGuide.Text = "( If you are going to play on Steam AND use a controller through its drivers )";
+                    lbl_controllerGuide.Text =
+                        "( If you are going to play on Steam AND use a controller through its drivers )";
 
                     // Check if user has selected the SMAA anti-aliasing
 
                     AA_showNeededWarnings();
-
-
                 }
                 else // Xbox
                 {
@@ -1425,9 +1356,7 @@ namespace mgs2_v_s_fix
                 }
 
                 lbl_controllerGuide.Visible = true;
-
             }
-
         }
 
         private void PreferredLayout_Click(object sender, EventArgs e)
@@ -1456,7 +1385,6 @@ namespace mgs2_v_s_fix
                     PreferredLayout_V.Checked = true;
                     pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
                 }
-
             }
             else if (EnableController_DS4.Checked)
             {
@@ -1473,7 +1401,6 @@ namespace mgs2_v_s_fix
                     PreferredLayout_V.Checked = true;
                     pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_VLayout;
                 }
-
             }
             else if (EnableController_STEAM.Checked)
             {
@@ -1493,7 +1420,6 @@ namespace mgs2_v_s_fix
 
                 pictureBox1.Visible = false;
             }
-
         }
 
         #endregion
@@ -1504,18 +1430,15 @@ namespace mgs2_v_s_fix
 
         private void AA_Click(object sender, EventArgs e)
         {
-
             if (sender.GetType() != typeof(RadioButton))
             {
                 // ??
                 throw new Exception("Event raised by an unknow element");
-
             }
 
-            RadioButton pressedRadio = (RadioButton)sender;
+            RadioButton pressedRadio = (RadioButton) sender;
 
             AA_showTheRightHelper();
-
         }
 
         private void AA_showTheRightHelper()
@@ -1526,13 +1449,11 @@ namespace mgs2_v_s_fix
 
             foreach (RadioButton singleRadioButton in pnl_AA.Controls.OfType<RadioButton>())
             {
-
                 if (singleRadioButton.Checked)
                 {
                     selectedAAoption = singleRadioButton.Name;
                     break;
                 }
-
             }
 
             // Set an help label for the different controllers
@@ -1544,12 +1465,11 @@ namespace mgs2_v_s_fix
 
             else
             {
-
                 if (selectedAAoption.Equals("AA_fxaa"))
                 {
                     lbl_AAGuide.Text = "( Lighter and faster, but less effective than SMAA. Raccomended for laptop )";
                 }
-                else if(selectedAAoption.Equals("AA_smaa")) 
+                else if (selectedAAoption.Equals("AA_smaa"))
                 {
                     // SMAA
                     lbl_AAGuide.Text = "( Better quality than FXAA, but heavier. NOT compatible with Steam overlay )";
@@ -1565,7 +1485,6 @@ namespace mgs2_v_s_fix
                 // Show warnings, if needed
 
                 AA_showNeededWarnings();
-
             }
         }
 
@@ -1580,32 +1499,28 @@ namespace mgs2_v_s_fix
         {
             // CHECK: the user want to use Steam AND use SMAA?
             // Action: must choose FXAA and warn the user
-            
-            if( AA_smaa.Checked && ( imGoingToUseAddGame2Steam || EnableController_STEAM.Checked ))
-            {
 
+            if (AA_smaa.Checked && (imGoingToUseAddGame2Steam || EnableController_STEAM.Checked))
+            {
                 Ocelot.showMessage("tip_smaaANDsteam");
 
                 AA_fxaa.Checked = true;
 
                 AA_showTheRightHelper();
-
             }
 
 
             // CHECK: the user use any anti-aliasing AND Model quality to High?
             // Action: warn the user
 
-            if( tip_antialiasingANDmodelquality_showed == false && ( AA_fxaa.Checked || AA_smaa.Checked) && ModelQuality_high.Checked)
+            if (tip_antialiasingANDmodelquality_showed == false && (AA_fxaa.Checked || AA_smaa.Checked) &&
+                ModelQuality_high.Checked)
             {
                 Ocelot.showMessage("tip_antialiasingANDmodelquality");
 
                 // Don't show until next reboot
                 tip_antialiasingANDmodelquality_showed = true;
-
             }
-
-
         }
 
         #endregion
@@ -1616,7 +1531,8 @@ namespace mgs2_v_s_fix
         {
             try
             {
-                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Troubleshooting-&-Debug-mode#common-problems--common-solutions");
+                System.Diagnostics.Process.Start(
+                    "https://github.com/VFansss/mgs2-v-s-fix/wiki/Troubleshooting-&-Debug-mode#common-problems--common-solutions");
             }
 
             catch
@@ -1638,12 +1554,11 @@ namespace mgs2_v_s_fix
         {
             setNewColor(sender, e);
 
-            RadioButton rdi = (RadioButton)sender;
+            RadioButton rdi = (RadioButton) sender;
 
             loadTXT(rdi.Name.Substring(4));
 
             return;
-
         }
 
         private void loadTXT(string NAMEFILE)
@@ -1659,7 +1574,6 @@ namespace mgs2_v_s_fix
             tbx_About.SelectionStart = 0;
             tbx_About.SelectionLength = 1;
             tbx_About.ScrollToCaret();
-
         }
 
         private void lbl_donate_Click(object sender, EventArgs e)
@@ -1700,14 +1614,14 @@ namespace mgs2_v_s_fix
             {
                 Ocelot.showMessage("UAC_error");
             }
-
         }
 
         private void help_resolution_Click(object sender, EventArgs e)
         {
             try
             {
-                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Troubleshooting-&-Debug-mode");
+                System.Diagnostics.Process.Start(
+                    "https://github.com/VFansss/mgs2-v-s-fix/wiki/Troubleshooting-&-Debug-mode");
             }
 
             catch
@@ -1742,9 +1656,23 @@ namespace mgs2_v_s_fix
             }
         }
 
-        private void help_compatibilityWarning_Click(object sender, EventArgs e)
+        private void help_resolutionMenuWarning_Click(object sender, EventArgs e)
         {
-            Ocelot.showMessage("compatibilityWarning");
+            DialogResult openTheWiki = Ocelot.showMessage("tip_explainSelectionForVGAs");
+
+            if (openTheWiki == DialogResult.Yes)
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start(
+                        "https://github.com/VFansss/mgs2-v-s-fix/wiki/Settings-Menu#resolution-tab");
+                }
+
+                catch
+                {
+                    Ocelot.showMessage("UAC_error");
+                }
+            }
         }
 
         #endregion
@@ -1771,12 +1699,10 @@ namespace mgs2_v_s_fix
             UPDATE_AVAILABILITY remoteStatus = await Task.Run(() => Ocelot.CheckForUpdatesAsync());
 
             UPDATE_checkFinished(remoteStatus);
-
         }
 
         private void UPDATE_checkFinished(UPDATE_AVAILABILITY result)
         {
-
             switch (result)
             {
                 case UPDATE_AVAILABILITY.NoUpdates:
@@ -1828,15 +1754,15 @@ namespace mgs2_v_s_fix
 
 
             DialogResult doYouWantToProceed = MessageBox.Show(
-                "V's Fix will now try to add on your Steam the game :"+
+                "V's Fix will now try to add on your Steam the game :" +
                 "\n\n" +
-                "METAL GEAR SOLID 2: SUBSTANCE"+
-                "\n\n"+
-                "Also, it will automatically set 'Open V's Fix after playing the game' to false, so you can interact with the game directly from Steam"+
-                "\n\n"+
-                "Are you sure you want to continue?","Add the game on Steam", MessageBoxButtons.YesNo);
+                "METAL GEAR SOLID 2: SUBSTANCE" +
+                "\n\n" +
+                "Also, it will automatically set 'Open V's Fix after playing the game' to false, so you can interact with the game directly from Steam" +
+                "\n\n" +
+                "Are you sure you want to continue?", "Add the game on Steam", MessageBoxButtons.YesNo);
 
-            if(doYouWantToProceed != DialogResult.Yes)
+            if (doYouWantToProceed != DialogResult.Yes)
             {
                 return;
             }
@@ -1845,7 +1771,7 @@ namespace mgs2_v_s_fix
 
             ADD2STEAMSTATUS workResult = Ocelot.AddMGS2ToSteam();
 
-            Ocelot.PrintToDebugConsole("[ STEAM ] Add2Steam has returned "+workResult.ToString());
+            Ocelot.PrintToDebugConsole("[ STEAM ] Add2Steam has returned " + workResult.ToString());
 
             switch (workResult)
             {
@@ -1894,7 +1820,6 @@ namespace mgs2_v_s_fix
             {
                 Ocelot.StartSteam();
             }
-
         }
 
         #endregion

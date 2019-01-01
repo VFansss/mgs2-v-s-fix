@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-
 using System.IO.Compression;
 using System.Reflection;
 
@@ -11,16 +7,14 @@ namespace mgs2_v_s_fix
 {
     class Unzip
     {
-
         public static string ApplicationPath;
 
         // Homemade Unzipper
 
         // Target Required .net > 4.5
 
-        public static void UnZippa(string fileToUnzip, bool OverWrite=false)
+        public static void UnZippa(string fileToUnzip, bool OverWrite = false)
         {
-
             // NB: Watch out for 'overwrite' optional parameter
             //  only if true it would overwrite a file,if already exist
             //   not all call to 'Unzippa' method has this optional parameter
@@ -41,14 +35,12 @@ namespace mgs2_v_s_fix
                 String path = ApplicationPath + "\\" + entry.FullName;
 
                 // entry (file or directory) already exist?
-                if (!File.Exists(path)||OverWrite==true)
+                if (!File.Exists(path) || OverWrite == true)
                 {
-
                     if (!(entry.FullName.ToString().EndsWith("/")))
                     {
-
                         //it's a file
-                        entry.ExtractToFile(path,OverWrite);
+                        entry.ExtractToFile(path, OverWrite);
                     }
 
                     else
@@ -59,20 +51,13 @@ namespace mgs2_v_s_fix
 
                         if (!(Directory.Exists(entry.FullName.ToString())))
                         {
-
                             Directory.CreateDirectory(ApplicationPath + "\\" + entry.FullName.ToString());
-
                         }
-
                     }
-
                 }
-
             }
-
         }
 
         //END CLASS
     }
-
 }
