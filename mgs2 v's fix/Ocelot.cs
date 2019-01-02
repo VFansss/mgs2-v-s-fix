@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "181105";
+        public const string VERSION = "181208";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -1143,7 +1143,7 @@ namespace mgs2_v_s_fix
             else if (vgaList.Count > 1)
             {
 
-                Ocelot.showMessage("tip_vga");
+                Ocelot.showMessage("tip_moreVGAs");
                 
             }
 
@@ -1297,8 +1297,9 @@ namespace mgs2_v_s_fix
 
         // show a MessageBox with custom message based on a string code
 
-        public static void showMessage(string code)
+        public static DialogResult showMessage(string code)
         {
+            DialogResult answer = DialogResult.OK;
 
             switch (code)
             {
@@ -1307,8 +1308,8 @@ namespace mgs2_v_s_fix
 
                 case "compatibilityFlagsNotNeeded":
 
-                    MessageBox.Show(
-                    "From this version of the Fix, the game doesn't need anymore any compatibility flags."+"\n\n"+
+                    answer = MessageBox.Show(
+                    "IN this version of the Fix, the game doesn't need any compatibility flags anymore"+"\n\n"+
                     "This will greatly enhance the game compatibility, expecially with Win10 and Steam!"+"\n\n"+
                     "Next time you press 'SAVE', these compatibility flags will be automatically removed."+"\n\n"+
                     "Happy playing, and have fun :)",
@@ -1318,7 +1319,7 @@ namespace mgs2_v_s_fix
 
                 case "compatibilityWarning": // NB: Not used anymore
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "When applying your settings, V's Fix will automatically try to set these compatibility flags :" +
                     "\n\n" +
                     "- Run the game in WindowsXP SP3 Compatibility Mode" + "\n" +
@@ -1326,9 +1327,9 @@ namespace mgs2_v_s_fix
                     "\n\n" +
                     "to the main game executable (mgs2_sse.exe) but it may fail or be blocked by various actors, so please be sure that they have been succesfully activated!" +
                     "\n\n" +
-                    "Running the game without these flags will results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
+                    "Running the game without these flags WILL results in a BLACK SCREEN ON GAME STARTUP, or others gamebreaking issues." +
                     "\n\n" +
-                    "You can see again this message from the 'Resolution tab'." + "\n",
+                    "You can read again this message once again from the 'Resolution tab'." + "\n",
                     "*Suddenly green hills appear in the background*", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
@@ -1337,7 +1338,7 @@ namespace mgs2_v_s_fix
 
                 case "savegameWillBeMoved":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
                     "From now on, your save data will be contained in this folder:" + "\n\n"+
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE",
@@ -1350,99 +1351,88 @@ namespace mgs2_v_s_fix
                     string oldFolderPath = Directory.GetParent(Application.StartupPath).FullName+"\\savedata";
                     string newFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
-                    "The fix has also detected that you could move savedata from old directory to new, but a folder already exist in the new location."+"\n\n"+
+                    "The fix has also detected that you could move savedata from old directory to new, but a folder already exists in the new location."+"\n\n"+
                     "I don't know what are your most recent savedata so please delete one of the following folder:"+ "\n\n" +
                     oldFolderPath + "\n\n"+
                     "( or )" + "\n\n" +
                     newFolderPath + "" + "\n\n"+
                     "Please manually fix this situation, and reopen the fix."+"\n\n"+
-                    "Now the fix will close. Sorry dude :(",
+                    "Now the fix is going to close. Sorry dude :(",
                     "Trouble incoming...", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
 
                 case "gameNeverConfigured":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "To start the game, you have to configure it at least once!"+"\n\n"+
                     "Please press 'SETTINGS' and configure the game, then retry :)",
                     "And that's why it doesn't work...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
+                // UPDATE messages
+
                 case "update_crashedinfire":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "Can't reach GitHub for updates (Are you offline?)",
-                    "Ehi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "Hey!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "update_noupdates":
 
-                    MessageBox.Show(
-                    "Seems that there isn't any updates for the V's Fix.\n\nHappy playing :)",
-                    "Ehi!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    answer = MessageBox.Show(
+                    "Seems that there aren't any updates for the V's Fix.\n\nHappy playing :)",
+                    "Hey!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "update_available":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "It seems that someone has actually worked!\n\nPress 'OK' to open the V's Fix GitHub Release page to download the latest release!",
                     "UPDATE AVAILABLE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
                     break;
+
+                // DEBUG Mode messages
 
                 case "debugModeEnabled":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "Debug mode is ENABLED!"+"\n\n"+
                     "You can find the debug log on your Desktop"+ "\n\n" +
-                    "You can analize it yourself and/or send it to me on GitHub!",
+                    "You can analize it by yourself and/or report it to me on GitHub!",
                     "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
                 case "debugModeDisabled":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "Debug mode is DISABLED!" + "\n\n" +
                     "Please go to V's Fix Wiki - Chapter 'Troubleshooting & Debug mode'" + "\n\n" +
-                    "to learn how to enable debug mode and let us understand better what is going wrong!",
+                    "to learn how to enable debug mode and let us understand better what is going on!",
                     "A dud!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     break;
 
-                case "tip_patcher":
-
-                    MessageBox.Show(
-                    "V's Fix will now run some extra applications for patching the game into 2.0 Version.\n\nOn some system it can prompt an UAC warning.\nIsn't doing anything harmful; let it do its job!",
-                    "Just an info...", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
-                case "tip_vga":
-
-                    MessageBox.Show("Please be aware that since more VGAs are installed on your system you have to be sure that the executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!\n\nThis MUST be done MANUALLY from your graphics adapter's control panel!",
-                    "More graphics adapter detected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    break;
-
-                // FATAL ERROR WHILE STARTING THE GAME
+                // FATAL ERROR(s) WHILE STARTING THE GAME
 
                 case "fatalError_WrongVideoAdapter":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "V's has detected that your game has started with a different VGA from the one selected from the V's Fix."+"\n\n"+
                     "This can cause glitches and bugs."+"\n\n"+
                     "V's Fix can't solve this for you, so to quickly solve the issue (in less than 30 seconds) please read the V's Fix manual"+"\n\n"+
                     "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter"+"\n\n"+
-                    "Closing this message will open your browser pointing to V's Guide"+"\n\n"+
-                    "Would you kindly press the 'OK' button?",
-                    "Helper in action...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    "Do you want to open the V's Fix Wiki on that page?",
+                    "Helper in action...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     break;
 
@@ -1503,7 +1493,7 @@ namespace mgs2_v_s_fix
                             extra_hint = "I've tried (I swear) but I didn't found myself the install directory of the game. Check the manual on GitHub for extra help.";
                         }
 
-                        MessageBox.Show(
+                    answer = MessageBox.Show(
                     "V's Fix isn't in the correct place.\nPut it into GAME DIRECTORY\\bin folder\n\n"+extra_hint,
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -1513,7 +1503,7 @@ namespace mgs2_v_s_fix
 
                 case "unzipping_error":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "V's Fix isn't able to create some files into game's directory.\nFix require full permission to create,delete and extract file into that directory. Try to run the fix using 'Admin rights'!",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -1521,7 +1511,7 @@ namespace mgs2_v_s_fix
 
                 case "no_vga":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "V's hasn't found any VGA installed in your system.\n\nIf you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -1529,7 +1519,7 @@ namespace mgs2_v_s_fix
 
                 case "no_donate":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                     "V's Fix isn't able to open PayPal website! Please don't give up :(",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -1537,7 +1527,7 @@ namespace mgs2_v_s_fix
 
                 case "UAC_error":
 
-                    MessageBox.Show("Some operation has been blocked by operating system :( \n\n" +
+                    answer = MessageBox.Show("Some operation has been blocked by operating system :( \n\n" +
                         "You have few things you can do:" + "\n\n" +
                         "I) Start the fix using 'Admin rights'" + "\n\n"+
                         "II) Install game in another directory that isn't 'Program Files'"+ "\n\n" +
@@ -1555,7 +1545,7 @@ namespace mgs2_v_s_fix
 
                 case "forbidStartIsTrue":
 
-                    MessageBox.Show("Not all preliminary actions has been completed by V's Fix, and is a VERY bad thing: V's Fix cannot start without, and thus it will close after these messages :(",
+                    answer = MessageBox.Show("Not all preliminary actions has been completed by V's Fix, and is a VERY bad thing: V's Fix cannot start without, and thus it will close after these messages :(",
                     "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1564,7 +1554,7 @@ namespace mgs2_v_s_fix
 
                 case "steamIsRunning":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                         "Steam is actually running!"+
                         "\n\n"+
                         "To let V's Fix working, is safer to close if before proceeding."
@@ -1575,7 +1565,7 @@ namespace mgs2_v_s_fix
 
                 case "AddedForOneUser":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                         "MGS2 has been added for one Steam user!"+
                         "\n\n"+
                         "Start Steam, and have fun :D","Yeah"                 
@@ -1585,7 +1575,7 @@ namespace mgs2_v_s_fix
 
                 case "AddedForMoreUsers":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                         "MGS2 has been added for more Steam users!" +
                         "\n\n" +
                         "Start Steam, and have fun :D", "Yeah"
@@ -1595,7 +1585,7 @@ namespace mgs2_v_s_fix
 
                 case "NothingDone":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                         "Seems that MGS2 has already been added in the past."+
                         "\n\n"+
                         "( ????? )"+
@@ -1607,7 +1597,7 @@ namespace mgs2_v_s_fix
 
                 case "Add2SteamError":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                         "Add2Steam has caused an error, and nothing has been added." +
                         "\n\n" +
                         "Please activate the DEBUG MODE and report this to me!"
@@ -1619,7 +1609,7 @@ namespace mgs2_v_s_fix
 
                 case "tip_antialiasingANDmodelquality":
 
-                    MessageBox.Show(
+                    answer = MessageBox.Show(
                         "Model quality is set to 'High' and Anti-Aliasing is activated."+
                         "\n\n"+
                         "Having both activated at the same time can, on some configuration, cause graphical glitches or freezes."+
@@ -1633,13 +1623,59 @@ namespace mgs2_v_s_fix
 
                 case "tip_smaaANDsteam":
 
-                    MessageBox.Show(
-                        "SMAA Anti-Aliasing is activated, and this can cause glitches with the Steam overlay, and consequently with the Steam controller(s)" +
-                        "\n\n" +
-                        "For this reason, FXAA Anti-Aliasing has been selected instead."+
-                        "\n\n" +
-                        "( HINT: If you want SMAA at all costs, unselect 'Steam' from the 'Controls' tab of the fix, or enable it manually from 'SweetFX_settings.txt' after you press 'SAVE' )",
+                    answer = MessageBox.Show(
+                    "SMAA Anti-Aliasing is activated, and this can cause glitches with the Steam overlay, and consequently with the Steam controller(s)" +
+                    "\n\n" +
+                    "For this reason, FXAA Anti-Aliasing has been selected instead."+
+                    "\n\n" +
+                    "( HINT: If you want SMAA at all costs, unselect 'Steam' from the 'Controls' tab of the fix, or enable it manually from 'SweetFX_settings.txt' after you press 'SAVE' )",
                     "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_patcher":
+
+                    answer = MessageBox.Show(
+                    "V's Fix will now run some extra applications for patching the game into 2.0 Version.\n\nOn some system it can prompt an UAC warning.\nIsn't doing anything harmful; let it do its job!",
+                    "Just an info...", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_moreVGAs":
+
+                    answer = MessageBox.Show(
+                    "Please be aware that since more VGAs are installed on your system you have to be sure that the executable of the game (mgs2_sse.exe) is bounded correctly to the right graphics adapter!" +
+                    "\n\n" +
+                    "This MUST be done MANUALLY from your graphics adapter's control panel!"+
+                    "\n\n" +
+                    "To better understand why, please press the link on the right of the red ! sign on 'Resolution tab' ",
+                    "More graphics adapter detected!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_explainSelectionForVGAs":
+
+                    answer = MessageBox.Show(
+                    "To make the game work flawlessly, V's Fix must know your video graphic adapters (VGA) model/brand to apply certain fixes to the game."+
+                    "\n\n"+
+                    "Below, you can find the list of detected VGAs on your system."+
+                    "\n\n"+
+                    "If you have a SINGLE VGA ON YOUR PC, you can stop reading here :D"+
+                    "\n\n"+
+                    "If you have MORE THAN ONE VGA ON YOUR PC, below you can select the one that will run the game." +
+                    "\n\n"+
+                    "In that case, simply selecting a VGA from the fix MAY not be enough, though."+
+                    "\n\n"+
+                    "Some 'power saving' settings from your VGAs driver could interfere with that decision, based on how the driver has decided to run the game (i.e. on your laptop integrated GPU to save power)"+
+                    "\n\n"+
+                    "You have to be sure that your VGA driver is reflecting the decision you made below, and this MUST be done MANUALLY from your ATI/Intel/NVidia VGA control panel!"+
+                    "V's Fix can't do it for you, unfortunatelly!"+
+                    "\n\n"+
+                    "If you never done it before, on the V's Fix manual I wrote some examples (with images) for various VGA brands!" +
+                    "\n\n" +
+                    "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter" + "\n\n" +
+                    "Do you want to open the V's Fix Wiki on that page?",
+                    "Estimated time for reading: 1 minute", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                     break;
 
@@ -1647,12 +1683,15 @@ namespace mgs2_v_s_fix
 
                 default:
 
-                    MessageBox.Show("You shouldn't be able to read this message: /",
+                    answer = MessageBox.Show("You shouldn't be able to read this message: /",
                     "Can't do a sh*t!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
 
             Ocelot.PrintToDebugConsole("[!] Showed a messagebox with code: "+code);
+
+            return answer;
+
         }
 
         // Apply the 'Windows XP SP3 Compatibility Mode' and 'Run as Admin' flags
@@ -1843,26 +1882,56 @@ namespace mgs2_v_s_fix
 
         public static string RecoverLastLogPath()
         {
-            string PathOfLastLogInVirtualStore = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3) + "\\last.log";
-            string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
+            {
+                string PathOfLastLogInVirtualStore = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3) + "\\last.log";
+                bool TheseIsVirtualStoreLog = File.Exists(PathOfLastLogInVirtualStore);
 
-            // Check the last.log created from the >1.7 version of the fix
-            if (File.Exists(PathOfLastLogInVirtualStore))
-            {
-                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
-                return PathOfLastLogInVirtualStore;
-            }
-            // Check the last.log created from the <1.7 version of the fix
-            else if (File.Exists(PathOfLastLogInApplicationFolder))
-            {
-                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
-                return PathOfLastLogInApplicationFolder;
-            }
-            else
-            {
-                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
-                // last.log has never been created. Return an empty path
-                return "";
+                string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
+                bool TheseIsApplicationFolderLog = File.Exists(PathOfLastLogInApplicationFolder);
+
+                if (TheseIsVirtualStoreLog && TheseIsApplicationFolderLog)
+                {
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] More Last.log detected");
+
+                    // Decide what Log is the most recent
+
+                    if (File.GetLastWriteTimeUtc(PathOfLastLogInApplicationFolder) > File.GetLastWriteTimeUtc(PathOfLastLogInVirtualStore))
+                    {
+                        // Application Folder log is more recent. Chose it.
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in Application Folder");
+                        return PathOfLastLogInApplicationFolder;
+                    }
+                    else
+                    {
+                        // Chose VirtualStore log
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in VirtualStore");
+                        return PathOfLastLogInVirtualStore;
+                    }
+
+                }
+                else
+                {
+                    // There is only one log, or none.
+
+                    if (TheseIsVirtualStoreLog)
+                    {
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
+                        return PathOfLastLogInVirtualStore;
+                    }
+                    else if (TheseIsApplicationFolderLog)
+                    {
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
+                        return PathOfLastLogInApplicationFolder;
+                    }
+                    else
+                    {
+                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
+                        // last.log has never been created. Return an empty path
+                        return "";
+                    }
+
+                }
+
             }
 
         }
