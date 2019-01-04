@@ -1813,6 +1813,8 @@ namespace mgs2_v_s_fix
                 string oldSavedataPath = Directory.GetParent(Application.StartupPath).FullName + "\\savedata";
                 string newSavedataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
 
+                Directory.CreateDirectory(newSavedataPath);
+
                 Directory.Move(oldSavedataPath, newSavedataPath);
 
                 // Create a file to remember the user to check to new location
