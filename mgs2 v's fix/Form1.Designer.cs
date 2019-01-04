@@ -474,11 +474,11 @@
             this.lbl_des_01.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_01.AutoSize = true;
             this.lbl_des_01.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_01.Location = new System.Drawing.Point(50, 64);
+            this.lbl_des_01.Location = new System.Drawing.Point(45, 64);
             this.lbl_des_01.Name = "lbl_des_01";
-            this.lbl_des_01.Size = new System.Drawing.Size(201, 26);
+            this.lbl_des_01.Size = new System.Drawing.Size(206, 26);
             this.lbl_des_01.TabIndex = 0;
-            this.lbl_des_01.Text = "Mantain Aspect Ratio:";
+            this.lbl_des_01.Text = "Maintain Aspect Ratio:";
             this.lbl_des_01.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbl_X

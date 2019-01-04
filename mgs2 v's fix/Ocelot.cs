@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "181208";
+        public const string VERSION = "190104";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -1309,7 +1309,7 @@ namespace mgs2_v_s_fix
                 case "compatibilityFlagsNotNeeded":
 
                     answer = MessageBox.Show(
-                    "IN this version of the Fix, the game doesn't need any compatibility flags anymore"+"\n\n"+
+                    "From this version of the Fix, the game doesn't need any compatibility flags anymore"+"\n\n"+
                     "This will greatly enhance the game compatibility, expecially with Win10 and Steam!"+"\n\n"+
                     "Next time you press 'SAVE', these compatibility flags will be automatically removed."+"\n\n"+
                     "Happy playing, and have fun :)",
@@ -1340,7 +1340,7 @@ namespace mgs2_v_s_fix
 
                     answer = MessageBox.Show(
                     "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
-                    "From now on, your save data will be contained in this folder:" + "\n\n"+
+                    "From now on, your save data will be storaged inside this folder:" + "\n\n"+
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE",
                     "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
