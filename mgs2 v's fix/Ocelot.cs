@@ -1309,7 +1309,7 @@ namespace mgs2_v_s_fix
                 case "compatibilityFlagsNotNeeded":
 
                     answer = MessageBox.Show(
-                    "IN this version of the Fix, the game doesn't need any compatibility flags anymore"+"\n\n"+
+                    "From this version of the Fix, the game doesn't need any compatibility flags anymore"+"\n\n"+
                     "This will greatly enhance the game compatibility, expecially with Win10 and Steam!"+"\n\n"+
                     "Next time you press 'SAVE', these compatibility flags will be automatically removed."+"\n\n"+
                     "Happy playing, and have fun :)",
