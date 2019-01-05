@@ -245,7 +245,7 @@ namespace mgs2_v_s_fix
             }*/
 
             // Check if any compatibility flags are set on the mgs2_sse.exe, and warn the user
-            // that aren't needed anymore
+            // that they aren't needed anymore
 
             if (Ocelot.CheckForCompabilityFlags() == true)
             {
@@ -254,7 +254,7 @@ namespace mgs2_v_s_fix
 
             }
 
-            // Check if savegame must be moved to the new location in "My Games", and warn the user if so
+            // Check if savegame must be moved to the new location in "My Games", and warn the user if yes
 
             if (Directory.Exists(Application.StartupPath + "\\..\\savedata"))
             {
@@ -268,7 +268,7 @@ namespace mgs2_v_s_fix
 
                     Ocelot.showMessage("savegameCantBeMoved");
 
-                    // About everything until user solve the situation
+                    // Abort everything until user manually solve the situation
 
                     Application.Exit();
 

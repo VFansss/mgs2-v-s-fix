@@ -2196,6 +2196,16 @@ namespace mgs2_v_s_fix
 
                 foreach (string singleProfileFolder in steamProfiles)
                 {
+                    // CHECK: is the useless profile 0?
+
+                    if (Path.GetFileName(singleProfileFolder).Equals("0"))
+                    {
+                        // No need to add anything. Skip...
+                        continue;
+                    }
+
+                    Ocelot.PrintToDebugConsole("[ ADD2STEAM ] Working in this location: "+ singleProfileFolder);
+
                     // Find the shortcut.vdf file
 
                     string vdfLocation = Path.Combine(singleProfileFolder+ "\\config\\shortcuts.vdf");
@@ -2204,12 +2214,16 @@ namespace mgs2_v_s_fix
                     byte NUL = 0x00;
                     byte SOH = 0x01;
                     byte STX = 0x02;
-                    byte BS = 0x08;
-                    
+                    byte BS = 0x08;       
 
                     if (!File.Exists(vdfLocation))
                     {
+
+                        Ocelot.PrintToDebugConsole("[ ADD2STEAM ] Creating a base .vdf");
+
                         // Create a base shortcuts.vdf
+
+                        Directory.CreateDirectory(Directory.GetParent(vdfLocation).ToString());
 
                         using (var fs = new FileStream(vdfLocation, FileMode.Create, FileAccess.ReadWrite))
                         {
@@ -2229,6 +2243,8 @@ namespace mgs2_v_s_fix
 
                         }
 
+                        Ocelot.PrintToDebugConsole("[ ADD2STEAM ] Base vdf created");
+
                     }
 
                     // Count existing games
@@ -2240,6 +2256,8 @@ namespace mgs2_v_s_fix
                     string[] split = entireFile.Split(new string[] { "tags\0" }, StringSplitOptions.None);
 
                     nonSteamGames = split.Count() - 1;
+
+                    Ocelot.PrintToDebugConsole("[ ADD2STEAM ] This profile has "+nonSteamGames+" non-steam games");
 
                     // CHECK: Is METAL GEAR SOLID 2: SUBSTANCE already inserted in the past?
 
@@ -2347,22 +2365,28 @@ namespace mgs2_v_s_fix
 
                     numberOfMGS2Added = numberOfMGS2Added + 1;
 
-                }
+                } // End foreach
 
                 // Signal something to UI
 
+                ADD2STEAMSTATUS returnValue = default(ADD2STEAMSTATUS);
+
                 if(numberOfMGS2Added > 1)
                 {
-                    return ADD2STEAMSTATUS.AddedForMoreUsers;
+                    returnValue = ADD2STEAMSTATUS.AddedForMoreUsers;
                 }
                 else if(numberOfMGS2Added == 1)
                 {
-                    return ADD2STEAMSTATUS.AddedForOneUser;
+                    returnValue = ADD2STEAMSTATUS.AddedForOneUser;
                 }
                 else
                 {
-                    return ADD2STEAMSTATUS.NothingDone;
+                    returnValue = ADD2STEAMSTATUS.NothingDone;
                 }
+
+                Ocelot.PrintToDebugConsole("[ ADD2STEAM ] Final result: "+returnValue);
+
+                return returnValue;
 
             }
 
