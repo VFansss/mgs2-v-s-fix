@@ -1557,9 +1557,9 @@ namespace mgs2_v_s_fix
                     answer = MessageBox.Show(
                         "Steam is actually running!"+
                         "\n\n"+
-                        "To let V's Fix working, is safer to close if before proceeding."
+                        "To let V's Fix work safely, is better to close it before proceeding."
                         +"\n\n"+
-                        "Please manually close it and try again :)");
+                        "Please close it manually and try again :)");
 
                     break;
 
