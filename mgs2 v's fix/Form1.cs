@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 using System.Drawing.Text;
@@ -254,33 +250,61 @@ namespace mgs2_v_s_fix
 
             }
 
-            // Check if savegame must be moved to the new location in "My Games", and warn the user if yes
+            // Check if savegame must be moved to the new location in "My Games", and warn the user if there are issues
 
-            if (Directory.Exists(Application.StartupPath + "\\..\\savedata"))
+            string originalSavegameFolder = Application.StartupPath + "\\..\\savedata";
+
+            if (Directory.Exists(originalSavegameFolder))
             {
-                // Must move things
 
-                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-                if (Directory.Exists(Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE")))
+                if (Ocelot.IsThisDirectoryEmpty(originalSavegameFolder))
                 {
-                    // Trouble incoming...
+                    // Directory esist, but there aren't files inside the old savegame folder
 
-                    Ocelot.showMessage("savegameCantBeMoved");
-
-                    // Abort everything until user manually solve the situation
-
-                    Application.Exit();
-
+                    Directory.Delete(originalSavegameFolder, true);
                 }
 
                 else
                 {
-                    // Situation is clear...
+                    // There are files inside the old savegame directory. Must move things!
 
-                    Ocelot.showMessage("savegameWillBeMoved");
+                    string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-                    Ocelot.MoveSavegamesToNewLocation();
+                    string newSavegameFolder = Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE");
+
+                    // Check if the new location already have savegames...
+
+                    if (Directory.Exists(newSavegameFolder))
+                    {
+                        if (Ocelot.IsThisDirectoryEmpty(newSavegameFolder))
+                        {
+                            // Directory esist, but there aren't files inside the old savegame folder
+
+                            Directory.Delete(newSavegameFolder, true);
+                        }
+
+                        else
+                        {
+                            // There are savegames in the new directory. Need manual actions...
+
+                            Ocelot.showMessage("savegameCantBeMoved");
+
+                            // Abort everything until user manually solve the situation
+
+                            Program.ForceClosing();
+
+                        }
+
+                    }
+
+                    // Ready to move. Do a last check...
+
+                    if (!Directory.Exists(newSavegameFolder))
+                    {
+                        Ocelot.showMessage("savegameWillBeMoved");
+
+                        Ocelot.MoveSavegamesToNewLocation();
+                    }
 
                 }
                 

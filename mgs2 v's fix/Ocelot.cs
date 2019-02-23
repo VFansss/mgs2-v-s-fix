@@ -1808,14 +1808,20 @@ namespace mgs2_v_s_fix
         public static void MoveSavegamesToNewLocation()
         {
 
+            // TODO ADD DEBUGGER
+
             try
             {
                 string oldSavedataPath = Directory.GetParent(Application.StartupPath).FullName + "\\savedata";
                 string newSavedataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
 
-                Directory.CreateDirectory(newSavedataPath);
-
                 Directory.Move(oldSavedataPath, newSavedataPath);
+
+                // Set savedata folder permission to 'inerithed'
+
+                var fs = File.GetAccessControl(newSavedataPath);
+                fs.SetAccessRuleProtection(false, false);
+                File.SetAccessControl(newSavedataPath, fs);
 
                 // Create a file to remember the user to check to new location
 
@@ -2480,9 +2486,23 @@ namespace mgs2_v_s_fix
         }
 
         // Check if a directory is empty
-        public static bool IsDirectoryEmpty(string path)
+        public static bool IsThisDirectoryEmpty(string path)
         {
-            return !Directory.EnumerateFileSystemEntries(path).Any();
+            // I prefere to return true in case of sudden exceptions...
+            bool isEmpty = true;
+
+            try
+            {
+                string[] filesAndDir = Directory.EnumerateFileSystemEntries(path, "*", SearchOption.AllDirectories).ToArray<string>();
+                isEmpty = !filesAndDir.Any();
+            }
+            catch
+            {
+                // Who cares...
+            }
+
+            return isEmpty;
+
         }
 
     }// END CLASS

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 using System.IO;
@@ -297,6 +295,14 @@ namespace mgs2_v_s_fix
                 }
 
             }
+
+        }
+
+        public static void ForceClosing()
+        {
+            Ocelot.PrintToDebugConsole("[!] App is going to close. IGNORE FURTHER DEBUG LINES...");
+
+            Application.Exit();
 
         }
 
