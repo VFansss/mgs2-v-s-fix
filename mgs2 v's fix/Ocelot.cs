@@ -1714,9 +1714,11 @@ namespace mgs2_v_s_fix
 
             }
 
-            catch
+            catch(Exception ex)
             {
                 // Signal to debugger
+
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
 
                 PrintToDebugConsole("[ :( ] Exception while setting compatibility flags!");
 
@@ -1762,9 +1764,11 @@ namespace mgs2_v_s_fix
 
             }
 
-            catch
+            catch(Exception ex)
             {
                 // Signal to debugger
+
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
 
                 PrintToDebugConsole("[C.FLAGS CHECK] Exception while checking compatibility flags!");
 
@@ -1793,9 +1797,11 @@ namespace mgs2_v_s_fix
 
             }
 
-            catch
+            catch(Exception ex)
             {
                 // Signal to debugger
+
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
 
                 PrintToDebugConsole("[C.FLAGS REMOVAL] Exception while removing compatibility flags!");
 
@@ -1808,14 +1814,18 @@ namespace mgs2_v_s_fix
         public static void MoveSavegamesToNewLocation()
         {
 
-            // TODO ADD DEBUGGER
+            Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Method starting...");
 
             try
             {
                 string oldSavedataPath = Directory.GetParent(Application.StartupPath).FullName + "\\savedata";
                 string newSavedataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
 
+                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] old: "+ oldSavedataPath+" | new: "+ newSavedataPath);
+
                 Directory.Move(oldSavedataPath, newSavedataPath);
+
+                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Folder moved :)");
 
                 // Set savedata folder permission to 'inerithed'
 
@@ -1823,14 +1833,20 @@ namespace mgs2_v_s_fix
                 fs.SetAccessRuleProtection(false, false);
                 File.SetAccessControl(newSavedataPath, fs);
 
+                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Permission inerithing just set!");
+
                 // Create a file to remember the user to check to new location
 
                 File.Create(Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER");
 
+                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Reminder file just created!");
+
             }
 
-            catch
+            catch(Exception ex)
             {
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
+
                 showMessage("UAC_error");
 
                 Application.Exit();
