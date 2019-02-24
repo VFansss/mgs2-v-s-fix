@@ -254,7 +254,8 @@ namespace mgs2_v_s_fix
         // !!!! Big function that apply V's Fix settings !!!!!!!!!!!!!!!!!!!!!!!!!!!
         internal static void load_InternalConfig_SetTo_MGS()
         {
-            
+            PrintToDebugConsole("[ SET TO MGS METHOD ] Method starting...");
+
             // Delete already existing mgs.ini
 
             try
@@ -319,6 +320,7 @@ namespace mgs2_v_s_fix
                     Unzip.UnZippa("SavegameLocationChanger.zip", true);
 
                     #endregion
+
 
                     ////// 
                     //--------- Resolution
@@ -439,6 +441,8 @@ namespace mgs2_v_s_fix
 
                     // FIX FOR ATI/NVIDIA
 
+                    PrintToDebugConsole("[ SET TO MGS METHOD ] Fixing exe based on VGA Model...");
+
                     #region TANTAROBA
                     using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
@@ -501,6 +505,8 @@ namespace mgs2_v_s_fix
                             stream.Position = 0x5FD839;
                             stream.WriteByte(0x63);
 
+                            PrintToDebugConsole("[ SET TO MGS METHOD ] NVIDIA card fix chosen");
+
                         }
 
                         if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Radeon"))
@@ -531,6 +537,8 @@ namespace mgs2_v_s_fix
                             stream.Position = 0x5FD839;
                             stream.WriteByte(0x6E);
 
+                            PrintToDebugConsole("[ SET TO MGS METHOD ] RADEON card fix chosen");
+
                         }
 
                         if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Intel"))
@@ -560,6 +568,8 @@ namespace mgs2_v_s_fix
                             // (
                             stream.Position = 0x5FD839;
                             stream.WriteByte(0x28);
+
+                            PrintToDebugConsole("[ SET TO MGS METHOD ] INTEL card fix chosen");
 
                         }
 
@@ -1768,7 +1778,7 @@ namespace mgs2_v_s_fix
             {
                 // Signal to debugger
 
-                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
+                PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
 
                 PrintToDebugConsole("[C.FLAGS CHECK] Exception while checking compatibility flags!");
 
