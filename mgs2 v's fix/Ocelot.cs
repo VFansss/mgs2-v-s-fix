@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "190104";
+        public const string VERSION = "190224";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -254,7 +254,8 @@ namespace mgs2_v_s_fix
         // !!!! Big function that apply V's Fix settings !!!!!!!!!!!!!!!!!!!!!!!!!!!
         internal static void load_InternalConfig_SetTo_MGS()
         {
-            
+            PrintToDebugConsole("[ SET TO MGS METHOD ] Method starting...");
+
             // Delete already existing mgs.ini
 
             try
@@ -307,6 +308,33 @@ namespace mgs2_v_s_fix
 
                     }
 
+                    // Move savegames from 'savedata' folder inside 'My Games', if needed
+
+                    SAVEGAMEMOVING evaluationResult = Ocelot.SavegameMustBeMoved();
+
+                    Ocelot.PrintToDebugConsole("[!] SavegameMustBeMoved evaluation result is " + evaluationResult);
+
+                    if (evaluationResult == SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed)
+                    {
+                        throw new Exception();
+
+                    }
+
+                    else if (evaluationResult == SAVEGAMEMOVING.MovingPossible)
+                    {
+                        MoveSavegamesToNewLocation();
+                    }
+
+                    else if (evaluationResult == SAVEGAMEMOVING.BothFolderExist)
+                    {
+                        throw new Exception();
+                    }
+
+                    else
+                    {
+                        // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
+                    }
+
                     // Extract SavegameLocationChanger.asi
 
                     if (File.Exists(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi"))
@@ -319,6 +347,7 @@ namespace mgs2_v_s_fix
                     Unzip.UnZippa("SavegameLocationChanger.zip", true);
 
                     #endregion
+
 
                     ////// 
                     //--------- Resolution
@@ -439,6 +468,8 @@ namespace mgs2_v_s_fix
 
                     // FIX FOR ATI/NVIDIA
 
+                    PrintToDebugConsole("[ SET TO MGS METHOD ] Fixing exe based on VGA Model...");
+
                     #region TANTAROBA
                     using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
@@ -501,6 +532,8 @@ namespace mgs2_v_s_fix
                             stream.Position = 0x5FD839;
                             stream.WriteByte(0x63);
 
+                            PrintToDebugConsole("[ SET TO MGS METHOD ] NVIDIA card fix chosen");
+
                         }
 
                         if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Radeon"))
@@ -531,6 +564,8 @@ namespace mgs2_v_s_fix
                             stream.Position = 0x5FD839;
                             stream.WriteByte(0x6E);
 
+                            PrintToDebugConsole("[ SET TO MGS METHOD ] RADEON card fix chosen");
+
                         }
 
                         if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Intel"))
@@ -560,6 +595,8 @@ namespace mgs2_v_s_fix
                             // (
                             stream.Position = 0x5FD839;
                             stream.WriteByte(0x28);
+
+                            PrintToDebugConsole("[ SET TO MGS METHOD ] INTEL card fix chosen");
 
                         }
 
@@ -1339,8 +1376,9 @@ namespace mgs2_v_s_fix
                 case "savegameWillBeMoved":
 
                     answer = MessageBox.Show(
-                    "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
-                    "From now on, your save data will be storaged inside this folder:" + "\n\n"+
+                    "From the next time you press 'SAVE', the V's Fix will patch the game to search savedata inside the 'My Games' folder!" + "\n\n" +
+                    "This will also enhance game compatibility with modern systems!" + "\n\n"+
+                    "Your save data will be stored inside this folder:" + "\n\n"+
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE",
                     "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -1714,9 +1752,11 @@ namespace mgs2_v_s_fix
 
             }
 
-            catch
+            catch(Exception ex)
             {
                 // Signal to debugger
+
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
 
                 PrintToDebugConsole("[ :( ] Exception while setting compatibility flags!");
 
@@ -1762,9 +1802,11 @@ namespace mgs2_v_s_fix
 
             }
 
-            catch
+            catch(Exception ex)
             {
                 // Signal to debugger
+
+                PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
 
                 PrintToDebugConsole("[C.FLAGS CHECK] Exception while checking compatibility flags!");
 
@@ -1793,9 +1835,11 @@ namespace mgs2_v_s_fix
 
             }
 
-            catch
+            catch(Exception ex)
             {
                 // Signal to debugger
+
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
 
                 PrintToDebugConsole("[C.FLAGS REMOVAL] Exception while removing compatibility flags!");
 
@@ -1808,23 +1852,39 @@ namespace mgs2_v_s_fix
         public static void MoveSavegamesToNewLocation()
         {
 
+            Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Method starting...");
+
             try
             {
                 string oldSavedataPath = Directory.GetParent(Application.StartupPath).FullName + "\\savedata";
                 string newSavedataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
 
-                Directory.CreateDirectory(newSavedataPath);
+                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] old: " + oldSavedataPath+" | new: "+ newSavedataPath);
 
                 Directory.Move(oldSavedataPath, newSavedataPath);
+
+                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Folder moved :)");
+
+                // Set savedata folder permission to 'inerithed'
+
+                var fs = File.GetAccessControl(newSavedataPath);
+                fs.SetAccessRuleProtection(false, false);
+                File.SetAccessControl(newSavedataPath, fs);
+
+                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Permission inerithing just set!");
 
                 // Create a file to remember the user to check to new location
 
                 File.Create(Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER");
 
+                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Reminder file just created!");
+
             }
 
-            catch
+            catch(Exception ex)
             {
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
+
                 showMessage("UAC_error");
 
                 Application.Exit();
@@ -2480,10 +2540,89 @@ namespace mgs2_v_s_fix
         }
 
         // Check if a directory is empty
-        public static bool IsDirectoryEmpty(string path)
+        public static bool IsThisDirectoryEmpty(string path)
         {
-            return !Directory.EnumerateFileSystemEntries(path).Any();
+            // I prefere to return true in case of sudden exceptions...
+            bool isEmpty = true;
+
+            try
+            {
+                string[] filesAndDir = Directory.EnumerateFileSystemEntries(path, "*", SearchOption.AllDirectories).ToArray<string>();
+                isEmpty = !filesAndDir.Any();
+            }
+            catch
+            {
+                // Who cares...
+            }
+
+            return isEmpty;
+
         }
+
+        // Check if savegames will be moved to 'My Games' directory
+        public static SAVEGAMEMOVING SavegameMustBeMoved()
+        {
+
+            try
+            {
+                string originalSavegameFolder = Application.StartupPath + "\\..\\savedata";
+
+                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string newSavegameFolder = Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE");
+
+                // CHECK: One/both folder exist but are empty?
+
+                if (Directory.Exists(originalSavegameFolder) && IsThisDirectoryEmpty(originalSavegameFolder))
+                {
+                    // Directory esist, but there aren't files inside the old savegame folder
+                    Directory.Delete(originalSavegameFolder, true);
+                    PrintToDebugConsole("[ SAVEGAMEMUSTBEMOVED ] " + originalSavegameFolder + " folder is empty, and has been deleted");
+                }
+
+                if (Directory.Exists(newSavegameFolder) && IsThisDirectoryEmpty(newSavegameFolder))
+                {
+                    // Directory esist, but there aren't files inside the new savegame folder
+                    Directory.Delete(newSavegameFolder, true);
+                    PrintToDebugConsole("[ SAVEGAMEMUSTBEMOVED ] " + newSavegameFolder + " folder is empty, and has been deleted");
+                }
+
+                // Now both folder has been purged, and if they exist mean that they contain files that I can't arbitrary delete
+
+                // Check if savegame can be moved to the new location in "My Games"
+                if (Directory.Exists(originalSavegameFolder))
+                {
+
+                    // There are files inside the old savegame directory. Must move things!
+
+                    // Check if the new location already have savegames...
+
+                    if (Directory.Exists(newSavegameFolder))
+                    {
+                        return SAVEGAMEMOVING.BothFolderExist;
+
+                    }
+
+                    return SAVEGAMEMOVING.MovingPossible;
+
+                }
+
+                else
+                {
+                    return SAVEGAMEMOVING.NoSavegame2Move;
+                }
+                    
+
+            }
+            catch (Exception ex)
+            {
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
+            }
+
+            // It shoudn't even come so far.
+            return SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed;
+
+        }
+
 
     }// END CLASS
 

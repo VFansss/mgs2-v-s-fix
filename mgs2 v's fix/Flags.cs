@@ -34,6 +34,15 @@ namespace mgs2_v_s_fix
         ErrorWhileReadingFile
     }
 
+    public enum SAVEGAMEMOVING
+    {
+        NoSuccesfulEvaluationPerformed = 0,
+        NoSavegame2Move,
+        BothFolderExist,
+        MovingPossible
+
+    };
+
     public static class FlagExtension
     {
 

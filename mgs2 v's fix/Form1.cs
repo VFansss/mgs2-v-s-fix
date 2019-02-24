@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 using System.Drawing.Text;
@@ -254,36 +250,39 @@ namespace mgs2_v_s_fix
 
             }
 
-            // Check if savegame must be moved to the new location in "My Games", and warn the user if yes
+            // Check if savegame will be moved to the new location in "My Games", and warn the user if there are issues
 
-            if (Directory.Exists(Application.StartupPath + "\\..\\savedata"))
+            SAVEGAMEMOVING evaluationResult = Ocelot.SavegameMustBeMoved();
+
+            Ocelot.PrintToDebugConsole("[!] SavegameMustBeMoved evaluation result is "+ evaluationResult);
+
+            if (evaluationResult == SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed)
             {
-                // Must move things
+                Ocelot.showMessage("UAC_error");
 
-                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                // Abort everything until user manually solve the situation
 
-                if (Directory.Exists(Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE")))
-                {
-                    // Trouble incoming...
+                Program.ForceClosing();
 
-                    Ocelot.showMessage("savegameCantBeMoved");
+            }
 
-                    // Abort everything until user manually solve the situation
+            else if (evaluationResult == SAVEGAMEMOVING.MovingPossible)
+            {
+                Ocelot.showMessage("savegameWillBeMoved");
+            }
 
-                    Application.Exit();
+            else if (evaluationResult == SAVEGAMEMOVING.BothFolderExist)
+            {
+                Ocelot.showMessage("savegameCantBeMoved");
 
-                }
+                // Abort everything until user manually solve the situation
 
-                else
-                {
-                    // Situation is clear...
+                Program.ForceClosing();
+            }
 
-                    Ocelot.showMessage("savegameWillBeMoved");
-
-                    Ocelot.MoveSavegamesToNewLocation();
-
-                }
-                
+            else
+            {
+                // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
             }
 
             Ocelot.PrintToDebugConsole("[+] Settings has been displayed.");
