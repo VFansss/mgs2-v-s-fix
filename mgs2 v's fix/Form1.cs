@@ -250,64 +250,39 @@ namespace mgs2_v_s_fix
 
             }
 
-            // Check if savegame must be moved to the new location in "My Games", and warn the user if there are issues
+            // Check if savegame will be moved to the new location in "My Games", and warn the user if there are issues
 
-            string originalSavegameFolder = Application.StartupPath + "\\..\\savedata";
+            SAVEGAMEMOVING evaluationResult = Ocelot.SavegameMustBeMoved();
 
-            if (Directory.Exists(originalSavegameFolder))
+            Ocelot.PrintToDebugConsole("[!] SavegameMustBeMoved evaluation result is "+ evaluationResult);
+
+            if (evaluationResult == SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed)
             {
+                Ocelot.showMessage("UAC_error");
 
-                if (Ocelot.IsThisDirectoryEmpty(originalSavegameFolder))
-                {
-                    // Directory esist, but there aren't files inside the old savegame folder
+                // Abort everything until user manually solve the situation
 
-                    Directory.Delete(originalSavegameFolder, true);
-                }
+                Program.ForceClosing();
 
-                else
-                {
-                    // There are files inside the old savegame directory. Must move things!
+            }
 
-                    string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            else if (evaluationResult == SAVEGAMEMOVING.MovingPossible)
+            {
+                Ocelot.showMessage("savegameWillBeMoved");
+            }
 
-                    string newSavegameFolder = Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE");
+            else if (evaluationResult == SAVEGAMEMOVING.BothFolderExist)
+            {
+                Ocelot.showMessage("savegameCantBeMoved");
 
-                    // Check if the new location already have savegames...
+                // Abort everything until user manually solve the situation
 
-                    if (Directory.Exists(newSavegameFolder))
-                    {
-                        if (Ocelot.IsThisDirectoryEmpty(newSavegameFolder))
-                        {
-                            // Directory esist, but there aren't files inside the old savegame folder
+                Program.ForceClosing();
+            }
 
-                            Directory.Delete(newSavegameFolder, true);
-                        }
-
-                        else
-                        {
-                            // There are savegames in the new directory. Need manual actions...
-
-                            Ocelot.showMessage("savegameCantBeMoved");
-
-                            // Abort everything until user manually solve the situation
-
-                            Program.ForceClosing();
-
-                        }
-
-                    }
-
-                    // Ready to move. Do a last check...
-
-                    if (!Directory.Exists(newSavegameFolder))
-                    {
-                        Ocelot.showMessage("savegameWillBeMoved");
-
-                        Ocelot.MoveSavegamesToNewLocation();
-                    }
-
-                }
-                
+            else
+            {
+                // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
             }
 
             Ocelot.PrintToDebugConsole("[+] Settings has been displayed.");

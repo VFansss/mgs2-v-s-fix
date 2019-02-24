@@ -308,6 +308,33 @@ namespace mgs2_v_s_fix
 
                     }
 
+                    // Move savegames from 'savedata' folder inside 'My Games', if needed
+
+                    SAVEGAMEMOVING evaluationResult = Ocelot.SavegameMustBeMoved();
+
+                    Ocelot.PrintToDebugConsole("[!] SavegameMustBeMoved evaluation result is " + evaluationResult);
+
+                    if (evaluationResult == SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed)
+                    {
+                        throw new Exception();
+
+                    }
+
+                    else if (evaluationResult == SAVEGAMEMOVING.MovingPossible)
+                    {
+                        MoveSavegamesToNewLocation();
+                    }
+
+                    else if (evaluationResult == SAVEGAMEMOVING.BothFolderExist)
+                    {
+                        throw new Exception();
+                    }
+
+                    else
+                    {
+                        // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
+                    }
+
                     // Extract SavegameLocationChanger.asi
 
                     if (File.Exists(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi"))
@@ -1349,8 +1376,9 @@ namespace mgs2_v_s_fix
                 case "savegameWillBeMoved":
 
                     answer = MessageBox.Show(
-                    "This version of the V's Fix will patch the game to search savedata inside 'My Documents\\My Games'" + "\n\n" +
-                    "From now on, your save data will be storaged inside this folder:" + "\n\n"+
+                    "From the next time you press 'SAVE', the V's Fix will patch the game to search savedata inside the 'My Games' folder!" + "\n\n" +
+                    "This will also enhance game compatibility with modern systems!" + "\n\n"+
+                    "Your save data will be stored inside this folder:" + "\n\n"+
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE",
                     "Improvement incoming...", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -1831,7 +1859,7 @@ namespace mgs2_v_s_fix
                 string oldSavedataPath = Directory.GetParent(Application.StartupPath).FullName + "\\savedata";
                 string newSavedataPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE";
 
-                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] old: "+ oldSavedataPath+" | new: "+ newSavedataPath);
+                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] old: " + oldSavedataPath+" | new: "+ newSavedataPath);
 
                 Directory.Move(oldSavedataPath, newSavedataPath);
 
@@ -2530,6 +2558,71 @@ namespace mgs2_v_s_fix
             return isEmpty;
 
         }
+
+        // Check if savegames will be moved to 'My Games' directory
+        public static SAVEGAMEMOVING SavegameMustBeMoved()
+        {
+
+            try
+            {
+                string originalSavegameFolder = Application.StartupPath + "\\..\\savedata";
+
+                string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string newSavegameFolder = Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE");
+
+                // CHECK: One/both folder exist but are empty?
+
+                if (Directory.Exists(originalSavegameFolder) && IsThisDirectoryEmpty(originalSavegameFolder))
+                {
+                    // Directory esist, but there aren't files inside the old savegame folder
+                    Directory.Delete(originalSavegameFolder, true);
+                    PrintToDebugConsole("[ SAVEGAMEMUSTBEMOVED ] " + originalSavegameFolder + " folder is empty, and has been deleted");
+                }
+
+                if (Directory.Exists(newSavegameFolder) && IsThisDirectoryEmpty(newSavegameFolder))
+                {
+                    // Directory esist, but there aren't files inside the new savegame folder
+                    Directory.Delete(newSavegameFolder, true);
+                    PrintToDebugConsole("[ SAVEGAMEMUSTBEMOVED ] " + newSavegameFolder + " folder is empty, and has been deleted");
+                }
+
+                // Now both folder has been purged, and if they exist mean that they contain files that I can't arbitrary delete
+
+                // Check if savegame can be moved to the new location in "My Games"
+                if (Directory.Exists(originalSavegameFolder))
+                {
+
+                    // There are files inside the old savegame directory. Must move things!
+
+                    // Check if the new location already have savegames...
+
+                    if (Directory.Exists(newSavegameFolder))
+                    {
+                        return SAVEGAMEMOVING.BothFolderExist;
+
+                    }
+
+                    return SAVEGAMEMOVING.MovingPossible;
+
+                }
+
+                else
+                {
+                    return SAVEGAMEMOVING.NoSavegame2Move;
+                }
+                    
+
+            }
+            catch (Exception ex)
+            {
+                Ocelot.PrintToDebugConsole("[ EXCEPTION ] " + ex.Message);
+            }
+
+            // It shoudn't even come so far.
+            return SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed;
+
+        }
+
 
     }// END CLASS
 
