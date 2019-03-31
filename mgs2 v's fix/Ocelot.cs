@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "190224";
+        public const string VERSION = "190331";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -466,13 +466,13 @@ namespace mgs2_v_s_fix
 
                     }
 
-                    // FIX FOR ATI/NVIDIA
-
-                    PrintToDebugConsole("[ SET TO MGS METHOD ] Fixing exe based on VGA Model...");
+                 
+                    PrintToDebugConsole("[ EXE OPENING ] Open the game EXE for writing operations...");
 
                     #region TANTAROBA
                     using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
+                        // FIX FOR ATI/NVIDIA
 
                         // First things to do: sabotage certain API call
 
@@ -536,7 +536,7 @@ namespace mgs2_v_s_fix
 
                         }
 
-                        if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Radeon"))
+                        else if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Radeon"))
                         {
                             // RADEON Card. Apply RADEON FIX
 
@@ -568,7 +568,7 @@ namespace mgs2_v_s_fix
 
                         }
 
-                        if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Intel"))
+                        else if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Intel"))
                         {
                             // Intel Graphics. Apply Intel Fix
 
@@ -599,6 +599,34 @@ namespace mgs2_v_s_fix
                             PrintToDebugConsole("[ SET TO MGS METHOD ] INTEL card fix chosen");
 
                         }
+
+                        // FixAfterPlaying
+
+                        PrintToDebugConsole("[ FixAfterPlaying ] Starting...");
+
+                        // If is set to FALSE it will sabotage automatical V's Fix opening after game quit
+
+                        if (Ocelot.InternalConfiguration.Sound["FixAfterPlaying"].Equals("true"))
+                        {
+
+                            // I want to open the fix after playing. Restoring original .exe condition
+
+                            // 2
+                            stream.Position = 0x60213E;
+                            stream.WriteByte(0x32);
+
+                        }
+
+                        else
+                        {
+                            // Broking game .exe calling when game exit
+
+                            // X
+                            stream.Position = 0x60213E;
+                            stream.WriteByte(0x58);
+                        }
+
+                        PrintToDebugConsole("[ FixAfterPlaying ] Done");
 
                         // Laptop FIX
 
@@ -998,36 +1026,6 @@ namespace mgs2_v_s_fix
 
                     }
 
-                    // FixAfterPlaying
-
-                    // If is set to FALSE it will sabotage automatical V's Fix opening after game quit
-
-                    using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
-                    {
-
-                        if (Ocelot.InternalConfiguration.Sound["FixAfterPlaying"].Equals("true"))
-                        {
-
-                            // Fix must be opened. Restoring original .exe condition
-
-                            // 2
-                            stream.Position = 0x60213E;
-                            stream.WriteByte(0x32);
-
-                        }
-
-                        else
-                        {
-                            // Broking game .exe
-
-                            // X
-                            stream.Position = 0x60213E;
-                            stream.WriteByte(0x58);
-                        }
-
-                    }
-
-
                     #endregion
 
                     ////// 
@@ -1067,15 +1065,35 @@ namespace mgs2_v_s_fix
 
                 //SetCompatibilityFlags();
 
-                if (Ocelot.CheckForCompabilityFlags() == true)
+                if (Ocelot.CompatibilityFlagsExists())
                 {
                     Ocelot.RemoveCompatibilityFlags();
                 }
 
+                // Create a file to remember the user to check to new location
+
+                string savedataReminderFilePath = Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER";
+
+                if (File.Exists(savedataReminderFilePath))
+                {
+
+                    PrintToDebugConsole("[ SavedataReminder ] File already exist");
+
+                }
+                else
+                {
+
+                    PrintToDebugConsole("[ SavedataReminder ] File created!");
+
+                    File.Create(savedataReminderFilePath);
+
+                }
+         
             }
 
-            catch
+            catch(Exception ex)
             {
+                PrintToDebugConsole("[ EXCEPTION ] Message:"+ex.Message+"\n\nStacktrace: "+ex.StackTrace);
                 Ocelot.showMessage("UAC_error");
 
             }
@@ -1765,7 +1783,7 @@ namespace mgs2_v_s_fix
         }
 
         // Check if any compatibility flag is set
-        public static bool CheckForCompabilityFlags()
+        public static bool CompatibilityFlagsExists()
         {
             // Set a default value
             bool returnValue = false;
@@ -1861,7 +1879,7 @@ namespace mgs2_v_s_fix
 
                 Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] old: " + oldSavedataPath+" | new: "+ newSavedataPath);
 
-                Directory.Move(oldSavedataPath, newSavedataPath);
+                Ocelot.MoveFolder(oldSavedataPath, newSavedataPath);
 
                 Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Folder moved :)");
 
@@ -1872,12 +1890,6 @@ namespace mgs2_v_s_fix
                 File.SetAccessControl(newSavedataPath, fs);
 
                 Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Permission inerithing just set!");
-
-                // Create a file to remember the user to check to new location
-
-                File.Create(Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER");
-
-                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Reminder file just created!");
 
             }
 
@@ -2559,7 +2571,7 @@ namespace mgs2_v_s_fix
 
         }
 
-        // Check if savegames will be moved to 'My Games' directory
+        // Check if savegames must be moved to 'My Games' directory
         public static SAVEGAMEMOVING SavegameMustBeMoved()
         {
 
@@ -2623,6 +2635,50 @@ namespace mgs2_v_s_fix
 
         }
 
+        // Move folder and files having directory paths...
+
+        public static void MoveFolder(string sourcePath, string targetPath)
+        {
+            try
+            {
+                DirectoryInfo diSource = new DirectoryInfo(sourcePath);
+                DirectoryInfo diTarget = new DirectoryInfo(targetPath);
+
+                CopyAll(diSource, diTarget);
+
+                Directory.Delete(sourcePath, true);
+
+            }
+            catch (Exception ex)
+            {
+
+                PrintToDebugConsole("[ EXCEPTION ] Message:" + ex.Message + "\n\nStacktrace: " + ex.StackTrace);
+                Ocelot.showMessage("UAC_error");
+
+            }
+
+        }
+
+        // Aiding method - Recursive method to move files and directory
+
+        private static void CopyAll(DirectoryInfo source, DirectoryInfo target)
+        {
+            Directory.CreateDirectory(target.FullName);
+
+            // Copy each file into the new directory.
+            foreach (FileInfo fi in source.GetFiles())
+            {
+                Console.WriteLine(@"Copying {0}\{1}", target.FullName, fi.Name);
+                fi.CopyTo(Path.Combine(target.FullName, fi.Name), true);
+            }
+
+            // Copy each subdirectory using recursion.
+            foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
+            {
+                DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(diSourceSubDir.Name);
+                CopyAll(diSourceSubDir, nextTargetSubDir);
+            }
+        }
 
     }// END CLASS
 
