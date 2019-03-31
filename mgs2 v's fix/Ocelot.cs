@@ -1860,7 +1860,7 @@ namespace mgs2_v_s_fix
 
                 Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] old: " + oldSavedataPath+" | new: "+ newSavedataPath);
 
-                Directory.Move(oldSavedataPath, newSavedataPath);
+                Ocelot.MoveFolder(oldSavedataPath, newSavedataPath);
 
                 Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Folder moved :)");
 
@@ -2558,7 +2558,7 @@ namespace mgs2_v_s_fix
 
         }
 
-        // Check if savegames will be moved to 'My Games' directory
+        // Check if savegames must be moved to 'My Games' directory
         public static SAVEGAMEMOVING SavegameMustBeMoved()
         {
 
@@ -2622,6 +2622,50 @@ namespace mgs2_v_s_fix
 
         }
 
+        // Move folder and files having directory paths...
+
+        public static void MoveFolder(string sourcePath, string targetPath)
+        {
+            try
+            {
+                DirectoryInfo diSource = new DirectoryInfo(sourcePath);
+                DirectoryInfo diTarget = new DirectoryInfo(targetPath);
+
+                CopyAll(diSource, diTarget);
+
+                Directory.Delete(sourcePath, true);
+
+            }
+            catch (Exception ex)
+            {
+
+                PrintToDebugConsole("[ EXCEPTION ] Message:" + ex.Message + "\n\nStacktrace: " + ex.StackTrace);
+                Ocelot.showMessage("UAC_error");
+
+            }
+
+        }
+
+        // Aiding method - Recursive method to move files and directory
+
+        private static void CopyAll(DirectoryInfo source, DirectoryInfo target)
+        {
+            Directory.CreateDirectory(target.FullName);
+
+            // Copy each file into the new directory.
+            foreach (FileInfo fi in source.GetFiles())
+            {
+                Console.WriteLine(@"Copying {0}\{1}", target.FullName, fi.Name);
+                fi.CopyTo(Path.Combine(target.FullName, fi.Name), true);
+            }
+
+            // Copy each subdirectory using recursion.
+            foreach (DirectoryInfo diSourceSubDir in source.GetDirectories())
+            {
+                DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(diSourceSubDir.Name);
+                CopyAll(diSourceSubDir, nextTargetSubDir);
+            }
+        }
 
     }// END CLASS
 
