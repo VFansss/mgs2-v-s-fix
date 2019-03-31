@@ -243,7 +243,7 @@ namespace mgs2_v_s_fix
             // Check if any compatibility flags are set on the mgs2_sse.exe, and warn the user
             // that they aren't needed anymore
 
-            if (Ocelot.CheckForCompabilityFlags() == true)
+            if (Ocelot.CompatibilityFlagsExists())
             {
                 // Warn the user
                 Ocelot.showMessage("compatibilityFlagsNotNeeded");

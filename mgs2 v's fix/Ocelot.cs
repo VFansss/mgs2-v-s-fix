@@ -1065,11 +1065,30 @@ namespace mgs2_v_s_fix
 
                 //SetCompatibilityFlags();
 
-                if (Ocelot.CheckForCompabilityFlags() == true)
+                if (Ocelot.CompatibilityFlagsExists())
                 {
                     Ocelot.RemoveCompatibilityFlags();
                 }
 
+                // Create a file to remember the user to check to new location
+
+                string savedataReminderFilePath = Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER";
+
+                if (File.Exists(savedataReminderFilePath))
+                {
+
+                    PrintToDebugConsole("[ SavedataReminder ] File already exist");
+
+                }
+                else
+                {
+
+                    PrintToDebugConsole("[ SavedataReminder ] File created!");
+
+                    File.Create(savedataReminderFilePath);
+
+                }
+         
             }
 
             catch(Exception ex)
@@ -1764,7 +1783,7 @@ namespace mgs2_v_s_fix
         }
 
         // Check if any compatibility flag is set
-        public static bool CheckForCompabilityFlags()
+        public static bool CompatibilityFlagsExists()
         {
             // Set a default value
             bool returnValue = false;
@@ -1871,12 +1890,6 @@ namespace mgs2_v_s_fix
                 File.SetAccessControl(newSavedataPath, fs);
 
                 Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Permission inerithing just set!");
-
-                // Create a file to remember the user to check to new location
-
-                File.Create(Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER");
-
-                Ocelot.PrintToDebugConsole("[MOVE SAVEGAME TO NEW LOCATION] Reminder file just created!");
 
             }
 
