@@ -466,13 +466,13 @@ namespace mgs2_v_s_fix
 
                     }
 
-                    // FIX FOR ATI/NVIDIA
-
-                    PrintToDebugConsole("[ SET TO MGS METHOD ] Fixing exe based on VGA Model...");
+                 
+                    PrintToDebugConsole("[ EXE OPENING ] Open the game EXE for writing operations...");
 
                     #region TANTAROBA
                     using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
+                        // FIX FOR ATI/NVIDIA
 
                         // First things to do: sabotage certain API call
 
@@ -536,7 +536,7 @@ namespace mgs2_v_s_fix
 
                         }
 
-                        if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Radeon"))
+                        else if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Radeon"))
                         {
                             // RADEON Card. Apply RADEON FIX
 
@@ -568,7 +568,7 @@ namespace mgs2_v_s_fix
 
                         }
 
-                        if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Intel"))
+                        else if (Ocelot.InternalConfiguration.Resolution["GraphicAdapterName"].Contains("Intel"))
                         {
                             // Intel Graphics. Apply Intel Fix
 
@@ -599,6 +599,34 @@ namespace mgs2_v_s_fix
                             PrintToDebugConsole("[ SET TO MGS METHOD ] INTEL card fix chosen");
 
                         }
+
+                        // FixAfterPlaying
+
+                        PrintToDebugConsole("[ FixAfterPlaying ] Starting...");
+
+                        // If is set to FALSE it will sabotage automatical V's Fix opening after game quit
+
+                        if (Ocelot.InternalConfiguration.Sound["FixAfterPlaying"].Equals("true"))
+                        {
+
+                            // I want to open the fix after playing. Restoring original .exe condition
+
+                            // 2
+                            stream.Position = 0x60213E;
+                            stream.WriteByte(0x32);
+
+                        }
+
+                        else
+                        {
+                            // Broking game .exe calling when game exit
+
+                            // X
+                            stream.Position = 0x60213E;
+                            stream.WriteByte(0x58);
+                        }
+
+                        PrintToDebugConsole("[ FixAfterPlaying ] Done");
 
                         // Laptop FIX
 
@@ -998,36 +1026,6 @@ namespace mgs2_v_s_fix
 
                     }
 
-                    // FixAfterPlaying
-
-                    // If is set to FALSE it will sabotage automatical V's Fix opening after game quit
-
-                    using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
-                    {
-
-                        if (Ocelot.InternalConfiguration.Sound["FixAfterPlaying"].Equals("true"))
-                        {
-
-                            // Fix must be opened. Restoring original .exe condition
-
-                            // 2
-                            stream.Position = 0x60213E;
-                            stream.WriteByte(0x32);
-
-                        }
-
-                        else
-                        {
-                            // Broking game .exe
-
-                            // X
-                            stream.Position = 0x60213E;
-                            stream.WriteByte(0x58);
-                        }
-
-                    }
-
-
                     #endregion
 
                     ////// 
@@ -1074,8 +1072,9 @@ namespace mgs2_v_s_fix
 
             }
 
-            catch
+            catch(Exception ex)
             {
+                PrintToDebugConsole("[ EXCEPTION ] Message:"+ex.Message+"\n\nStacktrace: "+ex.StackTrace);
                 Ocelot.showMessage("UAC_error");
 
             }
