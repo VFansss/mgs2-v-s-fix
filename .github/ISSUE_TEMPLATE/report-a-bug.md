@@ -2,7 +2,7 @@
 name: Report a bug
 about: Create a complete bug report to help us improve the fix!
 title: ''
-labels: ''
+labels: 'bug'
 assignees: ''
 
 ---
@@ -12,7 +12,7 @@ A clear and concise description of what the bug is.
 
 **Have you read the manual?**
 
-Do you know that there's:
+Yes, I've already read:
 
 * [Installation guide of game and V's Fix](https://github.com/VFansss/mgs2-v-s-fix/wiki/Downloading-&-Installing) 
 * [Troubleshooting page for common issues](https://github.com/VFansss/mgs2-v-s-fix/wiki/Troubleshooting-&-Debug-mode#common-problems--common-solutions)
