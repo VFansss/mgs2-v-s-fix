@@ -1750,7 +1750,7 @@ namespace mgs2_v_s_fix
 
         }
 
-        // Apply the 'Windows XP SP3 Compatibility Mode' and 'Run as Admin' flags
+        // NOT USED ANYMORE - Apply the 'Windows XP SP3 Compatibility Mode' and 'Run as Admin' flags
 
         private static void SetCompatibilityFlags()
         {
@@ -1802,15 +1802,20 @@ namespace mgs2_v_s_fix
 
                 if (retrievedValue != null)
                 {
-                    // Something exist. Cast value to string
-                    string actualValue = retrievedValue.ToString();
+                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags found: " + retrievedValue.ToString());
 
-                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags found: "+ retrievedValue);
+                    if (!retrievedValue.ToString().Equals("HIGHDPIAWARE"))
+                    {
 
-                    key.Close();
+                        // Somethings there. Cast value to string
+                        string actualValue = retrievedValue.ToString();
 
-                    // Set the return value for method caller
-                    returnValue = true;
+                        key.Close();
+
+                        // Set the return value for method caller
+                        returnValue = true;
+
+                    }
 
                 }
                 else
