@@ -1,4 +1,4 @@
-﻿namespace mgs2_v_s_fix
+namespace mgs2_v_s_fix
 {
     partial class Form1
     {
@@ -424,11 +424,11 @@
             this.lst_vga_list.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lst_vga_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_vga_list.FormattingEnabled = true;
-            this.lst_vga_list.ItemHeight = 18;
+            this.lst_vga_list.ItemHeight = 22;
             this.lst_vga_list.Location = new System.Drawing.Point(333, 294);
             this.lst_vga_list.Margin = new System.Windows.Forms.Padding(4);
             this.lst_vga_list.Name = "lst_vga_list";
-            this.lst_vga_list.Size = new System.Drawing.Size(327, 54);
+            this.lst_vga_list.Size = new System.Drawing.Size(327, 88);
             this.lst_vga_list.TabIndex = 4;
             this.lst_vga_list.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lst_vga_list_DrawItem);
             // 
@@ -1560,11 +1560,11 @@
             this.lst_sound_list.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lst_sound_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_sound_list.FormattingEnabled = true;
-            this.lst_sound_list.ItemHeight = 18;
+            this.lst_sound_list.ItemHeight = 22;
             this.lst_sound_list.Location = new System.Drawing.Point(303, 292);
             this.lst_sound_list.Margin = new System.Windows.Forms.Padding(4);
             this.lst_sound_list.Name = "lst_sound_list";
-            this.lst_sound_list.Size = new System.Drawing.Size(327, 54);
+            this.lst_sound_list.Size = new System.Drawing.Size(327, 88);
             this.lst_sound_list.TabIndex = 8;
             this.lst_sound_list.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lst_sound_list_DrawItem);
             // 
