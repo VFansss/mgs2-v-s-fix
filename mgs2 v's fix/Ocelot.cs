@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -148,6 +148,8 @@ namespace mgs2_v_s_fix
                 }
             }
 
+            // NB: Cheats category doesn't need to be checked
+
             if (needOfAutoConfig) { Ocelot.PrintToDebugConsole("[+] Configuration_file.ini seem missing some key. Need to autoconfig!"); }
 
             return;
@@ -204,6 +206,14 @@ namespace mgs2_v_s_fix
 
             }
 
+            foreach (var entry in InternalConfiguration.Cheats.ToList())
+            {
+
+                var tempstring = ConfFile.Read(entry.Key.ToString(), "Cheats");
+                InternalConfiguration.Cheats[entry.Key] = tempstring;
+
+            }
+
             Ocelot.PrintToDebugConsole("[ ] Information from .ini succesfully loaded into setupper!");
             return;
         }
@@ -245,6 +255,8 @@ namespace mgs2_v_s_fix
                 ConfFile.Write(entry.Key, entry.Value, "Others");
 
             }
+
+            // NB: Cheats category doesn't need to be written
 
             Ocelot.PrintToDebugConsole("[ ] InternalConfig succesfully exported into Configuration_file.ini");
 
@@ -350,7 +362,7 @@ namespace mgs2_v_s_fix
 
 
                     ////// 
-                    //--------- Resolution
+                    //--------- Resolution + .exe writing fixes
                     ////// 
 
                     #region lot_of_things
@@ -469,10 +481,10 @@ namespace mgs2_v_s_fix
                  
                     PrintToDebugConsole("[ EXE OPENING ] Open the game EXE for writing operations...");
 
-                    #region TANTAROBA
+                    
                     using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
-                        // FIX FOR ATI/NVIDIA
+                        #region FIX FOR ATI/NVIDIA
 
                         // First things to do: sabotage certain API call
 
@@ -678,9 +690,76 @@ namespace mgs2_v_s_fix
 
                         }*/
 
+                        #endregion
+
+                        #region CHEATS
+
+                        PrintToDebugConsole("[ Cheats ] Appliying...");
+
+                        // DREBIN MODE
+
+                        Byte[] drebinMode_firstBatch;
+
+                        if (Ocelot.InternalConfiguration.Cheats["DrebinMode"].Equals("true"))
+                        {
+
+                            drebinMode_firstBatch = new byte[] { 0x66, 0xB8, 0x0F, 0x27 };
+
+                        }
+                        else
+                        {
+                            // Restore the default values...
+
+                            drebinMode_firstBatch = new byte[] { 0x0F, 0xBF, 0x04, 0x41 };
+
+                        }
+
+                        // DREBIN MODE - WRITING...
+
+                        stream.Position = 0x0047E9CA;
+                        stream.Write(drebinMode_firstBatch, 0, drebinMode_firstBatch.Length);
+
+                        stream.Position = 0x0047E9DA;
+                        stream.Write(drebinMode_firstBatch, 0, drebinMode_firstBatch.Length);
+
+                        stream.Position = 0x0047E9EA;
+                        stream.Write(drebinMode_firstBatch, 0, drebinMode_firstBatch.Length);
+
+                        stream.Position = 0x0047E9FA;
+                        stream.Write(drebinMode_firstBatch, 0, drebinMode_firstBatch.Length);
+
+                        // RADAR DURING ALERT
+
+                        Byte[] alertRadar_firstBatch;
+                        Byte[] alertRadar_secondBatch;
+
+                        if (Ocelot.InternalConfiguration.Cheats["RadarDuringAlert"].Equals("true"))
+                        {
+                            alertRadar_firstBatch = new byte[] { 0x66, 0xB8, 0x00, 0x00, 0x90, 0x90, 0x90 };
+
+                            alertRadar_secondBatch = new byte[] { 0x90, 0x90};
+
+                        }
+                        else
+                        {
+                            alertRadar_firstBatch = new byte[] { 0x66, 0x8B, 0x82, 0x1A, 0x01, 0x00, 0x00 };
+
+                            alertRadar_secondBatch = new byte[] { 0x75, 0x0D };
+                        }
+
+                        // RADAR DURING ALERT - WRITING...
+
+                        stream.Position = 0x00441E4B;
+                        stream.Write(alertRadar_firstBatch, 0, alertRadar_firstBatch.Length);
+
+                        stream.Position = 0x00478BEE;
+                        stream.Write(alertRadar_secondBatch, 0, alertRadar_secondBatch.Length);
+
+                        #endregion
+
                     }
 
-                    #endregion
+
 
                     // WindowMode
 
