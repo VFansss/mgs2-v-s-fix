@@ -712,7 +712,7 @@ namespace mgs2_v_s_fix
             return true;
         }
 
-            /* this will retrieve settings from setupper and will storage it inside Ocelot.InternalConfiguration */
+        /* this will retrieve settings from setupper and will storage it inside Ocelot.InternalConfiguration */
 
         public void load_SetupperConfig_SetTo_InternalConfig()
         {

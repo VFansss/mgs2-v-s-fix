@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -1804,7 +1804,7 @@ namespace mgs2_v_s_fix
                 {
                     PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags found: " + retrievedValue.ToString());
 
-                    if (!retrievedValue.ToString().Equals("HIGHDPIAWARE"))
+                    if (!retrievedValue.ToString().Equals("HIGHDPIAWARE") && !retrievedValue.ToString().Equals("$ ElevateCreateProcess HIGHDPIAWARE"))
                     {
 
                         // Somethings there. Cast value to string
