@@ -73,7 +73,7 @@ namespace mgs2_v_s_fix
             this.Cheats = new Dictionary<string, string>
             {
                 {"DrebinMode",null},
-                {"RadarDuringAlert",null},
+                {"UnlockRadar",null},
 
             };
 

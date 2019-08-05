@@ -728,32 +728,32 @@ namespace mgs2_v_s_fix
                         stream.Position = 0x0047E9FA;
                         stream.Write(drebinMode_firstBatch, 0, drebinMode_firstBatch.Length);
 
-                        // RADAR DURING ALERT
+                        // UNLOCKED RADAR
 
-                        Byte[] alertRadar_firstBatch;
-                        Byte[] alertRadar_secondBatch;
+                        Byte[] unlockRadar_firstBatch;
+                        Byte[] unlockRadar_secondBatch;
 
-                        if (Ocelot.InternalConfiguration.Cheats["RadarDuringAlert"].Equals("true"))
+                        if (Ocelot.InternalConfiguration.Cheats["UnlockRadar"].Equals("true"))
                         {
-                            alertRadar_firstBatch = new byte[] { 0x66, 0xB8, 0x00, 0x00, 0x90, 0x90, 0x90 };
+                            unlockRadar_firstBatch = new byte[] { 0x66, 0xB8, 0x00, 0x00, 0x90, 0x90, 0x90 };
 
-                            alertRadar_secondBatch = new byte[] { 0x90, 0x90};
+                            unlockRadar_secondBatch = new byte[] { 0x90, 0x90};
 
                         }
                         else
                         {
-                            alertRadar_firstBatch = new byte[] { 0x66, 0x8B, 0x82, 0x1A, 0x01, 0x00, 0x00 };
+                            unlockRadar_firstBatch = new byte[] { 0x66, 0x8B, 0x82, 0x1A, 0x01, 0x00, 0x00 };
 
-                            alertRadar_secondBatch = new byte[] { 0x75, 0x0D };
+                            unlockRadar_secondBatch = new byte[] { 0x75, 0x0D };
                         }
 
                         // RADAR DURING ALERT - WRITING...
 
                         stream.Position = 0x00441E4B;
-                        stream.Write(alertRadar_firstBatch, 0, alertRadar_firstBatch.Length);
+                        stream.Write(unlockRadar_firstBatch, 0, unlockRadar_firstBatch.Length);
 
                         stream.Position = 0x00478BEE;
-                        stream.Write(alertRadar_secondBatch, 0, alertRadar_secondBatch.Length);
+                        stream.Write(unlockRadar_secondBatch, 0, unlockRadar_secondBatch.Length);
 
                         #endregion
 
