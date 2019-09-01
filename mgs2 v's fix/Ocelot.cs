@@ -1732,12 +1732,12 @@ namespace mgs2_v_s_fix
 
                     break;
 
-                case "Add2SteamError":
+                case "SteamNotFound":
 
                     answer = MessageBox.Show(
-                        "Add2Steam has caused an error, and nothing has been added." +
+                        "V's Fix has found that Steam is not installed on your system." +
                         "\n\n" +
-                        "Please activate the DEBUG MODE and report this to me!"
+                        "If you don't think the same, please activate the DEBUG MODE and report this to me!"
                         );
 
                     break;

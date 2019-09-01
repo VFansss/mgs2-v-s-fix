@@ -320,8 +320,6 @@ namespace mgs2_v_s_fix
                 // User hasn't pressed at least once the SETTINGS button, and I don't have a good debug file
                 lbl_debugMode.Text = "Debug Mode - Now the log is OK :)";
                 
-                // Don't change this message
-                setupButtonPressed = true;
 
             }
 
@@ -1395,9 +1393,13 @@ namespace mgs2_v_s_fix
 
         #region CONTROLLER tab
 
-        // Controller Layout graphics switcher
-
         // Build 190901 moved methods inside ControlsForm.cs assembly
+
+        private void lbl_goToControlForm_Click(object sender, EventArgs e)
+        {
+            secondFormInstance.AddOwnedForm(this);
+            secondFormInstance.setFocusOnControlForm(true);
+        }
 
         #endregion
 
@@ -1772,6 +1774,12 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                case ADD2STEAMSTATUS.CantFindNecessaryPaths:
+
+                    Ocelot.showMessage("SteamNotFound");
+
+                    break;
+
                 default:
 
                     Ocelot.showMessage("Add2SteamError");
@@ -1800,12 +1808,6 @@ namespace mgs2_v_s_fix
                 Ocelot.StartSteam();
             }
 
-        }
-
-        private void lbl_goToControlForm_Click(object sender, EventArgs e)
-        {
-            secondFormInstance.AddOwnedForm(this);
-            secondFormInstance.setFocusOnControlForm(true);
         }
 
         #endregion
