@@ -41,6 +41,10 @@ namespace mgs2_v_s_fix
 
         private ControlsForm secondFormInstance;
 
+        // DEBUG MODE
+
+        private Boolean setupButtonPressed = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -79,6 +83,7 @@ namespace mgs2_v_s_fix
             if (Ocelot.debugMode)
             {
                 this.lbl_debugMode.Visible = true;
+                lbl_debugMode.Text = @"Debug Mode - Press 'SETTINGS' button";
             }
 
             // Background things
@@ -202,7 +207,15 @@ namespace mgs2_v_s_fix
 
             Ocelot.PrintToDebugConsole("[ ] Settings - settings from internal config correctly attached to setupper");
 
-            // Settings Mode
+            if (Ocelot.debugMode && !setupButtonPressed)
+            {
+                // User hasn't pressed at least once the SETTINGS button, and I don't have a good debug file
+                lbl_debugMode.Text = "Debug Mode - Now press 'SAVE' button";
+
+            }
+            
+
+            // Chang some controls on Settings tabs
             btn_startGame.Visible = false;
             btn_settings.Visible = false;
             btn_saveSettings.Visible = true;
@@ -229,7 +242,7 @@ namespace mgs2_v_s_fix
             lbl_ManualLink.Visible = true;
             pictureBox2.Visible = true;
 
-            // Filling 'About'
+            // About tab
 
             abt_Regards.Checked = true;
 
@@ -301,6 +314,16 @@ namespace mgs2_v_s_fix
         {
 
             Ocelot.PrintToDebugConsole("[ ] Save button pressed");
+
+            if (Ocelot.debugMode && !setupButtonPressed)
+            {
+                // User hasn't pressed at least once the SETTINGS button, and I don't have a good debug file
+                lbl_debugMode.Text = "Debug Mode - Now the log is OK :)";
+                
+                // Don't change this message
+                setupButtonPressed = true;
+
+            }
 
             load_SetupperConfig_SetTo_InternalConfig();
 
