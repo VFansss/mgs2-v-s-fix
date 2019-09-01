@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -1573,7 +1573,7 @@ namespace mgs2_v_s_fix
         {
             try
             {
-                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI);
+                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_INDEX);
             }
 
             catch

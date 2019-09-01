@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +33,7 @@ namespace mgs2_v_s_fix
         public const string GITHUB_API = "https://api.github.com/repos/VFansss/mgs2-v-s-fix/releases/latest";
         public const string GITHUB_RELEASE = "https://github.com/VFansss/mgs2-v-s-fix/releases";
         public const string GITHUB_WIKI = "https://github.com/VFansss/mgs2-v-s-fix/wiki";
+        public const string GITHUB_WIKI_INDEX = "https://github.com/VFansss/mgs2-v-s-fix/wiki#chapters-of-the-guide";
 
         // Contain Key-Value from Configuration_file.ini when 'Ocelot.load_INI_SetTo_InternalConfig' is called
         public static ConfSheet InternalConfiguration = new ConfSheet();
