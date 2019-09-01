@@ -1596,19 +1596,7 @@ namespace mgs2_v_s_fix
             }
         }
 
-        private void help_controls_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Controllers-&-Actions");
-            }
-
-            catch
-            {
-                Ocelot.showMessage("UAC_error");
-            }
-        }
-
+        
         private void ptb_comPLAY_Click(object sender, EventArgs e)
         {
             try

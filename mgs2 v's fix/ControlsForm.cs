@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,12 +15,38 @@ namespace mgs2_v_s_fix
     {
         Form1 mainForm;
 
+        // Things for font import
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        private static extern IntPtr AddFontMemResourceEx(IntPtr pbFont, uint cbFont,
+        IntPtr pdv, [System.Runtime.InteropServices.In] ref uint pcFonts);
+
+        private PrivateFontCollection fonts = new PrivateFontCollection();
+        Font myFont;
+
         public ControlsForm(Form1 parentFormInstance)
         {
             InitializeComponent();
 
+            // Things for font import
+
+            byte[] fontData = Properties.Resources.MGS2_ttf;
+            IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
+            System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
+            uint dummy = 0;
+            fonts.AddMemoryFont(fontPtr, Properties.Resources.MGS2_ttf.Length);
+            AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.MGS2_ttf.Length, IntPtr.Zero, ref dummy);
+            System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
+
+            myFont = new Font(fonts.Families[0], 18, FontStyle.Underline);
+
+            btn_returnToForm1.Font = myFont;
+
             // Take note of the instance of the main form
             mainForm = parentFormInstance;
+
+            // Open automatically the Gamepad tab
+            tabControl1.SelectedTab = tab_Gamepads;
 
         }
 
@@ -249,6 +276,19 @@ namespace mgs2_v_s_fix
 
         }
 
+        private void help_controls_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_CONTROLS);
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
+        }
+
 
         #endregion
 
@@ -256,5 +296,6 @@ namespace mgs2_v_s_fix
         {
             this.Visible = false;
         }
+
     }
 }
