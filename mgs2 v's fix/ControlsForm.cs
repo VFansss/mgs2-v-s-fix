@@ -254,8 +254,7 @@ namespace mgs2_v_s_fix
 
         private void ControlsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            setFocusOnControlForm(false);
-            e.Cancel = true;
+            this.Visible = false;
         }
     }
 }

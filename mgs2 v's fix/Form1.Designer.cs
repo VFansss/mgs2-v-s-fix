@@ -789,7 +789,7 @@ namespace mgs2_v_s_fix
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label7.Location = new System.Drawing.Point(288, 426);
+            this.label7.Location = new System.Drawing.Point(285, 426);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(152, 33);
@@ -824,7 +824,7 @@ namespace mgs2_v_s_fix
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label11.Location = new System.Drawing.Point(231, 358);
+            this.label11.Location = new System.Drawing.Point(230, 358);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(208, 33);
