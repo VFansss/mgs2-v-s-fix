@@ -113,6 +113,7 @@ namespace mgs2_v_s_fix
                 if (pressedRadio.Name.Equals("EnableController_DS4"))
                 {
                     lbl_controllerGuide.Text = "( ONLY if using a DS4 WITHOUT external software. Otherwise, choose 'XBOX' )";
+                    lbl_InvertTriggersWithDorsals.Text = "Invert R2/L2 with R1/L1:";
                 }
                 else if (pressedRadio.Name.Equals("EnableController_STEAM"))
                 {
@@ -127,6 +128,7 @@ namespace mgs2_v_s_fix
                 else // Xbox
                 {
                     lbl_controllerGuide.Text = "( For original Xbox controllers, and those who emulate them )";
+                    lbl_InvertTriggersWithDorsals.Text = "Invert RT/LT with RB/LB:";
                 }
 
                 lbl_controllerGuide.Visible = true;

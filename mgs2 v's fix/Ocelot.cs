@@ -1304,6 +1304,7 @@ namespace mgs2_v_s_fix
             //defaultConfig.Controls["XboxGamepad"] = "NO";
             defaultConfig.Controls["EnableController"] = "NO";
             defaultConfig.Controls["PreferredLayout"] = "V";
+            defaultConfig.Controls["InvertTriggersWithDorsals"] = "false";
 
             // Graphics
 

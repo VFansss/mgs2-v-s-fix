@@ -544,10 +544,18 @@ namespace mgs2_v_s_fix
 
             // What controller, and what layout?
 
+            bool controllerSelected = false;
+
+            // Set a default value
+            secondFormInstance.chb_InvertTriggersWithDorsals.Text = "OFF";
+            secondFormInstance.chb_InvertTriggersWithDorsals.Checked = false;
+
             if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("XBOX"))
             {
-                secondFormInstance.pnl_PreferredLayout.Visible = true;
                 secondFormInstance.EnableController_XBOX.Checked = true;
+                secondFormInstance.lbl_InvertTriggersWithDorsals.Text = "Invert RT/LT with RB/LB:";
+
+                controllerSelected = true;
 
                 if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
                 {
@@ -566,8 +574,10 @@ namespace mgs2_v_s_fix
 
             else if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("DS4"))
             {
-                secondFormInstance.pnl_PreferredLayout.Visible = true;
                 secondFormInstance.EnableController_DS4.Checked = true;
+                secondFormInstance.lbl_InvertTriggersWithDorsals.Text = "Invert R2/L2 with R1/L1:";
+
+                controllerSelected = true;
 
                 if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
                 {
@@ -577,13 +587,25 @@ namespace mgs2_v_s_fix
 
                 else
                 {
-                    // VLayout
+                    // V Layout
                     secondFormInstance.PreferredLayout_V.Checked = true;
                     secondFormInstance.pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_VLayout;
                 }
 
             }
 
+            if (controllerSelected)
+            {
+                // Things visible for every controller
+                secondFormInstance.pnl_PreferredLayout.Visible = true;
+
+                if (Ocelot.InternalConfiguration.Controls["InvertTriggersWithDorsals"].Equals("true"))
+                {
+                    secondFormInstance.chb_InvertTriggersWithDorsals.Text = "ON";
+                    secondFormInstance.chb_InvertTriggersWithDorsals.Checked = true;
+                }
+
+            }
             else
             {
                 // No recognized controller is set. Hide everything
@@ -856,6 +878,17 @@ namespace mgs2_v_s_fix
             {
                 // V's Layout
                 Ocelot.InternalConfiguration.Controls["PreferredLayout"] = "V";
+            }
+
+            // Invert triggers with dorsals?
+
+            if (secondFormInstance.chb_InvertTriggersWithDorsals.Checked)
+            {
+                Ocelot.InternalConfiguration.Controls["InvertTriggersWithDorsals"] = "true";
+            }
+            else
+            {
+                Ocelot.InternalConfiguration.Controls["InvertTriggersWithDorsals"] = "false";
             }
 
             #endregion
@@ -1620,7 +1653,6 @@ namespace mgs2_v_s_fix
                 Ocelot.showMessage("UAC_error");
             }
         }
-
         
         private void ptb_comPLAY_Click(object sender, EventArgs e)
         {

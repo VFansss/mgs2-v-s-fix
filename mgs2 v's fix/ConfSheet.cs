@@ -38,6 +38,7 @@ namespace mgs2_v_s_fix
                 //{"XboxGamepad",null},
                 {"EnableController",null},
                 {"PreferredLayout",null},
+                {"InvertTriggersWithDorsals",null},
             };
 
             this.Graphics = new Dictionary<string, string>
@@ -74,7 +75,6 @@ namespace mgs2_v_s_fix
             {
                 {"DrebinMode",null},
                 {"UnlockRadar",null},
-
             };
 
 
