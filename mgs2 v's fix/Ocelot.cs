@@ -799,38 +799,97 @@ namespace mgs2_v_s_fix
                         // Extract XInput Plus
                         Unzip.UnZippa("XInputPlus.zip", true);
 
+                        AvailableGamepads choosenGamepad;
+                        AvailableLayouts choosenLayout;
+                        bool InvertTriggersWithDorsals;
 
+                        // What gamepad?
                         if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("DS4"))
                         {
-                            // What layout?
-
-                            if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
-                            {
-                                Unzip.UnZippa("ControllerDS4_PS2Layout.zip", true);
-                            }
-
-                            else // V Layout
-                            {
-                                Unzip.UnZippa("ControllerDS4_VLayout.zip", true);
-                            }
-
+                            choosenGamepad = AvailableGamepads.DUALSHOCK4;
                         }
-
-                        else // XBOX
+                        else
                         {
-                            // What layout?
+                            choosenGamepad = AvailableGamepads.XBOX;
 
-                            if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
+                        }
+
+                        // What layout?
+                        if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
+                        {
+                            choosenLayout = AvailableLayouts.PS2;
+                        }                
+                        else
+                        {
+                            choosenLayout = AvailableLayouts.V;
+                        }
+
+                        // Invert triggers with dorsals?
+                        if (Ocelot.InternalConfiguration.Controls["InvertTriggersWithDorsals"].Equals("true"))
+                        {
+                            InvertTriggersWithDorsals = true;
+                        }
+                        else
+                        {
+                            InvertTriggersWithDorsals = false;
+                        }
+
+                        // Write the button/analog bindings to files
+
+                        ButtonLayouts myLayout = new ButtonLayouts(choosenGamepad, choosenLayout, InvertTriggersWithDorsals);
+
+                        // Declare a UTF-8 Encoding WITHOUT BOM (VERY IMPORTANT!)
+
+                        Encoding utf8WithoutBom = new UTF8Encoding(false);
+
+                        // Write padbtn.ini
+
+                        using (StreamWriter writetext = new StreamWriter(Application.StartupPath + "\\padbtn.ini",false, utf8WithoutBom))
+                        {
+                            foreach ((ButtonActions, string) singleBinding in myLayout.ButtonBindings)
                             {
-                                Unzip.UnZippa("ControllerXBOX_PS2Layout.zip", true);
+                                // Example row: 00  A
+                                writetext.WriteLine(singleBinding.Item2+ "  "+singleBinding.Item1);
                             }
+                            
+                        }
 
-                            else // V Layout
+                        // Write padbtns.ini
+
+                        using (StreamWriter writetext = new StreamWriter(Application.StartupPath + "\\padbtns.ini", false, utf8WithoutBom))
+                        {
+                            foreach ((ButtonActions, string) singleBinding in myLayout.ButtonBindings)
                             {
-                                Unzip.UnZippa("ControllerXBOX_VLayout.zip", true);
+                                // Example row:00  A
+                                writetext.WriteLine(singleBinding.Item2 + "  " + singleBinding.Item1);
                             }
 
                         }
+
+                        // Write padana.ini
+
+                        using (StreamWriter writetext = new StreamWriter(Application.StartupPath + "\\padana.ini", false, utf8WithoutBom))
+                        {
+                            foreach ((string, AnalogActions, string) singleBinding in myLayout.AnalogBindings)
+                            {
+                                // Example row:00  Rx  N
+                                writetext.WriteLine(singleBinding.Item1 + "  " + singleBinding.Item2+ "  "+singleBinding.Item3);
+                            }
+
+                        }
+
+                        // Write padanas.ini
+
+                        using (StreamWriter writetext = new StreamWriter(Application.StartupPath + "\\padanas.ini", false, utf8WithoutBom))
+                        {
+                            foreach ((string, AnalogActions, string) singleBinding in myLayout.AnalogBindings)
+                            {
+                                // Example row:00  Rx  N
+                                writetext.WriteLine(singleBinding.Item1 + "  " + singleBinding.Item2 + "  " + singleBinding.Item3);
+                            }
+
+                        }
+
 
                     }
 

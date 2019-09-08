@@ -157,8 +157,6 @@
     <EmbeddedResource Include="Resources\WidescreenFix.zip" />
     <EmbeddedResource Include="Resources\XInputPlus.zip" />
     <EmbeddedResource Include="Resources\DXWrapper.zip" />
-    <EmbeddedResource Include="Resources\ControllerDS4_PS2Layout.zip" />
-    <EmbeddedResource Include="Resources\ControllerDS4_VLayout.zip" />
     <EmbeddedResource Include="Resources\GreenScreenFix.zip" />
     <None Include="Resources\MGS2.ttf" />
     <EmbeddedResource Include="Resources\sweetFX_FXAA.zip" />
@@ -236,8 +234,6 @@
     <Content Include="PAPERS\Opcode.txt" />
     <EmbeddedResource Include="PAPERS\Regards.txt" />
     <EmbeddedResource Include="Resources\V_s_sweetFX.zip" />
-    <EmbeddedResource Include="Resources\ControllerXBOX_PS2Layout.zip" />
-    <EmbeddedResource Include="Resources\ControllerXBOX_VLayout.zip" />
     <None Include="Resources\otagif.gif" />
   </ItemGroup>
   <ItemGroup />
