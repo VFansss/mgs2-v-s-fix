@@ -96,6 +96,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtonLayouts.cs" />
     <Compile Include="ConfSheet.cs" />
     <Compile Include="ControlsForm.cs">
       <SubType>Form</SubType>
