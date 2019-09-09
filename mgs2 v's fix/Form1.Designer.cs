@@ -51,6 +51,10 @@ namespace mgs2_v_s_fix
             this.txt_Width = new System.Windows.Forms.TextBox();
             this.lbl_des_00 = new System.Windows.Forms.Label();
             this.tab_Controls = new System.Windows.Forms.TabPage();
+            this.help_control = new System.Windows.Forms.Label();
+            this.pnl_ControlsSubPanel = new System.Windows.Forms.Panel();
+            this.lbl_goToControlForm = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tab_Graphics = new System.Windows.Forms.TabPage();
             this.lbl_AAGuide = new System.Windows.Forms.Label();
             this.pnl_AA = new System.Windows.Forms.Panel();
@@ -134,14 +138,12 @@ namespace mgs2_v_s_fix
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
-            this.pnl_ControlsSubPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbl_goToControlForm = new System.Windows.Forms.Label();
-            this.help_control = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.tab_Controls.SuspendLayout();
+            this.pnl_ControlsSubPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tab_Graphics.SuspendLayout();
             this.pnl_AA.SuspendLayout();
             this.pnl_EffectQuantity.SuspendLayout();
@@ -163,8 +165,6 @@ namespace mgs2_v_s_fix
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
-            this.pnl_ControlsSubPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -544,6 +544,61 @@ namespace mgs2_v_s_fix
             this.tab_Controls.TabIndex = 1;
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
+            // 
+            // help_control
+            // 
+            this.help_control.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.help_control.AutoSize = true;
+            this.help_control.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.help_control.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_control.Location = new System.Drawing.Point(161, 431);
+            this.help_control.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.help_control.Name = "help_control";
+            this.help_control.Size = new System.Drawing.Size(429, 24);
+            this.help_control.TabIndex = 15;
+            this.help_control.Text = "Any input issues? Click HERE to check the manual!";
+            this.help_control.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.help_control.Click += new System.EventHandler(this.help_control_Click);
+            // 
+            // pnl_ControlsSubPanel
+            // 
+            this.pnl_ControlsSubPanel.Controls.Add(this.lbl_goToControlForm);
+            this.pnl_ControlsSubPanel.Controls.Add(this.pictureBox1);
+            this.pnl_ControlsSubPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnl_ControlsSubPanel.Location = new System.Drawing.Point(90, 80);
+            this.pnl_ControlsSubPanel.Name = "pnl_ControlsSubPanel";
+            this.pnl_ControlsSubPanel.Size = new System.Drawing.Size(562, 193);
+            this.pnl_ControlsSubPanel.TabIndex = 10;
+            this.pnl_ControlsSubPanel.Click += new System.EventHandler(this.pnl_ControlsSubPanel_Click);
+            // 
+            // lbl_goToControlForm
+            // 
+            this.lbl_goToControlForm.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_goToControlForm.AutoSize = true;
+            this.lbl_goToControlForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_goToControlForm.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_goToControlForm.ForeColor = System.Drawing.Color.Black;
+            this.lbl_goToControlForm.Location = new System.Drawing.Point(14, 9);
+            this.lbl_goToControlForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_goToControlForm.Name = "lbl_goToControlForm";
+            this.lbl_goToControlForm.Size = new System.Drawing.Size(536, 37);
+            this.lbl_goToControlForm.TabIndex = 14;
+            this.lbl_goToControlForm.Text = "Click HERE to configure your input devices";
+            this.lbl_goToControlForm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_goToControlForm.Click += new System.EventHandler(this.lbl_goToControlForm_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox1.Enabled = false;
+            this.pictureBox1.Image = global::mgs2_v_s_fix.Properties.Resources.gamepad;
+            this.pictureBox1.Location = new System.Drawing.Point(217, 53);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
             // 
             // tab_Graphics
             // 
@@ -1647,6 +1702,7 @@ namespace mgs2_v_s_fix
             this.label17.TabIndex = 39;
             this.label17.Text = "Click the logo aside to open comPLAY Website";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label17.Visible = false;
             // 
             // ptb_GitHubLogo
             // 
@@ -1684,6 +1740,7 @@ namespace mgs2_v_s_fix
             this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptb_comPLAY.TabIndex = 35;
             this.ptb_comPLAY.TabStop = false;
+            this.ptb_comPLAY.Visible = false;
             this.ptb_comPLAY.Click += new System.EventHandler(this.ptb_comPLAY_Click);
             // 
             // label16
@@ -1697,6 +1754,7 @@ namespace mgs2_v_s_fix
             this.label16.TabIndex = 37;
             this.label16.Text = "Playing on multiple PCs at once? Multiple users? Need to synchronize?";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label16.Visible = false;
             // 
             // label12
             // 
@@ -1710,6 +1768,7 @@ namespace mgs2_v_s_fix
             this.label12.TabIndex = 36;
             this.label12.Text = "Don\'t want to lose your games savedata?";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label12.Visible = false;
             // 
             // chb_FixAfterPlaying
             // 
@@ -1995,61 +2054,6 @@ namespace mgs2_v_s_fix
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
-            // pnl_ControlsSubPanel
-            // 
-            this.pnl_ControlsSubPanel.Controls.Add(this.lbl_goToControlForm);
-            this.pnl_ControlsSubPanel.Controls.Add(this.pictureBox1);
-            this.pnl_ControlsSubPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnl_ControlsSubPanel.Location = new System.Drawing.Point(90, 80);
-            this.pnl_ControlsSubPanel.Name = "pnl_ControlsSubPanel";
-            this.pnl_ControlsSubPanel.Size = new System.Drawing.Size(562, 193);
-            this.pnl_ControlsSubPanel.TabIndex = 10;
-            this.pnl_ControlsSubPanel.Click += new System.EventHandler(this.pnl_ControlsSubPanel_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox1.Enabled = false;
-            this.pictureBox1.Image = global::mgs2_v_s_fix.Properties.Resources.gamepad;
-            this.pictureBox1.Location = new System.Drawing.Point(217, 53);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lbl_goToControlForm
-            // 
-            this.lbl_goToControlForm.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_goToControlForm.AutoSize = true;
-            this.lbl_goToControlForm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbl_goToControlForm.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_goToControlForm.ForeColor = System.Drawing.Color.Black;
-            this.lbl_goToControlForm.Location = new System.Drawing.Point(14, 9);
-            this.lbl_goToControlForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_goToControlForm.Name = "lbl_goToControlForm";
-            this.lbl_goToControlForm.Size = new System.Drawing.Size(536, 37);
-            this.lbl_goToControlForm.TabIndex = 14;
-            this.lbl_goToControlForm.Text = "Click HERE to configure your input devices";
-            this.lbl_goToControlForm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lbl_goToControlForm.Click += new System.EventHandler(this.lbl_goToControlForm_Click);
-            // 
-            // help_control
-            // 
-            this.help_control.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.help_control.AutoSize = true;
-            this.help_control.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.help_control.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_control.Location = new System.Drawing.Point(161, 431);
-            this.help_control.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.help_control.Name = "help_control";
-            this.help_control.Size = new System.Drawing.Size(429, 24);
-            this.help_control.TabIndex = 15;
-            this.help_control.Text = "Any input issues? Click HERE to check the manual!";
-            this.help_control.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.help_control.Click += new System.EventHandler(this.help_control_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2079,6 +2083,9 @@ namespace mgs2_v_s_fix
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.tab_Controls.ResumeLayout(false);
             this.tab_Controls.PerformLayout();
+            this.pnl_ControlsSubPanel.ResumeLayout(false);
+            this.pnl_ControlsSubPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tab_Graphics.ResumeLayout(false);
             this.tab_Graphics.PerformLayout();
             this.pnl_AA.ResumeLayout(false);
@@ -2113,9 +2120,6 @@ namespace mgs2_v_s_fix
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
-            this.pnl_ControlsSubPanel.ResumeLayout(false);
-            this.pnl_ControlsSubPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
