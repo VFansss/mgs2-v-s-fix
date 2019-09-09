@@ -787,6 +787,18 @@ namespace mgs2_v_s_fix
                     File.Delete(Application.StartupPath + "\\XInput1_3.dll");
                     File.Delete(Application.StartupPath + "\\XInputPlus.ini");
 
+                    // What keyboard layout?
+
+                    if (Ocelot.InternalConfiguration.Controls["KeyboardLayout"].Equals("Numkey"))
+                    {
+                        Unzip.UnZippa("Keyboard_Numkey.zip", true);
+                    }
+                    else
+                    {
+                        // Extract default layout
+                        Unzip.UnZippa("Keyboard_Default.zip", true);
+                    }
+
                     // What controller?
 
                     if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("NO"))

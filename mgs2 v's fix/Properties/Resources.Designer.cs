@@ -381,6 +381,26 @@ namespace mgs2_v_s_fix.Properties {
         }
         
         /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Keyboard_Default {
+            get {
+                object obj = ResourceManager.GetObject("Keyboard_Default", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Keyboard_Numkey {
+            get {
+                object obj = ResourceManager.GetObject("Keyboard_Numkey", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap manual {

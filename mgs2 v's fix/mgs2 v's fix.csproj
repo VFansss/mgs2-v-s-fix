@@ -158,6 +158,8 @@
     <EmbeddedResource Include="Resources\XInputPlus.zip" />
     <EmbeddedResource Include="Resources\DXWrapper.zip" />
     <EmbeddedResource Include="Resources\GreenScreenFix.zip" />
+    <EmbeddedResource Include="Resources\Keyboard_Default.zip" />
+    <EmbeddedResource Include="Resources\Keyboard_Numkey.zip" />
     <None Include="Resources\MGS2.ttf" />
     <EmbeddedResource Include="Resources\sweetFX_FXAA.zip" />
     <EmbeddedResource Include="Resources\sweetFX_SMAA.zip" />
