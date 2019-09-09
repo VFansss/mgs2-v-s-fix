@@ -88,7 +88,7 @@ namespace mgs2_v_s_fix
                 // Hide the gamepad image
                 pictureBox1.Image = null;
 
-                pnl_PreferredLayout.Visible = false;
+                pnl_Gamepad_PreferredLayout.Visible = false;
 
                 // Set a default value
                 PreferredLayout_V.Checked = true;
@@ -144,9 +144,22 @@ namespace mgs2_v_s_fix
 
         private void PreferredLayout_UpdateImageAndLayout()
         {
-            // What controller, and what layout?
+            // Refresh the keyboard view
 
-            pnl_PreferredLayout.Visible = true;
+            if (KeyboardLayout_Default.Checked)
+            {         
+                lbl_keyboardGuide.Text = "( The default Konami keyboard layout )";
+                lbl_keyboardGuide.Visible = true;
+            }
+            else if (KeyboardLayout_Numkey.Checked)
+            {               
+                lbl_keyboardGuide.Text = "( Move with WASD, perform actions with numeric keypad. Thanks TuxNews <3 )";
+                lbl_keyboardGuide.Visible = true;
+            }
+
+            // Fefresh the gamepad view - what controller, and what layout?
+
+            pnl_Gamepad_PreferredLayout.Visible = true;
 
             if (EnableController_XBOX.Checked)
             {
@@ -187,11 +200,6 @@ namespace mgs2_v_s_fix
                 pnl_LayoutChooser.Visible = false;
                 pictureBox1.Image = null;
             }
-            else
-            {
-                // ??
-                throw new Exception("ERROR: A layout has been selected without knowing your kind of controller!");
-            }
 
 
             if (Ocelot.NOSYMODE)
@@ -199,6 +207,7 @@ namespace mgs2_v_s_fix
                 // Decide to not show the image because...reasons
 
                 pictureBox1.Visible = false;
+                pictureBox3.Visible = false;
             }
 
         }

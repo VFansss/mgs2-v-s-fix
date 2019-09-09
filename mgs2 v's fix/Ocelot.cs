@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,7 +42,7 @@ namespace mgs2_v_s_fix
         // List of Graphics Adapter present in the machine
         public static LinkedList<string> vgaList= new LinkedList<string>();
 
-        public static bool needOfAutoConfig = false;
+        public static bool needAutoconfig = false;
 
         public static IniFile ConfFile = new IniFile("Configuration_file.ini");
 
@@ -110,7 +110,7 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Resolution"))
                 {
                  ConfFile.Write(entry.Key, "", "Resolution");
-                 needOfAutoConfig = true;
+                 needAutoconfig = true;
                 }
             }
 
@@ -119,7 +119,7 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Controls"))
                 {
                     ConfFile.Write(entry.Key, "", "Controls");
-                    needOfAutoConfig = true;
+                    needAutoconfig = true;
                 }
             }
 
@@ -128,7 +128,7 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Graphics"))
                 {
                     ConfFile.Write(entry.Key, "", "Graphics");
-                    needOfAutoConfig = true;
+                    needAutoconfig = true;
                 }
             }
 
@@ -137,7 +137,7 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Sound"))
                 {
                     ConfFile.Write(entry.Key, "", "Sound");
-                    needOfAutoConfig = true;
+                    needAutoconfig = true;
                 }
             }
 
@@ -146,13 +146,13 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Others"))
                 {
                     ConfFile.Write(entry.Key, "", "Others");
-                    needOfAutoConfig = true;
+                    needAutoconfig = true;
                 }
             }
 
             // NB: Cheats category doesn't need to be checked
 
-            if (needOfAutoConfig) { Ocelot.PrintToDebugConsole("[+] Configuration_file.ini seem missing some key. Need to autoconfig!"); }
+            if (needAutoconfig) { Ocelot.PrintToDebugConsole("[+] Configuration_file.ini seem missing some key. Need to autoconfig!"); }
 
             return;
 
@@ -1361,6 +1361,7 @@ namespace mgs2_v_s_fix
             // Controls
 
             //defaultConfig.Controls["XboxGamepad"] = "NO";
+            defaultConfig.Controls["KeyboardLayout"] = "Default";
             defaultConfig.Controls["EnableController"] = "NO";
             defaultConfig.Controls["PreferredLayout"] = "V";
             defaultConfig.Controls["InvertTriggersWithDorsals"] = "false";
@@ -1399,7 +1400,7 @@ namespace mgs2_v_s_fix
 
             Ocelot.PrintToDebugConsole("[+] Autoconfig finished. InternalConfiguration Filled");
 
-            Ocelot.needOfAutoConfig = false;
+            Ocelot.needAutoconfig = false;
 
             return;
         }

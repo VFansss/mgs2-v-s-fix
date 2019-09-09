@@ -36,6 +36,7 @@ namespace mgs2_v_s_fix
             this.Controls = new Dictionary<string, string>
             {
                 //{"XboxGamepad",null},
+                {"KeyboardLayout",null},
                 {"EnableController",null},
                 {"PreferredLayout",null},
                 {"InvertTriggersWithDorsals",null},

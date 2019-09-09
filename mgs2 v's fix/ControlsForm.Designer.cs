@@ -32,6 +32,12 @@
             this.btn_returnToForm1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_KbMouse = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.KeyboardLayout_Numkey = new System.Windows.Forms.RadioButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.KeyboardLayout_Default = new System.Windows.Forms.RadioButton();
             this.tab_Gamepads = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_controllerGuide = new System.Windows.Forms.Label();
@@ -41,7 +47,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
             this.EnableController_NO = new System.Windows.Forms.RadioButton();
-            this.pnl_PreferredLayout = new System.Windows.Forms.Panel();
+            this.pnl_Gamepad_PreferredLayout = new System.Windows.Forms.Panel();
             this.pnl_InvertTriggersWithDorsals = new System.Windows.Forms.Panel();
             this.chb_InvertTriggersWithDorsals = new System.Windows.Forms.CheckBox();
             this.lbl_InvertTriggersWithDorsals = new System.Windows.Forms.Label();
@@ -56,11 +62,16 @@
             this.help_controls = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lbl_keyboardGuide = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
+            this.tab_KbMouse.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel3.SuspendLayout();
             this.tab_Gamepads.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_EnableController.SuspendLayout();
-            this.pnl_PreferredLayout.SuspendLayout();
+            this.pnl_Gamepad_PreferredLayout.SuspendLayout();
             this.pnl_InvertTriggersWithDorsals.SuspendLayout();
             this.pnl_LayoutChooser.SuspendLayout();
             this.tab_ControlsHelp.SuspendLayout();
@@ -104,6 +115,7 @@
             // tab_KbMouse
             // 
             this.tab_KbMouse.BackColor = System.Drawing.Color.White;
+            this.tab_KbMouse.Controls.Add(this.panel1);
             this.tab_KbMouse.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab_KbMouse.Location = new System.Drawing.Point(4, 38);
             this.tab_KbMouse.Name = "tab_KbMouse";
@@ -111,13 +123,108 @@
             this.tab_KbMouse.TabIndex = 0;
             this.tab_KbMouse.Text = "Keyboard + Mouse";
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Controls.Add(this.lbl_keyboardGuide);
+            this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Location = new System.Drawing.Point(91, 44);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(728, 445);
+            this.panel1.TabIndex = 22;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox3.Location = new System.Drawing.Point(21, 112);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(687, 332);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 18;
+            this.pictureBox3.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.KeyboardLayout_Numkey);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.KeyboardLayout_Default);
+            this.panel3.Location = new System.Drawing.Point(114, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(532, 48);
+            this.panel3.TabIndex = 12;
+            // 
+            // KeyboardLayout_Numkey
+            // 
+            this.KeyboardLayout_Numkey.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.KeyboardLayout_Numkey.Appearance = System.Windows.Forms.Appearance.Button;
+            this.KeyboardLayout_Numkey.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.KeyboardLayout_Numkey.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.KeyboardLayout_Numkey.FlatAppearance.BorderSize = 0;
+            this.KeyboardLayout_Numkey.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.KeyboardLayout_Numkey.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.KeyboardLayout_Numkey.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.KeyboardLayout_Numkey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.KeyboardLayout_Numkey.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyboardLayout_Numkey.Location = new System.Drawing.Point(372, 5);
+            this.KeyboardLayout_Numkey.Margin = new System.Windows.Forms.Padding(4);
+            this.KeyboardLayout_Numkey.Name = "KeyboardLayout_Numkey";
+            this.KeyboardLayout_Numkey.Size = new System.Drawing.Size(148, 37);
+            this.KeyboardLayout_Numkey.TabIndex = 7;
+            this.KeyboardLayout_Numkey.TabStop = true;
+            this.KeyboardLayout_Numkey.Text = "Numkey";
+            this.KeyboardLayout_Numkey.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.KeyboardLayout_Numkey.UseVisualStyleBackColor = false;
+            this.KeyboardLayout_Numkey.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.KeyboardLayout_Numkey.Click += new System.EventHandler(this.PreferredLayout_Click);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.label4.Location = new System.Drawing.Point(12, 7);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(185, 33);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Buttons Layout:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // KeyboardLayout_Default
+            // 
+            this.KeyboardLayout_Default.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.KeyboardLayout_Default.Appearance = System.Windows.Forms.Appearance.Button;
+            this.KeyboardLayout_Default.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.KeyboardLayout_Default.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.KeyboardLayout_Default.FlatAppearance.BorderSize = 0;
+            this.KeyboardLayout_Default.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.KeyboardLayout_Default.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.KeyboardLayout_Default.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.KeyboardLayout_Default.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.KeyboardLayout_Default.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyboardLayout_Default.Location = new System.Drawing.Point(243, 5);
+            this.KeyboardLayout_Default.Margin = new System.Windows.Forms.Padding(4);
+            this.KeyboardLayout_Default.Name = "KeyboardLayout_Default";
+            this.KeyboardLayout_Default.Size = new System.Drawing.Size(125, 37);
+            this.KeyboardLayout_Default.TabIndex = 5;
+            this.KeyboardLayout_Default.TabStop = true;
+            this.KeyboardLayout_Default.Text = "Default";
+            this.KeyboardLayout_Default.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.KeyboardLayout_Default.UseVisualStyleBackColor = false;
+            this.KeyboardLayout_Default.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.KeyboardLayout_Default.Click += new System.EventHandler(this.PreferredLayout_Click);
+            // 
             // tab_Gamepads
             // 
             this.tab_Gamepads.BackColor = System.Drawing.Color.White;
             this.tab_Gamepads.Controls.Add(this.pictureBox1);
             this.tab_Gamepads.Controls.Add(this.lbl_controllerGuide);
             this.tab_Gamepads.Controls.Add(this.pnl_EnableController);
-            this.tab_Gamepads.Controls.Add(this.pnl_PreferredLayout);
+            this.tab_Gamepads.Controls.Add(this.pnl_Gamepad_PreferredLayout);
             this.tab_Gamepads.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab_Gamepads.Location = new System.Drawing.Point(4, 38);
             this.tab_Gamepads.Name = "tab_Gamepads";
@@ -273,16 +380,16 @@
             this.EnableController_NO.CheckedChanged += new System.EventHandler(this.setNewColor);
             this.EnableController_NO.Click += new System.EventHandler(this.EnableController_Click);
             // 
-            // pnl_PreferredLayout
+            // pnl_Gamepad_PreferredLayout
             // 
-            this.pnl_PreferredLayout.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnl_PreferredLayout.Controls.Add(this.pnl_InvertTriggersWithDorsals);
-            this.pnl_PreferredLayout.Controls.Add(this.pnl_LayoutChooser);
-            this.pnl_PreferredLayout.Location = new System.Drawing.Point(95, 87);
-            this.pnl_PreferredLayout.Margin = new System.Windows.Forms.Padding(4);
-            this.pnl_PreferredLayout.Name = "pnl_PreferredLayout";
-            this.pnl_PreferredLayout.Size = new System.Drawing.Size(728, 445);
-            this.pnl_PreferredLayout.TabIndex = 20;
+            this.pnl_Gamepad_PreferredLayout.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnl_Gamepad_PreferredLayout.Controls.Add(this.pnl_InvertTriggersWithDorsals);
+            this.pnl_Gamepad_PreferredLayout.Controls.Add(this.pnl_LayoutChooser);
+            this.pnl_Gamepad_PreferredLayout.Location = new System.Drawing.Point(95, 87);
+            this.pnl_Gamepad_PreferredLayout.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_Gamepad_PreferredLayout.Name = "pnl_Gamepad_PreferredLayout";
+            this.pnl_Gamepad_PreferredLayout.Size = new System.Drawing.Size(728, 445);
+            this.pnl_Gamepad_PreferredLayout.TabIndex = 20;
             // 
             // pnl_InvertTriggersWithDorsals
             // 
@@ -490,6 +597,20 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lbl_keyboardGuide
+            // 
+            this.lbl_keyboardGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_keyboardGuide.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbl_keyboardGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_keyboardGuide.Location = new System.Drawing.Point(4, 55);
+            this.lbl_keyboardGuide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_keyboardGuide.Name = "lbl_keyboardGuide";
+            this.lbl_keyboardGuide.Size = new System.Drawing.Size(720, 23);
+            this.lbl_keyboardGuide.TabIndex = 21;
+            this.lbl_keyboardGuide.Text = "[RUNTIME]";
+            this.lbl_keyboardGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_keyboardGuide.Visible = false;
+            // 
             // ControlsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -507,11 +628,16 @@
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ControlsForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
+            this.tab_KbMouse.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.tab_Gamepads.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnl_EnableController.ResumeLayout(false);
             this.pnl_EnableController.PerformLayout();
-            this.pnl_PreferredLayout.ResumeLayout(false);
+            this.pnl_Gamepad_PreferredLayout.ResumeLayout(false);
             this.pnl_InvertTriggersWithDorsals.ResumeLayout(false);
             this.pnl_InvertTriggersWithDorsals.PerformLayout();
             this.pnl_LayoutChooser.ResumeLayout(false);
@@ -539,7 +665,7 @@
         internal System.Windows.Forms.Label label8;
         internal System.Windows.Forms.RadioButton EnableController_XBOX;
         internal System.Windows.Forms.RadioButton EnableController_NO;
-        internal System.Windows.Forms.Panel pnl_PreferredLayout;
+        internal System.Windows.Forms.Panel pnl_Gamepad_PreferredLayout;
         private System.Windows.Forms.Panel pnl_LayoutChooser;
         internal System.Windows.Forms.RadioButton PreferredLayout_PS2;
         internal System.Windows.Forms.Label label10;
@@ -551,5 +677,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label help_controls;
         private System.Windows.Forms.PictureBox pictureBox2;
+        internal System.Windows.Forms.Panel panel1;
+        internal System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel panel3;
+        internal System.Windows.Forms.RadioButton KeyboardLayout_Numkey;
+        internal System.Windows.Forms.Label label4;
+        internal System.Windows.Forms.RadioButton KeyboardLayout_Default;
+        internal System.Windows.Forms.Label lbl_keyboardGuide;
     }
 }

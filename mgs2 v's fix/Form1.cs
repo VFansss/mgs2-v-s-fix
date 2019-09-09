@@ -176,7 +176,7 @@ namespace mgs2_v_s_fix
             Ocelot.checkConfFileIntegrity();
 
             // If there's need to autoconfig (= missing field/s inside .ini file)
-            if (Ocelot.needOfAutoConfig == true)
+            if (Ocelot.needAutoconfig)
             {
 
                 //  V's will try to understand the best config
@@ -198,7 +198,7 @@ namespace mgs2_v_s_fix
             // Instantiate a new controls form
             secondFormInstance = new ControlsForm(this);
 
-            // Transfering internal setting to graphic setupper
+            // Transfering internal setting to graphical setupper
             if (load_InternalConfig_SetTo_SetupperConfig() == false)
             {
                 // Something gone wrong. A message has already show to the user;
@@ -542,6 +542,20 @@ namespace mgs2_v_s_fix
 
             #region lot_of_things
 
+            // Keyboard parts
+
+            if (Ocelot.InternalConfiguration.Controls["KeyboardLayout"].Equals("Numkey"))
+            {
+                secondFormInstance.KeyboardLayout_Numkey.Checked = true;
+            }
+            else
+            {
+                // Set the default layout
+                secondFormInstance.KeyboardLayout_Default.Checked = true;
+            }
+
+            // Controller parts
+
             // What controller, and what layout?
 
             bool controllerSelected = false;
@@ -597,7 +611,7 @@ namespace mgs2_v_s_fix
             if (controllerSelected)
             {
                 // Things visible for every controller
-                secondFormInstance.pnl_PreferredLayout.Visible = true;
+                secondFormInstance.pnl_Gamepad_PreferredLayout.Visible = true;
 
                 if (Ocelot.InternalConfiguration.Controls["InvertTriggersWithDorsals"].Equals("true"))
                 {
@@ -610,7 +624,7 @@ namespace mgs2_v_s_fix
             {
                 // No recognized controller is set. Hide everything
                 secondFormInstance.EnableController_NO.Checked = true;
-                secondFormInstance.pnl_PreferredLayout.Visible = false;
+                secondFormInstance.pnl_Gamepad_PreferredLayout.Visible = false;
 
                 // Set a default layout value for saving it a first time
 
@@ -849,6 +863,18 @@ namespace mgs2_v_s_fix
             // Controls Settings
 
             #region lot_of_things
+
+            // What keyboard layout?
+
+            if (secondFormInstance.KeyboardLayout_Numkey.Checked)
+            {
+                Ocelot.InternalConfiguration.Controls["KeyboardLayout"] = "Numkey";
+            }
+
+            else
+            {
+                Ocelot.InternalConfiguration.Controls["KeyboardLayout"] = "Default";
+            }
 
             // What controller?
 
@@ -1426,7 +1452,36 @@ namespace mgs2_v_s_fix
 
         #region CONTROLLER tab
 
-        // Build 190901 moved these methods inside ControlsForm.cs assembly
+        // Build 190901: lot of methods moved inside ControlsForm.cs assembly
+
+        private void pnl_ControlsSubPanel_Click(object sender, EventArgs e)
+        {
+            GoToSecondForm();
+        }
+
+        private void lbl_goToControlForm_Click(object sender, EventArgs e)
+        {
+            GoToSecondForm();
+        }
+
+        private void GoToSecondForm()
+        {
+            secondFormInstance.AddOwnedForm(this);
+            secondFormInstance.setFocusOnControlForm(true);
+        }
+
+        private void help_control_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_CONTROLS);
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
+        }
 
         #endregion
 
@@ -1834,35 +1889,6 @@ namespace mgs2_v_s_fix
                 Ocelot.StartSteam();
             }
 
-        }
-
-        private void pnl_ControlsSubPanel_Click(object sender, EventArgs e)
-        {
-            GoToSecondForm();
-        }
-
-        private void lbl_goToControlForm_Click(object sender, EventArgs e)
-        {
-            GoToSecondForm();
-        }
-
-        private void GoToSecondForm()
-        {
-            secondFormInstance.AddOwnedForm(this);
-            secondFormInstance.setFocusOnControlForm(true);
-        }
-
-        private void help_control_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_CONTROLS);
-            }
-
-            catch
-            {
-                Ocelot.showMessage("UAC_error");
-            }
         }
 
         #endregion
