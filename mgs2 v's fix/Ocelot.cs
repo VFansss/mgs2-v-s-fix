@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -1346,7 +1346,7 @@ namespace mgs2_v_s_fix
             defaultConfig.Resolution["WindowMode"] = "false";
 
             // Detect if PC is laptop or a desktop
-            // NOT 100% true,however
+            // NOT 100% reliable,however
             if (SystemInformation.PowerStatus.BatteryChargeStatus == BatteryChargeStatus.NoSystemBattery)
             {
                 defaultConfig.Resolution["LaptopMode"] = "false";
@@ -1388,7 +1388,11 @@ namespace mgs2_v_s_fix
             // Others
 
             defaultConfig.Others["CompatibilityWarningDisplayed"] = "false";
-                
+
+            // Cheats
+            defaultConfig.Cheats["DrebinMode"] = "false";
+            defaultConfig.Cheats["UnlockRadar"] = "false";
+
             // Finished!
 
             InternalConfiguration = defaultConfig;
