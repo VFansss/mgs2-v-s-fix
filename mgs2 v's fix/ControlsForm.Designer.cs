@@ -137,10 +137,10 @@
             this.lbl_controllerGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_controllerGuide.Cursor = System.Windows.Forms.Cursors.Default;
             this.lbl_controllerGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_controllerGuide.Location = new System.Drawing.Point(109, 54);
+            this.lbl_controllerGuide.Location = new System.Drawing.Point(4, 54);
             this.lbl_controllerGuide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_controllerGuide.Name = "lbl_controllerGuide";
-            this.lbl_controllerGuide.Size = new System.Drawing.Size(693, 23);
+            this.lbl_controllerGuide.Size = new System.Drawing.Size(903, 23);
             this.lbl_controllerGuide.TabIndex = 19;
             this.lbl_controllerGuide.Text = "[RUNTIME]";
             this.lbl_controllerGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
