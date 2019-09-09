@@ -1426,13 +1426,7 @@ namespace mgs2_v_s_fix
 
         #region CONTROLLER tab
 
-        // Build 190901 moved methods inside ControlsForm.cs assembly
-
-        private void lbl_goToControlForm_Click(object sender, EventArgs e)
-        {
-            secondFormInstance.AddOwnedForm(this);
-            secondFormInstance.setFocusOnControlForm(true);
-        }
+        // Build 190901 moved these methods inside ControlsForm.cs assembly
 
         #endregion
 
@@ -1840,6 +1834,35 @@ namespace mgs2_v_s_fix
                 Ocelot.StartSteam();
             }
 
+        }
+
+        private void pnl_ControlsSubPanel_Click(object sender, EventArgs e)
+        {
+            GoToSecondForm();
+        }
+
+        private void lbl_goToControlForm_Click(object sender, EventArgs e)
+        {
+            GoToSecondForm();
+        }
+
+        private void GoToSecondForm()
+        {
+            secondFormInstance.AddOwnedForm(this);
+            secondFormInstance.setFocusOnControlForm(true);
+        }
+
+        private void help_control_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_CONTROLS);
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
         }
 
         #endregion

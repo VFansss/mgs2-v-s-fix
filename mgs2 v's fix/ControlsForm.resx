@@ -118,6 +118,78 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Double inputs? Dualshock 4? Keyboard layouts? Special actions with gamepad? Something doesn't work? Nintendo Controllers? Supported Controllers? Vibration is acting weird? Steam Controller? Original PS2 Dualshock? You don't understand gamepad layouts? Katana doesn't work? Default keyboard layout? Other things?</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAQAICAAAAEAIACoEAAARgAAACAgAAABAAgAqAgAAO4QAAAQEAAAAQAgAGgEAACWGQAAEBAAAAEA

@@ -299,5 +299,19 @@ namespace mgs2_v_s_fix
             this.Visible = false;
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            setFocusOnControlForm(false);
+
+            try
+            {
+                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_CONTROLS);
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
+        }
     }
 }

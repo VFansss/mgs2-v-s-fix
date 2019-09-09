@@ -50,6 +50,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.PreferredLayout_V = new System.Windows.Forms.RadioButton();
             this.tab_ControlsHelp = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.help_controls = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -61,6 +64,7 @@
             this.pnl_InvertTriggersWithDorsals.SuspendLayout();
             this.pnl_LayoutChooser.SuspendLayout();
             this.tab_ControlsHelp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_returnToForm1
@@ -400,6 +404,9 @@
             // tab_ControlsHelp
             // 
             this.tab_ControlsHelp.BackColor = System.Drawing.Color.White;
+            this.tab_ControlsHelp.Controls.Add(this.pictureBox2);
+            this.tab_ControlsHelp.Controls.Add(this.label2);
+            this.tab_ControlsHelp.Controls.Add(this.label1);
             this.tab_ControlsHelp.Controls.Add(this.help_controls);
             this.tab_ControlsHelp.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tab_ControlsHelp.Location = new System.Drawing.Point(4, 38);
@@ -408,20 +415,60 @@
             this.tab_ControlsHelp.TabIndex = 2;
             this.tab_ControlsHelp.Text = "HELP";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(398, 327);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 26;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(210, 264);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(481, 24);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Check the up to date manual clicking on the icon below!";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 44);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(889, 166);
+            this.label1.TabIndex = 24;
+            this.label1.Text = resources.GetString("label1.Text");
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // help_controls
             // 
             this.help_controls.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.help_controls.AutoSize = true;
-            this.help_controls.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_controls.Location = new System.Drawing.Point(168, 230);
+            this.help_controls.Cursor = System.Windows.Forms.Cursors.Default;
+            this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_controls.Location = new System.Drawing.Point(347, 216);
             this.help_controls.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.help_controls.Name = "help_controls";
-            this.help_controls.Size = new System.Drawing.Size(575, 24);
-            this.help_controls.TabIndex = 18;
-            this.help_controls.Text = "Be sure to select the right VGA from the list below! More info here!";
+            this.help_controls.Size = new System.Drawing.Size(206, 24);
+            this.help_controls.TabIndex = 23;
+            this.help_controls.Text = "Input is a delicate topic";
             this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.help_controls.Click += new System.EventHandler(this.help_controls_Click);
             // 
             // tabPage1
             // 
@@ -471,6 +518,7 @@
             this.pnl_LayoutChooser.PerformLayout();
             this.tab_ControlsHelp.ResumeLayout(false);
             this.tab_ControlsHelp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -496,9 +544,12 @@
         internal System.Windows.Forms.RadioButton PreferredLayout_PS2;
         internal System.Windows.Forms.Label label10;
         internal System.Windows.Forms.RadioButton PreferredLayout_V;
-        private System.Windows.Forms.Label help_controls;
         private System.Windows.Forms.Panel pnl_InvertTriggersWithDorsals;
         internal System.Windows.Forms.Label lbl_InvertTriggersWithDorsals;
         internal System.Windows.Forms.CheckBox chb_InvertTriggersWithDorsals;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label help_controls;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

@@ -1865,8 +1865,9 @@ namespace mgs2_v_s_fix
                     "\n\n"+
                     "Some 'power saving' settings from your VGAs driver could interfere with that decision, based on how the driver has decided to run the game (i.e. on your laptop integrated GPU to save power)"+
                     "\n\n"+
-                    "You have to be sure that your VGA driver is reflecting the decision you made below, and this MUST be done MANUALLY from your ATI/Intel/NVidia VGA control panel!"+
-                    "V's Fix can't do it for you, unfortunatelly!"+
+                    "You have to be sure that your VGA driver is reflecting the decision you made below, and this MUST be done MANUALLY from your ATI/Intel/NVidia VGA control panel (or from Windows 10 settings panel)"+
+                    "\n\n" +
+                    "V's Fix can't do it for you, unfortunatelly!" +
                     "\n\n"+
                     "If you never done it before, on the V's Fix manual I wrote some examples (with images) for various VGA brands!" +
                     "\n\n" +

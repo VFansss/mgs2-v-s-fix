@@ -198,6 +198,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
+    <None Include="Resources\manual.png" />
+    <None Include="Resources\gamepad.png" />
     <None Include="Resources\bg8.png" />
     <EmbeddedResource Include="Resources\SavegameLocationChanger.zip" />
     <None Include="Resources\SteamLogo.png" />

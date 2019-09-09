@@ -223,6 +223,16 @@ namespace mgs2_v_s_fix.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gamepad {
+            get {
+                object obj = ResourceManager.GetObject("gamepad", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GitHubLogo {
             get {
                 object obj = ResourceManager.GetObject("GitHubLogo", resourceCulture);
@@ -367,6 +377,16 @@ namespace mgs2_v_s_fix.Properties {
             get {
                 object obj = ResourceManager.GetObject("ico9", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap manual {
+            get {
+                object obj = ResourceManager.GetObject("manual", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
