@@ -1185,7 +1185,7 @@ namespace mgs2_v_s_fix
             int ran_number = 0;
 
             // CHANGE THIS IF MORE SCREENSHOT ARE AVAILABLE
-            int NUMBER_OF_SCREENSHOTS = 8;
+            int NUMBER_OF_SCREENSHOTS = 9;
 
             do { ran_number = rnd.Next(1, NUMBER_OF_SCREENSHOTS+1); }
             while (!(ran_number != bg_number));
