@@ -287,7 +287,7 @@
             this.help_resolution.Location = new System.Drawing.Point(79, 431);
             this.help_resolution.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.help_resolution.Name = "help_resolution";
-            this.help_resolution.Size = new System.Drawing.Size(595, 24);
+            this.help_resolution.Size = new System.Drawing.Size(470, 19);
             this.help_resolution.TabIndex = 14;
             this.help_resolution.Text = "Graphical issues? Cutscene freeze? Miscellaneous doubts? Click HERE!";
             this.help_resolution.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -385,7 +385,7 @@
             this.lbl_des_03.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_03.AutoSize = true;
             this.lbl_des_03.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_03.Location = new System.Drawing.Point(85, 233);
+            this.lbl_des_03.Location = new System.Drawing.Point(20, 256);
             this.lbl_des_03.Name = "lbl_des_03";
             this.lbl_des_03.Size = new System.Drawing.Size(165, 26);
             this.lbl_des_03.TabIndex = 5;
@@ -400,7 +400,7 @@
             this.lst_vga_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_vga_list.FormattingEnabled = true;
             this.lst_vga_list.ItemHeight = 18;
-            this.lst_vga_list.Location = new System.Drawing.Point(333, 294);
+            this.lst_vga_list.Location = new System.Drawing.Point(192, 262);
             this.lst_vga_list.Margin = new System.Windows.Forms.Padding(4);
             this.lst_vga_list.Name = "lst_vga_list";
             this.lst_vga_list.Size = new System.Drawing.Size(327, 54);
@@ -516,7 +516,7 @@
             // 
             this.tab_Controls.Controls.Add(this.help_control);
             this.tab_Controls.Controls.Add(this.pnl_ControlsSubPanel);
-            this.tab_Controls.Location = new System.Drawing.Point(4, 38);
+            this.tab_Controls.Location = new System.Drawing.Point(4, 32);
             this.tab_Controls.Margin = new System.Windows.Forms.Padding(4);
             this.tab_Controls.Name = "tab_Controls";
             this.tab_Controls.Padding = new System.Windows.Forms.Padding(3);
@@ -534,7 +534,7 @@
             this.help_control.Location = new System.Drawing.Point(161, 431);
             this.help_control.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.help_control.Name = "help_control";
-            this.help_control.Size = new System.Drawing.Size(429, 24);
+            this.help_control.Size = new System.Drawing.Size(336, 19);
             this.help_control.TabIndex = 15;
             this.help_control.Text = "Any input issues? Click HERE to check the manual!";
             this.help_control.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -545,9 +545,9 @@
             this.pnl_ControlsSubPanel.Controls.Add(this.lbl_goToControlForm);
             this.pnl_ControlsSubPanel.Controls.Add(this.pictureBox1);
             this.pnl_ControlsSubPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnl_ControlsSubPanel.Location = new System.Drawing.Point(90, 80);
+            this.pnl_ControlsSubPanel.Location = new System.Drawing.Point(6, 73);
             this.pnl_ControlsSubPanel.Name = "pnl_ControlsSubPanel";
-            this.pnl_ControlsSubPanel.Size = new System.Drawing.Size(562, 193);
+            this.pnl_ControlsSubPanel.Size = new System.Drawing.Size(540, 193);
             this.pnl_ControlsSubPanel.TabIndex = 10;
             this.pnl_ControlsSubPanel.Click += new System.EventHandler(this.pnl_ControlsSubPanel_Click);
             // 
@@ -558,10 +558,10 @@
             this.lbl_goToControlForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_goToControlForm.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_goToControlForm.ForeColor = System.Drawing.Color.Black;
-            this.lbl_goToControlForm.Location = new System.Drawing.Point(14, 9);
+            this.lbl_goToControlForm.Location = new System.Drawing.Point(62, 13);
             this.lbl_goToControlForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_goToControlForm.Name = "lbl_goToControlForm";
-            this.lbl_goToControlForm.Size = new System.Drawing.Size(536, 37);
+            this.lbl_goToControlForm.Size = new System.Drawing.Size(426, 29);
             this.lbl_goToControlForm.TabIndex = 14;
             this.lbl_goToControlForm.Text = "Click HERE to configure your input devices";
             this.lbl_goToControlForm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -572,7 +572,7 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.Enabled = false;
             this.pictureBox1.Image = global::mgs2_v_s_fix.Properties.Resources.gamepad;
-            this.pictureBox1.Location = new System.Drawing.Point(217, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(210, 46);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 128);
@@ -607,7 +607,7 @@
             this.lbl_AAGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_AAGuide.Cursor = System.Windows.Forms.Cursors.Default;
             this.lbl_AAGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AAGuide.Location = new System.Drawing.Point(6, 263);
+            this.lbl_AAGuide.Location = new System.Drawing.Point(6, 253);
             this.lbl_AAGuide.Name = "lbl_AAGuide";
             this.lbl_AAGuide.Size = new System.Drawing.Size(540, 19);
             this.lbl_AAGuide.TabIndex = 19;
@@ -621,7 +621,7 @@
             this.pnl_AA.Controls.Add(this.label9);
             this.pnl_AA.Controls.Add(this.AA_fxaa);
             this.pnl_AA.Controls.Add(this.AA_no);
-            this.pnl_AA.Location = new System.Drawing.Point(64, 226);
+            this.pnl_AA.Location = new System.Drawing.Point(42, 212);
             this.pnl_AA.Name = "pnl_AA";
             this.pnl_AA.Size = new System.Drawing.Size(425, 32);
             this.pnl_AA.TabIndex = 18;
@@ -715,7 +715,7 @@
             this.chb_DepthOfField.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_DepthOfField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_DepthOfField.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_DepthOfField.Location = new System.Drawing.Point(332, 319);
+            this.chb_DepthOfField.Location = new System.Drawing.Point(315, 315);
             this.chb_DepthOfField.Name = "chb_DepthOfField";
             this.chb_DepthOfField.Size = new System.Drawing.Size(55, 26);
             this.chb_DepthOfField.TabIndex = 17;
@@ -730,7 +730,7 @@
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label20.Location = new System.Drawing.Point(193, 318);
+            this.label20.Location = new System.Drawing.Point(176, 314);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(143, 26);
             this.label20.TabIndex = 16;
@@ -748,7 +748,7 @@
             this.chb_MotionBlur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_MotionBlur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_MotionBlur.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_MotionBlur.Location = new System.Drawing.Point(332, 347);
+            this.chb_MotionBlur.Location = new System.Drawing.Point(315, 343);
             this.chb_MotionBlur.Name = "chb_MotionBlur";
             this.chb_MotionBlur.Size = new System.Drawing.Size(55, 26);
             this.chb_MotionBlur.TabIndex = 13;
@@ -763,7 +763,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label7.Location = new System.Drawing.Point(285, 426);
+            this.label7.Location = new System.Drawing.Point(199, 340);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 26);
@@ -782,7 +782,7 @@
             this.chb_BunchOfCoolEffect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_BunchOfCoolEffect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_BunchOfCoolEffect.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(332, 292);
+            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(315, 288);
             this.chb_BunchOfCoolEffect.Name = "chb_BunchOfCoolEffect";
             this.chb_BunchOfCoolEffect.Size = new System.Drawing.Size(55, 26);
             this.chb_BunchOfCoolEffect.TabIndex = 11;
@@ -797,7 +797,7 @@
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label11.Location = new System.Drawing.Point(230, 358);
+            this.label11.Location = new System.Drawing.Point(156, 288);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(163, 26);
@@ -812,7 +812,7 @@
             this.pnl_EffectQuantity.Controls.Add(this.label5);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_medium);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_low);
-            this.pnl_EffectQuantity.Location = new System.Drawing.Point(64, 169);
+            this.pnl_EffectQuantity.Location = new System.Drawing.Point(48, 160);
             this.pnl_EffectQuantity.Name = "pnl_EffectQuantity";
             this.pnl_EffectQuantity.Size = new System.Drawing.Size(425, 32);
             this.pnl_EffectQuantity.TabIndex = 5;
@@ -899,7 +899,7 @@
             this.pnl_RenderingClearness.Controls.Add(this.label3);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_medium);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_low);
-            this.pnl_RenderingClearness.Location = new System.Drawing.Point(64, 131);
+            this.pnl_RenderingClearness.Location = new System.Drawing.Point(48, 122);
             this.pnl_RenderingClearness.Name = "pnl_RenderingClearness";
             this.pnl_RenderingClearness.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingClearness.TabIndex = 5;
@@ -986,7 +986,7 @@
             this.pnl_ModelQuality.Controls.Add(this.label2);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_medium);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_low);
-            this.pnl_ModelQuality.Location = new System.Drawing.Point(64, 93);
+            this.pnl_ModelQuality.Location = new System.Drawing.Point(48, 84);
             this.pnl_ModelQuality.Name = "pnl_ModelQuality";
             this.pnl_ModelQuality.Size = new System.Drawing.Size(425, 32);
             this.pnl_ModelQuality.TabIndex = 5;
@@ -1074,7 +1074,7 @@
             this.pnl_ShadowDetail.Controls.Add(this.label1);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_medium);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_low);
-            this.pnl_ShadowDetail.Location = new System.Drawing.Point(64, 55);
+            this.pnl_ShadowDetail.Location = new System.Drawing.Point(48, 46);
             this.pnl_ShadowDetail.Name = "pnl_ShadowDetail";
             this.pnl_ShadowDetail.Size = new System.Drawing.Size(425, 32);
             this.pnl_ShadowDetail.TabIndex = 5;
@@ -1164,7 +1164,7 @@
             this.pnl_RenderingSize.Controls.Add(this.lbl_descr);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_medium);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_low);
-            this.pnl_RenderingSize.Location = new System.Drawing.Point(64, 19);
+            this.pnl_RenderingSize.Location = new System.Drawing.Point(48, 10);
             this.pnl_RenderingSize.Name = "pnl_RenderingSize";
             this.pnl_RenderingSize.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingSize.TabIndex = 2;
@@ -1281,7 +1281,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label6.Location = new System.Drawing.Point(79, 232);
+            this.label6.Location = new System.Drawing.Point(37, 243);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(145, 26);
             this.label6.TabIndex = 9;
@@ -1296,7 +1296,7 @@
             this.lst_sound_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_sound_list.FormattingEnabled = true;
             this.lst_sound_list.ItemHeight = 18;
-            this.lst_sound_list.Location = new System.Drawing.Point(303, 292);
+            this.lst_sound_list.Location = new System.Drawing.Point(183, 250);
             this.lst_sound_list.Margin = new System.Windows.Forms.Padding(4);
             this.lst_sound_list.Name = "lst_sound_list";
             this.lst_sound_list.Size = new System.Drawing.Size(327, 54);
