@@ -33,6 +33,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_KbMouse = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_keyboardGuide = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.KeyboardLayout_Numkey = new System.Windows.Forms.RadioButton();
@@ -42,7 +43,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_controllerGuide = new System.Windows.Forms.Label();
             this.pnl_EnableController = new System.Windows.Forms.Panel();
-            this.EnableController_STEAM = new System.Windows.Forms.RadioButton();
             this.EnableController_DS4 = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
@@ -62,7 +62,7 @@
             this.help_controls = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lbl_keyboardGuide = new System.Windows.Forms.Label();
+            this.EnableController_STEAM = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tab_KbMouse.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -87,12 +87,11 @@
             this.btn_returnToForm1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_returnToForm1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_returnToForm1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_returnToForm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_returnToForm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_returnToForm1.ForeColor = System.Drawing.Color.Black;
-            this.btn_returnToForm1.Location = new System.Drawing.Point(283, 13);
-            this.btn_returnToForm1.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_returnToForm1.Location = new System.Drawing.Point(212, 11);
             this.btn_returnToForm1.Name = "btn_returnToForm1";
-            this.btn_returnToForm1.Size = new System.Drawing.Size(515, 52);
+            this.btn_returnToForm1.Size = new System.Drawing.Size(386, 42);
             this.btn_returnToForm1.TabIndex = 2;
             this.btn_returnToForm1.Text = "Confirm and go back";
             this.btn_returnToForm1.UseVisualStyleBackColor = false;
@@ -105,11 +104,10 @@
             this.tabControl1.Controls.Add(this.tab_ControlsHelp);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabControl1.Location = new System.Drawing.Point(84, 73);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Location = new System.Drawing.Point(63, 59);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(919, 574);
+            this.tabControl1.Size = new System.Drawing.Size(689, 480);
             this.tabControl1.TabIndex = 2;
             // 
             // tab_KbMouse
@@ -117,9 +115,10 @@
             this.tab_KbMouse.BackColor = System.Drawing.Color.White;
             this.tab_KbMouse.Controls.Add(this.panel1);
             this.tab_KbMouse.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tab_KbMouse.Location = new System.Drawing.Point(4, 38);
+            this.tab_KbMouse.Location = new System.Drawing.Point(4, 32);
+            this.tab_KbMouse.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tab_KbMouse.Name = "tab_KbMouse";
-            this.tab_KbMouse.Size = new System.Drawing.Size(911, 532);
+            this.tab_KbMouse.Size = new System.Drawing.Size(681, 430);
             this.tab_KbMouse.TabIndex = 0;
             this.tab_KbMouse.Text = "Keyboard + Mouse";
             // 
@@ -129,19 +128,30 @@
             this.panel1.Controls.Add(this.lbl_keyboardGuide);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(91, 44);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(68, 36);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(728, 445);
+            this.panel1.Size = new System.Drawing.Size(546, 362);
             this.panel1.TabIndex = 22;
+            // 
+            // lbl_keyboardGuide
+            // 
+            this.lbl_keyboardGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_keyboardGuide.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lbl_keyboardGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_keyboardGuide.Location = new System.Drawing.Point(3, 45);
+            this.lbl_keyboardGuide.Name = "lbl_keyboardGuide";
+            this.lbl_keyboardGuide.Size = new System.Drawing.Size(540, 19);
+            this.lbl_keyboardGuide.TabIndex = 21;
+            this.lbl_keyboardGuide.Text = "[RUNTIME]";
+            this.lbl_keyboardGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_keyboardGuide.Visible = false;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox3.Location = new System.Drawing.Point(21, 112);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Location = new System.Drawing.Point(16, 91);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(687, 332);
+            this.pictureBox3.Size = new System.Drawing.Size(515, 270);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 18;
             this.pictureBox3.TabStop = false;
@@ -151,10 +161,9 @@
             this.panel3.Controls.Add(this.KeyboardLayout_Numkey);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.KeyboardLayout_Default);
-            this.panel3.Location = new System.Drawing.Point(114, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(86, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(532, 48);
+            this.panel3.Size = new System.Drawing.Size(399, 39);
             this.panel3.TabIndex = 12;
             // 
             // KeyboardLayout_Numkey
@@ -169,10 +178,9 @@
             this.KeyboardLayout_Numkey.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.KeyboardLayout_Numkey.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.KeyboardLayout_Numkey.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KeyboardLayout_Numkey.Location = new System.Drawing.Point(372, 5);
-            this.KeyboardLayout_Numkey.Margin = new System.Windows.Forms.Padding(4);
+            this.KeyboardLayout_Numkey.Location = new System.Drawing.Point(279, 4);
             this.KeyboardLayout_Numkey.Name = "KeyboardLayout_Numkey";
-            this.KeyboardLayout_Numkey.Size = new System.Drawing.Size(148, 37);
+            this.KeyboardLayout_Numkey.Size = new System.Drawing.Size(111, 30);
             this.KeyboardLayout_Numkey.TabIndex = 7;
             this.KeyboardLayout_Numkey.TabStop = true;
             this.KeyboardLayout_Numkey.Text = "Numkey";
@@ -186,10 +194,9 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label4.Location = new System.Drawing.Point(12, 7);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(9, 6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(185, 33);
+            this.label4.Size = new System.Drawing.Size(146, 26);
             this.label4.TabIndex = 6;
             this.label4.Text = "Buttons Layout:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -206,10 +213,9 @@
             this.KeyboardLayout_Default.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.KeyboardLayout_Default.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.KeyboardLayout_Default.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KeyboardLayout_Default.Location = new System.Drawing.Point(243, 5);
-            this.KeyboardLayout_Default.Margin = new System.Windows.Forms.Padding(4);
+            this.KeyboardLayout_Default.Location = new System.Drawing.Point(182, 4);
             this.KeyboardLayout_Default.Name = "KeyboardLayout_Default";
-            this.KeyboardLayout_Default.Size = new System.Drawing.Size(125, 37);
+            this.KeyboardLayout_Default.Size = new System.Drawing.Size(94, 30);
             this.KeyboardLayout_Default.TabIndex = 5;
             this.KeyboardLayout_Default.TabStop = true;
             this.KeyboardLayout_Default.Text = "Default";
@@ -226,19 +232,19 @@
             this.tab_Gamepads.Controls.Add(this.pnl_EnableController);
             this.tab_Gamepads.Controls.Add(this.pnl_Gamepad_PreferredLayout);
             this.tab_Gamepads.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tab_Gamepads.Location = new System.Drawing.Point(4, 38);
+            this.tab_Gamepads.Location = new System.Drawing.Point(4, 32);
+            this.tab_Gamepads.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tab_Gamepads.Name = "tab_Gamepads";
-            this.tab_Gamepads.Size = new System.Drawing.Size(911, 532);
+            this.tab_Gamepads.Size = new System.Drawing.Size(681, 444);
             this.tab_Gamepads.TabIndex = 1;
             this.tab_Gamepads.Text = "Gamepads";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(112, 195);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(84, 165);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(687, 332);
+            this.pictureBox1.Size = new System.Drawing.Size(515, 272);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
@@ -248,10 +254,9 @@
             this.lbl_controllerGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_controllerGuide.Cursor = System.Windows.Forms.Cursors.Default;
             this.lbl_controllerGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_controllerGuide.Location = new System.Drawing.Point(4, 54);
-            this.lbl_controllerGuide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_controllerGuide.Location = new System.Drawing.Point(3, 51);
             this.lbl_controllerGuide.Name = "lbl_controllerGuide";
-            this.lbl_controllerGuide.Size = new System.Drawing.Size(903, 23);
+            this.lbl_controllerGuide.Size = new System.Drawing.Size(677, 19);
             this.lbl_controllerGuide.TabIndex = 19;
             this.lbl_controllerGuide.Text = "[RUNTIME]";
             this.lbl_controllerGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -265,35 +270,10 @@
             this.pnl_EnableController.Controls.Add(this.label8);
             this.pnl_EnableController.Controls.Add(this.EnableController_XBOX);
             this.pnl_EnableController.Controls.Add(this.EnableController_NO);
-            this.pnl_EnableController.Location = new System.Drawing.Point(95, 9);
-            this.pnl_EnableController.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_EnableController.Location = new System.Drawing.Point(71, 14);
             this.pnl_EnableController.Name = "pnl_EnableController";
-            this.pnl_EnableController.Size = new System.Drawing.Size(720, 39);
+            this.pnl_EnableController.Size = new System.Drawing.Size(540, 32);
             this.pnl_EnableController.TabIndex = 18;
-            // 
-            // EnableController_STEAM
-            // 
-            this.EnableController_STEAM.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.EnableController_STEAM.Appearance = System.Windows.Forms.Appearance.Button;
-            this.EnableController_STEAM.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.EnableController_STEAM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.EnableController_STEAM.Enabled = false;
-            this.EnableController_STEAM.FlatAppearance.BorderSize = 0;
-            this.EnableController_STEAM.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.EnableController_STEAM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.EnableController_STEAM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.EnableController_STEAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EnableController_STEAM.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableController_STEAM.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.EnableController_STEAM.Location = new System.Drawing.Point(551, 6);
-            this.EnableController_STEAM.Margin = new System.Windows.Forms.Padding(4);
-            this.EnableController_STEAM.Name = "EnableController_STEAM";
-            this.EnableController_STEAM.Size = new System.Drawing.Size(155, 37);
-            this.EnableController_STEAM.TabIndex = 5;
-            this.EnableController_STEAM.TabStop = true;
-            this.EnableController_STEAM.Text = "Steam: Soon ™";
-            this.EnableController_STEAM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.EnableController_STEAM.UseVisualStyleBackColor = false;
             // 
             // EnableController_DS4
             // 
@@ -307,10 +287,9 @@
             this.EnableController_DS4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EnableController_DS4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EnableController_DS4.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableController_DS4.Location = new System.Drawing.Point(384, 5);
-            this.EnableController_DS4.Margin = new System.Windows.Forms.Padding(4);
+            this.EnableController_DS4.Location = new System.Drawing.Point(288, 4);
             this.EnableController_DS4.Name = "EnableController_DS4";
-            this.EnableController_DS4.Size = new System.Drawing.Size(160, 37);
+            this.EnableController_DS4.Size = new System.Drawing.Size(120, 30);
             this.EnableController_DS4.TabIndex = 4;
             this.EnableController_DS4.TabStop = true;
             this.EnableController_DS4.Text = "DualShock 4";
@@ -324,10 +303,9 @@
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label8.Location = new System.Drawing.Point(31, 7);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(23, 6);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(130, 33);
+            this.label8.Size = new System.Drawing.Size(103, 26);
             this.label8.TabIndex = 3;
             this.label8.Text = "Controller:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -344,10 +322,9 @@
             this.EnableController_XBOX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EnableController_XBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EnableController_XBOX.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableController_XBOX.Location = new System.Drawing.Point(255, 5);
-            this.EnableController_XBOX.Margin = new System.Windows.Forms.Padding(4);
+            this.EnableController_XBOX.Location = new System.Drawing.Point(191, 4);
             this.EnableController_XBOX.Name = "EnableController_XBOX";
-            this.EnableController_XBOX.Size = new System.Drawing.Size(125, 37);
+            this.EnableController_XBOX.Size = new System.Drawing.Size(94, 30);
             this.EnableController_XBOX.TabIndex = 1;
             this.EnableController_XBOX.TabStop = true;
             this.EnableController_XBOX.Text = "Xbox";
@@ -368,10 +345,9 @@
             this.EnableController_NO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EnableController_NO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EnableController_NO.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableController_NO.Location = new System.Drawing.Point(172, 5);
-            this.EnableController_NO.Margin = new System.Windows.Forms.Padding(4);
+            this.EnableController_NO.Location = new System.Drawing.Point(129, 4);
             this.EnableController_NO.Name = "EnableController_NO";
-            this.EnableController_NO.Size = new System.Drawing.Size(77, 37);
+            this.EnableController_NO.Size = new System.Drawing.Size(58, 30);
             this.EnableController_NO.TabIndex = 0;
             this.EnableController_NO.TabStop = true;
             this.EnableController_NO.Text = "NO";
@@ -385,20 +361,18 @@
             this.pnl_Gamepad_PreferredLayout.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnl_Gamepad_PreferredLayout.Controls.Add(this.pnl_InvertTriggersWithDorsals);
             this.pnl_Gamepad_PreferredLayout.Controls.Add(this.pnl_LayoutChooser);
-            this.pnl_Gamepad_PreferredLayout.Location = new System.Drawing.Point(95, 87);
-            this.pnl_Gamepad_PreferredLayout.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_Gamepad_PreferredLayout.Location = new System.Drawing.Point(71, 78);
             this.pnl_Gamepad_PreferredLayout.Name = "pnl_Gamepad_PreferredLayout";
-            this.pnl_Gamepad_PreferredLayout.Size = new System.Drawing.Size(728, 445);
+            this.pnl_Gamepad_PreferredLayout.Size = new System.Drawing.Size(546, 362);
             this.pnl_Gamepad_PreferredLayout.TabIndex = 20;
             // 
             // pnl_InvertTriggersWithDorsals
             // 
             this.pnl_InvertTriggersWithDorsals.Controls.Add(this.chb_InvertTriggersWithDorsals);
             this.pnl_InvertTriggersWithDorsals.Controls.Add(this.lbl_InvertTriggersWithDorsals);
-            this.pnl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(184, 47);
-            this.pnl_InvertTriggersWithDorsals.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(138, 38);
             this.pnl_InvertTriggersWithDorsals.Name = "pnl_InvertTriggersWithDorsals";
-            this.pnl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(391, 48);
+            this.pnl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(293, 39);
             this.pnl_InvertTriggersWithDorsals.TabIndex = 13;
             // 
             // chb_InvertTriggersWithDorsals
@@ -412,10 +386,9 @@
             this.chb_InvertTriggersWithDorsals.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_InvertTriggersWithDorsals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_InvertTriggersWithDorsals.Location = new System.Drawing.Point(302, 10);
-            this.chb_InvertTriggersWithDorsals.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_InvertTriggersWithDorsals.Location = new System.Drawing.Point(226, 8);
             this.chb_InvertTriggersWithDorsals.Name = "chb_InvertTriggersWithDorsals";
-            this.chb_InvertTriggersWithDorsals.Size = new System.Drawing.Size(73, 32);
+            this.chb_InvertTriggersWithDorsals.Size = new System.Drawing.Size(55, 26);
             this.chb_InvertTriggersWithDorsals.TabIndex = 9;
             this.chb_InvertTriggersWithDorsals.TabStop = false;
             this.chb_InvertTriggersWithDorsals.Text = "XXX";
@@ -428,10 +401,9 @@
             this.lbl_InvertTriggersWithDorsals.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_InvertTriggersWithDorsals.AutoSize = true;
             this.lbl_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(16, 9);
-            this.lbl_InvertTriggersWithDorsals.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(12, 7);
             this.lbl_InvertTriggersWithDorsals.Name = "lbl_InvertTriggersWithDorsals";
-            this.lbl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(277, 33);
+            this.lbl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(215, 26);
             this.lbl_InvertTriggersWithDorsals.TabIndex = 6;
             this.lbl_InvertTriggersWithDorsals.Text = "Invert RT/LT with RB/LB:";
             this.lbl_InvertTriggersWithDorsals.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -441,10 +413,9 @@
             this.pnl_LayoutChooser.Controls.Add(this.PreferredLayout_PS2);
             this.pnl_LayoutChooser.Controls.Add(this.label10);
             this.pnl_LayoutChooser.Controls.Add(this.PreferredLayout_V);
-            this.pnl_LayoutChooser.Location = new System.Drawing.Point(114, 0);
-            this.pnl_LayoutChooser.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_LayoutChooser.Location = new System.Drawing.Point(86, 0);
             this.pnl_LayoutChooser.Name = "pnl_LayoutChooser";
-            this.pnl_LayoutChooser.Size = new System.Drawing.Size(532, 48);
+            this.pnl_LayoutChooser.Size = new System.Drawing.Size(399, 39);
             this.pnl_LayoutChooser.TabIndex = 12;
             // 
             // PreferredLayout_PS2
@@ -459,10 +430,9 @@
             this.PreferredLayout_PS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_PS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_PS2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_PS2.Location = new System.Drawing.Point(372, 5);
-            this.PreferredLayout_PS2.Margin = new System.Windows.Forms.Padding(4);
+            this.PreferredLayout_PS2.Location = new System.Drawing.Point(279, 4);
             this.PreferredLayout_PS2.Name = "PreferredLayout_PS2";
-            this.PreferredLayout_PS2.Size = new System.Drawing.Size(148, 37);
+            this.PreferredLayout_PS2.Size = new System.Drawing.Size(111, 30);
             this.PreferredLayout_PS2.TabIndex = 7;
             this.PreferredLayout_PS2.TabStop = true;
             this.PreferredLayout_PS2.Text = "PS2 Type";
@@ -476,10 +446,9 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label10.Location = new System.Drawing.Point(12, 7);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(9, 6);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(185, 33);
+            this.label10.Size = new System.Drawing.Size(146, 26);
             this.label10.TabIndex = 6;
             this.label10.Text = "Buttons Layout:";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -496,10 +465,9 @@
             this.PreferredLayout_V.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.PreferredLayout_V.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreferredLayout_V.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PreferredLayout_V.Location = new System.Drawing.Point(243, 5);
-            this.PreferredLayout_V.Margin = new System.Windows.Forms.Padding(4);
+            this.PreferredLayout_V.Location = new System.Drawing.Point(182, 4);
             this.PreferredLayout_V.Name = "PreferredLayout_V";
-            this.PreferredLayout_V.Size = new System.Drawing.Size(125, 37);
+            this.PreferredLayout_V.Size = new System.Drawing.Size(94, 30);
             this.PreferredLayout_V.TabIndex = 5;
             this.PreferredLayout_V.TabStop = true;
             this.PreferredLayout_V.Text = "V\'s Type";
@@ -516,9 +484,10 @@
             this.tab_ControlsHelp.Controls.Add(this.label1);
             this.tab_ControlsHelp.Controls.Add(this.help_controls);
             this.tab_ControlsHelp.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tab_ControlsHelp.Location = new System.Drawing.Point(4, 38);
+            this.tab_ControlsHelp.Location = new System.Drawing.Point(4, 32);
+            this.tab_ControlsHelp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tab_ControlsHelp.Name = "tab_ControlsHelp";
-            this.tab_ControlsHelp.Size = new System.Drawing.Size(911, 532);
+            this.tab_ControlsHelp.Size = new System.Drawing.Size(681, 430);
             this.tab_ControlsHelp.TabIndex = 2;
             this.tab_ControlsHelp.Text = "HELP";
             // 
@@ -527,8 +496,7 @@
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(398, 327);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(298, 266);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(128, 128);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -542,10 +510,9 @@
             this.label2.AutoSize = true;
             this.label2.Cursor = System.Windows.Forms.Cursors.Default;
             this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(210, 264);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(158, 214);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(481, 24);
+            this.label2.Size = new System.Drawing.Size(372, 19);
             this.label2.TabIndex = 25;
             this.label2.Text = "Check the up to date manual clicking on the icon below!";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -555,10 +522,9 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.Cursor = System.Windows.Forms.Cursors.Default;
             this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 44);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(10, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(889, 166);
+            this.label1.Size = new System.Drawing.Size(667, 135);
             this.label1.TabIndex = 24;
             this.label1.Text = resources.GetString("label1.Text");
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -569,10 +535,9 @@
             this.help_controls.AutoSize = true;
             this.help_controls.Cursor = System.Windows.Forms.Cursors.Default;
             this.help_controls.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_controls.Location = new System.Drawing.Point(347, 216);
-            this.help_controls.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.help_controls.Location = new System.Drawing.Point(260, 176);
             this.help_controls.Name = "help_controls";
-            this.help_controls.Size = new System.Drawing.Size(206, 24);
+            this.help_controls.Size = new System.Drawing.Size(161, 19);
             this.help_controls.TabIndex = 23;
             this.help_controls.Text = "Input is a delicate topic";
             this.help_controls.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -597,31 +562,42 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // lbl_keyboardGuide
+            // EnableController_STEAM
             // 
-            this.lbl_keyboardGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_keyboardGuide.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lbl_keyboardGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_keyboardGuide.Location = new System.Drawing.Point(4, 55);
-            this.lbl_keyboardGuide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_keyboardGuide.Name = "lbl_keyboardGuide";
-            this.lbl_keyboardGuide.Size = new System.Drawing.Size(720, 23);
-            this.lbl_keyboardGuide.TabIndex = 21;
-            this.lbl_keyboardGuide.Text = "[RUNTIME]";
-            this.lbl_keyboardGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_keyboardGuide.Visible = false;
+            this.EnableController_STEAM.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EnableController_STEAM.Appearance = System.Windows.Forms.Appearance.Button;
+            this.EnableController_STEAM.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_STEAM.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EnableController_STEAM.Enabled = false;
+            this.EnableController_STEAM.FlatAppearance.BorderSize = 0;
+            this.EnableController_STEAM.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_STEAM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_STEAM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.EnableController_STEAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EnableController_STEAM.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EnableController_STEAM.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.EnableController_STEAM.Location = new System.Drawing.Point(413, 5);
+            this.EnableController_STEAM.Name = "EnableController_STEAM";
+            this.EnableController_STEAM.Size = new System.Drawing.Size(116, 30);
+            this.EnableController_STEAM.TabIndex = 5;
+            this.EnableController_STEAM.TabStop = true;
+            this.EnableController_STEAM.Text = "Steam: Soon ™";
+            this.EnableController_STEAM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EnableController_STEAM.UseVisualStyleBackColor = false;
+            this.EnableController_STEAM.Visible = false;
             // 
             // ControlsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1065, 653);
+            this.ClientSize = new System.Drawing.Size(804, 541);
             this.ControlBox = false;
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btn_returnToForm1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ControlsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Choose your weapon";
@@ -660,7 +636,6 @@
         internal System.Windows.Forms.PictureBox pictureBox1;
         internal System.Windows.Forms.Label lbl_controllerGuide;
         internal System.Windows.Forms.Panel pnl_EnableController;
-        internal System.Windows.Forms.RadioButton EnableController_STEAM;
         internal System.Windows.Forms.RadioButton EnableController_DS4;
         internal System.Windows.Forms.Label label8;
         internal System.Windows.Forms.RadioButton EnableController_XBOX;
@@ -684,5 +659,6 @@
         internal System.Windows.Forms.Label label4;
         internal System.Windows.Forms.RadioButton KeyboardLayout_Default;
         internal System.Windows.Forms.Label lbl_keyboardGuide;
+        internal System.Windows.Forms.RadioButton EnableController_STEAM;
     }
 }

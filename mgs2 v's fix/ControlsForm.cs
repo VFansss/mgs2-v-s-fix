@@ -38,7 +38,7 @@ namespace mgs2_v_s_fix
             AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.MGS2_ttf.Length, IntPtr.Zero, ref dummy);
             System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
 
-            myFont = new Font(fonts.Families[0], 18, FontStyle.Underline);
+            myFont = new Font(fonts.Families[0], 24, FontStyle.Underline);
 
             btn_returnToForm1.Font = myFont;
 

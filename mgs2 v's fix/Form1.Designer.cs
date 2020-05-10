@@ -1,4 +1,4 @@
-namespace mgs2_v_s_fix
+﻿namespace mgs2_v_s_fix
 {
     partial class Form1
     {
@@ -178,10 +178,9 @@ namespace mgs2_v_s_fix
             this.btn_startGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_startGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_startGame.ForeColor = System.Drawing.Color.Black;
-            this.btn_startGame.Location = new System.Drawing.Point(52, 69);
-            this.btn_startGame.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_startGame.Location = new System.Drawing.Point(39, 56);
             this.btn_startGame.Name = "btn_startGame";
-            this.btn_startGame.Size = new System.Drawing.Size(220, 48);
+            this.btn_startGame.Size = new System.Drawing.Size(165, 39);
             this.btn_startGame.TabIndex = 0;
             this.btn_startGame.Text = "START GAME";
             this.btn_startGame.UseVisualStyleBackColor = false;
@@ -200,10 +199,9 @@ namespace mgs2_v_s_fix
             this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_settings.ForeColor = System.Drawing.Color.Black;
-            this.btn_settings.Location = new System.Drawing.Point(52, 154);
-            this.btn_settings.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_settings.Location = new System.Drawing.Point(39, 125);
             this.btn_settings.Name = "btn_settings";
-            this.btn_settings.Size = new System.Drawing.Size(220, 55);
+            this.btn_settings.Size = new System.Drawing.Size(165, 45);
             this.btn_settings.TabIndex = 1;
             this.btn_settings.Text = "SETTINGS";
             this.btn_settings.UseVisualStyleBackColor = false;
@@ -221,11 +219,10 @@ namespace mgs2_v_s_fix
             this.tabControl1.Controls.Add(this.tab_About);
             this.tabControl1.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.tabControl1.Location = new System.Drawing.Point(312, 25);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Location = new System.Drawing.Point(234, 20);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(747, 511);
+            this.tabControl1.Size = new System.Drawing.Size(560, 415);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.Visible = false;
             // 
@@ -250,11 +247,10 @@ namespace mgs2_v_s_fix
             this.tab_Resolution.Controls.Add(this.txt_Width);
             this.tab_Resolution.Controls.Add(this.lbl_des_00);
             this.tab_Resolution.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tab_Resolution.Location = new System.Drawing.Point(4, 38);
-            this.tab_Resolution.Margin = new System.Windows.Forms.Padding(4);
+            this.tab_Resolution.Location = new System.Drawing.Point(4, 32);
             this.tab_Resolution.Name = "tab_Resolution";
-            this.tab_Resolution.Padding = new System.Windows.Forms.Padding(4);
-            this.tab_Resolution.Size = new System.Drawing.Size(739, 469);
+            this.tab_Resolution.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Resolution.Size = new System.Drawing.Size(552, 379);
             this.tab_Resolution.TabIndex = 0;
             this.tab_Resolution.Text = "Resolution";
             // 
@@ -264,10 +260,9 @@ namespace mgs2_v_s_fix
             this.help_resolutionMenuWarning.AutoSize = true;
             this.help_resolutionMenuWarning.Cursor = System.Windows.Forms.Cursors.Hand;
             this.help_resolutionMenuWarning.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_resolutionMenuWarning.Location = new System.Drawing.Point(99, 245);
-            this.help_resolutionMenuWarning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.help_resolutionMenuWarning.Location = new System.Drawing.Point(74, 199);
             this.help_resolutionMenuWarning.Name = "help_resolutionMenuWarning";
-            this.help_resolutionMenuWarning.Size = new System.Drawing.Size(575, 24);
+            this.help_resolutionMenuWarning.Size = new System.Drawing.Size(445, 19);
             this.help_resolutionMenuWarning.TabIndex = 16;
             this.help_resolutionMenuWarning.Text = "Be sure to select the right VGA from the list below! More info here!";
             this.help_resolutionMenuWarning.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -277,11 +272,9 @@ namespace mgs2_v_s_fix
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox4.Image = global::mgs2_v_s_fix.Properties.Resources.exclamation;
-            this.pictureBox4.Location = new System.Drawing.Point(35, 236);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox4.Location = new System.Drawing.Point(26, 187);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(56, 52);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox4.Size = new System.Drawing.Size(42, 42);
             this.pictureBox4.TabIndex = 15;
             this.pictureBox4.TabStop = false;
             // 
@@ -294,7 +287,7 @@ namespace mgs2_v_s_fix
             this.help_resolution.Location = new System.Drawing.Point(79, 431);
             this.help_resolution.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.help_resolution.Name = "help_resolution";
-            this.help_resolution.Size = new System.Drawing.Size(595, 24);
+            this.help_resolution.Size = new System.Drawing.Size(470, 19);
             this.help_resolution.TabIndex = 14;
             this.help_resolution.Text = "Graphical issues? Cutscene freeze? Miscellaneous doubts? Click HERE!";
             this.help_resolution.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -311,10 +304,9 @@ namespace mgs2_v_s_fix
             this.chb_OptimizedFOV.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_OptimizedFOV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_OptimizedFOV.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_OptimizedFOV.Location = new System.Drawing.Point(328, 145);
-            this.chb_OptimizedFOV.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_OptimizedFOV.Location = new System.Drawing.Point(246, 118);
             this.chb_OptimizedFOV.Name = "chb_OptimizedFOV";
-            this.chb_OptimizedFOV.Size = new System.Drawing.Size(73, 32);
+            this.chb_OptimizedFOV.Size = new System.Drawing.Size(55, 26);
             this.chb_OptimizedFOV.TabIndex = 13;
             this.chb_OptimizedFOV.TabStop = false;
             this.chb_OptimizedFOV.Text = "XXX";
@@ -327,10 +319,9 @@ namespace mgs2_v_s_fix
             this.lbl_OptimizedFOV.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_OptimizedFOV.AutoSize = true;
             this.lbl_OptimizedFOV.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_OptimizedFOV.Location = new System.Drawing.Point(147, 148);
-            this.lbl_OptimizedFOV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_OptimizedFOV.Location = new System.Drawing.Point(110, 120);
             this.lbl_OptimizedFOV.Name = "lbl_OptimizedFOV";
-            this.lbl_OptimizedFOV.Size = new System.Drawing.Size(175, 24);
+            this.lbl_OptimizedFOV.Size = new System.Drawing.Size(138, 19);
             this.lbl_OptimizedFOV.TabIndex = 12;
             this.lbl_OptimizedFOV.Text = "optimized 16:9 FOV:";
             this.lbl_OptimizedFOV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -346,10 +337,9 @@ namespace mgs2_v_s_fix
             this.chb_FullscreenCutscene.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_FullscreenCutscene.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_FullscreenCutscene.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FullscreenCutscene.Location = new System.Drawing.Point(328, 114);
-            this.chb_FullscreenCutscene.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_FullscreenCutscene.Location = new System.Drawing.Point(246, 93);
             this.chb_FullscreenCutscene.Name = "chb_FullscreenCutscene";
-            this.chb_FullscreenCutscene.Size = new System.Drawing.Size(73, 32);
+            this.chb_FullscreenCutscene.Size = new System.Drawing.Size(55, 26);
             this.chb_FullscreenCutscene.TabIndex = 11;
             this.chb_FullscreenCutscene.TabStop = false;
             this.chb_FullscreenCutscene.Text = "XXX";
@@ -362,10 +352,9 @@ namespace mgs2_v_s_fix
             this.lbl_FullscreenCutscene.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_FullscreenCutscene.AutoSize = true;
             this.lbl_FullscreenCutscene.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_FullscreenCutscene.Location = new System.Drawing.Point(140, 117);
-            this.lbl_FullscreenCutscene.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_FullscreenCutscene.Location = new System.Drawing.Point(105, 95);
             this.lbl_FullscreenCutscene.Name = "lbl_FullscreenCutscene";
-            this.lbl_FullscreenCutscene.Size = new System.Drawing.Size(179, 24);
+            this.lbl_FullscreenCutscene.Size = new System.Drawing.Size(143, 19);
             this.lbl_FullscreenCutscene.TabIndex = 10;
             this.lbl_FullscreenCutscene.Text = "full screen cutscene:";
             this.lbl_FullscreenCutscene.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -381,10 +370,9 @@ namespace mgs2_v_s_fix
             this.chb_WindowMode.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_WindowMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_WindowMode.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_WindowMode.Location = new System.Drawing.Point(328, 186);
-            this.chb_WindowMode.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_WindowMode.Location = new System.Drawing.Point(246, 151);
             this.chb_WindowMode.Name = "chb_WindowMode";
-            this.chb_WindowMode.Size = new System.Drawing.Size(73, 32);
+            this.chb_WindowMode.Size = new System.Drawing.Size(55, 26);
             this.chb_WindowMode.TabIndex = 6;
             this.chb_WindowMode.TabStop = false;
             this.chb_WindowMode.Text = "XXX";
@@ -397,10 +385,9 @@ namespace mgs2_v_s_fix
             this.lbl_des_03.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_03.AutoSize = true;
             this.lbl_des_03.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_03.Location = new System.Drawing.Point(113, 287);
-            this.lbl_des_03.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_des_03.Location = new System.Drawing.Point(20, 256);
             this.lbl_des_03.Name = "lbl_des_03";
-            this.lbl_des_03.Size = new System.Drawing.Size(210, 33);
+            this.lbl_des_03.Size = new System.Drawing.Size(165, 26);
             this.lbl_des_03.TabIndex = 5;
             this.lbl_des_03.Text = "Graphics Adapter:";
             this.lbl_des_03.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -412,11 +399,11 @@ namespace mgs2_v_s_fix
             this.lst_vga_list.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lst_vga_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_vga_list.FormattingEnabled = true;
-            this.lst_vga_list.ItemHeight = 22;
-            this.lst_vga_list.Location = new System.Drawing.Point(333, 294);
+            this.lst_vga_list.ItemHeight = 18;
+            this.lst_vga_list.Location = new System.Drawing.Point(192, 262);
             this.lst_vga_list.Margin = new System.Windows.Forms.Padding(4);
             this.lst_vga_list.Name = "lst_vga_list";
-            this.lst_vga_list.Size = new System.Drawing.Size(327, 88);
+            this.lst_vga_list.Size = new System.Drawing.Size(327, 54);
             this.lst_vga_list.TabIndex = 4;
             this.lst_vga_list.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lst_vga_list_DrawItem);
             // 
@@ -431,10 +418,9 @@ namespace mgs2_v_s_fix
             this.chb_WideScreenFIX.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_WideScreenFIX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_WideScreenFIX.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_WideScreenFIX.Location = new System.Drawing.Point(328, 80);
-            this.chb_WideScreenFIX.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_WideScreenFIX.Location = new System.Drawing.Point(246, 65);
             this.chb_WideScreenFIX.Name = "chb_WideScreenFIX";
-            this.chb_WideScreenFIX.Size = new System.Drawing.Size(73, 32);
+            this.chb_WideScreenFIX.Size = new System.Drawing.Size(55, 26);
             this.chb_WideScreenFIX.TabIndex = 1;
             this.chb_WideScreenFIX.TabStop = false;
             this.chb_WideScreenFIX.Text = "XXX";
@@ -448,10 +434,9 @@ namespace mgs2_v_s_fix
             this.lbl_des_02.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_02.AutoSize = true;
             this.lbl_des_02.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_02.Location = new System.Drawing.Point(141, 185);
-            this.lbl_des_02.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_des_02.Location = new System.Drawing.Point(106, 150);
             this.lbl_des_02.Name = "lbl_des_02";
-            this.lbl_des_02.Size = new System.Drawing.Size(183, 33);
+            this.lbl_des_02.Size = new System.Drawing.Size(145, 26);
             this.lbl_des_02.TabIndex = 0;
             this.lbl_des_02.Text = "Window Mode:";
             this.lbl_des_02.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -461,12 +446,11 @@ namespace mgs2_v_s_fix
             this.txt_Height.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Height.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Height.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txt_Height.Location = new System.Drawing.Point(445, 30);
-            this.txt_Height.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Height.Location = new System.Drawing.Point(334, 24);
             this.txt_Height.MaxLength = 5;
             this.txt_Height.Name = "txt_Height";
             this.txt_Height.ShortcutsEnabled = false;
-            this.txt_Height.Size = new System.Drawing.Size(68, 23);
+            this.txt_Height.Size = new System.Drawing.Size(51, 19);
             this.txt_Height.TabIndex = 3;
             this.txt_Height.Text = "XXX";
             this.txt_Height.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -480,10 +464,9 @@ namespace mgs2_v_s_fix
             this.lbl_des_01.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_01.AutoSize = true;
             this.lbl_des_01.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_01.Location = new System.Drawing.Point(60, 79);
-            this.lbl_des_01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_des_01.Location = new System.Drawing.Point(45, 64);
             this.lbl_des_01.Name = "lbl_des_01";
-            this.lbl_des_01.Size = new System.Drawing.Size(263, 33);
+            this.lbl_des_01.Size = new System.Drawing.Size(206, 26);
             this.lbl_des_01.TabIndex = 0;
             this.lbl_des_01.Text = "Maintain Aspect Ratio:";
             this.lbl_des_01.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -493,10 +476,9 @@ namespace mgs2_v_s_fix
             this.lbl_X.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_X.AutoSize = true;
             this.lbl_X.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_X.Location = new System.Drawing.Point(409, 23);
-            this.lbl_X.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_X.Location = new System.Drawing.Point(307, 19);
             this.lbl_X.Name = "lbl_X";
-            this.lbl_X.Size = new System.Drawing.Size(27, 33);
+            this.lbl_X.Size = new System.Drawing.Size(21, 26);
             this.lbl_X.TabIndex = 2;
             this.lbl_X.Text = "x";
             // 
@@ -505,12 +487,11 @@ namespace mgs2_v_s_fix
             this.txt_Width.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Width.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txt_Width.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.txt_Width.Location = new System.Drawing.Point(333, 30);
-            this.txt_Width.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_Width.Location = new System.Drawing.Point(250, 24);
             this.txt_Width.MaxLength = 4;
             this.txt_Width.Name = "txt_Width";
             this.txt_Width.ShortcutsEnabled = false;
-            this.txt_Width.Size = new System.Drawing.Size(68, 23);
+            this.txt_Width.Size = new System.Drawing.Size(51, 19);
             this.txt_Width.TabIndex = 1;
             this.txt_Width.Text = "XXXX";
             this.txt_Width.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -524,10 +505,9 @@ namespace mgs2_v_s_fix
             this.lbl_des_00.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_des_00.AutoSize = true;
             this.lbl_des_00.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_des_00.Location = new System.Drawing.Point(191, 23);
-            this.lbl_des_00.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_des_00.Location = new System.Drawing.Point(143, 19);
             this.lbl_des_00.Name = "lbl_des_00";
-            this.lbl_des_00.Size = new System.Drawing.Size(138, 33);
+            this.lbl_des_00.Size = new System.Drawing.Size(108, 26);
             this.lbl_des_00.TabIndex = 0;
             this.lbl_des_00.Text = "Resolution:";
             this.lbl_des_00.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -536,11 +516,11 @@ namespace mgs2_v_s_fix
             // 
             this.tab_Controls.Controls.Add(this.help_control);
             this.tab_Controls.Controls.Add(this.pnl_ControlsSubPanel);
-            this.tab_Controls.Location = new System.Drawing.Point(4, 38);
+            this.tab_Controls.Location = new System.Drawing.Point(4, 32);
             this.tab_Controls.Margin = new System.Windows.Forms.Padding(4);
             this.tab_Controls.Name = "tab_Controls";
-            this.tab_Controls.Padding = new System.Windows.Forms.Padding(4);
-            this.tab_Controls.Size = new System.Drawing.Size(739, 469);
+            this.tab_Controls.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Controls.Size = new System.Drawing.Size(552, 379);
             this.tab_Controls.TabIndex = 1;
             this.tab_Controls.Text = "Controls";
             this.tab_Controls.UseVisualStyleBackColor = true;
@@ -554,7 +534,7 @@ namespace mgs2_v_s_fix
             this.help_control.Location = new System.Drawing.Point(161, 431);
             this.help_control.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.help_control.Name = "help_control";
-            this.help_control.Size = new System.Drawing.Size(429, 24);
+            this.help_control.Size = new System.Drawing.Size(336, 19);
             this.help_control.TabIndex = 15;
             this.help_control.Text = "Any input issues? Click HERE to check the manual!";
             this.help_control.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -565,9 +545,9 @@ namespace mgs2_v_s_fix
             this.pnl_ControlsSubPanel.Controls.Add(this.lbl_goToControlForm);
             this.pnl_ControlsSubPanel.Controls.Add(this.pictureBox1);
             this.pnl_ControlsSubPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnl_ControlsSubPanel.Location = new System.Drawing.Point(90, 80);
+            this.pnl_ControlsSubPanel.Location = new System.Drawing.Point(6, 73);
             this.pnl_ControlsSubPanel.Name = "pnl_ControlsSubPanel";
-            this.pnl_ControlsSubPanel.Size = new System.Drawing.Size(562, 193);
+            this.pnl_ControlsSubPanel.Size = new System.Drawing.Size(540, 193);
             this.pnl_ControlsSubPanel.TabIndex = 10;
             this.pnl_ControlsSubPanel.Click += new System.EventHandler(this.pnl_ControlsSubPanel_Click);
             // 
@@ -578,10 +558,10 @@ namespace mgs2_v_s_fix
             this.lbl_goToControlForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_goToControlForm.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_goToControlForm.ForeColor = System.Drawing.Color.Black;
-            this.lbl_goToControlForm.Location = new System.Drawing.Point(14, 9);
+            this.lbl_goToControlForm.Location = new System.Drawing.Point(62, 13);
             this.lbl_goToControlForm.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_goToControlForm.Name = "lbl_goToControlForm";
-            this.lbl_goToControlForm.Size = new System.Drawing.Size(536, 37);
+            this.lbl_goToControlForm.Size = new System.Drawing.Size(426, 29);
             this.lbl_goToControlForm.TabIndex = 14;
             this.lbl_goToControlForm.Text = "Click HERE to configure your input devices";
             this.lbl_goToControlForm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -592,7 +572,7 @@ namespace mgs2_v_s_fix
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox1.Enabled = false;
             this.pictureBox1.Image = global::mgs2_v_s_fix.Properties.Resources.gamepad;
-            this.pictureBox1.Location = new System.Drawing.Point(217, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(210, 46);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 128);
@@ -615,10 +595,9 @@ namespace mgs2_v_s_fix
             this.tab_Graphics.Controls.Add(this.pnl_ModelQuality);
             this.tab_Graphics.Controls.Add(this.pnl_ShadowDetail);
             this.tab_Graphics.Controls.Add(this.pnl_RenderingSize);
-            this.tab_Graphics.Location = new System.Drawing.Point(4, 38);
-            this.tab_Graphics.Margin = new System.Windows.Forms.Padding(4);
+            this.tab_Graphics.Location = new System.Drawing.Point(4, 32);
             this.tab_Graphics.Name = "tab_Graphics";
-            this.tab_Graphics.Size = new System.Drawing.Size(739, 469);
+            this.tab_Graphics.Size = new System.Drawing.Size(552, 379);
             this.tab_Graphics.TabIndex = 2;
             this.tab_Graphics.Text = "Graphics";
             this.tab_Graphics.UseVisualStyleBackColor = true;
@@ -628,10 +607,9 @@ namespace mgs2_v_s_fix
             this.lbl_AAGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_AAGuide.Cursor = System.Windows.Forms.Cursors.Default;
             this.lbl_AAGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AAGuide.Location = new System.Drawing.Point(8, 324);
-            this.lbl_AAGuide.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_AAGuide.Location = new System.Drawing.Point(6, 253);
             this.lbl_AAGuide.Name = "lbl_AAGuide";
-            this.lbl_AAGuide.Size = new System.Drawing.Size(720, 23);
+            this.lbl_AAGuide.Size = new System.Drawing.Size(540, 19);
             this.lbl_AAGuide.TabIndex = 19;
             this.lbl_AAGuide.Text = "[RUNTIME]";
             this.lbl_AAGuide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -643,10 +621,9 @@ namespace mgs2_v_s_fix
             this.pnl_AA.Controls.Add(this.label9);
             this.pnl_AA.Controls.Add(this.AA_fxaa);
             this.pnl_AA.Controls.Add(this.AA_no);
-            this.pnl_AA.Location = new System.Drawing.Point(85, 278);
-            this.pnl_AA.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_AA.Location = new System.Drawing.Point(42, 212);
             this.pnl_AA.Name = "pnl_AA";
-            this.pnl_AA.Size = new System.Drawing.Size(567, 39);
+            this.pnl_AA.Size = new System.Drawing.Size(425, 32);
             this.pnl_AA.TabIndex = 18;
             // 
             // AA_smaa
@@ -660,10 +637,9 @@ namespace mgs2_v_s_fix
             this.AA_smaa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.AA_smaa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.AA_smaa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AA_smaa.Location = new System.Drawing.Point(463, 1);
-            this.AA_smaa.Margin = new System.Windows.Forms.Padding(4);
+            this.AA_smaa.Location = new System.Drawing.Point(347, 1);
             this.AA_smaa.Name = "AA_smaa";
-            this.AA_smaa.Size = new System.Drawing.Size(100, 37);
+            this.AA_smaa.Size = new System.Drawing.Size(75, 30);
             this.AA_smaa.TabIndex = 7;
             this.AA_smaa.TabStop = true;
             this.AA_smaa.Text = "SMAA";
@@ -677,10 +653,9 @@ namespace mgs2_v_s_fix
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label9.Location = new System.Drawing.Point(80, 4);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(60, 3);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(158, 33);
+            this.label9.Size = new System.Drawing.Size(124, 26);
             this.label9.TabIndex = 14;
             this.label9.Text = "Anti Aliasing:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -696,10 +671,9 @@ namespace mgs2_v_s_fix
             this.AA_fxaa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.AA_fxaa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.AA_fxaa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AA_fxaa.Location = new System.Drawing.Point(329, 1);
-            this.AA_fxaa.Margin = new System.Windows.Forms.Padding(4);
+            this.AA_fxaa.Location = new System.Drawing.Point(247, 1);
             this.AA_fxaa.Name = "AA_fxaa";
-            this.AA_fxaa.Size = new System.Drawing.Size(125, 37);
+            this.AA_fxaa.Size = new System.Drawing.Size(94, 30);
             this.AA_fxaa.TabIndex = 6;
             this.AA_fxaa.TabStop = true;
             this.AA_fxaa.Text = "FXAA";
@@ -719,10 +693,9 @@ namespace mgs2_v_s_fix
             this.AA_no.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.AA_no.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.AA_no.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AA_no.Location = new System.Drawing.Point(248, 1);
-            this.AA_no.Margin = new System.Windows.Forms.Padding(4);
+            this.AA_no.Location = new System.Drawing.Point(186, 1);
             this.AA_no.Name = "AA_no";
-            this.AA_no.Size = new System.Drawing.Size(77, 37);
+            this.AA_no.Size = new System.Drawing.Size(58, 30);
             this.AA_no.TabIndex = 5;
             this.AA_no.TabStop = true;
             this.AA_no.Text = "NO";
@@ -742,10 +715,9 @@ namespace mgs2_v_s_fix
             this.chb_DepthOfField.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_DepthOfField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_DepthOfField.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_DepthOfField.Location = new System.Drawing.Point(443, 393);
-            this.chb_DepthOfField.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_DepthOfField.Location = new System.Drawing.Point(315, 315);
             this.chb_DepthOfField.Name = "chb_DepthOfField";
-            this.chb_DepthOfField.Size = new System.Drawing.Size(73, 32);
+            this.chb_DepthOfField.Size = new System.Drawing.Size(55, 26);
             this.chb_DepthOfField.TabIndex = 17;
             this.chb_DepthOfField.TabStop = false;
             this.chb_DepthOfField.Text = "XXX";
@@ -758,10 +730,9 @@ namespace mgs2_v_s_fix
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label20.Location = new System.Drawing.Point(257, 391);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Location = new System.Drawing.Point(176, 314);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(180, 33);
+            this.label20.Size = new System.Drawing.Size(143, 26);
             this.label20.TabIndex = 16;
             this.label20.Text = "Depth of Field :";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -777,10 +748,9 @@ namespace mgs2_v_s_fix
             this.chb_MotionBlur.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_MotionBlur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_MotionBlur.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_MotionBlur.Location = new System.Drawing.Point(443, 427);
-            this.chb_MotionBlur.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_MotionBlur.Location = new System.Drawing.Point(315, 343);
             this.chb_MotionBlur.Name = "chb_MotionBlur";
-            this.chb_MotionBlur.Size = new System.Drawing.Size(73, 32);
+            this.chb_MotionBlur.Size = new System.Drawing.Size(55, 26);
             this.chb_MotionBlur.TabIndex = 13;
             this.chb_MotionBlur.TabStop = false;
             this.chb_MotionBlur.Text = "XXX";
@@ -793,10 +763,10 @@ namespace mgs2_v_s_fix
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label7.Location = new System.Drawing.Point(285, 426);
+            this.label7.Location = new System.Drawing.Point(199, 340);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(152, 33);
+            this.label7.Size = new System.Drawing.Size(120, 26);
             this.label7.TabIndex = 12;
             this.label7.Text = "Motion Blur:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -812,10 +782,9 @@ namespace mgs2_v_s_fix
             this.chb_BunchOfCoolEffect.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_BunchOfCoolEffect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_BunchOfCoolEffect.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(443, 359);
-            this.chb_BunchOfCoolEffect.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_BunchOfCoolEffect.Location = new System.Drawing.Point(315, 288);
             this.chb_BunchOfCoolEffect.Name = "chb_BunchOfCoolEffect";
-            this.chb_BunchOfCoolEffect.Size = new System.Drawing.Size(73, 32);
+            this.chb_BunchOfCoolEffect.Size = new System.Drawing.Size(55, 26);
             this.chb_BunchOfCoolEffect.TabIndex = 11;
             this.chb_BunchOfCoolEffect.TabStop = false;
             this.chb_BunchOfCoolEffect.Text = "XXX";
@@ -828,10 +797,10 @@ namespace mgs2_v_s_fix
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label11.Location = new System.Drawing.Point(230, 358);
+            this.label11.Location = new System.Drawing.Point(156, 288);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(208, 33);
+            this.label11.Size = new System.Drawing.Size(163, 26);
             this.label11.TabIndex = 10;
             this.label11.Text = "Extra Cool Effects:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -843,10 +812,9 @@ namespace mgs2_v_s_fix
             this.pnl_EffectQuantity.Controls.Add(this.label5);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_medium);
             this.pnl_EffectQuantity.Controls.Add(this.EffectQuantity_low);
-            this.pnl_EffectQuantity.Location = new System.Drawing.Point(85, 208);
-            this.pnl_EffectQuantity.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_EffectQuantity.Location = new System.Drawing.Point(48, 160);
             this.pnl_EffectQuantity.Name = "pnl_EffectQuantity";
-            this.pnl_EffectQuantity.Size = new System.Drawing.Size(567, 39);
+            this.pnl_EffectQuantity.Size = new System.Drawing.Size(425, 32);
             this.pnl_EffectQuantity.TabIndex = 5;
             // 
             // EffectQuantity_high
@@ -860,10 +828,9 @@ namespace mgs2_v_s_fix
             this.EffectQuantity_high.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.EffectQuantity_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EffectQuantity_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EffectQuantity_high.Location = new System.Drawing.Point(464, 0);
-            this.EffectQuantity_high.Margin = new System.Windows.Forms.Padding(4);
+            this.EffectQuantity_high.Location = new System.Drawing.Point(348, 0);
             this.EffectQuantity_high.Name = "EffectQuantity_high";
-            this.EffectQuantity_high.Size = new System.Drawing.Size(81, 37);
+            this.EffectQuantity_high.Size = new System.Drawing.Size(61, 30);
             this.EffectQuantity_high.TabIndex = 4;
             this.EffectQuantity_high.TabStop = true;
             this.EffectQuantity_high.Text = "HIGH";
@@ -876,10 +843,9 @@ namespace mgs2_v_s_fix
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label5.Location = new System.Drawing.Point(55, 2);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(41, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(183, 33);
+            this.label5.Size = new System.Drawing.Size(144, 26);
             this.label5.TabIndex = 3;
             this.label5.Text = "Effect Quantity:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -895,10 +861,9 @@ namespace mgs2_v_s_fix
             this.EffectQuantity_medium.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.EffectQuantity_medium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EffectQuantity_medium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EffectQuantity_medium.Location = new System.Drawing.Point(331, 0);
-            this.EffectQuantity_medium.Margin = new System.Windows.Forms.Padding(4);
+            this.EffectQuantity_medium.Location = new System.Drawing.Point(248, 0);
             this.EffectQuantity_medium.Name = "EffectQuantity_medium";
-            this.EffectQuantity_medium.Size = new System.Drawing.Size(125, 37);
+            this.EffectQuantity_medium.Size = new System.Drawing.Size(94, 30);
             this.EffectQuantity_medium.TabIndex = 1;
             this.EffectQuantity_medium.TabStop = true;
             this.EffectQuantity_medium.Text = "MEDIUM";
@@ -917,10 +882,9 @@ namespace mgs2_v_s_fix
             this.EffectQuantity_low.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.EffectQuantity_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EffectQuantity_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EffectQuantity_low.Location = new System.Drawing.Point(249, 0);
-            this.EffectQuantity_low.Margin = new System.Windows.Forms.Padding(4);
+            this.EffectQuantity_low.Location = new System.Drawing.Point(187, 0);
             this.EffectQuantity_low.Name = "EffectQuantity_low";
-            this.EffectQuantity_low.Size = new System.Drawing.Size(77, 37);
+            this.EffectQuantity_low.Size = new System.Drawing.Size(58, 30);
             this.EffectQuantity_low.TabIndex = 0;
             this.EffectQuantity_low.TabStop = true;
             this.EffectQuantity_low.Text = "LOW";
@@ -935,10 +899,9 @@ namespace mgs2_v_s_fix
             this.pnl_RenderingClearness.Controls.Add(this.label3);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_medium);
             this.pnl_RenderingClearness.Controls.Add(this.RenderingClearness_low);
-            this.pnl_RenderingClearness.Location = new System.Drawing.Point(85, 161);
-            this.pnl_RenderingClearness.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_RenderingClearness.Location = new System.Drawing.Point(48, 122);
             this.pnl_RenderingClearness.Name = "pnl_RenderingClearness";
-            this.pnl_RenderingClearness.Size = new System.Drawing.Size(567, 39);
+            this.pnl_RenderingClearness.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingClearness.TabIndex = 5;
             // 
             // RenderingClearness_high
@@ -952,10 +915,9 @@ namespace mgs2_v_s_fix
             this.RenderingClearness_high.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.RenderingClearness_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.RenderingClearness_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RenderingClearness_high.Location = new System.Drawing.Point(464, 0);
-            this.RenderingClearness_high.Margin = new System.Windows.Forms.Padding(4);
+            this.RenderingClearness_high.Location = new System.Drawing.Point(348, 0);
             this.RenderingClearness_high.Name = "RenderingClearness_high";
-            this.RenderingClearness_high.Size = new System.Drawing.Size(81, 37);
+            this.RenderingClearness_high.Size = new System.Drawing.Size(61, 30);
             this.RenderingClearness_high.TabIndex = 4;
             this.RenderingClearness_high.TabStop = true;
             this.RenderingClearness_high.Text = "HIGH";
@@ -968,10 +930,9 @@ namespace mgs2_v_s_fix
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label3.Location = new System.Drawing.Point(-5, 2);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(-4, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(243, 33);
+            this.label3.Size = new System.Drawing.Size(189, 26);
             this.label3.TabIndex = 3;
             this.label3.Text = "Rendering Clearness:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -987,10 +948,9 @@ namespace mgs2_v_s_fix
             this.RenderingClearness_medium.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.RenderingClearness_medium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.RenderingClearness_medium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RenderingClearness_medium.Location = new System.Drawing.Point(331, 0);
-            this.RenderingClearness_medium.Margin = new System.Windows.Forms.Padding(4);
+            this.RenderingClearness_medium.Location = new System.Drawing.Point(248, 0);
             this.RenderingClearness_medium.Name = "RenderingClearness_medium";
-            this.RenderingClearness_medium.Size = new System.Drawing.Size(125, 37);
+            this.RenderingClearness_medium.Size = new System.Drawing.Size(94, 30);
             this.RenderingClearness_medium.TabIndex = 1;
             this.RenderingClearness_medium.TabStop = true;
             this.RenderingClearness_medium.Text = "MEDIUM";
@@ -1009,10 +969,9 @@ namespace mgs2_v_s_fix
             this.RenderingClearness_low.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.RenderingClearness_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.RenderingClearness_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RenderingClearness_low.Location = new System.Drawing.Point(249, 0);
-            this.RenderingClearness_low.Margin = new System.Windows.Forms.Padding(4);
+            this.RenderingClearness_low.Location = new System.Drawing.Point(187, 0);
             this.RenderingClearness_low.Name = "RenderingClearness_low";
-            this.RenderingClearness_low.Size = new System.Drawing.Size(77, 37);
+            this.RenderingClearness_low.Size = new System.Drawing.Size(58, 30);
             this.RenderingClearness_low.TabIndex = 0;
             this.RenderingClearness_low.TabStop = true;
             this.RenderingClearness_low.Text = "LOW";
@@ -1027,10 +986,9 @@ namespace mgs2_v_s_fix
             this.pnl_ModelQuality.Controls.Add(this.label2);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_medium);
             this.pnl_ModelQuality.Controls.Add(this.ModelQuality_low);
-            this.pnl_ModelQuality.Location = new System.Drawing.Point(85, 114);
-            this.pnl_ModelQuality.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_ModelQuality.Location = new System.Drawing.Point(48, 84);
             this.pnl_ModelQuality.Name = "pnl_ModelQuality";
-            this.pnl_ModelQuality.Size = new System.Drawing.Size(567, 39);
+            this.pnl_ModelQuality.Size = new System.Drawing.Size(425, 32);
             this.pnl_ModelQuality.TabIndex = 5;
             // 
             // ModelQuality_high
@@ -1044,10 +1002,9 @@ namespace mgs2_v_s_fix
             this.ModelQuality_high.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.ModelQuality_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ModelQuality_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ModelQuality_high.Location = new System.Drawing.Point(464, 0);
-            this.ModelQuality_high.Margin = new System.Windows.Forms.Padding(4);
+            this.ModelQuality_high.Location = new System.Drawing.Point(348, 0);
             this.ModelQuality_high.Name = "ModelQuality_high";
-            this.ModelQuality_high.Size = new System.Drawing.Size(81, 37);
+            this.ModelQuality_high.Size = new System.Drawing.Size(61, 30);
             this.ModelQuality_high.TabIndex = 4;
             this.ModelQuality_high.TabStop = true;
             this.ModelQuality_high.Text = "HIGH";
@@ -1061,10 +1018,9 @@ namespace mgs2_v_s_fix
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label2.Location = new System.Drawing.Point(60, 6);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(45, 5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(176, 33);
+            this.label2.Size = new System.Drawing.Size(140, 26);
             this.label2.TabIndex = 3;
             this.label2.Text = "Model Quality:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1080,10 +1036,9 @@ namespace mgs2_v_s_fix
             this.ModelQuality_medium.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.ModelQuality_medium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ModelQuality_medium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ModelQuality_medium.Location = new System.Drawing.Point(331, 0);
-            this.ModelQuality_medium.Margin = new System.Windows.Forms.Padding(4);
+            this.ModelQuality_medium.Location = new System.Drawing.Point(248, 0);
             this.ModelQuality_medium.Name = "ModelQuality_medium";
-            this.ModelQuality_medium.Size = new System.Drawing.Size(125, 37);
+            this.ModelQuality_medium.Size = new System.Drawing.Size(94, 30);
             this.ModelQuality_medium.TabIndex = 1;
             this.ModelQuality_medium.TabStop = true;
             this.ModelQuality_medium.Text = "MEDIUM";
@@ -1102,10 +1057,9 @@ namespace mgs2_v_s_fix
             this.ModelQuality_low.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.ModelQuality_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ModelQuality_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ModelQuality_low.Location = new System.Drawing.Point(249, 0);
-            this.ModelQuality_low.Margin = new System.Windows.Forms.Padding(4);
+            this.ModelQuality_low.Location = new System.Drawing.Point(187, 0);
             this.ModelQuality_low.Name = "ModelQuality_low";
-            this.ModelQuality_low.Size = new System.Drawing.Size(77, 37);
+            this.ModelQuality_low.Size = new System.Drawing.Size(58, 30);
             this.ModelQuality_low.TabIndex = 0;
             this.ModelQuality_low.TabStop = true;
             this.ModelQuality_low.Text = "LOW";
@@ -1120,10 +1074,9 @@ namespace mgs2_v_s_fix
             this.pnl_ShadowDetail.Controls.Add(this.label1);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_medium);
             this.pnl_ShadowDetail.Controls.Add(this.ShadowDetail_low);
-            this.pnl_ShadowDetail.Location = new System.Drawing.Point(85, 68);
-            this.pnl_ShadowDetail.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_ShadowDetail.Location = new System.Drawing.Point(48, 46);
             this.pnl_ShadowDetail.Name = "pnl_ShadowDetail";
-            this.pnl_ShadowDetail.Size = new System.Drawing.Size(567, 39);
+            this.pnl_ShadowDetail.Size = new System.Drawing.Size(425, 32);
             this.pnl_ShadowDetail.TabIndex = 5;
             // 
             // ShadowDetail_high
@@ -1138,10 +1091,9 @@ namespace mgs2_v_s_fix
             this.ShadowDetail_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ShadowDetail_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShadowDetail_high.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShadowDetail_high.Location = new System.Drawing.Point(464, 5);
-            this.ShadowDetail_high.Margin = new System.Windows.Forms.Padding(4);
+            this.ShadowDetail_high.Location = new System.Drawing.Point(348, 4);
             this.ShadowDetail_high.Name = "ShadowDetail_high";
-            this.ShadowDetail_high.Size = new System.Drawing.Size(81, 37);
+            this.ShadowDetail_high.Size = new System.Drawing.Size(61, 30);
             this.ShadowDetail_high.TabIndex = 4;
             this.ShadowDetail_high.TabStop = true;
             this.ShadowDetail_high.Text = "HIGH";
@@ -1154,10 +1106,9 @@ namespace mgs2_v_s_fix
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label1.Location = new System.Drawing.Point(59, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(44, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 33);
+            this.label1.Size = new System.Drawing.Size(141, 26);
             this.label1.TabIndex = 3;
             this.label1.Text = "Shadow Detail:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1174,10 +1125,9 @@ namespace mgs2_v_s_fix
             this.ShadowDetail_medium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ShadowDetail_medium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShadowDetail_medium.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShadowDetail_medium.Location = new System.Drawing.Point(331, 5);
-            this.ShadowDetail_medium.Margin = new System.Windows.Forms.Padding(4);
+            this.ShadowDetail_medium.Location = new System.Drawing.Point(248, 4);
             this.ShadowDetail_medium.Name = "ShadowDetail_medium";
-            this.ShadowDetail_medium.Size = new System.Drawing.Size(125, 37);
+            this.ShadowDetail_medium.Size = new System.Drawing.Size(94, 30);
             this.ShadowDetail_medium.TabIndex = 1;
             this.ShadowDetail_medium.TabStop = true;
             this.ShadowDetail_medium.Text = "MEDIUM";
@@ -1197,10 +1147,9 @@ namespace mgs2_v_s_fix
             this.ShadowDetail_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.ShadowDetail_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShadowDetail_low.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShadowDetail_low.Location = new System.Drawing.Point(249, 5);
-            this.ShadowDetail_low.Margin = new System.Windows.Forms.Padding(4);
+            this.ShadowDetail_low.Location = new System.Drawing.Point(187, 4);
             this.ShadowDetail_low.Name = "ShadowDetail_low";
-            this.ShadowDetail_low.Size = new System.Drawing.Size(77, 37);
+            this.ShadowDetail_low.Size = new System.Drawing.Size(58, 30);
             this.ShadowDetail_low.TabIndex = 0;
             this.ShadowDetail_low.TabStop = true;
             this.ShadowDetail_low.Text = "LOW";
@@ -1215,10 +1164,9 @@ namespace mgs2_v_s_fix
             this.pnl_RenderingSize.Controls.Add(this.lbl_descr);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_medium);
             this.pnl_RenderingSize.Controls.Add(this.RenderingSize_low);
-            this.pnl_RenderingSize.Location = new System.Drawing.Point(85, 23);
-            this.pnl_RenderingSize.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_RenderingSize.Location = new System.Drawing.Point(48, 10);
             this.pnl_RenderingSize.Name = "pnl_RenderingSize";
-            this.pnl_RenderingSize.Size = new System.Drawing.Size(567, 39);
+            this.pnl_RenderingSize.Size = new System.Drawing.Size(425, 32);
             this.pnl_RenderingSize.TabIndex = 2;
             // 
             // RenderingSize_high
@@ -1233,10 +1181,9 @@ namespace mgs2_v_s_fix
             this.RenderingSize_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.RenderingSize_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RenderingSize_high.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RenderingSize_high.Location = new System.Drawing.Point(464, 5);
-            this.RenderingSize_high.Margin = new System.Windows.Forms.Padding(4);
+            this.RenderingSize_high.Location = new System.Drawing.Point(348, 4);
             this.RenderingSize_high.Name = "RenderingSize_high";
-            this.RenderingSize_high.Size = new System.Drawing.Size(81, 37);
+            this.RenderingSize_high.Size = new System.Drawing.Size(61, 30);
             this.RenderingSize_high.TabIndex = 4;
             this.RenderingSize_high.TabStop = true;
             this.RenderingSize_high.Text = "HIGH";
@@ -1249,10 +1196,9 @@ namespace mgs2_v_s_fix
             this.lbl_descr.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_descr.AutoSize = true;
             this.lbl_descr.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_descr.Location = new System.Drawing.Point(57, 7);
-            this.lbl_descr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_descr.Location = new System.Drawing.Point(43, 6);
             this.lbl_descr.Name = "lbl_descr";
-            this.lbl_descr.Size = new System.Drawing.Size(180, 33);
+            this.lbl_descr.Size = new System.Drawing.Size(142, 26);
             this.lbl_descr.TabIndex = 3;
             this.lbl_descr.Text = "Rendering Size:";
             this.lbl_descr.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1269,10 +1215,9 @@ namespace mgs2_v_s_fix
             this.RenderingSize_medium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.RenderingSize_medium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RenderingSize_medium.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RenderingSize_medium.Location = new System.Drawing.Point(331, 5);
-            this.RenderingSize_medium.Margin = new System.Windows.Forms.Padding(4);
+            this.RenderingSize_medium.Location = new System.Drawing.Point(248, 4);
             this.RenderingSize_medium.Name = "RenderingSize_medium";
-            this.RenderingSize_medium.Size = new System.Drawing.Size(125, 37);
+            this.RenderingSize_medium.Size = new System.Drawing.Size(94, 30);
             this.RenderingSize_medium.TabIndex = 1;
             this.RenderingSize_medium.TabStop = true;
             this.RenderingSize_medium.Text = "MEDIUM";
@@ -1292,10 +1237,10 @@ namespace mgs2_v_s_fix
             this.RenderingSize_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.RenderingSize_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RenderingSize_low.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RenderingSize_low.Location = new System.Drawing.Point(249, 5);
+            this.RenderingSize_low.Location = new System.Drawing.Point(187, 4);
             this.RenderingSize_low.Margin = new System.Windows.Forms.Padding(0);
             this.RenderingSize_low.Name = "RenderingSize_low";
-            this.RenderingSize_low.Size = new System.Drawing.Size(77, 37);
+            this.RenderingSize_low.Size = new System.Drawing.Size(58, 30);
             this.RenderingSize_low.TabIndex = 0;
             this.RenderingSize_low.TabStop = true;
             this.RenderingSize_low.Text = "LOW";
@@ -1311,10 +1256,9 @@ namespace mgs2_v_s_fix
             this.tab_Sound.Controls.Add(this.pnl_Quality);
             this.tab_Sound.Controls.Add(this.pnl_SoundQuality);
             this.tab_Sound.Controls.Add(this.pnl_SE);
-            this.tab_Sound.Location = new System.Drawing.Point(4, 38);
-            this.tab_Sound.Margin = new System.Windows.Forms.Padding(4);
+            this.tab_Sound.Location = new System.Drawing.Point(4, 32);
             this.tab_Sound.Name = "tab_Sound";
-            this.tab_Sound.Size = new System.Drawing.Size(739, 469);
+            this.tab_Sound.Size = new System.Drawing.Size(552, 379);
             this.tab_Sound.TabIndex = 3;
             this.tab_Sound.Text = "Sound";
             this.tab_Sound.UseVisualStyleBackColor = true;
@@ -1324,10 +1268,9 @@ namespace mgs2_v_s_fix
             this.help_sound.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.help_sound.Cursor = System.Windows.Forms.Cursors.Hand;
             this.help_sound.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.help_sound.Location = new System.Drawing.Point(43, 241);
-            this.help_sound.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.help_sound.Location = new System.Drawing.Point(32, 196);
             this.help_sound.Name = "help_sound";
-            this.help_sound.Size = new System.Drawing.Size(652, 23);
+            this.help_sound.Size = new System.Drawing.Size(489, 19);
             this.help_sound.TabIndex = 15;
             this.help_sound.Text = "Missing audio? Press here to check the manual for a workaround";
             this.help_sound.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1338,10 +1281,9 @@ namespace mgs2_v_s_fix
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label6.Location = new System.Drawing.Point(105, 286);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(37, 243);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(184, 33);
+            this.label6.Size = new System.Drawing.Size(145, 26);
             this.label6.TabIndex = 9;
             this.label6.Text = "Sound Adapter:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1353,11 +1295,11 @@ namespace mgs2_v_s_fix
             this.lst_sound_list.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lst_sound_list.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.lst_sound_list.FormattingEnabled = true;
-            this.lst_sound_list.ItemHeight = 22;
-            this.lst_sound_list.Location = new System.Drawing.Point(303, 292);
+            this.lst_sound_list.ItemHeight = 18;
+            this.lst_sound_list.Location = new System.Drawing.Point(183, 250);
             this.lst_sound_list.Margin = new System.Windows.Forms.Padding(4);
             this.lst_sound_list.Name = "lst_sound_list";
-            this.lst_sound_list.Size = new System.Drawing.Size(327, 88);
+            this.lst_sound_list.Size = new System.Drawing.Size(327, 54);
             this.lst_sound_list.TabIndex = 8;
             this.lst_sound_list.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lst_sound_list_DrawItem);
             // 
@@ -1368,10 +1310,9 @@ namespace mgs2_v_s_fix
             this.pnl_Quality.Controls.Add(this.Quality_medium);
             this.pnl_Quality.Controls.Add(this.Quality_low);
             this.pnl_Quality.Controls.Add(this.label13);
-            this.pnl_Quality.Location = new System.Drawing.Point(88, 46);
-            this.pnl_Quality.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_Quality.Location = new System.Drawing.Point(66, 37);
             this.pnl_Quality.Name = "pnl_Quality";
-            this.pnl_Quality.Size = new System.Drawing.Size(576, 39);
+            this.pnl_Quality.Size = new System.Drawing.Size(432, 32);
             this.pnl_Quality.TabIndex = 6;
             // 
             // Quality_high
@@ -1386,10 +1327,9 @@ namespace mgs2_v_s_fix
             this.Quality_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Quality_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Quality_high.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quality_high.Location = new System.Drawing.Point(455, 1);
-            this.Quality_high.Margin = new System.Windows.Forms.Padding(4);
+            this.Quality_high.Location = new System.Drawing.Point(341, 1);
             this.Quality_high.Name = "Quality_high";
-            this.Quality_high.Size = new System.Drawing.Size(93, 37);
+            this.Quality_high.Size = new System.Drawing.Size(70, 30);
             this.Quality_high.TabIndex = 13;
             this.Quality_high.TabStop = true;
             this.Quality_high.Text = "44khz";
@@ -1409,10 +1349,9 @@ namespace mgs2_v_s_fix
             this.Quality_medium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Quality_medium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Quality_medium.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quality_medium.Location = new System.Drawing.Point(327, 1);
-            this.Quality_medium.Margin = new System.Windows.Forms.Padding(4);
+            this.Quality_medium.Location = new System.Drawing.Point(245, 1);
             this.Quality_medium.Name = "Quality_medium";
-            this.Quality_medium.Size = new System.Drawing.Size(125, 37);
+            this.Quality_medium.Size = new System.Drawing.Size(94, 30);
             this.Quality_medium.TabIndex = 12;
             this.Quality_medium.TabStop = true;
             this.Quality_medium.Text = "22khz";
@@ -1432,10 +1371,10 @@ namespace mgs2_v_s_fix
             this.Quality_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Quality_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Quality_low.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Quality_low.Location = new System.Drawing.Point(243, 1);
+            this.Quality_low.Location = new System.Drawing.Point(182, 1);
             this.Quality_low.Margin = new System.Windows.Forms.Padding(0);
             this.Quality_low.Name = "Quality_low";
-            this.Quality_low.Size = new System.Drawing.Size(87, 37);
+            this.Quality_low.Size = new System.Drawing.Size(65, 30);
             this.Quality_low.TabIndex = 11;
             this.Quality_low.TabStop = true;
             this.Quality_low.Text = "11khz";
@@ -1448,10 +1387,9 @@ namespace mgs2_v_s_fix
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label13.Location = new System.Drawing.Point(56, 4);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(42, 3);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(174, 33);
+            this.label13.Size = new System.Drawing.Size(139, 26);
             this.label13.TabIndex = 10;
             this.label13.Text = "Sound Quality:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1463,10 +1401,9 @@ namespace mgs2_v_s_fix
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_medium);
             this.pnl_SoundQuality.Controls.Add(this.SoundQuality_low);
             this.pnl_SoundQuality.Controls.Add(this.label15);
-            this.pnl_SoundQuality.Location = new System.Drawing.Point(88, 171);
-            this.pnl_SoundQuality.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_SoundQuality.Location = new System.Drawing.Point(66, 139);
             this.pnl_SoundQuality.Name = "pnl_SoundQuality";
-            this.pnl_SoundQuality.Size = new System.Drawing.Size(576, 39);
+            this.pnl_SoundQuality.Size = new System.Drawing.Size(432, 32);
             this.pnl_SoundQuality.TabIndex = 5;
             // 
             // SoundQuality_high
@@ -1481,10 +1418,9 @@ namespace mgs2_v_s_fix
             this.SoundQuality_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.SoundQuality_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SoundQuality_high.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoundQuality_high.Location = new System.Drawing.Point(460, -1);
-            this.SoundQuality_high.Margin = new System.Windows.Forms.Padding(4);
+            this.SoundQuality_high.Location = new System.Drawing.Point(345, -1);
             this.SoundQuality_high.Name = "SoundQuality_high";
-            this.SoundQuality_high.Size = new System.Drawing.Size(81, 37);
+            this.SoundQuality_high.Size = new System.Drawing.Size(61, 30);
             this.SoundQuality_high.TabIndex = 19;
             this.SoundQuality_high.TabStop = true;
             this.SoundQuality_high.Text = "HIGH";
@@ -1504,10 +1440,9 @@ namespace mgs2_v_s_fix
             this.SoundQuality_medium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.SoundQuality_medium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SoundQuality_medium.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoundQuality_medium.Location = new System.Drawing.Point(327, -1);
-            this.SoundQuality_medium.Margin = new System.Windows.Forms.Padding(4);
+            this.SoundQuality_medium.Location = new System.Drawing.Point(245, -1);
             this.SoundQuality_medium.Name = "SoundQuality_medium";
-            this.SoundQuality_medium.Size = new System.Drawing.Size(125, 37);
+            this.SoundQuality_medium.Size = new System.Drawing.Size(94, 30);
             this.SoundQuality_medium.TabIndex = 18;
             this.SoundQuality_medium.TabStop = true;
             this.SoundQuality_medium.Text = "MEDIUM";
@@ -1527,10 +1462,10 @@ namespace mgs2_v_s_fix
             this.SoundQuality_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.SoundQuality_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SoundQuality_low.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SoundQuality_low.Location = new System.Drawing.Point(245, -1);
+            this.SoundQuality_low.Location = new System.Drawing.Point(184, -1);
             this.SoundQuality_low.Margin = new System.Windows.Forms.Padding(0);
             this.SoundQuality_low.Name = "SoundQuality_low";
-            this.SoundQuality_low.Size = new System.Drawing.Size(77, 37);
+            this.SoundQuality_low.Size = new System.Drawing.Size(58, 30);
             this.SoundQuality_low.TabIndex = 17;
             this.SoundQuality_low.TabStop = true;
             this.SoundQuality_low.Text = "LOW";
@@ -1543,10 +1478,9 @@ namespace mgs2_v_s_fix
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label15.Location = new System.Drawing.Point(17, 1);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Location = new System.Drawing.Point(13, 1);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(211, 33);
+            this.label15.Size = new System.Drawing.Size(168, 26);
             this.label15.TabIndex = 12;
             this.label15.Text = "3D Sound Quality:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1558,10 +1492,9 @@ namespace mgs2_v_s_fix
             this.pnl_SE.Controls.Add(this.SE_high);
             this.pnl_SE.Controls.Add(this.SE_medium);
             this.pnl_SE.Controls.Add(this.SE_low);
-            this.pnl_SE.Location = new System.Drawing.Point(60, 111);
-            this.pnl_SE.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_SE.Location = new System.Drawing.Point(45, 90);
             this.pnl_SE.Name = "pnl_SE";
-            this.pnl_SE.Size = new System.Drawing.Size(604, 39);
+            this.pnl_SE.Size = new System.Drawing.Size(453, 32);
             this.pnl_SE.TabIndex = 3;
             // 
             // label14
@@ -1569,10 +1502,9 @@ namespace mgs2_v_s_fix
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label14.Location = new System.Drawing.Point(16, 4);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(12, 3);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(240, 33);
+            this.label14.Size = new System.Drawing.Size(190, 26);
             this.label14.TabIndex = 11;
             this.label14.Text = "Sound Effect Quality:";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1589,10 +1521,9 @@ namespace mgs2_v_s_fix
             this.SE_high.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.SE_high.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SE_high.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SE_high.Location = new System.Drawing.Point(488, 1);
-            this.SE_high.Margin = new System.Windows.Forms.Padding(4);
+            this.SE_high.Location = new System.Drawing.Point(366, 1);
             this.SE_high.Name = "SE_high";
-            this.SE_high.Size = new System.Drawing.Size(81, 37);
+            this.SE_high.Size = new System.Drawing.Size(61, 30);
             this.SE_high.TabIndex = 16;
             this.SE_high.TabStop = true;
             this.SE_high.Text = "HIGH";
@@ -1612,10 +1543,9 @@ namespace mgs2_v_s_fix
             this.SE_medium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.SE_medium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SE_medium.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SE_medium.Location = new System.Drawing.Point(355, 2);
-            this.SE_medium.Margin = new System.Windows.Forms.Padding(4);
+            this.SE_medium.Location = new System.Drawing.Point(266, 2);
             this.SE_medium.Name = "SE_medium";
-            this.SE_medium.Size = new System.Drawing.Size(125, 36);
+            this.SE_medium.Size = new System.Drawing.Size(94, 29);
             this.SE_medium.TabIndex = 15;
             this.SE_medium.TabStop = true;
             this.SE_medium.Text = "MEDIUM";
@@ -1635,10 +1565,10 @@ namespace mgs2_v_s_fix
             this.SE_low.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.SE_low.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SE_low.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SE_low.Location = new System.Drawing.Point(273, 1);
+            this.SE_low.Location = new System.Drawing.Point(205, 1);
             this.SE_low.Margin = new System.Windows.Forms.Padding(0);
             this.SE_low.Name = "SE_low";
-            this.SE_low.Size = new System.Drawing.Size(77, 37);
+            this.SE_low.Size = new System.Drawing.Size(58, 30);
             this.SE_low.TabIndex = 14;
             this.SE_low.TabStop = true;
             this.SE_low.Text = "LOW";
@@ -1658,10 +1588,9 @@ namespace mgs2_v_s_fix
             this.tab_Extra.Controls.Add(this.label12);
             this.tab_Extra.Controls.Add(this.chb_FixAfterPlaying);
             this.tab_Extra.Controls.Add(this.label4);
-            this.tab_Extra.Location = new System.Drawing.Point(4, 38);
-            this.tab_Extra.Margin = new System.Windows.Forms.Padding(4);
+            this.tab_Extra.Location = new System.Drawing.Point(4, 32);
             this.tab_Extra.Name = "tab_Extra";
-            this.tab_Extra.Size = new System.Drawing.Size(739, 469);
+            this.tab_Extra.Size = new System.Drawing.Size(552, 379);
             this.tab_Extra.TabIndex = 6;
             this.tab_Extra.Text = "Extra";
             this.tab_Extra.UseVisualStyleBackColor = true;
@@ -1670,10 +1599,9 @@ namespace mgs2_v_s_fix
             // 
             this.ptb_Steam.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ptb_Steam.Image = global::mgs2_v_s_fix.Properties.Resources.SteamLogo;
-            this.ptb_Steam.Location = new System.Drawing.Point(83, 208);
-            this.ptb_Steam.Margin = new System.Windows.Forms.Padding(4);
+            this.ptb_Steam.Location = new System.Drawing.Point(62, 169);
             this.ptb_Steam.Name = "ptb_Steam";
-            this.ptb_Steam.Size = new System.Drawing.Size(93, 86);
+            this.ptb_Steam.Size = new System.Drawing.Size(70, 70);
             this.ptb_Steam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptb_Steam.TabIndex = 40;
             this.ptb_Steam.TabStop = false;
@@ -1682,10 +1610,10 @@ namespace mgs2_v_s_fix
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(212, 207);
+            this.label18.Location = new System.Drawing.Point(159, 168);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(477, 87);
+            this.label18.Size = new System.Drawing.Size(358, 71);
             this.label18.TabIndex = 41;
             this.label18.Text = "Click on the Steam logo aside to automatically add MGS2 to Steam";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1695,10 +1623,9 @@ namespace mgs2_v_s_fix
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(232, 420);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(174, 341);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(462, 29);
+            this.label17.Size = new System.Drawing.Size(358, 23);
             this.label17.TabIndex = 39;
             this.label17.Text = "Click the logo aside to open comPLAY Website";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1708,10 +1635,9 @@ namespace mgs2_v_s_fix
             // 
             this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ptb_GitHubLogo.Image = global::mgs2_v_s_fix.Properties.Resources.GitHubLogo;
-            this.ptb_GitHubLogo.Location = new System.Drawing.Point(83, 91);
-            this.ptb_GitHubLogo.Margin = new System.Windows.Forms.Padding(4);
+            this.ptb_GitHubLogo.Location = new System.Drawing.Point(62, 74);
             this.ptb_GitHubLogo.Name = "ptb_GitHubLogo";
-            this.ptb_GitHubLogo.Size = new System.Drawing.Size(93, 86);
+            this.ptb_GitHubLogo.Size = new System.Drawing.Size(70, 70);
             this.ptb_GitHubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptb_GitHubLogo.TabIndex = 33;
             this.ptb_GitHubLogo.TabStop = false;
@@ -1720,10 +1646,9 @@ namespace mgs2_v_s_fix
             // lbl_checkForUpdate
             // 
             this.lbl_checkForUpdate.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_checkForUpdate.Location = new System.Drawing.Point(207, 90);
-            this.lbl_checkForUpdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_checkForUpdate.Location = new System.Drawing.Point(155, 73);
             this.lbl_checkForUpdate.Name = "lbl_checkForUpdate";
-            this.lbl_checkForUpdate.Size = new System.Drawing.Size(483, 87);
+            this.lbl_checkForUpdate.Size = new System.Drawing.Size(362, 71);
             this.lbl_checkForUpdate.TabIndex = 34;
             this.lbl_checkForUpdate.Text = "Click on the GitHub logo aside to check for V\'s Fix updates";
             this.lbl_checkForUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1733,10 +1658,9 @@ namespace mgs2_v_s_fix
             this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
-            this.ptb_comPLAY.Location = new System.Drawing.Point(32, 321);
-            this.ptb_comPLAY.Margin = new System.Windows.Forms.Padding(4);
+            this.ptb_comPLAY.Location = new System.Drawing.Point(24, 261);
             this.ptb_comPLAY.Name = "ptb_comPLAY";
-            this.ptb_comPLAY.Size = new System.Drawing.Size(195, 127);
+            this.ptb_comPLAY.Size = new System.Drawing.Size(146, 103);
             this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptb_comPLAY.TabIndex = 35;
             this.ptb_comPLAY.TabStop = false;
@@ -1747,10 +1671,9 @@ namespace mgs2_v_s_fix
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label16.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(251, 357);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(188, 290);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(427, 60);
+            this.label16.Size = new System.Drawing.Size(320, 49);
             this.label16.TabIndex = 37;
             this.label16.Text = "Playing on multiple PCs at once? Multiple users? Need to synchronize?";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1761,10 +1684,9 @@ namespace mgs2_v_s_fix
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(245, 321);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Location = new System.Drawing.Point(184, 261);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(416, 29);
+            this.label12.Size = new System.Drawing.Size(326, 23);
             this.label12.TabIndex = 36;
             this.label12.Text = "Don\'t want to lose your games savedata?";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1781,10 +1703,9 @@ namespace mgs2_v_s_fix
             this.chb_FixAfterPlaying.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_FixAfterPlaying.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_FixAfterPlaying.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(544, 27);
-            this.chb_FixAfterPlaying.Margin = new System.Windows.Forms.Padding(4);
+            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(408, 22);
             this.chb_FixAfterPlaying.Name = "chb_FixAfterPlaying";
-            this.chb_FixAfterPlaying.Size = new System.Drawing.Size(73, 32);
+            this.chb_FixAfterPlaying.Size = new System.Drawing.Size(55, 26);
             this.chb_FixAfterPlaying.TabIndex = 24;
             this.chb_FixAfterPlaying.TabStop = false;
             this.chb_FixAfterPlaying.Text = "XXX";
@@ -1797,10 +1718,9 @@ namespace mgs2_v_s_fix
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label4.Location = new System.Drawing.Point(120, 26);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(90, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(410, 33);
+            this.label4.Size = new System.Drawing.Size(325, 26);
             this.label4.TabIndex = 23;
             this.label4.Text = "Open V\'s Fix after playing the game :";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1812,10 +1732,9 @@ namespace mgs2_v_s_fix
             this.tab_About.Controls.Add(this.pictureBox3);
             this.tab_About.Controls.Add(this.pnl_about);
             this.tab_About.Controls.Add(this.tbx_About);
-            this.tab_About.Location = new System.Drawing.Point(4, 38);
-            this.tab_About.Margin = new System.Windows.Forms.Padding(4);
+            this.tab_About.Location = new System.Drawing.Point(4, 32);
             this.tab_About.Name = "tab_About";
-            this.tab_About.Size = new System.Drawing.Size(739, 469);
+            this.tab_About.Size = new System.Drawing.Size(552, 379);
             this.tab_About.TabIndex = 4;
             this.tab_About.Text = "About";
             // 
@@ -1826,10 +1745,9 @@ namespace mgs2_v_s_fix
             this.lbl_donate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_donate.Font = new System.Drawing.Font("Calibri", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_donate.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbl_donate.Location = new System.Drawing.Point(205, 36);
-            this.lbl_donate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_donate.Location = new System.Drawing.Point(154, 29);
             this.lbl_donate.Name = "lbl_donate";
-            this.lbl_donate.Size = new System.Drawing.Size(414, 33);
+            this.lbl_donate.Size = new System.Drawing.Size(322, 26);
             this.lbl_donate.TabIndex = 10;
             this.lbl_donate.Text = "Spare $ or € ? Gift me an ice cream!\r\n";
             this.lbl_donate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1837,15 +1755,11 @@ namespace mgs2_v_s_fix
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::mgs2_v_s_fix.Properties.Resources.iceCream;
-            this.pictureBox3.Location = new System.Drawing.Point(133, 23);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox3.Location = new System.Drawing.Point(77, 8);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 8;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
@@ -1856,10 +1770,9 @@ namespace mgs2_v_s_fix
             this.pnl_about.Controls.Add(this.abt_Regards);
             this.pnl_about.Controls.Add(this.abt_Licence);
             this.pnl_about.Controls.Add(this.abt_Contacts);
-            this.pnl_about.Location = new System.Drawing.Point(75, 95);
-            this.pnl_about.Margin = new System.Windows.Forms.Padding(4);
+            this.pnl_about.Location = new System.Drawing.Point(56, 77);
             this.pnl_about.Name = "pnl_about";
-            this.pnl_about.Size = new System.Drawing.Size(588, 59);
+            this.pnl_about.Size = new System.Drawing.Size(441, 48);
             this.pnl_about.TabIndex = 6;
             // 
             // abt_Regards
@@ -1873,10 +1786,9 @@ namespace mgs2_v_s_fix
             this.abt_Regards.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.abt_Regards.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.abt_Regards.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abt_Regards.Location = new System.Drawing.Point(376, 11);
-            this.abt_Regards.Margin = new System.Windows.Forms.Padding(4);
+            this.abt_Regards.Location = new System.Drawing.Point(282, 9);
             this.abt_Regards.Name = "abt_Regards";
-            this.abt_Regards.Size = new System.Drawing.Size(176, 37);
+            this.abt_Regards.Size = new System.Drawing.Size(132, 30);
             this.abt_Regards.TabIndex = 4;
             this.abt_Regards.TabStop = true;
             this.abt_Regards.Text = "REGARDS";
@@ -1895,10 +1807,9 @@ namespace mgs2_v_s_fix
             this.abt_Licence.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.abt_Licence.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.abt_Licence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abt_Licence.Location = new System.Drawing.Point(216, 11);
-            this.abt_Licence.Margin = new System.Windows.Forms.Padding(4);
+            this.abt_Licence.Location = new System.Drawing.Point(162, 9);
             this.abt_Licence.Name = "abt_Licence";
-            this.abt_Licence.Size = new System.Drawing.Size(139, 37);
+            this.abt_Licence.Size = new System.Drawing.Size(104, 30);
             this.abt_Licence.TabIndex = 1;
             this.abt_Licence.TabStop = true;
             this.abt_Licence.Text = "LICENSING";
@@ -1917,10 +1828,9 @@ namespace mgs2_v_s_fix
             this.abt_Contacts.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.abt_Contacts.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.abt_Contacts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abt_Contacts.Location = new System.Drawing.Point(35, 11);
-            this.abt_Contacts.Margin = new System.Windows.Forms.Padding(4);
+            this.abt_Contacts.Location = new System.Drawing.Point(26, 9);
             this.abt_Contacts.Name = "abt_Contacts";
-            this.abt_Contacts.Size = new System.Drawing.Size(139, 37);
+            this.abt_Contacts.Size = new System.Drawing.Size(104, 30);
             this.abt_Contacts.TabIndex = 0;
             this.abt_Contacts.TabStop = true;
             this.abt_Contacts.Text = "CONTACTS";
@@ -1933,12 +1843,11 @@ namespace mgs2_v_s_fix
             this.tbx_About.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbx_About.BackColor = System.Drawing.Color.White;
             this.tbx_About.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbx_About.Location = new System.Drawing.Point(13, 161);
-            this.tbx_About.Margin = new System.Windows.Forms.Padding(4);
+            this.tbx_About.Location = new System.Drawing.Point(10, 131);
             this.tbx_About.Name = "tbx_About";
             this.tbx_About.ReadOnly = true;
             this.tbx_About.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.tbx_About.Size = new System.Drawing.Size(709, 290);
+            this.tbx_About.Size = new System.Drawing.Size(532, 236);
             this.tbx_About.TabIndex = 1;
             this.tbx_About.Text = "In my restless dreams ; I see that town...";
             this.tbx_About.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.tbx_About_LinkClicked);
@@ -1954,10 +1863,9 @@ namespace mgs2_v_s_fix
             this.btn_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_exit.ForeColor = System.Drawing.Color.Black;
-            this.btn_exit.Location = new System.Drawing.Point(52, 358);
-            this.btn_exit.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_exit.Location = new System.Drawing.Point(39, 291);
             this.btn_exit.Name = "btn_exit";
-            this.btn_exit.Size = new System.Drawing.Size(220, 48);
+            this.btn_exit.Size = new System.Drawing.Size(165, 39);
             this.btn_exit.TabIndex = 3;
             this.btn_exit.Text = "exit";
             this.btn_exit.UseVisualStyleBackColor = false;
@@ -1976,10 +1884,9 @@ namespace mgs2_v_s_fix
             this.btn_saveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_saveSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_saveSettings.ForeColor = System.Drawing.Color.Black;
-            this.btn_saveSettings.Location = new System.Drawing.Point(52, 245);
-            this.btn_saveSettings.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_saveSettings.Location = new System.Drawing.Point(39, 199);
             this.btn_saveSettings.Name = "btn_saveSettings";
-            this.btn_saveSettings.Size = new System.Drawing.Size(220, 48);
+            this.btn_saveSettings.Size = new System.Drawing.Size(165, 39);
             this.btn_saveSettings.TabIndex = 4;
             this.btn_saveSettings.Text = "SAVE SETTINGS";
             this.btn_saveSettings.UseVisualStyleBackColor = false;
@@ -1994,10 +1901,9 @@ namespace mgs2_v_s_fix
             this.lbl_debugMode.AutoSize = true;
             this.lbl_debugMode.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_debugMode.ForeColor = System.Drawing.Color.Black;
-            this.lbl_debugMode.Location = new System.Drawing.Point(16, 11);
-            this.lbl_debugMode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_debugMode.Location = new System.Drawing.Point(12, 9);
             this.lbl_debugMode.Name = "lbl_debugMode";
-            this.lbl_debugMode.Size = new System.Drawing.Size(99, 21);
+            this.lbl_debugMode.Size = new System.Drawing.Size(75, 15);
             this.lbl_debugMode.TabIndex = 6;
             this.lbl_debugMode.Text = "Debug Mode";
             this.lbl_debugMode.Visible = false;
@@ -2006,10 +1912,9 @@ namespace mgs2_v_s_fix
             // 
             this.otagif.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.otagif.Enabled = false;
-            this.otagif.Location = new System.Drawing.Point(117, 100);
-            this.otagif.Margin = new System.Windows.Forms.Padding(4);
+            this.otagif.Location = new System.Drawing.Point(88, 81);
             this.otagif.Name = "otagif";
-            this.otagif.Size = new System.Drawing.Size(85, 133);
+            this.otagif.Size = new System.Drawing.Size(64, 108);
             this.otagif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.otagif.TabIndex = 5;
             this.otagif.TabStop = false;
@@ -2022,10 +1927,10 @@ namespace mgs2_v_s_fix
             this.lbl_ManualLink.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_ManualLink.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ManualLink.ForeColor = System.Drawing.Color.Black;
-            this.lbl_ManualLink.Location = new System.Drawing.Point(56, 512);
+            this.lbl_ManualLink.Location = new System.Drawing.Point(42, 416);
             this.lbl_ManualLink.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_ManualLink.Name = "lbl_ManualLink";
-            this.lbl_ManualLink.Size = new System.Drawing.Size(86, 21);
+            this.lbl_ManualLink.Size = new System.Drawing.Size(65, 15);
             this.lbl_ManualLink.TabIndex = 7;
             this.lbl_ManualLink.Text = "[RUNTIME]";
             this.lbl_ManualLink.Visible = false;
@@ -2034,32 +1939,31 @@ namespace mgs2_v_s_fix
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox2.Location = new System.Drawing.Point(13, 506);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(5, 405);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
             // 
             // pic_background
             // 
-            this.pic_background.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pic_background.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_background.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pic_background.Location = new System.Drawing.Point(0, -2);
-            this.pic_background.Margin = new System.Windows.Forms.Padding(4);
             this.pic_background.Name = "pic_background";
-            this.pic_background.Size = new System.Drawing.Size(1067, 546);
+            this.pic_background.Size = new System.Drawing.Size(800, 444);
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1065, 543);
+            this.ClientSize = new System.Drawing.Size(799, 441);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lbl_ManualLink);
             this.Controls.Add(this.lbl_debugMode);
@@ -2072,7 +1976,6 @@ namespace mgs2_v_s_fix
             this.Controls.Add(this.pic_background);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
