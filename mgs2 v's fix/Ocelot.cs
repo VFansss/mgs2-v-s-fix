@@ -2120,54 +2120,52 @@ namespace mgs2_v_s_fix
 
         public static string RecoverLastLogPath()
         {
+
+            string PathOfLastLogInVirtualStore = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3) + "\\last.log";
+            bool TheseIsVirtualStoreLog = File.Exists(PathOfLastLogInVirtualStore);
+
+            string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
+            bool TheseIsApplicationFolderLog = File.Exists(PathOfLastLogInApplicationFolder);
+
+            if (TheseIsVirtualStoreLog && TheseIsApplicationFolderLog)
             {
-                string PathOfLastLogInVirtualStore = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3) + "\\last.log";
-                bool TheseIsVirtualStoreLog = File.Exists(PathOfLastLogInVirtualStore);
+                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] More Last.log detected");
 
-                string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
-                bool TheseIsApplicationFolderLog = File.Exists(PathOfLastLogInApplicationFolder);
+                // Decide what Log is the most recent
 
-                if (TheseIsVirtualStoreLog && TheseIsApplicationFolderLog)
+                if (File.GetLastWriteTimeUtc(PathOfLastLogInApplicationFolder) > File.GetLastWriteTimeUtc(PathOfLastLogInVirtualStore))
                 {
-                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] More Last.log detected");
-
-                    // Decide what Log is the most recent
-
-                    if (File.GetLastWriteTimeUtc(PathOfLastLogInApplicationFolder) > File.GetLastWriteTimeUtc(PathOfLastLogInVirtualStore))
-                    {
-                        // Application Folder log is more recent. Chose it.
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in Application Folder");
-                        return PathOfLastLogInApplicationFolder;
-                    }
-                    else
-                    {
-                        // Chose VirtualStore log
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in VirtualStore");
-                        return PathOfLastLogInVirtualStore;
-                    }
-
+                    // Application Folder log is more recent. Chose it.
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in Application Folder");
+                    return PathOfLastLogInApplicationFolder;
                 }
                 else
                 {
-                    // There is only one log, or none.
+                    // Chose VirtualStore log
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in VirtualStore");
+                    return PathOfLastLogInVirtualStore;
+                }
 
-                    if (TheseIsVirtualStoreLog)
-                    {
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
-                        return PathOfLastLogInVirtualStore;
-                    }
-                    else if (TheseIsApplicationFolderLog)
-                    {
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
-                        return PathOfLastLogInApplicationFolder;
-                    }
-                    else
-                    {
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
-                        // last.log has never been created. Return an empty path
-                        return "";
-                    }
+            }
+            else
+            {
+                // There is only one log, or none.
 
+                if (TheseIsVirtualStoreLog)
+                {
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
+                    return PathOfLastLogInVirtualStore;
+                }
+                else if (TheseIsApplicationFolderLog)
+                {
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
+                    return PathOfLastLogInApplicationFolder;
+                }
+                else
+                {
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
+                    // last.log has never been created. Return an empty path
+                    return "";
                 }
 
             }
