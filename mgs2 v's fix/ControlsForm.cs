@@ -83,11 +83,12 @@ namespace mgs2_v_s_fix
 
             // What controller, and what layout?
 
-            if (pressedRadio.Name.Equals("EnableController_NO"))
+            if (pressedRadio.Name.Equals("EnableController_NO") || pressedRadio.Name.Equals("EnableController_STEAM"))
             {
                 // Hide the gamepad image
                 pictureBox1.Image = null;
 
+                // Hide panels
                 pnl_Gamepad_PreferredLayout.Visible = false;
 
                 // Set a default value
@@ -121,8 +122,42 @@ namespace mgs2_v_s_fix
 
                     // Check if user has selected the SMAA anti-aliasing
 
-                    mainForm.AA_showNeededWarnings();
+                    DialogResult enableSteamController = Ocelot.showMessage("tip_steamControllerPrompt");
 
+                    if (enableSteamController == DialogResult.No)
+                    {
+                        // Select some other option
+                        EnableController_NO.Checked = true;
+                    }
+                    else
+                    {
+                        mainForm.AA_showNeededWarnings(true);
+
+                        // Automatically change some options
+
+                        chb_UseDefaultKeyboardLayout.Checked = true;
+                        mainForm.chb_FixAfterPlaying.Checked = false;
+
+                        if (mainForm.AA_smaa.Checked) mainForm.AA_fxaa.Checked = true;
+
+                        DialogResult openTheWiki = Ocelot.showMessage("tip_showSteamControllerWikiPage");
+
+                        if (openTheWiki == DialogResult.Yes)
+                        {
+                            setFocusOnControlForm(false);
+
+                            try
+                            {
+                                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_STEAMCONTROLLERS);
+                            }
+
+                            catch
+                            {
+                                Ocelot.showMessage("UAC_error");
+                            }
+                        }
+                        
+                    }
 
                 }
                 else // Xbox
@@ -323,6 +358,19 @@ namespace mgs2_v_s_fix
             {
                 Ocelot.showMessage("UAC_error");
             }
+        }
+
+        private void chb_UseDefaultKeyboardLayout_Click(object sender, EventArgs e)
+        {
+            //CHECK: If Steam controller is enabled? If yes, force user to keep it to "ON"
+
+            if (EnableController_STEAM.Checked)
+            {
+                Ocelot.showMessage("tip_defaultLayoutANDsteam");
+
+                chb_UseDefaultKeyboardLayout.Checked = true;
+            }
+
         }
     }
 }

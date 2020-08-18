@@ -1712,6 +1712,7 @@
             this.chb_FixAfterPlaying.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chb_FixAfterPlaying.UseVisualStyleBackColor = true;
             this.chb_FixAfterPlaying.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.chb_FixAfterPlaying.Click += new System.EventHandler(this.chb_FixAfterPlaying_Click);
             // 
             // label4
             // 
@@ -2118,7 +2119,6 @@
         private System.Windows.Forms.CheckBox chb_DepthOfField;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TabPage tab_Extra;
-        private System.Windows.Forms.CheckBox chb_FixAfterPlaying;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.PictureBox ptb_GitHubLogo;
@@ -2130,8 +2130,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pnl_AA;
-        private System.Windows.Forms.RadioButton AA_smaa;
-        private System.Windows.Forms.RadioButton AA_fxaa;
         private System.Windows.Forms.RadioButton AA_no;
         private System.Windows.Forms.Label lbl_AAGuide;
         private System.Windows.Forms.Label help_sound;
@@ -2139,6 +2137,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label help_control;
         private System.Windows.Forms.Label lbl_goToControlForm;
+        internal System.Windows.Forms.RadioButton AA_smaa;
+        internal System.Windows.Forms.RadioButton AA_fxaa;
+        internal System.Windows.Forms.CheckBox chb_FixAfterPlaying;
     }
 }
 

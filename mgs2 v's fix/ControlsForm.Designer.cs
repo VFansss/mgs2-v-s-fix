@@ -33,6 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_KbMouse = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -48,9 +50,6 @@
             this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
             this.EnableController_NO = new System.Windows.Forms.RadioButton();
             this.pnl_Gamepad_PreferredLayout = new System.Windows.Forms.Panel();
-            this.pnl_InvertTriggersWithDorsals = new System.Windows.Forms.Panel();
-            this.chb_InvertTriggersWithDorsals = new System.Windows.Forms.CheckBox();
-            this.lbl_InvertTriggersWithDorsals = new System.Windows.Forms.Label();
             this.pnl_LayoutChooser = new System.Windows.Forms.Panel();
             this.PreferredLayout_PS2 = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
@@ -62,22 +61,23 @@
             this.help_controls = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.lbl_InvertTriggersWithDorsals = new System.Windows.Forms.Label();
+            this.chb_InvertTriggersWithDorsals = new System.Windows.Forms.CheckBox();
+            this.pnl_InvertTriggersWithDorsals = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tab_KbMouse.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             this.tab_Gamepads.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_EnableController.SuspendLayout();
             this.pnl_Gamepad_PreferredLayout.SuspendLayout();
-            this.pnl_InvertTriggersWithDorsals.SuspendLayout();
             this.pnl_LayoutChooser.SuspendLayout();
             this.tab_ControlsHelp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.pnl_InvertTriggersWithDorsals.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_returnToForm1
@@ -137,6 +137,33 @@
             this.panel1.Size = new System.Drawing.Size(601, 435);
             this.panel1.TabIndex = 22;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(274, 369);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(64, 66);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 27;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(7, 321);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(591, 49);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "If you want to use a custom layout, please turn \'OFF\' the toggle above and click " +
+    "the icon below to see what other layouts the community has provided and how to i" +
+    "nstall them!\r\n";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -190,6 +217,7 @@
             this.chb_UseDefaultKeyboardLayout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.chb_UseDefaultKeyboardLayout.UseVisualStyleBackColor = true;
             this.chb_UseDefaultKeyboardLayout.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.chb_UseDefaultKeyboardLayout.Click += new System.EventHandler(this.chb_UseDefaultKeyboardLayout_Click);
             // 
             // label4
             // 
@@ -260,23 +288,23 @@
             this.EnableController_STEAM.Appearance = System.Windows.Forms.Appearance.Button;
             this.EnableController_STEAM.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.EnableController_STEAM.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.EnableController_STEAM.Enabled = false;
             this.EnableController_STEAM.FlatAppearance.BorderSize = 0;
             this.EnableController_STEAM.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
             this.EnableController_STEAM.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.EnableController_STEAM.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.EnableController_STEAM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EnableController_STEAM.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EnableController_STEAM.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.EnableController_STEAM.Location = new System.Drawing.Point(413, 5);
+            this.EnableController_STEAM.Font = new System.Drawing.Font("Calibri", 14.25F);
+            this.EnableController_STEAM.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.EnableController_STEAM.Location = new System.Drawing.Point(413, 4);
             this.EnableController_STEAM.Name = "EnableController_STEAM";
             this.EnableController_STEAM.Size = new System.Drawing.Size(116, 30);
             this.EnableController_STEAM.TabIndex = 5;
             this.EnableController_STEAM.TabStop = true;
-            this.EnableController_STEAM.Text = "Steam: Soon ™";
+            this.EnableController_STEAM.Text = "Steam";
             this.EnableController_STEAM.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.EnableController_STEAM.UseVisualStyleBackColor = false;
-            this.EnableController_STEAM.Visible = false;
+            this.EnableController_STEAM.CheckedChanged += new System.EventHandler(this.setNewColor);
+            this.EnableController_STEAM.Click += new System.EventHandler(this.EnableController_Click);
             // 
             // EnableController_DS4
             // 
@@ -368,48 +396,6 @@
             this.pnl_Gamepad_PreferredLayout.Name = "pnl_Gamepad_PreferredLayout";
             this.pnl_Gamepad_PreferredLayout.Size = new System.Drawing.Size(546, 362);
             this.pnl_Gamepad_PreferredLayout.TabIndex = 20;
-            // 
-            // pnl_InvertTriggersWithDorsals
-            // 
-            this.pnl_InvertTriggersWithDorsals.Controls.Add(this.chb_InvertTriggersWithDorsals);
-            this.pnl_InvertTriggersWithDorsals.Controls.Add(this.lbl_InvertTriggersWithDorsals);
-            this.pnl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(138, 38);
-            this.pnl_InvertTriggersWithDorsals.Name = "pnl_InvertTriggersWithDorsals";
-            this.pnl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(293, 39);
-            this.pnl_InvertTriggersWithDorsals.TabIndex = 13;
-            // 
-            // chb_InvertTriggersWithDorsals
-            // 
-            this.chb_InvertTriggersWithDorsals.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chb_InvertTriggersWithDorsals.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chb_InvertTriggersWithDorsals.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chb_InvertTriggersWithDorsals.FlatAppearance.BorderSize = 0;
-            this.chb_InvertTriggersWithDorsals.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.chb_InvertTriggersWithDorsals.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.chb_InvertTriggersWithDorsals.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.chb_InvertTriggersWithDorsals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chb_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_InvertTriggersWithDorsals.Location = new System.Drawing.Point(226, 8);
-            this.chb_InvertTriggersWithDorsals.Name = "chb_InvertTriggersWithDorsals";
-            this.chb_InvertTriggersWithDorsals.Size = new System.Drawing.Size(55, 26);
-            this.chb_InvertTriggersWithDorsals.TabIndex = 9;
-            this.chb_InvertTriggersWithDorsals.TabStop = false;
-            this.chb_InvertTriggersWithDorsals.Text = "XXX";
-            this.chb_InvertTriggersWithDorsals.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chb_InvertTriggersWithDorsals.UseVisualStyleBackColor = true;
-            this.chb_InvertTriggersWithDorsals.CheckedChanged += new System.EventHandler(this.setNewColor);
-            // 
-            // lbl_InvertTriggersWithDorsals
-            // 
-            this.lbl_InvertTriggersWithDorsals.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_InvertTriggersWithDorsals.AutoSize = true;
-            this.lbl_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(12, 7);
-            this.lbl_InvertTriggersWithDorsals.Name = "lbl_InvertTriggersWithDorsals";
-            this.lbl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(215, 26);
-            this.lbl_InvertTriggersWithDorsals.TabIndex = 6;
-            this.lbl_InvertTriggersWithDorsals.Text = "Invert RT/LT with RB/LB:";
-            this.lbl_InvertTriggersWithDorsals.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnl_LayoutChooser
             // 
@@ -565,32 +551,46 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // lbl_InvertTriggersWithDorsals
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(7, 321);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(591, 49);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "If you want to use a custom layout, please turn \'OFF\' the toggle above and click " +
-    "the icon below to see what other layouts the community has provided and how to i" +
-    "nstall them!\r\n";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_InvertTriggersWithDorsals.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_InvertTriggersWithDorsals.AutoSize = true;
+            this.lbl_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.lbl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(12, 7);
+            this.lbl_InvertTriggersWithDorsals.Name = "lbl_InvertTriggersWithDorsals";
+            this.lbl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(215, 26);
+            this.lbl_InvertTriggersWithDorsals.TabIndex = 6;
+            this.lbl_InvertTriggersWithDorsals.Text = "Invert RT/LT with RB/LB:";
+            this.lbl_InvertTriggersWithDorsals.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pictureBox4
+            // chb_InvertTriggersWithDorsals
             // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(274, 369);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(64, 66);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 27;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.chb_InvertTriggersWithDorsals.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chb_InvertTriggersWithDorsals.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chb_InvertTriggersWithDorsals.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chb_InvertTriggersWithDorsals.FlatAppearance.BorderSize = 0;
+            this.chb_InvertTriggersWithDorsals.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.chb_InvertTriggersWithDorsals.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.chb_InvertTriggersWithDorsals.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.chb_InvertTriggersWithDorsals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chb_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chb_InvertTriggersWithDorsals.Location = new System.Drawing.Point(226, 8);
+            this.chb_InvertTriggersWithDorsals.Name = "chb_InvertTriggersWithDorsals";
+            this.chb_InvertTriggersWithDorsals.Size = new System.Drawing.Size(55, 26);
+            this.chb_InvertTriggersWithDorsals.TabIndex = 9;
+            this.chb_InvertTriggersWithDorsals.TabStop = false;
+            this.chb_InvertTriggersWithDorsals.Text = "XXX";
+            this.chb_InvertTriggersWithDorsals.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chb_InvertTriggersWithDorsals.UseVisualStyleBackColor = true;
+            // 
+            // pnl_InvertTriggersWithDorsals
+            // 
+            this.pnl_InvertTriggersWithDorsals.Controls.Add(this.chb_InvertTriggersWithDorsals);
+            this.pnl_InvertTriggersWithDorsals.Controls.Add(this.lbl_InvertTriggersWithDorsals);
+            this.pnl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(127, 43);
+            this.pnl_InvertTriggersWithDorsals.Name = "pnl_InvertTriggersWithDorsals";
+            this.pnl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(293, 39);
+            this.pnl_InvertTriggersWithDorsals.TabIndex = 16;
             // 
             // ControlsForm
             // 
@@ -613,6 +613,7 @@
             this.tab_KbMouse.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -621,14 +622,13 @@
             this.pnl_EnableController.ResumeLayout(false);
             this.pnl_EnableController.PerformLayout();
             this.pnl_Gamepad_PreferredLayout.ResumeLayout(false);
-            this.pnl_InvertTriggersWithDorsals.ResumeLayout(false);
-            this.pnl_InvertTriggersWithDorsals.PerformLayout();
             this.pnl_LayoutChooser.ResumeLayout(false);
             this.pnl_LayoutChooser.PerformLayout();
             this.tab_ControlsHelp.ResumeLayout(false);
             this.tab_ControlsHelp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.pnl_InvertTriggersWithDorsals.ResumeLayout(false);
+            this.pnl_InvertTriggersWithDorsals.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -653,9 +653,6 @@
         internal System.Windows.Forms.RadioButton PreferredLayout_PS2;
         internal System.Windows.Forms.Label label10;
         internal System.Windows.Forms.RadioButton PreferredLayout_V;
-        private System.Windows.Forms.Panel pnl_InvertTriggersWithDorsals;
-        internal System.Windows.Forms.Label lbl_InvertTriggersWithDorsals;
-        internal System.Windows.Forms.CheckBox chb_InvertTriggersWithDorsals;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label help_controls;
@@ -669,5 +666,8 @@
         internal System.Windows.Forms.CheckBox chb_UseDefaultKeyboardLayout;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel pnl_InvertTriggersWithDorsals;
+        internal System.Windows.Forms.CheckBox chb_InvertTriggersWithDorsals;
+        internal System.Windows.Forms.Label lbl_InvertTriggersWithDorsals;
     }
 }

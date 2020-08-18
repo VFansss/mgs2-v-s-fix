@@ -36,6 +36,7 @@ namespace mgs2_v_s_fix
         public const string GITHUB_WIKI_INDEX = GITHUB_WIKI+"#chapters-of-the-guide";
         public const string GITHUB_WIKI_CONTROLS = GITHUB_WIKI + "/Controllers-&-Actions";
         public const string GITHUB_WIKI_KEYBOARD = GITHUB_WIKI + "/Controllers-&-Actions#introducing-words";
+        public const string GITHUB_WIKI_STEAMCONTROLLERS = GITHUB_WIKI + "/Controllers-&-Actions#steam-controllers";
 
         // Contain Key-Value from Configuration_file.ini when 'Ocelot.load_INI_SetTo_InternalConfig' is called
         public static ConfSheet InternalConfiguration = new ConfSheet();
@@ -820,7 +821,7 @@ namespace mgs2_v_s_fix
 
                     // What controller?
 
-                    if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("NO"))
+                    if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("NO") || Ocelot.InternalConfiguration.Controls["EnableController"].Equals("STEAM"))
                     {
                         Unzip.UnZippa("NoController.zip", true);
                     }
@@ -842,7 +843,6 @@ namespace mgs2_v_s_fix
                         else
                         {
                             choosenGamepad = AvailableGamepads.XBOX;
-
                         }
 
                         // What layout?
@@ -1863,6 +1863,55 @@ namespace mgs2_v_s_fix
                     "\n\n" +
                     "( HINT: If you want SMAA at all costs, unselect 'Steam' from the 'Controls' tab of the fix, or enable it manually from 'SweetFX_settings.txt' after you press 'SAVE' )",
                     "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_defaultLayoutANDsteam":
+
+                    answer = MessageBox.Show(
+                    "Steam controller has been choosed from 'Gamepads'" +
+                    "\n\n" +
+                    "For this reason, 'Use default keyboard layout' must remain to 'ON'" +
+                    "\n\n" +
+                    "If you want to disable it for whatever reason, choose another gamepad or turn the 'Controller' option to 'NO'",
+                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_openVsAfterPlayingANDsteam":
+
+                    answer = MessageBox.Show(
+                    "Steam controller has been choosed from 'Gamepads'" +
+                    "\n\n" +
+                    "For this reason, 'Open V's Fix after playing the game' must remain to 'OFF'" +
+                    "\n\n" +
+                    "If you want to disable it for whatever reason, choose another gamepad or turn the 'Controller' option to 'NO'",
+                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_steamControllerPrompt":
+
+                    answer = MessageBox.Show(
+                        "Enabling this option will allow you to use Steam drivers to configure ingame inputs" +
+                        "\n\n" +
+                        "What you HAVE to do is add the game executable to Steam using one of these methods:"+
+                        "\n\n" +
+                        "* Using the 'Add game to Steam' function from the 'Extra tab' inside V's fix" + "\n" +
+                        "* Manually adding 'mgs2_sse.exe to Steam as 'METAL GEAR SOLID 2: SUBSTANCE'" + "\n" +
+                        "\n\n" +
+                        "Then, you can simply start the game from Steam and choose a layout from the Steam Controller configurator"+
+                        "\n\n\n" +
+                        "Do you want to enable 'Steam Controller'?",
+                    "Steam Controller", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_showSteamControllerWikiPage":
+
+                    answer = MessageBox.Show(
+                        "Do you want to open the V's Wiki page with detailed info on how to make your Steam controller correctly working?",
+                    "Steam Controller", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                     break;
 

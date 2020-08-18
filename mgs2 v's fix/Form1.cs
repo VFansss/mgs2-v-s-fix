@@ -559,6 +559,7 @@ namespace mgs2_v_s_fix
             // What controller, and what layout?
 
             bool controllerSelected = false;
+            bool steamControllerSelected = false;
 
             // Set a default value
             secondFormInstance.chb_InvertTriggersWithDorsals.Text = "OFF";
@@ -608,6 +609,15 @@ namespace mgs2_v_s_fix
 
             }
 
+            else if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("STEAM"))
+            {
+                secondFormInstance.EnableController_STEAM.Checked = true;
+                secondFormInstance.PreferredLayout_V.Checked = true;
+
+                steamControllerSelected = true; // Hide the panel with extra options'
+
+            }
+
             if (controllerSelected)
             {
                 // Things visible for every controller
@@ -622,8 +632,8 @@ namespace mgs2_v_s_fix
             }
             else
             {
-                // No recognized controller is set. Hide everything
-                secondFormInstance.EnableController_NO.Checked = true;
+                if (!steamControllerSelected) secondFormInstance.EnableController_NO.Checked = true;
+
                 secondFormInstance.pnl_Gamepad_PreferredLayout.Visible = false;
 
                 // Set a default layout value for saving it a first time
@@ -878,21 +888,13 @@ namespace mgs2_v_s_fix
 
             // What controller?
 
-            if (secondFormInstance.EnableController_XBOX.Checked)
-            {
-                Ocelot.InternalConfiguration.Controls["EnableController"] = "XBOX";
-            }
+            if (secondFormInstance.EnableController_XBOX.Checked) Ocelot.InternalConfiguration.Controls["EnableController"] = "XBOX";
 
-            else if (secondFormInstance.EnableController_DS4.Checked)
-            {
-                Ocelot.InternalConfiguration.Controls["EnableController"] = "DS4";
-            }
+            else if (secondFormInstance.EnableController_DS4.Checked) Ocelot.InternalConfiguration.Controls["EnableController"] = "DS4";
 
-            else
-            {
-                // No controller
-                Ocelot.InternalConfiguration.Controls["EnableController"] = "NO";
-            }
+            else if (secondFormInstance.EnableController_STEAM.Checked) Ocelot.InternalConfiguration.Controls["EnableController"] = "STEAM";
+
+            else Ocelot.InternalConfiguration.Controls["EnableController"] = "NO";
 
             // What layout?
 
@@ -1889,6 +1891,18 @@ namespace mgs2_v_s_fix
                 Ocelot.StartSteam();
             }
 
+        }
+
+        private void chb_FixAfterPlaying_Click(object sender, EventArgs e)
+        {
+            //CHECK: If Steam controller is enabled? If yes, force user to keep it to "OFF"
+
+            if (secondFormInstance.EnableController_STEAM.Checked)
+            {
+                Ocelot.showMessage("tip_openVsAfterPlayingANDsteam");
+
+                chb_FixAfterPlaying.Checked = false;
+            }
         }
 
         #endregion
