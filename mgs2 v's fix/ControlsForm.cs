@@ -144,19 +144,6 @@ namespace mgs2_v_s_fix
 
         private void PreferredLayout_UpdateImageAndLayout()
         {
-            // Refresh the keyboard view
-
-            if (KeyboardLayout_Default.Checked)
-            {         
-                lbl_keyboardGuide.Text = "( The default Konami keyboard layout )";
-                lbl_keyboardGuide.Visible = true;
-            }
-            else if (KeyboardLayout_Numkey.Checked)
-            {               
-                lbl_keyboardGuide.Text = "( Move with WASD, perform actions with numeric keypad. Thanks TuxNews <3 )";
-                lbl_keyboardGuide.Visible = true;
-            }
-
             // Fefresh the gamepad view - what controller, and what layout?
 
             pnl_Gamepad_PreferredLayout.Visible = true;
@@ -315,6 +302,21 @@ namespace mgs2_v_s_fix
             try
             {
                 System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_CONTROLS);
+            }
+
+            catch
+            {
+                Ocelot.showMessage("UAC_error");
+            }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            setFocusOnControlForm(false);
+
+            try
+            {
+                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_KEYBOARD);
             }
 
             catch

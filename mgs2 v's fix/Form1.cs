@@ -542,19 +542,19 @@ namespace mgs2_v_s_fix
 
             #region lot_of_things
 
-            // Keyboard parts
-
-            if (Ocelot.InternalConfiguration.Controls["KeyboardLayout"].Equals("Numkey"))
+            // Keyboard part
+            if (Ocelot.InternalConfiguration.Controls["UseDefaultKeyboardLayout"] == "true")
             {
-                secondFormInstance.KeyboardLayout_Numkey.Checked = true;
+                secondFormInstance.chb_UseDefaultKeyboardLayout.Text = "ON";
+                secondFormInstance.chb_UseDefaultKeyboardLayout.Checked = true;
             }
             else
             {
-                // Set the default layout
-                secondFormInstance.KeyboardLayout_Default.Checked = true;
+                secondFormInstance.chb_UseDefaultKeyboardLayout.Text = "OFF";
+                secondFormInstance.chb_UseDefaultKeyboardLayout.Checked = false;
             }
 
-            // Controller parts
+            // Controller part
 
             // What controller, and what layout?
 
@@ -866,14 +866,14 @@ namespace mgs2_v_s_fix
 
             // What keyboard layout?
 
-            if (secondFormInstance.KeyboardLayout_Numkey.Checked)
+            if (secondFormInstance.chb_UseDefaultKeyboardLayout.Checked)
             {
-                Ocelot.InternalConfiguration.Controls["KeyboardLayout"] = "Numkey";
+                Ocelot.InternalConfiguration.Controls["UseDefaultKeyboardLayout"] = "true";
             }
 
             else
             {
-                Ocelot.InternalConfiguration.Controls["KeyboardLayout"] = "Default";
+                Ocelot.InternalConfiguration.Controls["UseDefaultKeyboardLayout"] = "false";
             }
 
             // What controller?

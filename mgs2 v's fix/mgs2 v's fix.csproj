@@ -169,7 +169,6 @@
     <EmbeddedResource Include="Resources\DXWrapper.zip" />
     <EmbeddedResource Include="Resources\GreenScreenFix.zip" />
     <EmbeddedResource Include="Resources\Keyboard_Default.zip" />
-    <EmbeddedResource Include="Resources\Keyboard_Numkey.zip" />
     <None Include="Resources\MGS2.ttf" />
     <EmbeddedResource Include="Resources\sweetFX_FXAA.zip" />
     <EmbeddedResource Include="Resources\sweetFX_SMAA.zip" />
@@ -210,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_1_red.ico" />
+    <None Include="Resources\KeyboardLayout_Default.png" />
     <None Include="Resources\bg9.png" />
     <None Include="Resources\manual.png" />
     <None Include="Resources\gamepad.png" />

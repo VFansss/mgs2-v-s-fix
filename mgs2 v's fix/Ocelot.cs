@@ -35,6 +35,7 @@ namespace mgs2_v_s_fix
         public const string GITHUB_WIKI = "https://github.com/VFansss/mgs2-v-s-fix/wiki";
         public const string GITHUB_WIKI_INDEX = GITHUB_WIKI+"#chapters-of-the-guide";
         public const string GITHUB_WIKI_CONTROLS = GITHUB_WIKI + "/Controllers-&-Actions";
+        public const string GITHUB_WIKI_KEYBOARD = GITHUB_WIKI + "/Controllers-&-Actions#introducing-words";
 
         // Contain Key-Value from Configuration_file.ini when 'Ocelot.load_INI_SetTo_InternalConfig' is called
         public static ConfSheet InternalConfiguration = new ConfSheet();
@@ -808,14 +809,13 @@ namespace mgs2_v_s_fix
 
                     // What keyboard layout?
 
-                    if (Ocelot.InternalConfiguration.Controls["KeyboardLayout"].Equals("Numkey"))
+                    if (Ocelot.InternalConfiguration.Controls["UseDefaultKeyboardLayout"].Equals("true"))
                     {
-                        Unzip.UnZippa("Keyboard_Numkey.zip", true);
+                        Unzip.UnZippa("Keyboard_Default.zip", true);
                     }
                     else
                     {
-                        // Extract default layout
-                        Unzip.UnZippa("Keyboard_Default.zip", true);
+                        // Do nothing. I assume that user has manually installed a custom keyboard layout
                     }
 
                     // What controller?
@@ -1392,7 +1392,7 @@ namespace mgs2_v_s_fix
             // Controls
 
             //defaultConfig.Controls["XboxGamepad"] = "NO";
-            defaultConfig.Controls["KeyboardLayout"] = "Default";
+            defaultConfig.Controls["UseDefaultKeyboardLayout"] = "true";
             defaultConfig.Controls["EnableController"] = "NO";
             defaultConfig.Controls["PreferredLayout"] = "V";
             defaultConfig.Controls["InvertTriggersWithDorsals"] = "false";

@@ -401,12 +401,12 @@ namespace mgs2_v_s_fix.Properties {
         }
         
         /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Byte[].
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] Keyboard_Numkey {
+        internal static System.Drawing.Bitmap KeyboardLayout_Default {
             get {
-                object obj = ResourceManager.GetObject("Keyboard_Numkey", resourceCulture);
-                return ((byte[])(obj));
+                object obj = ResourceManager.GetObject("KeyboardLayout_Default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
