@@ -1534,7 +1534,7 @@ namespace mgs2_v_s_fix
 
                 if (selectedAAoption.Equals("AA_fxaa"))
                 {
-                    lbl_AAGuide.Text = "( Lighter and faster, but less effective than SMAA. Raccomended for laptop )";
+                    lbl_AAGuide.Text = "( Lighter and faster, but less effective than SMAA. Recommended for laptops )";
                 }
                 else if(selectedAAoption.Equals("AA_smaa")) 
                 {
