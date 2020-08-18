@@ -275,7 +275,9 @@ namespace mgs2_v_s_fix
             try
             {
 
-                File.Delete(Application.StartupPath + "\\mgs2.ini");
+                PrintToDebugConsole("[!] Deleting mgs2.ini...");
+
+                DeleteFile(Application.StartupPath + "\\mgs2.ini");
 
                 File.Create(Application.StartupPath + "\\mgs2.ini").Close();
 
@@ -2839,6 +2841,23 @@ namespace mgs2_v_s_fix
             {
                 DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(diSourceSubDir.Name);
                 CopyAll(diSourceSubDir, nextTargetSubDir);
+            }
+        }
+
+        // Aiding method - Delete file and wait until is succesfully deleted
+
+        public static void DeleteFile(String fileToDelete)
+        {
+            var fi = new System.IO.FileInfo(fileToDelete);
+            if (fi.Exists)
+            {
+                fi.Delete();
+                fi.Refresh();
+                while (fi.Exists)
+                {
+                    System.Threading.Thread.Sleep(100);
+                    fi.Refresh();
+                }
             }
         }
 
