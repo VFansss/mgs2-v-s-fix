@@ -281,6 +281,23 @@ namespace mgs2_v_s_fix
 
                 File.Create(Application.StartupPath + "\\mgs2.ini").Close();
 
+                PrintToDebugConsole("[!] Deleting VirtualStore files that aren't log...");
+
+                string virtualStoreDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3);
+
+                DirectoryInfo virtualStoreDirInfo = new DirectoryInfo(virtualStoreDirectory);
+
+                foreach (var foundFile in virtualStoreDirInfo.GetFiles("*", SearchOption.AllDirectories))
+                {
+                    if (!foundFile.Extension.Equals(".log"))
+                    {
+                        PrintToDebugConsole("[-] Deleting: "+foundFile.Name);
+
+                        // Is a non-log file. Delete it.
+                        foundFile.Delete();
+                    }
+                }
+
                 // NB: Operation are done following the usual pattern
                 //  Resolution -> Controls -> Graphics -> Sound
 
