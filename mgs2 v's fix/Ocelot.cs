@@ -1967,6 +1967,21 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                case "tip_prompt8KInternalRes":
+
+                    answer = MessageBox.Show(
+                        "Seems that your monitor has a resolution higher or equal than 2K" +
+                        "\n\n" +
+                        "It's highly likely that your PC could afford to enable the '8K Internal resolution'"+"\n"+
+                        "(don't let the number intimidate you, it's lighter than it seems!)" +
+                        "\n\n" +
+                        "You can change the settings from the 'Graphics' tab, but I could do that automatically for you!" + "\n" +
+                        "\n\n" +
+                        "Do you want to enable 8K internal resolution? I suggest to answer 'Yes'",
+                    "Steam Controller", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    break;
+
                 // DEFAULT MESSAGE
 
                 default:

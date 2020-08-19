@@ -1371,15 +1371,17 @@ namespace mgs2_v_s_fix
 
         // WideScreenFIX auto checker
 
-        private void checkIfWSElegible(object sender, KeyEventArgs e)
+        private void checkIfElegibleForEnhancements(object sender, KeyEventArgs e)
         {
             if (txt_Width.Text.Equals("")||(txt_Height.Text.Equals("")))
             {
-                // Empty String
+                // Wait until I have both Width and Height
             }
 
             else
             {
+
+                // Calculate display ratio of my screen
 
                 double rapporto = (Double.Parse(txt_Width.Text) / Double.Parse(txt_Height.Text));
 
@@ -1408,17 +1410,17 @@ namespace mgs2_v_s_fix
                     chb_WideScreenFIX.Checked = false;
                 }
 
-                if (rapporto == 1.7777777777777777d)
-                {
-                    chb_OptimizedFOV.Checked = true;
-                }
-
-                else
-                {
-                    chb_OptimizedFOV.Checked = false;
-                }
+                if (rapporto == 1.7777777777777777d) chb_OptimizedFOV.Checked = true;
+                else chb_OptimizedFOV.Checked = false;
 
                 FullscreenCutscene_setVisibility(this,new MouseEventArgs(System.Windows.Forms.MouseButtons.None,1,1,1,1));
+
+                // Calculate if res is higher than 2K (= height >= 1440) and set "8K" in "Internal resolution" config
+
+                if (Double.Parse(txt_Height.Text) >= 1440d && !InternalResolution_8K.Checked)
+                {
+                    if (Ocelot.showMessage("tip_prompt8KInternalRes") == DialogResult.Yes) InternalResolution_8K.Checked = true;
+                }
 
             }
         }

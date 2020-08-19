@@ -459,7 +459,7 @@
             this.txt_Height.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_Height.Click += new System.EventHandler(this.txt_Height_Click);
             this.txt_Height.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Height_KeyPress);
-            this.txt_Height.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkIfWSElegible);
+            this.txt_Height.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkIfElegibleForEnhancements);
             this.txt_Height.Leave += new System.EventHandler(this.txt_Height_Leave);
             // 
             // lbl_des_01
@@ -500,7 +500,7 @@
             this.txt_Width.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_Width.Click += new System.EventHandler(this.txt_Width_Click);
             this.txt_Width.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Width_KeyPress);
-            this.txt_Width.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkIfWSElegible);
+            this.txt_Width.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkIfElegibleForEnhancements);
             this.txt_Width.Leave += new System.EventHandler(this.txt_Width_Leave);
             // 
             // lbl_des_00
