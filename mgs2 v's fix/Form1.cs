@@ -37,6 +37,14 @@ namespace mgs2_v_s_fix
         
         private bool tip_antialiasingANDmodelquality_showed = false;
 
+        // Take in memory the instance of the second utility form called 'ControlsForm'
+
+        private ControlsForm secondFormInstance;
+
+        // DEBUG MODE
+
+        private Boolean setupButtonPressed = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -60,13 +68,14 @@ namespace mgs2_v_s_fix
 
             // Tooltip for WideScreenFIX
 
-                // Create the ToolTip and associate with the Form container.
+            // Create the ToolTip and associate with the Form container.
             ToolTip toolTip1 = new ToolTip();
 
-                // Set up the delays for the ToolTip.
+            // Set up the delays for the ToolTip.
             toolTip1.InitialDelay = 200;
             toolTip1.ReshowDelay = 200;
-                // Force the ToolTip text to be displayed whether or not the form is active.
+
+            // Force the ToolTip text to be displayed whether or not the form is active.
             toolTip1.ShowAlways = true;
 
             // SET DEBUG label on main menu 
@@ -74,6 +83,7 @@ namespace mgs2_v_s_fix
             if (Ocelot.debugMode)
             {
                 this.lbl_debugMode.Visible = true;
+                lbl_debugMode.Text = @"Debug Mode - Press 'SETTINGS' button";
             }
 
             // Background things
@@ -166,10 +176,10 @@ namespace mgs2_v_s_fix
             Ocelot.checkConfFileIntegrity();
 
             // If there's need to autoconfig (= missing field/s inside .ini file)
-            if (Ocelot.needOfAutoConfig == true)
+            if (Ocelot.needAutoconfig)
             {
 
-                //  V's will understand best config
+                //  V's will try to understand the best config
 
                 Ocelot.startAutoconfig();
 
@@ -177,7 +187,7 @@ namespace mgs2_v_s_fix
 
             else
             {
-                // There's some valid configuration inside .ini
+                // There's already a valid configuration done in the past
 
                 // Load already existent settings done in the past
 
@@ -185,7 +195,10 @@ namespace mgs2_v_s_fix
 
             }
 
-            // Transfering internal setting to graphic setupper
+            // Instantiate a new controls form
+            secondFormInstance = new ControlsForm(this);
+
+            // Transfering internal setting to graphical setupper
             if (load_InternalConfig_SetTo_SetupperConfig() == false)
             {
                 // Something gone wrong. A message has already show to the user;
@@ -194,7 +207,15 @@ namespace mgs2_v_s_fix
 
             Ocelot.PrintToDebugConsole("[ ] Settings - settings from internal config correctly attached to setupper");
 
-            // Settings Mode
+            if (Ocelot.debugMode && !setupButtonPressed)
+            {
+                // User hasn't pressed at least once the SETTINGS button, and I don't have a good debug file
+                lbl_debugMode.Text = "Debug Mode - Now press 'SAVE' button";
+
+            }
+            
+
+            // Chang some controls on Settings tabs
             btn_startGame.Visible = false;
             btn_settings.Visible = false;
             btn_saveSettings.Visible = true;
@@ -221,7 +242,7 @@ namespace mgs2_v_s_fix
             lbl_ManualLink.Visible = true;
             pictureBox2.Visible = true;
 
-            // Filling 'About'
+            // About tab
 
             abt_Regards.Checked = true;
 
@@ -293,6 +314,14 @@ namespace mgs2_v_s_fix
         {
 
             Ocelot.PrintToDebugConsole("[ ] Save button pressed");
+
+            if (Ocelot.debugMode && !setupButtonPressed)
+            {
+                // User hasn't pressed at least once the SETTINGS button, and I don't have a good debug file
+                lbl_debugMode.Text = "Debug Mode - Now the log is OK :)";
+                
+
+            }
 
             load_SetupperConfig_SetTo_InternalConfig();
 
@@ -513,64 +542,110 @@ namespace mgs2_v_s_fix
 
             #region lot_of_things
 
+            // Keyboard part
+            if (Ocelot.InternalConfiguration.Controls["UseDefaultKeyboardLayout"] == "true")
+            {
+                secondFormInstance.chb_UseDefaultKeyboardLayout.Text = "ON";
+                secondFormInstance.chb_UseDefaultKeyboardLayout.Checked = true;
+            }
+            else
+            {
+                secondFormInstance.chb_UseDefaultKeyboardLayout.Text = "OFF";
+                secondFormInstance.chb_UseDefaultKeyboardLayout.Checked = false;
+            }
+
+            // Controller part
+
             // What controller, and what layout?
+
+            bool controllerSelected = false;
+            bool steamControllerSelected = false;
+
+            // Set a default value
+            secondFormInstance.chb_InvertTriggersWithDorsals.Text = "OFF";
+            secondFormInstance.chb_InvertTriggersWithDorsals.Checked = false;
 
             if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("XBOX"))
             {
-                pnl_PreferredLayout.Visible = true;
-                EnableController_XBOX.Checked = true;
+                secondFormInstance.EnableController_XBOX.Checked = true;
+                secondFormInstance.lbl_InvertTriggersWithDorsals.Text = "Invert RT/LT with RB/LB:";
+
+                controllerSelected = true;
 
                 if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
                 {
-                    PreferredLayout_PS2.Checked = true;
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
+                    secondFormInstance.PreferredLayout_PS2.Checked = true;
+                    secondFormInstance.pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
                 }
 
                 else
                 {
                     // V Layout
-                    PreferredLayout_V.Checked = true;
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
+                    secondFormInstance.PreferredLayout_V.Checked = true;
+                    secondFormInstance.pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
                 }
 
             }
 
             else if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("DS4"))
             {
-                pnl_PreferredLayout.Visible = true;
-                EnableController_DS4.Checked = true;
+                secondFormInstance.EnableController_DS4.Checked = true;
+                secondFormInstance.lbl_InvertTriggersWithDorsals.Text = "Invert R2/L2 with R1/L1:";
+
+                controllerSelected = true;
 
                 if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
                 {
-                    PreferredLayout_PS2.Checked = true;
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_PS2Layout;
+                    secondFormInstance.PreferredLayout_PS2.Checked = true;
+                    secondFormInstance.pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_PS2Layout;
                 }
 
                 else
                 {
-                    // VLayout
-                    PreferredLayout_V.Checked = true;
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_VLayout;
+                    // V Layout
+                    secondFormInstance.PreferredLayout_V.Checked = true;
+                    secondFormInstance.pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_VLayout;
                 }
 
             }
 
+            else if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("STEAM"))
+            {
+                secondFormInstance.EnableController_STEAM.Checked = true;
+                secondFormInstance.PreferredLayout_V.Checked = true;
+
+                steamControllerSelected = true; // Hide the panel with extra options'
+
+            }
+
+            if (controllerSelected)
+            {
+                // Things visible for every controller
+                secondFormInstance.pnl_Gamepad_PreferredLayout.Visible = true;
+
+                if (Ocelot.InternalConfiguration.Controls["InvertTriggersWithDorsals"].Equals("true"))
+                {
+                    secondFormInstance.chb_InvertTriggersWithDorsals.Text = "ON";
+                    secondFormInstance.chb_InvertTriggersWithDorsals.Checked = true;
+                }
+
+            }
             else
             {
-                // No recognized controller is set. Hide everything
-                EnableController_NO.Checked = true;
-                pnl_PreferredLayout.Visible = false;
+                if (!steamControllerSelected) secondFormInstance.EnableController_NO.Checked = true;
+
+                secondFormInstance.pnl_Gamepad_PreferredLayout.Visible = false;
 
                 // Set a default layout value for saving it a first time
 
-                PreferredLayout_V.Checked = true;
+                secondFormInstance.PreferredLayout_V.Checked = true;
 
             }
 
             if (Ocelot.NOSYMODE)
             {
                 // Don't show the gamepad image because...reasons
-                pictureBox1.Visible = false;
+                secondFormInstance.pictureBox1.Visible = false;
             }
 
             #endregion
@@ -707,12 +782,12 @@ namespace mgs2_v_s_fix
 
             #endregion
 
-            // All gone well. Can show the settings menu
+            // All went well. I can show the settings menu
 
             return true;
         }
 
-            /* this will retrieve settings from setupper and will storage it inside Ocelot.InternalConfiguration */
+        /* this will retrieve settings from setupper and will storage it inside Ocelot.InternalConfiguration */
 
         public void load_SetupperConfig_SetTo_InternalConfig()
         {
@@ -799,27 +874,31 @@ namespace mgs2_v_s_fix
 
             #region lot_of_things
 
-            // What controller?
+            // What keyboard layout?
 
-            if (EnableController_XBOX.Checked)
+            if (secondFormInstance.chb_UseDefaultKeyboardLayout.Checked)
             {
-                Ocelot.InternalConfiguration.Controls["EnableController"] = "XBOX";
-            }
-
-            else if (EnableController_DS4.Checked)
-            {
-                Ocelot.InternalConfiguration.Controls["EnableController"] = "DS4";
+                Ocelot.InternalConfiguration.Controls["UseDefaultKeyboardLayout"] = "true";
             }
 
             else
             {
-                // No controller
-                Ocelot.InternalConfiguration.Controls["EnableController"] = "NO";
+                Ocelot.InternalConfiguration.Controls["UseDefaultKeyboardLayout"] = "false";
             }
+
+            // What controller?
+
+            if (secondFormInstance.EnableController_XBOX.Checked) Ocelot.InternalConfiguration.Controls["EnableController"] = "XBOX";
+
+            else if (secondFormInstance.EnableController_DS4.Checked) Ocelot.InternalConfiguration.Controls["EnableController"] = "DS4";
+
+            else if (secondFormInstance.EnableController_STEAM.Checked) Ocelot.InternalConfiguration.Controls["EnableController"] = "STEAM";
+
+            else Ocelot.InternalConfiguration.Controls["EnableController"] = "NO";
 
             // What layout?
 
-            if (PreferredLayout_PS2.Checked)
+            if (secondFormInstance.PreferredLayout_PS2.Checked)
             {
                 Ocelot.InternalConfiguration.Controls["PreferredLayout"] = "PS2";
             }
@@ -827,6 +906,17 @@ namespace mgs2_v_s_fix
             {
                 // V's Layout
                 Ocelot.InternalConfiguration.Controls["PreferredLayout"] = "V";
+            }
+
+            // Invert triggers with dorsals?
+
+            if (secondFormInstance.chb_InvertTriggersWithDorsals.Checked)
+            {
+                Ocelot.InternalConfiguration.Controls["InvertTriggersWithDorsals"] = "true";
+            }
+            else
+            {
+                Ocelot.InternalConfiguration.Controls["InvertTriggersWithDorsals"] = "false";
             }
 
             #endregion
@@ -837,8 +927,6 @@ namespace mgs2_v_s_fix
 
             foreach (Panel panel in tab_Graphics.Controls.OfType<Panel>())
             {
-
-
                 String key = panel.Name.Remove(0, 4);
                 // NB: 'key' local variable now contain name of the settings key (ie: "MotionBlur")
 
@@ -1097,7 +1185,7 @@ namespace mgs2_v_s_fix
             int ran_number = 0;
 
             // CHANGE THIS IF MORE SCREENSHOT ARE AVAILABLE
-            int NUMBER_OF_SCREENSHOTS = 8;
+            int NUMBER_OF_SCREENSHOTS = 9;
 
             do { ran_number = rnd.Next(1, NUMBER_OF_SCREENSHOTS+1); }
             while (!(ran_number != bg_number));
@@ -1283,15 +1371,17 @@ namespace mgs2_v_s_fix
 
         // WideScreenFIX auto checker
 
-        private void checkIfWSElegible(object sender, KeyEventArgs e)
+        private void checkIfElegibleForEnhancements(object sender, KeyEventArgs e)
         {
             if (txt_Width.Text.Equals("")||(txt_Height.Text.Equals("")))
             {
-                // Empty String
+                // Wait until I have both Width and Height
             }
 
             else
             {
+
+                // Calculate display ratio of my screen
 
                 double rapporto = (Double.Parse(txt_Width.Text) / Double.Parse(txt_Height.Text));
 
@@ -1320,17 +1410,17 @@ namespace mgs2_v_s_fix
                     chb_WideScreenFIX.Checked = false;
                 }
 
-                if (rapporto == 1.7777777777777777d)
-                {
-                    chb_OptimizedFOV.Checked = true;
-                }
-
-                else
-                {
-                    chb_OptimizedFOV.Checked = false;
-                }
+                if (rapporto == 1.7777777777777777d) chb_OptimizedFOV.Checked = true;
+                else chb_OptimizedFOV.Checked = false;
 
                 FullscreenCutscene_setVisibility(this,new MouseEventArgs(System.Windows.Forms.MouseButtons.None,1,1,1,1));
+
+                // Calculate if res is higher than 2K (= height >= 1440) and set "8K" in "Internal resolution" config
+
+                if (Double.Parse(txt_Height.Text) >= 1440d && !InternalResolution_8K.Checked)
+                {
+                    if (Ocelot.showMessage("tip_prompt8KInternalRes") == DialogResult.Yes) InternalResolution_8K.Checked = true;
+                }
 
             }
         }
@@ -1364,139 +1454,35 @@ namespace mgs2_v_s_fix
 
         #region CONTROLLER tab
 
-        // Controller Layout graphics switcher
+        // Build 190901: lot of methods moved inside ControlsForm.cs assembly
 
-        private void EnableController_Click(object sender, EventArgs e)
+        private void pnl_ControlsSubPanel_Click(object sender, EventArgs e)
         {
-            // Click on one of the EnableController radio buttons
-
-            if(sender.GetType() != typeof(RadioButton))
-            {
-                // ??
-                throw new Exception("Event raised by an unknow element");
-
-            }
-
-            RadioButton pressedRadio = (RadioButton)sender;
-
-            // What controller, and what layout?
-
-            if (pressedRadio.Name.Equals("EnableController_NO"))
-            {
-                // Hide the gamepad image
-                pictureBox1.Image = null;
-
-                pnl_PreferredLayout.Visible = false;
-
-                // Set a default value
-                PreferredLayout_V.Checked = true;
-
-            }
-
-            else
-            {
-                PreferredLayout_UpdateImageAndLayout();
-            }
-
-            // Set an help label for the different controllers
-
-            if (pressedRadio.Name.Equals("EnableController_NO"))
-            {
-                lbl_controllerGuide.Visible = false;
-            }
-
-            else
-            {
-
-                if (pressedRadio.Name.Equals("EnableController_DS4"))
-                {
-                    lbl_controllerGuide.Text = "( ONLY if using a DS4 WITHOUT external software. Otherwise, choose 'XBOX' )";
-                }
-                else if (pressedRadio.Name.Equals("EnableController_STEAM"))
-                {
-                    lbl_controllerGuide.Text = "( If you are going to play on Steam AND use a controller through its drivers )";
-
-                    // Check if user has selected the SMAA anti-aliasing
-
-                    AA_showNeededWarnings();
-
-
-                }
-                else // Xbox
-                {
-                    lbl_controllerGuide.Text = "( For original Xbox controllers, and those who emulate them )";
-                }
-
-                lbl_controllerGuide.Visible = true;
-
-            }
-
+            GoToSecondForm();
         }
 
-        private void PreferredLayout_Click(object sender, EventArgs e)
+        private void lbl_goToControlForm_Click(object sender, EventArgs e)
         {
-            PreferredLayout_UpdateImageAndLayout();
+            GoToSecondForm();
         }
 
-        private void PreferredLayout_UpdateImageAndLayout()
+        private void GoToSecondForm()
         {
-            // What controller, and what layout?
+            secondFormInstance.AddOwnedForm(this);
+            secondFormInstance.setFocusOnControlForm(true);
+        }
 
-            pnl_PreferredLayout.Visible = true;
-
-            if (EnableController_XBOX.Checked)
+        private void help_control_Click(object sender, EventArgs e)
+        {
+            try
             {
-                pnl_LayoutChooser.Visible = true;
-
-                if (PreferredLayout_PS2.Checked)
-                {
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_PS2Layout;
-                }
-
-                else
-                {
-                    // V Layout
-                    PreferredLayout_V.Checked = true;
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerXBOX_VLayout;
-                }
-
-            }
-            else if (EnableController_DS4.Checked)
-            {
-                pnl_LayoutChooser.Visible = true;
-
-                if (PreferredLayout_PS2.Checked)
-                {
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_PS2Layout;
-                }
-
-                else
-                {
-                    // VLayout
-                    PreferredLayout_V.Checked = true;
-                    pictureBox1.Image = mgs2_v_s_fix.Properties.Resources.ControllerDS4_VLayout;
-                }
-
-            }
-            else if (EnableController_STEAM.Checked)
-            {
-                pnl_LayoutChooser.Visible = false;
-                pictureBox1.Image = null;
-            }
-            else
-            {
-                // ??
-                throw new Exception("ERROR: A layout has been selected without knowing your kind of controller!");
+                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_CONTROLS);
             }
 
-
-            if (Ocelot.NOSYMODE)
+            catch
             {
-                // Decide to not show the image because...reasons
-
-                pictureBox1.Visible = false;
+                Ocelot.showMessage("UAC_error");
             }
-
         }
 
         #endregion
@@ -1504,6 +1490,52 @@ namespace mgs2_v_s_fix
         #region GRAPHICS tab
 
         // Show an helper
+
+        private void InternalResolution_Click(object sender, EventArgs e)
+        {
+            if (sender.GetType() != typeof(RadioButton))
+            {
+                // ??
+                throw new Exception("Event raised by an unknow element");
+
+            }
+
+            InternalResolution_showTheRightHelper(((RadioButton)sender).Name);
+        }
+
+        private void InternalResolution_showTheRightHelper(string pressedButtonName)
+        {
+            switch (pressedButtonName)
+            {
+                case "InternalResolution_512":
+
+                    lbl_InternalResolutionGuide.Text = "( Slightly better than the PS2 version. Just for the truly nostalgic )";
+
+                    break;
+
+                case "InternalResolution_720":
+
+                    lbl_InternalResolutionGuide.Text = "( Framebuffer: 2048x1024. Good for non-gaming laptop and handheld )";
+
+                    break;
+
+                case "InternalResolution_2K":
+
+                    lbl_InternalResolutionGuide.Text = "( Framebuffer: 4096x2048. Good for not stressing your gaming PC )";
+
+                    break;
+
+                case "InternalResolution_8K":
+
+                    lbl_InternalResolutionGuide.Text = "( Framebuffer: 8192x8192. Fantastic downsample for high-performance PCs )";
+
+                    break;
+
+            }
+
+            lbl_InternalResolutionGuide.Visible = true;
+
+        }
 
         private void AA_Click(object sender, EventArgs e)
         {
@@ -1550,7 +1582,7 @@ namespace mgs2_v_s_fix
 
                 if (selectedAAoption.Equals("AA_fxaa"))
                 {
-                    lbl_AAGuide.Text = "( Lighter and faster, but less effective than SMAA. Raccomended for laptop )";
+                    lbl_AAGuide.Text = "( Lighter and faster, but less effective than SMAA. Recommended for laptops )";
                 }
                 else if(selectedAAoption.Equals("AA_smaa")) 
                 {
@@ -1579,12 +1611,12 @@ namespace mgs2_v_s_fix
             AA_showNeededWarnings();
         }
 
-        private void AA_showNeededWarnings(bool imGoingToUseAddGame2Steam = false)
+        internal void AA_showNeededWarnings(bool imGoingToUseAddGame2Steam = false)
         {
             // CHECK: the user want to use Steam AND use SMAA?
             // Action: must choose FXAA and warn the user
             
-            if( AA_smaa.Checked && ( imGoingToUseAddGame2Steam || EnableController_STEAM.Checked ))
+            if( AA_smaa.Checked && ( imGoingToUseAddGame2Steam || secondFormInstance.EnableController_STEAM.Checked ))
             {
 
                 Ocelot.showMessage("tip_smaaANDsteam");
@@ -1696,7 +1728,7 @@ namespace mgs2_v_s_fix
         {
             try
             {
-                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI);
+                System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_INDEX);
             }
 
             catch
@@ -1718,20 +1750,7 @@ namespace mgs2_v_s_fix
                 Ocelot.showMessage("UAC_error");
             }
         }
-
-        private void help_controls_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("https://github.com/VFansss/mgs2-v-s-fix/wiki/Controllers-&-Actions");
-            }
-
-            catch
-            {
-                Ocelot.showMessage("UAC_error");
-            }
-        }
-
+        
         private void ptb_comPLAY_Click(object sender, EventArgs e)
         {
             try
@@ -1768,7 +1787,21 @@ namespace mgs2_v_s_fix
 
         #region EXTRA
 
-        // UPDATE
+        // 'Fix after playing' toggle
+
+        private void chb_FixAfterPlaying_Click(object sender, EventArgs e)
+        {
+            //CHECK: If Steam controller is enabled? If yes, force user to keep it to "OFF"
+
+            if (secondFormInstance.EnableController_STEAM.Checked)
+            {
+                Ocelot.showMessage("tip_openVsAfterPlayingANDsteam");
+
+                chb_FixAfterPlaying.Checked = false;
+            }
+        }
+
+        // 'Check for update' button
 
         private async void ptb_GitHubLogo_Click(object sender, EventArgs e)
         {
@@ -1843,13 +1876,12 @@ namespace mgs2_v_s_fix
                 return;
             }
 
-
             DialogResult doYouWantToProceed = MessageBox.Show(
                 "V's Fix will now try to add on your Steam the game :"+
                 "\n\n" +
                 "METAL GEAR SOLID 2: SUBSTANCE"+
                 "\n\n"+
-                "Also, it will automatically set 'Open V's Fix after playing the game' to false, so you can interact with the game directly from Steam"+
+                "Also, it will automatically set 'Open V's Fix after playing the game' to false, so you can easily interact with the game directly from Steam"+
                 "\n\n"+
                 "Are you sure you want to continue?","Add the game on Steam", MessageBoxButtons.YesNo);
 
@@ -1884,6 +1916,12 @@ namespace mgs2_v_s_fix
 
                     break;
 
+                case ADD2STEAMSTATUS.CantFindNecessaryPaths:
+
+                    Ocelot.showMessage("SteamNotFound");
+
+                    break;
+
                 default:
 
                     Ocelot.showMessage("Add2SteamError");
@@ -1907,11 +1945,35 @@ namespace mgs2_v_s_fix
             DialogResult startSteamAnswer = MessageBox.Show(
                 "Do you want to launch Steam?", "Answer wisely", MessageBoxButtons.YesNo);
 
-            if (startSteamAnswer == DialogResult.Yes)
-            {
-                Ocelot.StartSteam();
-            }
+            if (startSteamAnswer == DialogResult.Yes) Ocelot.StartSteam();
 
+            askToShowSteamArtworksPage();
+
+        }
+        
+        // 'Steam artworks' button
+
+        private void ptb_SteamArtworks_Click(object sender, EventArgs e)
+        {
+            askToShowSteamArtworksPage();
+        }
+
+        private void askToShowSteamArtworksPage()
+        {
+            DialogResult openPage = Ocelot.showMessage("ExplainSteamArtworksPage");
+
+            if (openPage == DialogResult.Yes)
+            {
+                try
+                {
+                    System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_STEAMLIBRARYARTWORKS);
+                }
+
+                catch
+                {
+                    Ocelot.showMessage("UAC_error");
+                }
+            }
         }
 
         #endregion

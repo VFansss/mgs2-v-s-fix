@@ -13,6 +13,7 @@ namespace mgs2_v_s_fix
         public Dictionary<string, string> Graphics;
         public Dictionary<string, string> Sound;
         public Dictionary<string, string> Others;
+        public Dictionary<string, string> Cheats;
 
 
         public ConfSheet()
@@ -35,13 +36,16 @@ namespace mgs2_v_s_fix
             this.Controls = new Dictionary<string, string>
             {
                 //{"XboxGamepad",null},
+                {"UseDefaultKeyboardLayout",null},
                 {"EnableController",null},
                 {"PreferredLayout",null},
+                {"InvertTriggersWithDorsals",null},
             };
 
             this.Graphics = new Dictionary<string, string>
             {
-                {"RenderingSize",null},
+                //{"RenderingSize",null}, --> Replaced by 'InternalResolution'
+                {"InternalResolution",null},
                 {"ShadowDetail",null},
                 {"ModelQuality",null},
                 {"RenderingClearness",null},
@@ -67,6 +71,12 @@ namespace mgs2_v_s_fix
             {
                 {"CompatibilityWarningDisplayed",null},
 
+            };
+
+            this.Cheats = new Dictionary<string, string>
+            {
+                {"DrebinMode",null},
+                {"UnlockRadar",null},
             };
 
 

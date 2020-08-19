@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "190331";
+        public const string VERSION = "200819";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -33,6 +33,11 @@ namespace mgs2_v_s_fix
         public const string GITHUB_API = "https://api.github.com/repos/VFansss/mgs2-v-s-fix/releases/latest";
         public const string GITHUB_RELEASE = "https://github.com/VFansss/mgs2-v-s-fix/releases";
         public const string GITHUB_WIKI = "https://github.com/VFansss/mgs2-v-s-fix/wiki";
+        public const string GITHUB_WIKI_INDEX = GITHUB_WIKI+"#chapters-of-the-guide";
+        public const string GITHUB_WIKI_CONTROLS = GITHUB_WIKI + "/Controllers-&-Actions";
+        public const string GITHUB_WIKI_KEYBOARD = GITHUB_WIKI + "/Controllers-&-Actions#introducing-words";
+        public const string GITHUB_WIKI_STEAMCONTROLLERS = GITHUB_WIKI + "/Controllers-&-Actions#steam-controllers";
+        public const string GITHUB_WIKI_STEAMLIBRARYARTWORKS = GITHUB_WIKI + "/Appendix#steam-library-artworks";
 
         // Contain Key-Value from Configuration_file.ini when 'Ocelot.load_INI_SetTo_InternalConfig' is called
         public static ConfSheet InternalConfiguration = new ConfSheet();
@@ -40,7 +45,7 @@ namespace mgs2_v_s_fix
         // List of Graphics Adapter present in the machine
         public static LinkedList<string> vgaList= new LinkedList<string>();
 
-        public static bool needOfAutoConfig = false;
+        public static bool needAutoconfig = false;
 
         public static IniFile ConfFile = new IniFile("Configuration_file.ini");
 
@@ -108,7 +113,7 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Resolution"))
                 {
                  ConfFile.Write(entry.Key, "", "Resolution");
-                 needOfAutoConfig = true;
+                 needAutoconfig = true;
                 }
             }
 
@@ -117,7 +122,7 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Controls"))
                 {
                     ConfFile.Write(entry.Key, "", "Controls");
-                    needOfAutoConfig = true;
+                    needAutoconfig = true;
                 }
             }
 
@@ -126,7 +131,7 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Graphics"))
                 {
                     ConfFile.Write(entry.Key, "", "Graphics");
-                    needOfAutoConfig = true;
+                    needAutoconfig = true;
                 }
             }
 
@@ -135,7 +140,7 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Sound"))
                 {
                     ConfFile.Write(entry.Key, "", "Sound");
-                    needOfAutoConfig = true;
+                    needAutoconfig = true;
                 }
             }
 
@@ -144,11 +149,13 @@ namespace mgs2_v_s_fix
                 if (!ConfFile.KeyExists(entry.Key, "Others"))
                 {
                     ConfFile.Write(entry.Key, "", "Others");
-                    needOfAutoConfig = true;
+                    needAutoconfig = true;
                 }
             }
 
-            if (needOfAutoConfig) { Ocelot.PrintToDebugConsole("[+] Configuration_file.ini seem missing some key. Need to autoconfig!"); }
+            // NB: Cheats category doesn't need to be checked
+
+            if (needAutoconfig) { Ocelot.PrintToDebugConsole("[+] Configuration_file.ini seem missing some key. Need to autoconfig!"); }
 
             return;
 
@@ -204,6 +211,14 @@ namespace mgs2_v_s_fix
 
             }
 
+            foreach (var entry in InternalConfiguration.Cheats.ToList())
+            {
+
+                var tempstring = ConfFile.Read(entry.Key.ToString(), "Cheats");
+                InternalConfiguration.Cheats[entry.Key] = tempstring;
+
+            }
+
             Ocelot.PrintToDebugConsole("[ ] Information from .ini succesfully loaded into setupper!");
             return;
         }
@@ -246,6 +261,8 @@ namespace mgs2_v_s_fix
 
             }
 
+            // NB: Cheats category doesn't need to be written
+
             Ocelot.PrintToDebugConsole("[ ] InternalConfig succesfully exported into Configuration_file.ini");
 
             return;
@@ -261,9 +278,31 @@ namespace mgs2_v_s_fix
             try
             {
 
-                File.Delete(Application.StartupPath + "\\mgs2.ini");
+                PrintToDebugConsole("[!] Deleting mgs2.ini...");
+
+                DeleteFile(Application.StartupPath + "\\mgs2.ini");
 
                 File.Create(Application.StartupPath + "\\mgs2.ini").Close();
+
+                PrintToDebugConsole("[!] Deleting VirtualStore files that aren't log...");
+
+                string virtualStoreDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3);
+
+                if (Directory.Exists(virtualStoreDirectory))
+                {
+                    DirectoryInfo virtualStoreDirInfo = new DirectoryInfo(virtualStoreDirectory);
+
+                    foreach (var foundFile in virtualStoreDirInfo.GetFiles("*", SearchOption.AllDirectories))
+                    {
+                        if (!foundFile.Extension.Equals(".log"))
+                        {
+                            PrintToDebugConsole("[-] Deleting: " + foundFile.Name);
+
+                            // Is a non-log file. Delete it.
+                            foundFile.Delete();
+                        }
+                    }
+                }
 
                 // NB: Operation are done following the usual pattern
                 //  Resolution -> Controls -> Graphics -> Sound
@@ -350,7 +389,7 @@ namespace mgs2_v_s_fix
 
 
                     ////// 
-                    //--------- Resolution
+                    //--------- Resolution + .exe writing fixes
                     ////// 
 
                     #region lot_of_things
@@ -469,10 +508,10 @@ namespace mgs2_v_s_fix
                  
                     PrintToDebugConsole("[ EXE OPENING ] Open the game EXE for writing operations...");
 
-                    #region TANTAROBA
+                    
                     using (var stream = new FileStream(Application.StartupPath + "\\mgs2_sse.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
-                        // FIX FOR ATI/NVIDIA
+                        #region FIX FOR ATI/NVIDIA
 
                         // First things to do: sabotage certain API call
 
@@ -678,9 +717,82 @@ namespace mgs2_v_s_fix
 
                         }*/
 
+                        #endregion
+
+                        #region HyperMegaUltraWidescreen fixes
+
+
+
+                        #endregion
+
+                        #region CHEATS
+
+                        PrintToDebugConsole("[ Cheats ] Appliying...");
+
+                        // DREBIN MODE
+
+                        Byte[] drebinMode_firstBatch;
+
+                        if (Ocelot.InternalConfiguration.Cheats["DrebinMode"].Equals("true"))
+                        {
+
+                            drebinMode_firstBatch = new byte[] { 0x66, 0xB8, 0x0F, 0x27 };
+
+                        }
+                        else
+                        {
+                            // Restore the default values...
+
+                            drebinMode_firstBatch = new byte[] { 0x0F, 0xBF, 0x04, 0x41 };
+
+                        }
+
+                        // DREBIN MODE - WRITING...
+
+                        stream.Position = 0x0047E9CA;
+                        stream.Write(drebinMode_firstBatch, 0, drebinMode_firstBatch.Length);
+
+                        stream.Position = 0x0047E9DA;
+                        stream.Write(drebinMode_firstBatch, 0, drebinMode_firstBatch.Length);
+
+                        stream.Position = 0x0047E9EA;
+                        stream.Write(drebinMode_firstBatch, 0, drebinMode_firstBatch.Length);
+
+                        stream.Position = 0x0047E9FA;
+                        stream.Write(drebinMode_firstBatch, 0, drebinMode_firstBatch.Length);
+
+                        // UNLOCKED RADAR
+
+                        Byte[] unlockRadar_firstBatch;
+                        Byte[] unlockRadar_secondBatch;
+
+                        if (Ocelot.InternalConfiguration.Cheats["UnlockRadar"].Equals("true"))
+                        {
+                            unlockRadar_firstBatch = new byte[] { 0x66, 0xB8, 0x00, 0x00, 0x90, 0x90, 0x90 };
+
+                            unlockRadar_secondBatch = new byte[] { 0x90, 0x90};
+
+                        }
+                        else
+                        {
+                            unlockRadar_firstBatch = new byte[] { 0x66, 0x8B, 0x82, 0x1A, 0x01, 0x00, 0x00 };
+
+                            unlockRadar_secondBatch = new byte[] { 0x75, 0x0D };
+                        }
+
+                        // RADAR DURING ALERT - WRITING...
+
+                        stream.Position = 0x00441E4B;
+                        stream.Write(unlockRadar_firstBatch, 0, unlockRadar_firstBatch.Length);
+
+                        stream.Position = 0x00478BEE;
+                        stream.Write(unlockRadar_secondBatch, 0, unlockRadar_secondBatch.Length);
+
+                        #endregion
+
                     }
 
-                    #endregion
+
 
                     // WindowMode
 
@@ -706,9 +818,20 @@ namespace mgs2_v_s_fix
                     File.Delete(Application.StartupPath + "\\XInput1_3.dll");
                     File.Delete(Application.StartupPath + "\\XInputPlus.ini");
 
+                    // What keyboard layout?
+
+                    if (Ocelot.InternalConfiguration.Controls["UseDefaultKeyboardLayout"].Equals("true"))
+                    {
+                        Unzip.UnZippa("Keyboard_Default.zip", true);
+                    }
+                    else
+                    {
+                        // Do nothing. I assume that user has manually installed a custom keyboard layout
+                    }
+
                     // What controller?
 
-                    if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("NO"))
+                    if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("NO") || Ocelot.InternalConfiguration.Controls["EnableController"].Equals("STEAM"))
                     {
                         Unzip.UnZippa("NoController.zip", true);
                     }
@@ -718,38 +841,96 @@ namespace mgs2_v_s_fix
                         // Extract XInput Plus
                         Unzip.UnZippa("XInputPlus.zip", true);
 
+                        AvailableGamepads choosenGamepad;
+                        AvailableLayouts choosenLayout;
+                        bool InvertTriggersWithDorsals;
 
+                        // What gamepad?
                         if (Ocelot.InternalConfiguration.Controls["EnableController"].Equals("DS4"))
                         {
-                            // What layout?
-
-                            if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
-                            {
-                                Unzip.UnZippa("ControllerDS4_PS2Layout.zip", true);
-                            }
-
-                            else // V Layout
-                            {
-                                Unzip.UnZippa("ControllerDS4_VLayout.zip", true);
-                            }
-
+                            choosenGamepad = AvailableGamepads.DUALSHOCK4;
                         }
-
-                        else // XBOX
+                        else
                         {
-                            // What layout?
+                            choosenGamepad = AvailableGamepads.XBOX;
+                        }
 
-                            if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
+                        // What layout?
+                        if (Ocelot.InternalConfiguration.Controls["PreferredLayout"].Equals("PS2"))
+                        {
+                            choosenLayout = AvailableLayouts.PS2;
+                        }                
+                        else
+                        {
+                            choosenLayout = AvailableLayouts.V;
+                        }
+
+                        // Invert triggers with dorsals?
+                        if (Ocelot.InternalConfiguration.Controls["InvertTriggersWithDorsals"].Equals("true"))
+                        {
+                            InvertTriggersWithDorsals = true;
+                        }
+                        else
+                        {
+                            InvertTriggersWithDorsals = false;
+                        }
+
+                        // Write the button/analog bindings to files
+
+                        ButtonLayouts myLayout = new ButtonLayouts(choosenGamepad, choosenLayout, InvertTriggersWithDorsals);
+
+                        // Declare a UTF-8 Encoding WITHOUT BOM (VERY IMPORTANT!)
+
+                        Encoding utf8WithoutBom = new UTF8Encoding(false);
+
+                        // Write padbtn.ini
+
+                        using (StreamWriter writetext = new StreamWriter(Application.StartupPath + "\\padbtn.ini",false, utf8WithoutBom))
+                        {
+                            foreach ((ButtonActions, string) singleBinding in myLayout.ButtonBindings)
                             {
-                                Unzip.UnZippa("ControllerXBOX_PS2Layout.zip", true);
+                                // Example row: 00  A
+                                writetext.WriteLine(singleBinding.Item2+ "  "+singleBinding.Item1);
                             }
+                            
+                        }
 
-                            else // V Layout
+                        // Write padbtns.ini
+
+                        using (StreamWriter writetext = new StreamWriter(Application.StartupPath + "\\padbtns.ini", false, utf8WithoutBom))
+                        {
+                            foreach ((ButtonActions, string) singleBinding in myLayout.ButtonBindings)
                             {
-                                Unzip.UnZippa("ControllerXBOX_VLayout.zip", true);
+                                // Example row:00  A
+                                writetext.WriteLine(singleBinding.Item2 + "  " + singleBinding.Item1);
                             }
 
                         }
+
+                        // Write padana.ini
+
+                        using (StreamWriter writetext = new StreamWriter(Application.StartupPath + "\\padana.ini", false, utf8WithoutBom))
+                        {
+                            foreach ((string, AnalogActions, string) singleBinding in myLayout.AnalogBindings)
+                            {
+                                // Example row:00  Rx  N
+                                writetext.WriteLine(singleBinding.Item1 + "  " + singleBinding.Item2+ "  "+singleBinding.Item3);
+                            }
+
+                        }
+
+                        // Write padanas.ini
+
+                        using (StreamWriter writetext = new StreamWriter(Application.StartupPath + "\\padanas.ini", false, utf8WithoutBom))
+                        {
+                            foreach ((string, AnalogActions, string) singleBinding in myLayout.AnalogBindings)
+                            {
+                                // Example row:00  Rx  N
+                                writetext.WriteLine(singleBinding.Item1 + "  " + singleBinding.Item2 + "  " + singleBinding.Item3);
+                            }
+
+                        }
+
 
                     }
 
@@ -769,23 +950,27 @@ namespace mgs2_v_s_fix
 
                     // RenderingSize
 
-                    switch (Ocelot.InternalConfiguration.Graphics["RenderingSize"])
+                    switch (Ocelot.InternalConfiguration.Graphics["InternalResolution"])
                     {
-                        case "low":
+                        case "512":
                             ini.WriteLine("0006" + "\t" + "0200");
-                            ini.WriteLine("0007" + "\t" + "0100");
-                            break;
-
-                        case "medium":
-                            ini.WriteLine("0006" + "\t" + "0400");
                             ini.WriteLine("0007" + "\t" + "0200");
                             break;
 
-                        case "high":
+                        case "720":
                             ini.WriteLine("0006" + "\t" + "0800");
                             ini.WriteLine("0007" + "\t" + "0400");
                             break;
 
+                        case "2K":
+                            ini.WriteLine("0006" + "\t" + "1000");
+                            ini.WriteLine("0007" + "\t" + "0800");
+                            break;
+
+                        case "8K":
+                            ini.WriteLine("0006" + "\t" + "2000");
+                            ini.WriteLine("0007" + "\t" + "2000");
+                            break;
                     }
 
                     // ShadowDetail
@@ -1206,7 +1391,7 @@ namespace mgs2_v_s_fix
             defaultConfig.Resolution["WindowMode"] = "false";
 
             // Detect if PC is laptop or a desktop
-            // NOT 100% true,however
+            // NOT 100% reliable,however
             if (SystemInformation.PowerStatus.BatteryChargeStatus == BatteryChargeStatus.NoSystemBattery)
             {
                 defaultConfig.Resolution["LaptopMode"] = "false";
@@ -1221,12 +1406,15 @@ namespace mgs2_v_s_fix
             // Controls
 
             //defaultConfig.Controls["XboxGamepad"] = "NO";
+            defaultConfig.Controls["UseDefaultKeyboardLayout"] = "true";
             defaultConfig.Controls["EnableController"] = "NO";
             defaultConfig.Controls["PreferredLayout"] = "V";
+            defaultConfig.Controls["InvertTriggersWithDorsals"] = "false";
 
             // Graphics
 
-            defaultConfig.Graphics["RenderingSize"]="high";
+            //defaultConfig.Graphics["RenderingSize"]="high";
+            defaultConfig.Graphics["InternalResolution"] = "2K";
             defaultConfig.Graphics["ShadowDetail"] = "high";
             defaultConfig.Graphics["ModelQuality"] = "medium";
             defaultConfig.Graphics["RenderingClearness"] = "high";
@@ -1247,14 +1435,18 @@ namespace mgs2_v_s_fix
             // Others
 
             defaultConfig.Others["CompatibilityWarningDisplayed"] = "false";
-                
+
+            // Cheats
+            defaultConfig.Cheats["DrebinMode"] = "false";
+            defaultConfig.Cheats["UnlockRadar"] = "false";
+
             // Finished!
 
             InternalConfiguration = defaultConfig;
 
             Ocelot.PrintToDebugConsole("[+] Autoconfig finished. InternalConfiguration Filled");
 
-            Ocelot.needOfAutoConfig = false;
+            Ocelot.needAutoconfig = false;
 
             return;
         }
@@ -1568,7 +1760,7 @@ namespace mgs2_v_s_fix
                 case "no_vga":
 
                     answer = MessageBox.Show(
-                    "V's hasn't found any VGA installed in your system.\n\nIf you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
+                    "V's hasn't found any VGA installed in your system.\n\nIf you are able to read this, is probably wrong.\n\nUnfortunately you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1632,7 +1824,7 @@ namespace mgs2_v_s_fix
                 case "AddedForMoreUsers":
 
                     answer = MessageBox.Show(
-                        "MGS2 has been added for more Steam users!" +
+                        "MGS2 has been added for multiple Steam users!" +
                         "\n\n" +
                         "Start Steam, and have fun :D", "Yeah"
                         );
@@ -1642,22 +1834,32 @@ namespace mgs2_v_s_fix
                 case "NothingDone":
 
                     answer = MessageBox.Show(
-                        "Seems that MGS2 has already been added in the past."+
+                        "Seems that MGS2 it's already been added on Steam" +
                         "\n\n"+
                         "( ????? )"+
                         "\n\n" +
-                        "If you want to make V's Fix re-add the game, please delete it manually and launch this another time!"
+                        "If you want to make V's Fix re-add the game, please delete it manually and launch this again!"
                         );
 
                     break;
 
-                case "Add2SteamError":
+                case "SteamNotFound":
 
                     answer = MessageBox.Show(
-                        "Add2Steam has caused an error, and nothing has been added." +
+                        "V's Fix has found that Steam is not installed on your system." +
                         "\n\n" +
-                        "Please activate the DEBUG MODE and report this to me!"
+                        "If you don't think the same, please activate the DEBUG MODE and report this to me!"
                         );
+
+                    break;
+
+                case "ExplainSteamArtworksPage":
+
+                    answer = MessageBox.Show(
+                        "V's Wiki has a special page where you can download artworks, banners and covers to personalize and beautify your MGS2 game page inside your Steam library" +
+                        "\n\n" +
+                        "Do you want to check it out?",
+                    "Steam covers and banners", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                     break;
 
@@ -1686,6 +1888,55 @@ namespace mgs2_v_s_fix
                     "\n\n" +
                     "( HINT: If you want SMAA at all costs, unselect 'Steam' from the 'Controls' tab of the fix, or enable it manually from 'SweetFX_settings.txt' after you press 'SAVE' )",
                     "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_defaultLayoutANDsteam":
+
+                    answer = MessageBox.Show(
+                    "Steam controller has been choosed from 'Gamepads'" +
+                    "\n\n" +
+                    "For this reason, 'Use default keyboard layout' must remain to 'ON'" +
+                    "\n\n" +
+                    "If you want to disable it for whatever reason, choose another gamepad or turn the 'Controller' option to 'NO'",
+                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_openVsAfterPlayingANDsteam":
+
+                    answer = MessageBox.Show(
+                    "Steam controller has been choosed from 'Gamepads'" +
+                    "\n\n" +
+                    "For this reason, 'Open V's Fix after playing the game' must remain to 'OFF'" +
+                    "\n\n" +
+                    "If you want to disable it for whatever reason, choose another gamepad or turn the 'Controller' option to 'NO'",
+                    "Please read carefully", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_steamControllerPrompt":
+
+                    answer = MessageBox.Show(
+                        "Enabling this option will allow you to use Steam drivers to configure ingame inputs" +
+                        "\n\n" +
+                        "What you HAVE to do is add the game executable to Steam using one of these methods:"+
+                        "\n\n" +
+                        "* Using the 'Add game to Steam' function from the 'Extra tab' inside V's fix" + "\n" +
+                        "* Manually adding 'mgs2_sse.exe to Steam as 'METAL GEAR SOLID 2: SUBSTANCE'" + "\n" +
+                        "\n\n" +
+                        "Then, you can simply start the game from Steam and choose a layout from the Steam Controller configurator"+
+                        "\n\n\n" +
+                        "Do you want to enable 'Steam Controller'?",
+                    "Steam Controller", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_showSteamControllerWikiPage":
+
+                    answer = MessageBox.Show(
+                        "Do you want to open the V's Wiki page with detailed info on how to make your Steam controller correctly working?",
+                    "Steam Controller", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                     break;
 
@@ -1724,14 +1975,30 @@ namespace mgs2_v_s_fix
                     "\n\n"+
                     "Some 'power saving' settings from your VGAs driver could interfere with that decision, based on how the driver has decided to run the game (i.e. on your laptop integrated GPU to save power)"+
                     "\n\n"+
-                    "You have to be sure that your VGA driver is reflecting the decision you made below, and this MUST be done MANUALLY from your ATI/Intel/NVidia VGA control panel!"+
-                    "V's Fix can't do it for you, unfortunatelly!"+
+                    "You have to be sure that your VGA driver is reflecting the decision you made below, and this MUST be done MANUALLY from your ATI/Intel/NVidia VGA control panel (or from Windows 10 settings panel)"+
+                    "\n\n" +
+                    "V's Fix can't do it for you, unfortunately!" +
                     "\n\n"+
                     "If you never done it before, on the V's Fix manual I wrote some examples (with images) for various VGA brands!" +
                     "\n\n" +
                     "Chapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter" + "\n\n" +
                     "Do you want to open the V's Fix Wiki on that page?",
                     "Estimated time for reading: 1 minute", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    break;
+
+                case "tip_prompt8KInternalRes":
+
+                    answer = MessageBox.Show(
+                        "Seems that your monitor has a resolution higher or equal than 2K" +
+                        "\n\n" +
+                        "It's highly likely that your PC could afford to enable the '8K Internal resolution'"+"\n"+
+                        "(don't let the number intimidate you, it's lighter than it seems!)" +
+                        "\n\n" +
+                        "You can change the settings from the 'Graphics' tab, but I could do that automatically for you!" + "\n" +
+                        "\n\n" +
+                        "Do you want to enable 8K internal resolution? I suggest to answer 'Yes'",
+                    "Steam Controller", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                     break;
 
@@ -1750,7 +2017,7 @@ namespace mgs2_v_s_fix
 
         }
 
-        // Apply the 'Windows XP SP3 Compatibility Mode' and 'Run as Admin' flags
+        // NOT USED ANYMORE - Apply the 'Windows XP SP3 Compatibility Mode' and 'Run as Admin' flags
 
         private static void SetCompatibilityFlags()
         {
@@ -1802,15 +2069,20 @@ namespace mgs2_v_s_fix
 
                 if (retrievedValue != null)
                 {
-                    // Something exist. Cast value to string
-                    string actualValue = retrievedValue.ToString();
+                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags found: " + retrievedValue.ToString());
 
-                    PrintToDebugConsole("[C.FLAGS CHECK] Compatibility flags found: "+ retrievedValue);
+                    if (!retrievedValue.ToString().Equals("HIGHDPIAWARE") && !retrievedValue.ToString().Equals("$ ElevateCreateProcess HIGHDPIAWARE"))
+                    {
 
-                    key.Close();
+                        // Somethings there. Cast value to string
+                        string actualValue = retrievedValue.ToString();
 
-                    // Set the return value for method caller
-                    returnValue = true;
+                        key.Close();
+
+                        // Set the return value for method caller
+                        returnValue = true;
+
+                    }
 
                 }
                 else
@@ -1956,54 +2228,52 @@ namespace mgs2_v_s_fix
 
         public static string RecoverLastLogPath()
         {
+
+            string PathOfLastLogInVirtualStore = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3) + "\\last.log";
+            bool TheseIsVirtualStoreLog = File.Exists(PathOfLastLogInVirtualStore);
+
+            string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
+            bool TheseIsApplicationFolderLog = File.Exists(PathOfLastLogInApplicationFolder);
+
+            if (TheseIsVirtualStoreLog && TheseIsApplicationFolderLog)
             {
-                string PathOfLastLogInVirtualStore = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3) + "\\last.log";
-                bool TheseIsVirtualStoreLog = File.Exists(PathOfLastLogInVirtualStore);
+                Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] More Last.log detected");
 
-                string PathOfLastLogInApplicationFolder = Application.StartupPath + "\\last.log";
-                bool TheseIsApplicationFolderLog = File.Exists(PathOfLastLogInApplicationFolder);
+                // Decide what Log is the most recent
 
-                if (TheseIsVirtualStoreLog && TheseIsApplicationFolderLog)
+                if (File.GetLastWriteTimeUtc(PathOfLastLogInApplicationFolder) > File.GetLastWriteTimeUtc(PathOfLastLogInVirtualStore))
                 {
-                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] More Last.log detected");
-
-                    // Decide what Log is the most recent
-
-                    if (File.GetLastWriteTimeUtc(PathOfLastLogInApplicationFolder) > File.GetLastWriteTimeUtc(PathOfLastLogInVirtualStore))
-                    {
-                        // Application Folder log is more recent. Chose it.
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in Application Folder");
-                        return PathOfLastLogInApplicationFolder;
-                    }
-                    else
-                    {
-                        // Chose VirtualStore log
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in VirtualStore");
-                        return PathOfLastLogInVirtualStore;
-                    }
-
+                    // Application Folder log is more recent. Chose it.
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in Application Folder");
+                    return PathOfLastLogInApplicationFolder;
                 }
                 else
                 {
-                    // There is only one log, or none.
+                    // Chose VirtualStore log
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] Choosed last.log in VirtualStore");
+                    return PathOfLastLogInVirtualStore;
+                }
 
-                    if (TheseIsVirtualStoreLog)
-                    {
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
-                        return PathOfLastLogInVirtualStore;
-                    }
-                    else if (TheseIsApplicationFolderLog)
-                    {
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
-                        return PathOfLastLogInApplicationFolder;
-                    }
-                    else
-                    {
-                        Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
-                        // last.log has never been created. Return an empty path
-                        return "";
-                    }
+            }
+            else
+            {
+                // There is only one log, or none.
 
+                if (TheseIsVirtualStoreLog)
+                {
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in VirtualStore");
+                    return PathOfLastLogInVirtualStore;
+                }
+                else if (TheseIsApplicationFolderLog)
+                {
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log found in ApplicationFolder");
+                    return PathOfLastLogInApplicationFolder;
+                }
+                else
+                {
+                    Ocelot.PrintToDebugConsole("[RETRIEVE LAST.LOG] last.log not found");
+                    // last.log has never been created. Return an empty path
+                    return "";
                 }
 
             }
@@ -2677,6 +2947,23 @@ namespace mgs2_v_s_fix
             {
                 DirectoryInfo nextTargetSubDir = target.CreateSubdirectory(diSourceSubDir.Name);
                 CopyAll(diSourceSubDir, nextTargetSubDir);
+            }
+        }
+
+        // Aiding method - Delete file and wait until is succesfully deleted
+
+        public static void DeleteFile(String fileToDelete)
+        {
+            var fi = new System.IO.FileInfo(fileToDelete);
+            if (fi.Exists)
+            {
+                fi.Delete();
+                fi.Refresh();
+                while (fi.Exists)
+                {
+                    System.Threading.Thread.Sleep(100);
+                    fi.Refresh();
+                }
             }
         }
 
