@@ -1414,7 +1414,16 @@ namespace mgs2_v_s_fix
             // Graphics
 
             //defaultConfig.Graphics["RenderingSize"]="high";
-            defaultConfig.Graphics["InternalResolution"] = "2K";
+
+            if (Double.Parse(defaultConfig.Resolution["Height"]) >= 1440d)
+            {
+                defaultConfig.Graphics["InternalResolution"] = "8K";
+            }
+            else
+            {
+                defaultConfig.Graphics["InternalResolution"] = "2K";
+            }
+        
             defaultConfig.Graphics["ShadowDetail"] = "high";
             defaultConfig.Graphics["ModelQuality"] = "medium";
             defaultConfig.Graphics["RenderingClearness"] = "high";
