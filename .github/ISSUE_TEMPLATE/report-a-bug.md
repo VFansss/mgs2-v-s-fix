@@ -12,7 +12,9 @@ A clear and concise description of what the bug is.
 
 **Have you read the manual?**
 
-Yes, I've already read:
+Are you sure you have read these pages?
+
+A LOT of infos can be found there, and usually it's more than enough to solve the most common problems...
 
 * [Installation guide of game and V's Fix](https://github.com/VFansss/mgs2-v-s-fix/wiki/Downloading-&-Installing) 
 * [Troubleshooting page for common issues](https://github.com/VFansss/mgs2-v-s-fix/wiki/Troubleshooting-&-Debug-mode#common-problems--common-solutions)
