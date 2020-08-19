@@ -940,23 +940,27 @@ namespace mgs2_v_s_fix
 
                     // RenderingSize
 
-                    switch (Ocelot.InternalConfiguration.Graphics["RenderingSize"])
+                    switch (Ocelot.InternalConfiguration.Graphics["InternalResolution"])
                     {
-                        case "low":
+                        case "512":
                             ini.WriteLine("0006" + "\t" + "0200");
-                            ini.WriteLine("0007" + "\t" + "0100");
-                            break;
-
-                        case "medium":
-                            ini.WriteLine("0006" + "\t" + "0400");
                             ini.WriteLine("0007" + "\t" + "0200");
                             break;
 
-                        case "high":
+                        case "720":
                             ini.WriteLine("0006" + "\t" + "0800");
                             ini.WriteLine("0007" + "\t" + "0400");
                             break;
 
+                        case "2K":
+                            ini.WriteLine("0006" + "\t" + "1000");
+                            ini.WriteLine("0007" + "\t" + "0800");
+                            break;
+
+                        case "8K":
+                            ini.WriteLine("0006" + "\t" + "2000");
+                            ini.WriteLine("0007" + "\t" + "2000");
+                            break;
                     }
 
                     // ShadowDetail
@@ -1399,7 +1403,8 @@ namespace mgs2_v_s_fix
 
             // Graphics
 
-            defaultConfig.Graphics["RenderingSize"]="high";
+            //defaultConfig.Graphics["RenderingSize"]="high";
+            defaultConfig.Graphics["InternalResolution"] = "2K";
             defaultConfig.Graphics["ShadowDetail"] = "high";
             defaultConfig.Graphics["ModelQuality"] = "medium";
             defaultConfig.Graphics["RenderingClearness"] = "high";

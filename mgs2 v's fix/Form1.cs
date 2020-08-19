@@ -782,7 +782,7 @@ namespace mgs2_v_s_fix
 
             #endregion
 
-            // All gone well. Can show the settings menu
+            // All went well. I can show the settings menu
 
             return true;
         }
@@ -927,8 +927,6 @@ namespace mgs2_v_s_fix
 
             foreach (Panel panel in tab_Graphics.Controls.OfType<Panel>())
             {
-
-
                 String key = panel.Name.Remove(0, 4);
                 // NB: 'key' local variable now contain name of the settings key (ie: "MotionBlur")
 
@@ -1490,6 +1488,52 @@ namespace mgs2_v_s_fix
         #region GRAPHICS tab
 
         // Show an helper
+
+        private void InternalResolution_Click(object sender, EventArgs e)
+        {
+            if (sender.GetType() != typeof(RadioButton))
+            {
+                // ??
+                throw new Exception("Event raised by an unknow element");
+
+            }
+
+            InternalResolution_showTheRightHelper(((RadioButton)sender).Name);
+        }
+
+        private void InternalResolution_showTheRightHelper(string pressedButtonName)
+        {
+            switch (pressedButtonName)
+            {
+                case "InternalResolution_512":
+
+                    lbl_InternalResolutionGuide.Text = "( Slightly better than the PS2 version. Just for the truly nostalgic )";
+
+                    break;
+
+                case "InternalResolution_720":
+
+                    lbl_InternalResolutionGuide.Text = "( Framebuffer: 2048x1024. Good for non-gaming laptop and handheld )";
+
+                    break;
+
+                case "InternalResolution_2K":
+
+                    lbl_InternalResolutionGuide.Text = "( Framebuffer: 4096x2048. Good for not stressing your gaming PC )";
+
+                    break;
+
+                case "InternalResolution_8K":
+
+                    lbl_InternalResolutionGuide.Text = "( Framebuffer: 8192x8192. Fantastic downsample for high-performance PCs )";
+
+                    break;
+
+            }
+
+            lbl_InternalResolutionGuide.Visible = true;
+
+        }
 
         private void AA_Click(object sender, EventArgs e)
         {

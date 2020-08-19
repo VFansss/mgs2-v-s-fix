@@ -44,7 +44,8 @@ namespace mgs2_v_s_fix
 
             this.Graphics = new Dictionary<string, string>
             {
-                {"RenderingSize",null},
+                //{"RenderingSize",null}, --> Replaced by 'InternalResolution'
+                {"InternalResolution",null},
                 {"ShadowDetail",null},
                 {"ModelQuality",null},
                 {"RenderingClearness",null},

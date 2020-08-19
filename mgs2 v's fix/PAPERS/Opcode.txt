@@ -56,22 +56,47 @@ missing if not enabled
 --------- Graphics 
 //////
 
-Rendering size
+VFansss say:
+0006 and 0007 control "internal framebuffer resolution"
+Increasing values will increase internal resolution
 
-if low:
+From the 200819 version of the fix I arbitrarily changed them to different values
+based on different settings on the fix
+
+Rendering size (in the original game setupper)
+
+if low (rendering 512x256):
 
 0006 0200
 0007 0100
 
-if medium:
+if medium (rendering 1024x512):
 
 0006 0400
 0007 0200
 
-if high:
+if high (rendering 2048x1024):
 
 0006 0800
 0007 0400
+
+Opcode that I'm using from 200819 on:
+
+if "512" (rendering 512x512)
+0006 0200
+0007 0200
+
+if "720" (rendering 2048x1024):
+0006 0800
+0007 0400
+
+if "2K" (rendering 4096x2048):
+0006 1000
+0007 0800
+
+if "8K" (rendering 8192x8192)):
+0006 2000
+0007 2000
 
 ---------
 Shadow Detail
