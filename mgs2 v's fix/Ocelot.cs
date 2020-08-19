@@ -288,16 +288,19 @@ namespace mgs2_v_s_fix
 
                 string virtualStoreDirectory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\VirtualStore\\" + Application.StartupPath.Substring(3);
 
-                DirectoryInfo virtualStoreDirInfo = new DirectoryInfo(virtualStoreDirectory);
-
-                foreach (var foundFile in virtualStoreDirInfo.GetFiles("*", SearchOption.AllDirectories))
+                if (Directory.Exists(virtualStoreDirectory))
                 {
-                    if (!foundFile.Extension.Equals(".log"))
-                    {
-                        PrintToDebugConsole("[-] Deleting: "+foundFile.Name);
+                    DirectoryInfo virtualStoreDirInfo = new DirectoryInfo(virtualStoreDirectory);
 
-                        // Is a non-log file. Delete it.
-                        foundFile.Delete();
+                    foreach (var foundFile in virtualStoreDirInfo.GetFiles("*", SearchOption.AllDirectories))
+                    {
+                        if (!foundFile.Extension.Equals(".log"))
+                        {
+                            PrintToDebugConsole("[-] Deleting: " + foundFile.Name);
+
+                            // Is a non-log file. Delete it.
+                            foundFile.Delete();
+                        }
                     }
                 }
 
