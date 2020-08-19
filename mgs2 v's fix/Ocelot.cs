@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "190331";
+        public const string VERSION = "200819";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -37,6 +37,7 @@ namespace mgs2_v_s_fix
         public const string GITHUB_WIKI_CONTROLS = GITHUB_WIKI + "/Controllers-&-Actions";
         public const string GITHUB_WIKI_KEYBOARD = GITHUB_WIKI + "/Controllers-&-Actions#introducing-words";
         public const string GITHUB_WIKI_STEAMCONTROLLERS = GITHUB_WIKI + "/Controllers-&-Actions#steam-controllers";
+        public const string GITHUB_WIKI_STEAMLIBRARYARTWORKS = GITHUB_WIKI + "/Appendix#steam-library-artworks";
 
         // Contain Key-Value from Configuration_file.ini when 'Ocelot.load_INI_SetTo_InternalConfig' is called
         public static ConfSheet InternalConfiguration = new ConfSheet();
@@ -712,6 +713,12 @@ namespace mgs2_v_s_fix
                             }
 
                         }*/
+
+                        #endregion
+
+                        #region HyperMegaUltraWidescreen fixes
+
+
 
                         #endregion
 
@@ -1750,7 +1757,7 @@ namespace mgs2_v_s_fix
                 case "no_vga":
 
                     answer = MessageBox.Show(
-                    "V's hasn't found any VGA installed in your system.\n\nIf you are able to read this, is probably wrong.\n\nUnfortunatelly you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
+                    "V's hasn't found any VGA installed in your system.\n\nIf you are able to read this, is probably wrong.\n\nUnfortunately you must insert your VGA name manually.\n\nPlease read the V's Fix manual\n\nChapter: Settings Menu - Resolution tab\n\nParagraph: 6 - Graphical Adapter \n\n for an easy workaround.\n\nClosing this message will open your browser pointing to V's Guide.\n\nWould you kindly press the 'OK' button?",
                     "Guru meditation", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     break;
@@ -1814,7 +1821,7 @@ namespace mgs2_v_s_fix
                 case "AddedForMoreUsers":
 
                     answer = MessageBox.Show(
-                        "MGS2 has been added for more Steam users!" +
+                        "MGS2 has been added for multiple Steam users!" +
                         "\n\n" +
                         "Start Steam, and have fun :D", "Yeah"
                         );
@@ -1824,11 +1831,11 @@ namespace mgs2_v_s_fix
                 case "NothingDone":
 
                     answer = MessageBox.Show(
-                        "Seems that MGS2 has already been added in the past."+
+                        "Seems that MGS2 it's already been added on Steam" +
                         "\n\n"+
                         "( ????? )"+
                         "\n\n" +
-                        "If you want to make V's Fix re-add the game, please delete it manually and launch this another time!"
+                        "If you want to make V's Fix re-add the game, please delete it manually and launch this again!"
                         );
 
                     break;
@@ -1840,6 +1847,16 @@ namespace mgs2_v_s_fix
                         "\n\n" +
                         "If you don't think the same, please activate the DEBUG MODE and report this to me!"
                         );
+
+                    break;
+
+                case "ExplainSteamArtworksPage":
+
+                    answer = MessageBox.Show(
+                        "V's Wiki has a special page where you can download artworks, banners and covers to personalize and beautify your MGS2 game page inside your Steam library" +
+                        "\n\n" +
+                        "Do you want to check it out?",
+                    "Steam covers and banners", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                     break;
 
@@ -1957,7 +1974,7 @@ namespace mgs2_v_s_fix
                     "\n\n"+
                     "You have to be sure that your VGA driver is reflecting the decision you made below, and this MUST be done MANUALLY from your ATI/Intel/NVidia VGA control panel (or from Windows 10 settings panel)"+
                     "\n\n" +
-                    "V's Fix can't do it for you, unfortunatelly!" +
+                    "V's Fix can't do it for you, unfortunately!" +
                     "\n\n"+
                     "If you never done it before, on the V's Fix manual I wrote some examples (with images) for various VGA brands!" +
                     "\n\n" +

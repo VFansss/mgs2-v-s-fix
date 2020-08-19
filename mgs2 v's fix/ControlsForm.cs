@@ -131,7 +131,7 @@ namespace mgs2_v_s_fix
                     }
                     else
                     {
-                        mainForm.AA_showNeededWarnings(true);
+                        mainForm.AA_showNeededWarnings();
 
                         // Automatically change some options
 

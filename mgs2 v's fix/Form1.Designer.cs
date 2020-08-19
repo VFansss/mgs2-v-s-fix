@@ -118,12 +118,8 @@
             this.tab_Extra = new System.Windows.Forms.TabPage();
             this.ptb_Steam = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
             this.lbl_checkForUpdate = new System.Windows.Forms.Label();
-            this.ptb_comPLAY = new System.Windows.Forms.PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.chb_FixAfterPlaying = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tab_About = new System.Windows.Forms.TabPage();
@@ -141,6 +137,8 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
+            this.ptb_SteamArtworks = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -161,13 +159,13 @@
             this.tab_Extra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Steam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).BeginInit();
             this.tab_About.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnl_about.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_SteamArtworks)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -767,7 +765,7 @@
             this.lbl_AAGuide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_AAGuide.Cursor = System.Windows.Forms.Cursors.Default;
             this.lbl_AAGuide.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_AAGuide.Location = new System.Drawing.Point(6, 282);
+            this.lbl_AAGuide.Location = new System.Drawing.Point(6, 277);
             this.lbl_AAGuide.Name = "lbl_AAGuide";
             this.lbl_AAGuide.Size = new System.Drawing.Size(540, 19);
             this.lbl_AAGuide.TabIndex = 19;
@@ -1647,14 +1645,12 @@
             // 
             // tab_Extra
             // 
+            this.tab_Extra.Controls.Add(this.ptb_SteamArtworks);
+            this.tab_Extra.Controls.Add(this.label8);
             this.tab_Extra.Controls.Add(this.ptb_Steam);
             this.tab_Extra.Controls.Add(this.label18);
-            this.tab_Extra.Controls.Add(this.label17);
             this.tab_Extra.Controls.Add(this.ptb_GitHubLogo);
             this.tab_Extra.Controls.Add(this.lbl_checkForUpdate);
-            this.tab_Extra.Controls.Add(this.ptb_comPLAY);
-            this.tab_Extra.Controls.Add(this.label16);
-            this.tab_Extra.Controls.Add(this.label12);
             this.tab_Extra.Controls.Add(this.chb_FixAfterPlaying);
             this.tab_Extra.Controls.Add(this.label4);
             this.tab_Extra.Location = new System.Drawing.Point(4, 32);
@@ -1687,19 +1683,6 @@
             this.label18.Text = "Click on the Steam logo aside to automatically add MGS2 to Steam";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label17
-            // 
-            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(174, 341);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(358, 23);
-            this.label17.TabIndex = 39;
-            this.label17.Text = "Click the logo aside to open comPLAY Website";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label17.Visible = false;
-            // 
             // ptb_GitHubLogo
             // 
             this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1721,45 +1704,6 @@
             this.lbl_checkForUpdate.TabIndex = 34;
             this.lbl_checkForUpdate.Text = "Click on the GitHub logo aside to check for V\'s Fix updates";
             this.lbl_checkForUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ptb_comPLAY
-            // 
-            this.ptb_comPLAY.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ptb_comPLAY.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptb_comPLAY.Image = global::mgs2_v_s_fix.Properties.Resources.cP;
-            this.ptb_comPLAY.Location = new System.Drawing.Point(24, 261);
-            this.ptb_comPLAY.Name = "ptb_comPLAY";
-            this.ptb_comPLAY.Size = new System.Drawing.Size(146, 103);
-            this.ptb_comPLAY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptb_comPLAY.TabIndex = 35;
-            this.ptb_comPLAY.TabStop = false;
-            this.ptb_comPLAY.Visible = false;
-            this.ptb_comPLAY.Click += new System.EventHandler(this.ptb_comPLAY_Click);
-            // 
-            // label16
-            // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label16.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(188, 290);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(320, 49);
-            this.label16.TabIndex = 37;
-            this.label16.Text = "Playing on multiple PCs at once? Multiple users? Need to synchronize?";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label16.Visible = false;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(184, 261);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(326, 23);
-            this.label12.TabIndex = 36;
-            this.label12.Text = "Don\'t want to lose your games savedata?";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label12.Visible = false;
             // 
             // chb_FixAfterPlaying
             // 
@@ -1817,9 +1761,9 @@
             this.lbl_donate.ForeColor = System.Drawing.Color.DarkOrange;
             this.lbl_donate.Location = new System.Drawing.Point(154, 29);
             this.lbl_donate.Name = "lbl_donate";
-            this.lbl_donate.Size = new System.Drawing.Size(322, 26);
+            this.lbl_donate.Size = new System.Drawing.Size(327, 26);
             this.lbl_donate.TabIndex = 10;
-            this.lbl_donate.Text = "Spare $ or € ? Gift me an ice cream!\r\n";
+            this.lbl_donate.Text = "Spare money? Gift me an ice cream!\r\n";
             this.lbl_donate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lbl_donate.Click += new System.EventHandler(this.lbl_donate_Click);
             // 
@@ -2028,6 +1972,30 @@
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
+            // ptb_SteamArtworks
+            // 
+            this.ptb_SteamArtworks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_SteamArtworks.Image = global::mgs2_v_s_fix.Properties.Resources.SteamLogo;
+            this.ptb_SteamArtworks.Location = new System.Drawing.Point(62, 265);
+            this.ptb_SteamArtworks.Name = "ptb_SteamArtworks";
+            this.ptb_SteamArtworks.Size = new System.Drawing.Size(70, 70);
+            this.ptb_SteamArtworks.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_SteamArtworks.TabIndex = 42;
+            this.ptb_SteamArtworks.TabStop = false;
+            this.ptb_SteamArtworks.Click += new System.EventHandler(this.ptb_SteamArtworks_Click);
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(159, 264);
+            this.label8.Margin = new System.Windows.Forms.Padding(0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(378, 71);
+            this.label8.TabIndex = 43;
+            this.label8.Text = "Click on the Steam logo aside to download MGS2 covers and banners for Steam libra" +
+    "ry\r\n";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2085,7 +2053,6 @@
             this.tab_Extra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Steam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_comPLAY)).EndInit();
             this.tab_About.ResumeLayout(false);
             this.tab_About.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -2093,6 +2060,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_SteamArtworks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2184,12 +2152,8 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TabPage tab_Extra;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.PictureBox ptb_GitHubLogo;
         private System.Windows.Forms.Label lbl_checkForUpdate;
-        private System.Windows.Forms.PictureBox ptb_comPLAY;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox ptb_Steam;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label9;
@@ -2212,6 +2176,8 @@
         private System.Windows.Forms.RadioButton InternalResolution_8K;
         private System.Windows.Forms.RadioButton InternalResolution_2K;
         private System.Windows.Forms.RadioButton InternalResolution_AUTO;
+        private System.Windows.Forms.PictureBox ptb_SteamArtworks;
+        private System.Windows.Forms.Label label8;
     }
 }
 

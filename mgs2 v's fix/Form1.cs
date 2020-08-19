@@ -1787,7 +1787,21 @@ namespace mgs2_v_s_fix
 
         #region EXTRA
 
-        // UPDATE
+        // 'Fix after playing' toggle
+
+        private void chb_FixAfterPlaying_Click(object sender, EventArgs e)
+        {
+            //CHECK: If Steam controller is enabled? If yes, force user to keep it to "OFF"
+
+            if (secondFormInstance.EnableController_STEAM.Checked)
+            {
+                Ocelot.showMessage("tip_openVsAfterPlayingANDsteam");
+
+                chb_FixAfterPlaying.Checked = false;
+            }
+        }
+
+        // 'Check for update' button
 
         private async void ptb_GitHubLogo_Click(object sender, EventArgs e)
         {
@@ -1862,13 +1876,12 @@ namespace mgs2_v_s_fix
                 return;
             }
 
-
             DialogResult doYouWantToProceed = MessageBox.Show(
                 "V's Fix will now try to add on your Steam the game :"+
                 "\n\n" +
                 "METAL GEAR SOLID 2: SUBSTANCE"+
                 "\n\n"+
-                "Also, it will automatically set 'Open V's Fix after playing the game' to false, so you can interact with the game directly from Steam"+
+                "Also, it will automatically set 'Open V's Fix after playing the game' to false, so you can easily interact with the game directly from Steam"+
                 "\n\n"+
                 "Are you sure you want to continue?","Add the game on Steam", MessageBoxButtons.YesNo);
 
@@ -1932,22 +1945,34 @@ namespace mgs2_v_s_fix
             DialogResult startSteamAnswer = MessageBox.Show(
                 "Do you want to launch Steam?", "Answer wisely", MessageBoxButtons.YesNo);
 
-            if (startSteamAnswer == DialogResult.Yes)
-            {
-                Ocelot.StartSteam();
-            }
+            if (startSteamAnswer == DialogResult.Yes) Ocelot.StartSteam();
+
+            askToShowSteamArtworksPage();
 
         }
+        
+        // 'Steam artworks' button
 
-        private void chb_FixAfterPlaying_Click(object sender, EventArgs e)
+        private void ptb_SteamArtworks_Click(object sender, EventArgs e)
         {
-            //CHECK: If Steam controller is enabled? If yes, force user to keep it to "OFF"
+            askToShowSteamArtworksPage();
+        }
 
-            if (secondFormInstance.EnableController_STEAM.Checked)
+        private void askToShowSteamArtworksPage()
+        {
+            DialogResult openPage = Ocelot.showMessage("ExplainSteamArtworksPage");
+
+            if (openPage == DialogResult.Yes)
             {
-                Ocelot.showMessage("tip_openVsAfterPlayingANDsteam");
+                try
+                {
+                    System.Diagnostics.Process.Start(Ocelot.GITHUB_WIKI_STEAMLIBRARYARTWORKS);
+                }
 
-                chb_FixAfterPlaying.Checked = false;
+                catch
+                {
+                    Ocelot.showMessage("UAC_error");
+                }
             }
         }
 
