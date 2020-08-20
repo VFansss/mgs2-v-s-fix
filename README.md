@@ -6,6 +6,18 @@ What is :
 
 Homemade fix that aim to correct all minor (and major) flaws in Metal Gear Solid 2 for PC.
 
+Minigallery :
+-------------------
+
+|Main Menu| Resolution options |
+| :-: | :-: |
+|<img src="https://github.com/VFansss/mgs2-v-s-fix/wiki/images/gallery_0.png" width="450"> | <img src="https://github.com/VFansss/mgs2-v-s-fix/wiki/images/gallery_1.png" width="450">
+| Keyboard | Gamepad |
+|<img src="https://github.com/VFansss/mgs2-v-s-fix/wiki/images/gallery_2.png" width="450"> | <img src="https://github.com/VFansss/mgs2-v-s-fix/wiki/images/gallery_3.png" width="450">
+| Add game to Steam | Steam Grid |
+|<img src="https://github.com/VFansss/mgs2-v-s-fix/wiki/images/Tab_Extra.PNG" width="450"> | <img src="https://github.com/VFansss/mgs2-v-s-fix/wiki/images/steamGrid_after.png" width="450">
+
+
 Features :
 -------------------
 
