@@ -2027,7 +2027,7 @@ namespace mgs2_v_s_fix
                 evaluatedSavedataPath = retailNewSavegameFolderPath;
 
                 MessageBox.Show(
-                    "After the V's fix patching, savedata are stored inside a folder in 'My Games'" + "\n\n" +
+                    "After the V's fix patching, savedata are stored inside 'My Games'" + "\n\n" +
                     "Your save data will be stored inside this folder:" + "\n\n" +
                     retailNewSavegameFolderPath,
                     windowTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -756,7 +756,7 @@ namespace mgs2_v_s_fix
 
                         Byte[] drebinMode_firstBatch;
 
-                        if (Ocelot.InternalConfiguration.Cheats["DrebinMode"].Equals("true"))
+                        if (Ocelot.InternalConfiguration.Cheats["DrebinMode"].Equals("true", StringComparison.CurrentCultureIgnoreCase))
                         {
 
                             drebinMode_firstBatch = new byte[] { 0x66, 0xB8, 0x0F, 0x27 };
@@ -789,7 +789,7 @@ namespace mgs2_v_s_fix
                         Byte[] unlockRadar_firstBatch;
                         Byte[] unlockRadar_secondBatch;
 
-                        if (Ocelot.InternalConfiguration.Cheats["UnlockRadar"].Equals("true"))
+                        if (Ocelot.InternalConfiguration.Cheats["UnlockRadar"].Equals("true", StringComparison.CurrentCultureIgnoreCase))
                         {
                             unlockRadar_firstBatch = new byte[] { 0x66, 0xB8, 0x00, 0x00, 0x90, 0x90, 0x90 };
 
@@ -810,6 +810,29 @@ namespace mgs2_v_s_fix
 
                         stream.Position = 0x00478BEE;
                         stream.Write(unlockRadar_secondBatch, 0, unlockRadar_secondBatch.Length);
+
+                        // TortureAutoPass
+
+                        string rootGamePath = Application.StartupPath + "\\..";
+                        string fileToPatch = Path.GetFullPath(rootGamePath + "\\cdrom.img\\stage\\w51a\\scenerio.gcx");
+
+                        using (var w51aScenerio = new FileStream(fileToPatch, FileMode.Open, FileAccess.ReadWrite))
+                        {
+                            w51aScenerio.Position = 0x3026;
+
+                            if (Ocelot.InternalConfiguration.Cheats["TortureAutoPass"].Equals("true", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                // Apply the cheat
+                                w51aScenerio.WriteByte(0xC1);
+                            }
+                            else
+                            {
+                                // Restore the default values...
+                                w51aScenerio.WriteByte(0xC4);
+
+                            }
+
+                        }
 
                         #endregion
 
@@ -1459,6 +1482,7 @@ namespace mgs2_v_s_fix
             // Cheats
             defaultConfig.Cheats["DrebinMode"] = "false";
             defaultConfig.Cheats["UnlockRadar"] = "false";
+            defaultConfig.Cheats["TortureAutoPass"] = "false";
 
             // Finished!
 

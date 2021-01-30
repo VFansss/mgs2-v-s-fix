@@ -77,6 +77,7 @@ namespace mgs2_v_s_fix
             {
                 {"DrebinMode",null},
                 {"UnlockRadar",null},
+                {"TortureAutoPass",null},
             };
 
 
