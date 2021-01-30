@@ -29,8 +29,9 @@ namespace mgs2_v_s_fix
             // NB: if debug mode is enabled it will write all console log into
             // a .txt file on user desktop
 
-            if (File.Exists(Application.StartupPath + "\\debug.sss") ||
-               (args.Length != 0 && args[0].Contains("-debug")) ){
+            string[] debugFiles = Directory.GetFiles(Application.StartupPath, "debug*", SearchOption.TopDirectoryOnly);
+
+            if ((debugFiles.Length != 0) || (args.Length != 0 && args[0].Contains("-debug"))){
 
                 // Debug mode enabled!
 
