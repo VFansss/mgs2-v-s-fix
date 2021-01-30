@@ -347,43 +347,66 @@ namespace mgs2_v_s_fix
 
                     }
 
+                    // Always delete existing savegame location changer
+
+                    string locationChangesAsiPath = Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi";
+
+                    if (File.Exists(locationChangesAsiPath)) File.Delete(locationChangesAsiPath);
+
                     // Move savegames from 'savedata' folder inside 'My Games', if needed
 
                     SAVEGAMEMOVING evaluationResult = Ocelot.SavegameMustBeMoved();
 
                     Ocelot.PrintToDebugConsole("[!] SavegameMustBeMoved evaluation result is " + evaluationResult);
 
-                    if (evaluationResult == SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed)
+                    if(evaluationResult != SAVEGAMEMOVING.IsAGOGInstallation)
                     {
-                        throw new Exception();
+                        // Is a retail game copy
+
+                        // Extract SavegameLocationChanger.asi
+
+                        Unzip.UnZippa("SavegameLocationChanger.zip", true);
+
+                        // Create a file to remember the user to check to new location
+
+                        string savedataReminderFilePath = Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER";
+
+                        if (File.Exists(savedataReminderFilePath)) PrintToDebugConsole("[ SavedataReminder ] File already exist");
+                        else
+                        {
+
+                            PrintToDebugConsole("[ SavedataReminder ] File created!");
+
+                            File.Create(savedataReminderFilePath);
+
+                        }
+
+                        switch (evaluationResult)
+                        {
+                            case SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed:
+
+                                throw new Exception();
+
+                            case SAVEGAMEMOVING.BothFolderExist:
+
+                                throw new Exception();
+
+                            case SAVEGAMEMOVING.MovingPossible:
+
+                                // Actual move the savegame
+
+                                MoveSavegamesToNewLocation();
+
+                                break;
+
+                            default:
+
+                                // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
+
+                                break;
+                        }
 
                     }
-
-                    else if (evaluationResult == SAVEGAMEMOVING.MovingPossible)
-                    {
-                        MoveSavegamesToNewLocation();
-                    }
-
-                    else if (evaluationResult == SAVEGAMEMOVING.BothFolderExist)
-                    {
-                        throw new Exception();
-                    }
-
-                    else
-                    {
-                        // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
-                    }
-
-                    // Extract SavegameLocationChanger.asi
-
-                    if (File.Exists(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi"))
-                    {
-
-                        File.Delete(Application.StartupPath + "\\scripts\\SavegameLocationChanger.asi");
-
-                    }
-
-                    Unzip.UnZippa("SavegameLocationChanger.zip", true);
 
                     #endregion
 
@@ -727,7 +750,7 @@ namespace mgs2_v_s_fix
 
                         #region CHEATS
 
-                        PrintToDebugConsole("[ Cheats ] Appliying...");
+                        PrintToDebugConsole("[ Cheats ] Applying...");
 
                         // DREBIN MODE
 
@@ -1250,30 +1273,18 @@ namespace mgs2_v_s_fix
 
                 //SetCompatibilityFlags();
 
-                if (Ocelot.CompatibilityFlagsExists())
+                bool compatibilityFlagExist = Ocelot.CompatibilityFlagsExists();
+                bool isAGOGInstallation = SavegameMustBeMoved() == SAVEGAMEMOVING.IsAGOGInstallation;
+
+                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] compatibilityFlagExist is " + compatibilityFlagExist);
+                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] isAGOGInstallation is " + isAGOGInstallation);
+
+                if (compatibilityFlagExist && !isAGOGInstallation)
                 {
+                    // Is a retail game copy, and there are some compatibility flags. Remove them.
                     Ocelot.RemoveCompatibilityFlags();
                 }
 
-                // Create a file to remember the user to check to new location
-
-                string savedataReminderFilePath = Directory.GetParent(Application.StartupPath).FullName + "\\SAVEDATA ARE INSIDE 'MY GAMES' FOLDER";
-
-                if (File.Exists(savedataReminderFilePath))
-                {
-
-                    PrintToDebugConsole("[ SavedataReminder ] File already exist");
-
-                }
-                else
-                {
-
-                    PrintToDebugConsole("[ SavedataReminder ] File created!");
-
-                    File.Create(savedataReminderFilePath);
-
-                }
-         
             }
 
             catch(Exception ex)
@@ -2856,52 +2867,66 @@ namespace mgs2_v_s_fix
 
             try
             {
-                string originalSavegameFolder = Application.StartupPath + "\\..\\savedata";
+                string rootGamePath = Application.StartupPath + "\\..";
+                string originalSavegameFolder = rootGamePath+"\\savedata";
 
                 string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string newSavegameFolder = Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE");
+                string retailNewSavegameFolderPath = Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE");
 
-                // CHECK: One/both folder exist but are empty?
+                // CHECK: Is a GOG game installation? If so, skip everything
+                string[] gogFiles = Directory.GetFiles(rootGamePath, "*gog*", SearchOption.TopDirectoryOnly);
 
-                if (Directory.Exists(originalSavegameFolder) && IsThisDirectoryEmpty(originalSavegameFolder))
+                if(gogFiles.Length != 0)
                 {
-                    // Directory esist, but there aren't files inside the old savegame folder
-                    Directory.Delete(originalSavegameFolder, true);
-                    PrintToDebugConsole("[ SAVEGAMEMUSTBEMOVED ] " + originalSavegameFolder + " folder is empty, and has been deleted");
+                    // Let GOG manage its savegames
+                    return SAVEGAMEMOVING.IsAGOGInstallation;
                 }
-
-                if (Directory.Exists(newSavegameFolder) && IsThisDirectoryEmpty(newSavegameFolder))
+                else
                 {
-                    // Directory esist, but there aren't files inside the new savegame folder
-                    Directory.Delete(newSavegameFolder, true);
-                    PrintToDebugConsole("[ SAVEGAMEMUSTBEMOVED ] " + newSavegameFolder + " folder is empty, and has been deleted");
-                }
+                    // Is a Retail installation
 
-                // Now both folder has been purged, and if they exist mean that they contain files that I can't arbitrary delete
+                    // CHECK: One/both folder exist but are empty?
 
-                // Check if savegame can be moved to the new location in "My Games"
-                if (Directory.Exists(originalSavegameFolder))
-                {
-
-                    // There are files inside the old savegame directory. Must move things!
-
-                    // Check if the new location already have savegames...
-
-                    if (Directory.Exists(newSavegameFolder))
+                    if (Directory.Exists(originalSavegameFolder) && IsThisDirectoryEmpty(originalSavegameFolder))
                     {
-                        return SAVEGAMEMOVING.BothFolderExist;
+                        // Directory esist, but there aren't files inside the old savegame folder
+                        Directory.Delete(originalSavegameFolder, true);
+                        PrintToDebugConsole("[ SAVEGAMEMUSTBEMOVED ] " + originalSavegameFolder + " folder is empty, and has been deleted");
+                    }
+
+                    if (Directory.Exists(retailNewSavegameFolderPath) && IsThisDirectoryEmpty(retailNewSavegameFolderPath))
+                    {
+                        // Directory esist, but there aren't files inside the new savegame folder
+                        Directory.Delete(retailNewSavegameFolderPath, true);
+                        PrintToDebugConsole("[ SAVEGAMEMUSTBEMOVED ] " + retailNewSavegameFolderPath + " folder is empty, and has been deleted");
+                    }
+
+                    // Now both folder has been purged, and if they exist mean that they contain files that I can't arbitrary delete
+
+                    // Check if savegame can be moved to the new location in "My Games"
+                    if (Directory.Exists(originalSavegameFolder))
+                    {
+
+                        // There are files inside the old savegame directory. Must move things!
+
+                        // Check if the new location already have savegames...
+
+                        if (Directory.Exists(retailNewSavegameFolderPath))
+                        {
+                            return SAVEGAMEMOVING.BothFolderExist;
+
+                        }
+
+                        return SAVEGAMEMOVING.MovingPossible;
 
                     }
 
-                    return SAVEGAMEMOVING.MovingPossible;
+                    else
+                    {
+                        return SAVEGAMEMOVING.NoSavegame2Move;
+                    }
 
                 }
-
-                else
-                {
-                    return SAVEGAMEMOVING.NoSavegame2Move;
-                }
-                    
 
             }
             catch (Exception ex)

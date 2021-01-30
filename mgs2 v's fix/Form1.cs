@@ -277,33 +277,46 @@ namespace mgs2_v_s_fix
 
             Ocelot.PrintToDebugConsole("[!] SavegameMustBeMoved evaluation result is "+ evaluationResult);
 
-            if (evaluationResult == SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed)
+            switch (evaluationResult)
             {
-                Ocelot.showMessage("UAC_error");
+                case SAVEGAMEMOVING.IsAGOGInstallation:
 
-                // Abort everything until user manually solve the situation
+                    // Don't show anything
 
-                Program.ForceClosing();
+                    break;
 
-            }
 
-            else if (evaluationResult == SAVEGAMEMOVING.MovingPossible)
-            {
-                Ocelot.showMessage("savegameWillBeMoved");
-            }
+                case SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed:
 
-            else if (evaluationResult == SAVEGAMEMOVING.BothFolderExist)
-            {
-                Ocelot.showMessage("savegameCantBeMoved");
+                    Ocelot.showMessage("UAC_error");
 
-                // Abort everything until user manually solve the situation
+                    // Abort everything until user manually solve the situation
 
-                Program.ForceClosing();
-            }
+                    Program.ForceClosing();
 
-            else
-            {
-                // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
+                    break;
+
+                case SAVEGAMEMOVING.MovingPossible:
+
+                    Ocelot.showMessage("savegameWillBeMoved");
+
+                    break;
+
+                case SAVEGAMEMOVING.BothFolderExist:
+
+                    Ocelot.showMessage("savegameCantBeMoved");
+
+                    // Abort everything until user manually solve the situation
+
+                    Program.ForceClosing();
+
+                    break;
+
+                default:
+
+                    // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
+
+                    break;
             }
 
             Ocelot.PrintToDebugConsole("[+] Settings has been displayed.");
