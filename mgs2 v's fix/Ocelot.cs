@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "200819";
+        public const string VERSION = "210130";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
