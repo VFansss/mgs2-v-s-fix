@@ -277,33 +277,46 @@ namespace mgs2_v_s_fix
 
             Ocelot.PrintToDebugConsole("[!] SavegameMustBeMoved evaluation result is "+ evaluationResult);
 
-            if (evaluationResult == SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed)
+            switch (evaluationResult)
             {
-                Ocelot.showMessage("UAC_error");
+                case SAVEGAMEMOVING.IsAGOGInstallation:
 
-                // Abort everything until user manually solve the situation
+                    // Don't show anything
 
-                Program.ForceClosing();
+                    break;
 
-            }
 
-            else if (evaluationResult == SAVEGAMEMOVING.MovingPossible)
-            {
-                Ocelot.showMessage("savegameWillBeMoved");
-            }
+                case SAVEGAMEMOVING.NoSuccesfulEvaluationPerformed:
 
-            else if (evaluationResult == SAVEGAMEMOVING.BothFolderExist)
-            {
-                Ocelot.showMessage("savegameCantBeMoved");
+                    Ocelot.showMessage("UAC_error");
 
-                // Abort everything until user manually solve the situation
+                    // Abort everything until user manually solve the situation
 
-                Program.ForceClosing();
-            }
+                    Program.ForceClosing();
 
-            else
-            {
-                // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
+                    break;
+
+                case SAVEGAMEMOVING.MovingPossible:
+
+                    Ocelot.showMessage("savegameWillBeMoved");
+
+                    break;
+
+                case SAVEGAMEMOVING.BothFolderExist:
+
+                    Ocelot.showMessage("savegameCantBeMoved");
+
+                    // Abort everything until user manually solve the situation
+
+                    Program.ForceClosing();
+
+                    break;
+
+                default:
+
+                    // The last remaining evaluation is SAVEGAMEMOVING.NoSavegame2Move, and doesn't require any warning
+
+                    break;
             }
 
             Ocelot.PrintToDebugConsole("[+] Settings has been displayed.");
@@ -1974,6 +1987,70 @@ namespace mgs2_v_s_fix
                     Ocelot.showMessage("UAC_error");
                 }
             }
+        }
+
+        private void lbl_findSavegames_Click(object sender, EventArgs e)
+        {
+            Ocelot.PrintToDebugConsole("[!] lbl_findSavegames_Click");
+
+            SAVEGAMEMOVING evaluationResult = Ocelot.SavegameMustBeMoved();
+
+            Ocelot.PrintToDebugConsole("[!] SavegameMustBeMoved evaluation result is " + evaluationResult);
+
+            string windowTitle = "SAVEDATA LOCATION";
+
+            string rootGamePath = Application.StartupPath + "\\..";
+            string originalSavegameFolder = Path.GetFullPath(rootGamePath + "\\savedata");
+
+            string myDocumentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string retailNewSavegameFolderPath = Path.Combine(myDocumentsPath + "\\My Games\\METAL GEAR SOLID 2 SUBSTANCE");
+
+            string evaluatedSavedataPath;
+
+            if (evaluationResult == SAVEGAMEMOVING.IsAGOGInstallation)
+            {
+                evaluatedSavedataPath = originalSavegameFolder;
+
+                MessageBox.Show(
+                    "Game is using the original savedata location, as GOG would like" + "\n\n" +
+                    "Your save data will be stored inside this folder:" + "\n\n" +
+                    originalSavegameFolder,
+                    windowTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if(evaluationResult == SAVEGAMEMOVING.MovingPossible)
+            {
+                evaluatedSavedataPath = retailNewSavegameFolderPath;
+                Ocelot.showMessage("savegameWillBeMoved");
+            }
+            else{
+
+                evaluatedSavedataPath = retailNewSavegameFolderPath;
+
+                MessageBox.Show(
+                    "After the V's fix patching, savedata are stored inside 'My Games'" + "\n\n" +
+                    "Your save data will be stored inside this folder:" + "\n\n" +
+                    retailNewSavegameFolderPath,
+                    windowTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
+            // Try to open the folder
+
+            try
+            {
+
+                if (Directory.Exists(evaluatedSavedataPath))
+                {
+                    System.Diagnostics.Process.Start(evaluatedSavedataPath);
+                }
+
+            }
+
+            catch
+            {
+                // I can't open the folder? Who cares. (Yeah, I know what you're thinking right now...)
+            }
+
         }
 
         #endregion

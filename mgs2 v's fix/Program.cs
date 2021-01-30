@@ -29,8 +29,9 @@ namespace mgs2_v_s_fix
             // NB: if debug mode is enabled it will write all console log into
             // a .txt file on user desktop
 
-            if (File.Exists(Application.StartupPath + "\\debug.sss") ||
-               (args.Length != 0 && args[0].Contains("-debug")) ){
+            string[] debugFiles = Directory.GetFiles(Application.StartupPath, "debug*", SearchOption.TopDirectoryOnly);
+
+            if ((debugFiles.Length != 0) || (args.Length != 0 && args[0].Contains("-debug"))){
 
                 // Debug mode enabled!
 
@@ -48,14 +49,8 @@ namespace mgs2_v_s_fix
 
                 bool adminRights = new WindowsPrincipal(WindowsIdentity.GetCurrent()).IsInRole(WindowsBuiltInRole.Administrator);
 
-                if (adminRights)
-                {
-                    Ocelot.PrintToDebugConsole("[!] V's Fix has admin rights");
-                }
-                else
-                {
-                    Ocelot.PrintToDebugConsole("[!] V's Fix HASN'T admin rights");
-                }
+                if (adminRights) Ocelot.PrintToDebugConsole("[!] V's Fix has admin rights");
+                else Ocelot.PrintToDebugConsole("[!] V's Fix HASN'T admin rights");
 
                 // Print last game execution log, if exist
 
@@ -121,118 +116,123 @@ namespace mgs2_v_s_fix
             {
 
                 try 
-	            {	        
-		            // V's Fix is inside bin folder    
+	            {
+                    // V's Fix is inside bin folder 
 
-                    // Is 2.0 Patch applied?
-                    if (!(System.IO.File.Exists(Application.StartupPath + "\\_patch2.0_applied.sss")))
+                    // CHECK: Skip various installations, if GOG game is found
+
+                    if (Ocelot.SavegameMustBeMoved() != SAVEGAMEMOVING.IsAGOGInstallation)
                     {
-
-                        //Nope
-
-                        //Better inform the user
-
-                        Ocelot.showMessage("tip_patcher");
-
-                        Ocelot.PrintToDebugConsole("[ ] Game is not patched. Applying V's 2.0 Homemade Patcher");
-
-                        Unzip.UnZippa("1_homemade_patcher.zip");
-
-                        Process cmd;
-
-                        cmd = Process.Start(new ProcessStartInfo("AreaChecker.exe"));
-                        cmd.WaitForExit();
-                        Ocelot.PrintToDebugConsole("[ ] || [X] AreaChecker.exe finished");
-
-                        cmd = Process.Start(new ProcessStartInfo("VOXPatch.exe"));
-
-                        cmd.WaitForExit();
-                        Ocelot.PrintToDebugConsole("[ ] || [X] VOXPatch.exe finished");
-
-                        File.Delete(Application.StartupPath + "\\AreaChecker.exe");
-                        File.Delete(Application.StartupPath + "\\VOXPatch.exe");
-
-                        File.Create(Application.StartupPath + "\\_patch2.0_applied.sss");
-
-                        Ocelot.PrintToDebugConsole("[X] V's 2.0 Homemade Patcher succesfully used!");       
-
-                    }
-
-                    // Is audio fix applied?
-                    if (!(System.IO.File.Exists(Application.StartupPath + "\\_audio_fix_applied.sss")))
-                    {
-                        //Nope
-                        Ocelot.PrintToDebugConsole("[ ] Audio not patched. Applying Audio Fix");
-
-                        Unzip.UnZippa("2_audio_fix.zip");
-
-                        File.Create(Application.StartupPath + "\\_audio_fix_applied.sss");
-
-                        Ocelot.PrintToDebugConsole("[X] Audio Fix succesfully applied!");
-
-                    }
-
-                    // Fixed exe has been applied?
-                    if (!(System.IO.File.Exists(Application.StartupPath + "\\_fixed_exe_applied.sss")))
-                    {
-                        //Nope
-                        Ocelot.PrintToDebugConsole("[ ] Fixed exe not applied. Applying it");
-
-                        Unzip.UnZippa("3_fixed_exe.zip",true);
-
-                        File.Create(Application.StartupPath + "\\_fixed_exe_applied.sss");
-
-                        Ocelot.PrintToDebugConsole("[X] Fixed Exe succesfully applied!");
-
-                    }
-
-                
-                    // Boycott useless original setupper
-                    // MGS2SConfig.exe
-
-                    if (System.IO.File.Exists(Application.StartupPath + "\\MGS2SConfig.exe"))
-                    {
-
-                        if (System.IO.File.Exists(Application.StartupPath + "\\_MGS2SConfig.oldandcrappy"))
+                        // Is 2.0 Patch applied?
+                        if (!(System.IO.File.Exists(Application.StartupPath + "\\_patch2.0_applied.sss")))
                         {
-                            File.Delete(Application.StartupPath + "\\_MGS2SConfig.oldandcrappy");
-                            Ocelot.PrintToDebugConsole("[X] _MGS2SConfig.oldandcrappy deleted");
+
+                            //Nope
+
+                            //Better inform the user
+
+                            Ocelot.showMessage("tip_patcher");
+
+                            Ocelot.PrintToDebugConsole("[ ] Game is not patched. Applying V's 2.0 Homemade Patcher");
+
+                            Unzip.UnZippa("1_homemade_patcher.zip");
+
+                            Process cmd;
+
+                            cmd = Process.Start(new ProcessStartInfo("AreaChecker.exe"));
+                            cmd.WaitForExit();
+                            Ocelot.PrintToDebugConsole("[ ] || [X] AreaChecker.exe finished");
+
+                            cmd = Process.Start(new ProcessStartInfo("VOXPatch.exe"));
+
+                            cmd.WaitForExit();
+                            Ocelot.PrintToDebugConsole("[ ] || [X] VOXPatch.exe finished");
+
+                            File.Delete(Application.StartupPath + "\\AreaChecker.exe");
+                            File.Delete(Application.StartupPath + "\\VOXPatch.exe");
+
+                            File.Create(Application.StartupPath + "\\_patch2.0_applied.sss");
+
+                            Ocelot.PrintToDebugConsole("[X] V's 2.0 Homemade Patcher succesfully used!");
+
                         }
 
-                        System.IO.File.Move("MGS2SConfig.exe", "_MGS2SConfig.oldandcrappy");
-                        Ocelot.PrintToDebugConsole("[X] MSG2Config.exe nuked");
-                    }
-
-                    // Boycott useless original config .ini file
-                    // MGS2SSET.ini
-
-                    if (System.IO.File.Exists(Application.StartupPath + "\\MGS2SSET.ini"))
-                    {
-
-                        if (System.IO.File.Exists(Application.StartupPath + "\\_MGS2SSET.oldandcrappy"))
+                        // Is audio fix applied?
+                        if (!(System.IO.File.Exists(Application.StartupPath + "\\_audio_fix_applied.sss")))
                         {
-                            File.Delete(Application.StartupPath + "\\_MGS2SSET.oldandcrappy");
-                            Ocelot.PrintToDebugConsole("[X] _MGS2SSET.oldandcrappy deleted");
+                            //Nope
+                            Ocelot.PrintToDebugConsole("[ ] Audio not patched. Applying Audio Fix");
+
+                            Unzip.UnZippa("2_audio_fix.zip");
+
+                            File.Create(Application.StartupPath + "\\_audio_fix_applied.sss");
+
+                            Ocelot.PrintToDebugConsole("[X] Audio Fix succesfully applied!");
+
                         }
 
-                        System.IO.File.Move("MGS2SSET.ini", "_MGS2SSET.oldandcrappy");
-                        Ocelot.PrintToDebugConsole("[X] MGS2SSET.ini nuked");
-                    }
-
-                    // Boycott useless non-sse executable
-                    // mgs2.exe
-
-                    if (System.IO.File.Exists(Application.StartupPath + "\\mgs2.exe"))
-                    {
-
-                        if (System.IO.File.Exists(Application.StartupPath + "\\_mgs2.exe.oldandcrappy"))
+                        // Fixed exe has been applied?
+                        if (!(System.IO.File.Exists(Application.StartupPath + "\\_fixed_exe_applied.sss")))
                         {
-                            File.Delete(Application.StartupPath + "\\_mgs2.exe.oldandcrappy");
-                            Ocelot.PrintToDebugConsole("[X] _mgs2.exe.oldandcrappy deleted");
+                            //Nope
+                            Ocelot.PrintToDebugConsole("[ ] Fixed exe not applied. Applying it");
+
+                            Unzip.UnZippa("3_fixed_exe.zip", true);
+
+                            File.Create(Application.StartupPath + "\\_fixed_exe_applied.sss");
+
+                            Ocelot.PrintToDebugConsole("[X] Fixed Exe succesfully applied!");
+
                         }
 
-                        System.IO.File.Move("mgs2.exe", "_mgs2.exe.oldandcrappy");
-                        Ocelot.PrintToDebugConsole("[X] mgs2.exe nuked");
+                        // Boycott useless original setupper
+                        // MGS2SConfig.exe
+
+                        if (System.IO.File.Exists(Application.StartupPath + "\\MGS2SConfig.exe"))
+                        {
+
+                            if (System.IO.File.Exists(Application.StartupPath + "\\_MGS2SConfig.oldandcrappy"))
+                            {
+                                File.Delete(Application.StartupPath + "\\_MGS2SConfig.oldandcrappy");
+                                Ocelot.PrintToDebugConsole("[X] _MGS2SConfig.oldandcrappy deleted");
+                            }
+
+                            System.IO.File.Move("MGS2SConfig.exe", "_MGS2SConfig.oldandcrappy");
+                            Ocelot.PrintToDebugConsole("[X] MSG2Config.exe nuked");
+                        }
+
+                        // Boycott useless original config .ini file
+                        // MGS2SSET.ini
+
+                        if (System.IO.File.Exists(Application.StartupPath + "\\MGS2SSET.ini"))
+                        {
+
+                            if (System.IO.File.Exists(Application.StartupPath + "\\_MGS2SSET.oldandcrappy"))
+                            {
+                                File.Delete(Application.StartupPath + "\\_MGS2SSET.oldandcrappy");
+                                Ocelot.PrintToDebugConsole("[X] _MGS2SSET.oldandcrappy deleted");
+                            }
+
+                            System.IO.File.Move("MGS2SSET.ini", "_MGS2SSET.oldandcrappy");
+                            Ocelot.PrintToDebugConsole("[X] MGS2SSET.ini nuked");
+                        }
+
+                        // Boycott useless non-sse executable
+                        // mgs2.exe
+
+                        if (System.IO.File.Exists(Application.StartupPath + "\\mgs2.exe"))
+                        {
+
+                            if (System.IO.File.Exists(Application.StartupPath + "\\_mgs2.exe.oldandcrappy"))
+                            {
+                                File.Delete(Application.StartupPath + "\\_mgs2.exe.oldandcrappy");
+                                Ocelot.PrintToDebugConsole("[X] _mgs2.exe.oldandcrappy deleted");
+                            }
+
+                            System.IO.File.Move("mgs2.exe", "_mgs2.exe.oldandcrappy");
+                            Ocelot.PrintToDebugConsole("[X] mgs2.exe nuked");
+                        }
+
                     }
 
                     // V's Setupper has been used in the past?

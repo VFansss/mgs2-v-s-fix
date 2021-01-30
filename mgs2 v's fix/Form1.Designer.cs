@@ -116,6 +116,8 @@
             this.SE_medium = new System.Windows.Forms.RadioButton();
             this.SE_low = new System.Windows.Forms.RadioButton();
             this.tab_Extra = new System.Windows.Forms.TabPage();
+            this.ptb_SteamArtworks = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.ptb_Steam = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.ptb_GitHubLogo = new System.Windows.Forms.PictureBox();
@@ -137,8 +139,7 @@
             this.lbl_ManualLink = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pic_background = new System.Windows.Forms.PictureBox();
-            this.ptb_SteamArtworks = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbl_findSavegames = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_Resolution.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -157,6 +158,7 @@
             this.pnl_SoundQuality.SuspendLayout();
             this.pnl_SE.SuspendLayout();
             this.tab_Extra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_SteamArtworks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Steam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).BeginInit();
             this.tab_About.SuspendLayout();
@@ -165,7 +167,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_SteamArtworks)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_startGame
@@ -1645,6 +1646,7 @@
             // 
             // tab_Extra
             // 
+            this.tab_Extra.Controls.Add(this.lbl_findSavegames);
             this.tab_Extra.Controls.Add(this.ptb_SteamArtworks);
             this.tab_Extra.Controls.Add(this.label8);
             this.tab_Extra.Controls.Add(this.ptb_Steam);
@@ -1660,11 +1662,35 @@
             this.tab_Extra.Text = "Extra";
             this.tab_Extra.UseVisualStyleBackColor = true;
             // 
+            // ptb_SteamArtworks
+            // 
+            this.ptb_SteamArtworks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptb_SteamArtworks.Image = global::mgs2_v_s_fix.Properties.Resources.SteamLogo;
+            this.ptb_SteamArtworks.Location = new System.Drawing.Point(62, 298);
+            this.ptb_SteamArtworks.Name = "ptb_SteamArtworks";
+            this.ptb_SteamArtworks.Size = new System.Drawing.Size(70, 70);
+            this.ptb_SteamArtworks.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_SteamArtworks.TabIndex = 42;
+            this.ptb_SteamArtworks.TabStop = false;
+            this.ptb_SteamArtworks.Click += new System.EventHandler(this.ptb_SteamArtworks_Click);
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(159, 297);
+            this.label8.Margin = new System.Windows.Forms.Padding(0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(378, 71);
+            this.label8.TabIndex = 43;
+            this.label8.Text = "Click on the Steam logo aside to download MGS2 covers and banners for Steam libra" +
+    "ry\r\n";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ptb_Steam
             // 
             this.ptb_Steam.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ptb_Steam.Image = global::mgs2_v_s_fix.Properties.Resources.SteamLogo;
-            this.ptb_Steam.Location = new System.Drawing.Point(62, 169);
+            this.ptb_Steam.Location = new System.Drawing.Point(62, 202);
             this.ptb_Steam.Name = "ptb_Steam";
             this.ptb_Steam.Size = new System.Drawing.Size(70, 70);
             this.ptb_Steam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1675,7 +1701,7 @@
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(159, 168);
+            this.label18.Location = new System.Drawing.Point(159, 201);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(358, 71);
@@ -1687,7 +1713,7 @@
             // 
             this.ptb_GitHubLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ptb_GitHubLogo.Image = global::mgs2_v_s_fix.Properties.Resources.GitHubLogo;
-            this.ptb_GitHubLogo.Location = new System.Drawing.Point(62, 74);
+            this.ptb_GitHubLogo.Location = new System.Drawing.Point(62, 107);
             this.ptb_GitHubLogo.Name = "ptb_GitHubLogo";
             this.ptb_GitHubLogo.Size = new System.Drawing.Size(70, 70);
             this.ptb_GitHubLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1698,7 +1724,7 @@
             // lbl_checkForUpdate
             // 
             this.lbl_checkForUpdate.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_checkForUpdate.Location = new System.Drawing.Point(155, 73);
+            this.lbl_checkForUpdate.Location = new System.Drawing.Point(155, 106);
             this.lbl_checkForUpdate.Name = "lbl_checkForUpdate";
             this.lbl_checkForUpdate.Size = new System.Drawing.Size(362, 71);
             this.lbl_checkForUpdate.TabIndex = 34;
@@ -1716,7 +1742,7 @@
             this.chb_FixAfterPlaying.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.chb_FixAfterPlaying.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chb_FixAfterPlaying.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(408, 22);
+            this.chb_FixAfterPlaying.Location = new System.Drawing.Point(408, 18);
             this.chb_FixAfterPlaying.Name = "chb_FixAfterPlaying";
             this.chb_FixAfterPlaying.Size = new System.Drawing.Size(55, 26);
             this.chb_FixAfterPlaying.TabIndex = 24;
@@ -1732,7 +1758,7 @@
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.label4.Location = new System.Drawing.Point(90, 21);
+            this.label4.Location = new System.Drawing.Point(90, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(325, 26);
             this.label4.TabIndex = 23;
@@ -1972,29 +1998,21 @@
             this.pic_background.TabIndex = 9;
             this.pic_background.TabStop = false;
             // 
-            // ptb_SteamArtworks
+            // lbl_findSavegames
             // 
-            this.ptb_SteamArtworks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ptb_SteamArtworks.Image = global::mgs2_v_s_fix.Properties.Resources.SteamLogo;
-            this.ptb_SteamArtworks.Location = new System.Drawing.Point(62, 265);
-            this.ptb_SteamArtworks.Name = "ptb_SteamArtworks";
-            this.ptb_SteamArtworks.Size = new System.Drawing.Size(70, 70);
-            this.ptb_SteamArtworks.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptb_SteamArtworks.TabIndex = 42;
-            this.ptb_SteamArtworks.TabStop = false;
-            this.ptb_SteamArtworks.Click += new System.EventHandler(this.ptb_SteamArtworks_Click);
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(159, 264);
-            this.label8.Margin = new System.Windows.Forms.Padding(0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(378, 71);
-            this.label8.TabIndex = 43;
-            this.label8.Text = "Click on the Steam logo aside to download MGS2 covers and banners for Steam libra" +
-    "ry\r\n";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_findSavegames.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_findSavegames.AutoSize = true;
+            this.lbl_findSavegames.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbl_findSavegames.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_findSavegames.ForeColor = System.Drawing.Color.Black;
+            this.lbl_findSavegames.Location = new System.Drawing.Point(105, 58);
+            this.lbl_findSavegames.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_findSavegames.Name = "lbl_findSavegames";
+            this.lbl_findSavegames.Size = new System.Drawing.Size(348, 29);
+            this.lbl_findSavegames.TabIndex = 44;
+            this.lbl_findSavegames.Text = "Click HERE to find your savegames";
+            this.lbl_findSavegames.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl_findSavegames.Click += new System.EventHandler(this.lbl_findSavegames_Click);
             // 
             // Form1
             // 
@@ -2051,6 +2069,7 @@
             this.pnl_SE.PerformLayout();
             this.tab_Extra.ResumeLayout(false);
             this.tab_Extra.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_SteamArtworks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_Steam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_GitHubLogo)).EndInit();
             this.tab_About.ResumeLayout(false);
@@ -2060,7 +2079,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.otagif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_background)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_SteamArtworks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2178,6 +2196,7 @@
         private System.Windows.Forms.RadioButton InternalResolution_AUTO;
         private System.Windows.Forms.PictureBox ptb_SteamArtworks;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbl_findSavegames;
     }
 }
 

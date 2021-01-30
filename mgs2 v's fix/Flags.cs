@@ -39,7 +39,8 @@ namespace mgs2_v_s_fix
         NoSuccesfulEvaluationPerformed = 0,
         NoSavegame2Move,
         BothFolderExist,
-        MovingPossible
+        MovingPossible,
+        IsAGOGInstallation
 
     };
 

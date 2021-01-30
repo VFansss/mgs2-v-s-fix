@@ -50,6 +50,9 @@
             this.EnableController_XBOX = new System.Windows.Forms.RadioButton();
             this.EnableController_NO = new System.Windows.Forms.RadioButton();
             this.pnl_Gamepad_PreferredLayout = new System.Windows.Forms.Panel();
+            this.pnl_InvertTriggersWithDorsals = new System.Windows.Forms.Panel();
+            this.chb_InvertTriggersWithDorsals = new System.Windows.Forms.CheckBox();
+            this.lbl_InvertTriggersWithDorsals = new System.Windows.Forms.Label();
             this.pnl_LayoutChooser = new System.Windows.Forms.Panel();
             this.PreferredLayout_PS2 = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
@@ -61,9 +64,6 @@
             this.help_controls = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lbl_InvertTriggersWithDorsals = new System.Windows.Forms.Label();
-            this.chb_InvertTriggersWithDorsals = new System.Windows.Forms.CheckBox();
-            this.pnl_InvertTriggersWithDorsals = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tab_KbMouse.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -74,10 +74,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnl_EnableController.SuspendLayout();
             this.pnl_Gamepad_PreferredLayout.SuspendLayout();
+            this.pnl_InvertTriggersWithDorsals.SuspendLayout();
             this.pnl_LayoutChooser.SuspendLayout();
             this.tab_ControlsHelp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.pnl_InvertTriggersWithDorsals.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_returnToForm1
@@ -397,6 +397,48 @@
             this.pnl_Gamepad_PreferredLayout.Size = new System.Drawing.Size(546, 362);
             this.pnl_Gamepad_PreferredLayout.TabIndex = 20;
             // 
+            // pnl_InvertTriggersWithDorsals
+            // 
+            this.pnl_InvertTriggersWithDorsals.Controls.Add(this.chb_InvertTriggersWithDorsals);
+            this.pnl_InvertTriggersWithDorsals.Controls.Add(this.lbl_InvertTriggersWithDorsals);
+            this.pnl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(127, 43);
+            this.pnl_InvertTriggersWithDorsals.Name = "pnl_InvertTriggersWithDorsals";
+            this.pnl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(293, 39);
+            this.pnl_InvertTriggersWithDorsals.TabIndex = 16;
+            // 
+            // chb_InvertTriggersWithDorsals
+            // 
+            this.chb_InvertTriggersWithDorsals.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chb_InvertTriggersWithDorsals.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chb_InvertTriggersWithDorsals.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.chb_InvertTriggersWithDorsals.FlatAppearance.BorderSize = 0;
+            this.chb_InvertTriggersWithDorsals.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
+            this.chb_InvertTriggersWithDorsals.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.chb_InvertTriggersWithDorsals.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.chb_InvertTriggersWithDorsals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chb_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chb_InvertTriggersWithDorsals.Location = new System.Drawing.Point(226, 8);
+            this.chb_InvertTriggersWithDorsals.Name = "chb_InvertTriggersWithDorsals";
+            this.chb_InvertTriggersWithDorsals.Size = new System.Drawing.Size(55, 26);
+            this.chb_InvertTriggersWithDorsals.TabIndex = 9;
+            this.chb_InvertTriggersWithDorsals.TabStop = false;
+            this.chb_InvertTriggersWithDorsals.Text = "XXX";
+            this.chb_InvertTriggersWithDorsals.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chb_InvertTriggersWithDorsals.UseVisualStyleBackColor = true;
+            this.chb_InvertTriggersWithDorsals.CheckedChanged += new System.EventHandler(this.setNewColor);
+            // 
+            // lbl_InvertTriggersWithDorsals
+            // 
+            this.lbl_InvertTriggersWithDorsals.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_InvertTriggersWithDorsals.AutoSize = true;
+            this.lbl_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Calibri", 15.75F);
+            this.lbl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(12, 7);
+            this.lbl_InvertTriggersWithDorsals.Name = "lbl_InvertTriggersWithDorsals";
+            this.lbl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(215, 26);
+            this.lbl_InvertTriggersWithDorsals.TabIndex = 6;
+            this.lbl_InvertTriggersWithDorsals.Text = "Invert RT/LT with RB/LB:";
+            this.lbl_InvertTriggersWithDorsals.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // pnl_LayoutChooser
             // 
             this.pnl_LayoutChooser.Controls.Add(this.PreferredLayout_PS2);
@@ -551,47 +593,6 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // lbl_InvertTriggersWithDorsals
-            // 
-            this.lbl_InvertTriggersWithDorsals.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_InvertTriggersWithDorsals.AutoSize = true;
-            this.lbl_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Calibri", 15.75F);
-            this.lbl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(12, 7);
-            this.lbl_InvertTriggersWithDorsals.Name = "lbl_InvertTriggersWithDorsals";
-            this.lbl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(215, 26);
-            this.lbl_InvertTriggersWithDorsals.TabIndex = 6;
-            this.lbl_InvertTriggersWithDorsals.Text = "Invert RT/LT with RB/LB:";
-            this.lbl_InvertTriggersWithDorsals.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // chb_InvertTriggersWithDorsals
-            // 
-            this.chb_InvertTriggersWithDorsals.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.chb_InvertTriggersWithDorsals.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chb_InvertTriggersWithDorsals.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.chb_InvertTriggersWithDorsals.FlatAppearance.BorderSize = 0;
-            this.chb_InvertTriggersWithDorsals.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent;
-            this.chb_InvertTriggersWithDorsals.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.chb_InvertTriggersWithDorsals.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.chb_InvertTriggersWithDorsals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chb_InvertTriggersWithDorsals.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chb_InvertTriggersWithDorsals.Location = new System.Drawing.Point(226, 8);
-            this.chb_InvertTriggersWithDorsals.Name = "chb_InvertTriggersWithDorsals";
-            this.chb_InvertTriggersWithDorsals.Size = new System.Drawing.Size(55, 26);
-            this.chb_InvertTriggersWithDorsals.TabIndex = 9;
-            this.chb_InvertTriggersWithDorsals.TabStop = false;
-            this.chb_InvertTriggersWithDorsals.Text = "XXX";
-            this.chb_InvertTriggersWithDorsals.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chb_InvertTriggersWithDorsals.UseVisualStyleBackColor = true;
-            // 
-            // pnl_InvertTriggersWithDorsals
-            // 
-            this.pnl_InvertTriggersWithDorsals.Controls.Add(this.chb_InvertTriggersWithDorsals);
-            this.pnl_InvertTriggersWithDorsals.Controls.Add(this.lbl_InvertTriggersWithDorsals);
-            this.pnl_InvertTriggersWithDorsals.Location = new System.Drawing.Point(127, 43);
-            this.pnl_InvertTriggersWithDorsals.Name = "pnl_InvertTriggersWithDorsals";
-            this.pnl_InvertTriggersWithDorsals.Size = new System.Drawing.Size(293, 39);
-            this.pnl_InvertTriggersWithDorsals.TabIndex = 16;
-            // 
             // ControlsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -622,13 +623,13 @@
             this.pnl_EnableController.ResumeLayout(false);
             this.pnl_EnableController.PerformLayout();
             this.pnl_Gamepad_PreferredLayout.ResumeLayout(false);
+            this.pnl_InvertTriggersWithDorsals.ResumeLayout(false);
+            this.pnl_InvertTriggersWithDorsals.PerformLayout();
             this.pnl_LayoutChooser.ResumeLayout(false);
             this.pnl_LayoutChooser.PerformLayout();
             this.tab_ControlsHelp.ResumeLayout(false);
             this.tab_ControlsHelp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.pnl_InvertTriggersWithDorsals.ResumeLayout(false);
-            this.pnl_InvertTriggersWithDorsals.PerformLayout();
             this.ResumeLayout(false);
 
         }
