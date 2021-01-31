@@ -304,6 +304,12 @@ namespace mgs2_v_s_fix
                     }
                 }
 
+                bool compatibilityFlagExist = Ocelot.CompatibilityFlagsExists();
+                bool isAGOGInstallation = SavegameMustBeMoved() == SAVEGAMEMOVING.IsAGOGInstallation;
+
+                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] compatibilityFlagExist is " + compatibilityFlagExist);
+                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] isAGOGInstallation is " + isAGOGInstallation);
+
                 // NB: Operation are done following the usual pattern
                 //  Resolution -> Controls -> Graphics -> Sound
 
@@ -329,8 +335,9 @@ namespace mgs2_v_s_fix
                     Unzip.UnZippa("DXWrapper.zip",true);
 
                     // Extract fixed files for the "Green screen" bug (Issue #26), if not already there
+                    // but only for Retail version
 
-                    if (!File.Exists("quartz.dll") || !File.Exists("winmm.dll"))
+                    if ((!File.Exists("quartz.dll") || !File.Exists("winmm.dll")) && !isAGOGInstallation)
                     {
                         Unzip.UnZippa("GreenScreenFix.zip", true);
                     }
@@ -739,12 +746,6 @@ namespace mgs2_v_s_fix
                             }
 
                         }*/
-
-                        #endregion
-
-                        #region HyperMegaUltraWidescreen fixes
-
-
 
                         #endregion
 
@@ -1295,12 +1296,6 @@ namespace mgs2_v_s_fix
                 // DEPRECATED FROM VERSION 1.7 - Set the compatibility flags
 
                 //SetCompatibilityFlags();
-
-                bool compatibilityFlagExist = Ocelot.CompatibilityFlagsExists();
-                bool isAGOGInstallation = SavegameMustBeMoved() == SAVEGAMEMOVING.IsAGOGInstallation;
-
-                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] compatibilityFlagExist is " + compatibilityFlagExist);
-                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] isAGOGInstallation is " + isAGOGInstallation);
 
                 if (compatibilityFlagExist && !isAGOGInstallation)
                 {
