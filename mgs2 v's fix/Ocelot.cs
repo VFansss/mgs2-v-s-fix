@@ -23,7 +23,7 @@ namespace mgs2_v_s_fix
     {
 
         // Internal version of the V's Fix - Format is YYMMDD
-        public const string VERSION = "210130";
+        public const string VERSION = "210131";
 
         // Hide background images and more "appariscent" graphical things
         public static bool NOSYMODE = false;
@@ -304,6 +304,12 @@ namespace mgs2_v_s_fix
                     }
                 }
 
+                bool compatibilityFlagExist = Ocelot.CompatibilityFlagsExists();
+                bool isAGOGInstallation = SavegameMustBeMoved() == SAVEGAMEMOVING.IsAGOGInstallation;
+
+                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] compatibilityFlagExist is " + compatibilityFlagExist);
+                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] isAGOGInstallation is " + isAGOGInstallation);
+
                 // NB: Operation are done following the usual pattern
                 //  Resolution -> Controls -> Graphics -> Sound
 
@@ -329,8 +335,9 @@ namespace mgs2_v_s_fix
                     Unzip.UnZippa("DXWrapper.zip",true);
 
                     // Extract fixed files for the "Green screen" bug (Issue #26), if not already there
+                    // but only for Retail version
 
-                    if (!File.Exists("quartz.dll") || !File.Exists("winmm.dll"))
+                    if ((!File.Exists("quartz.dll") || !File.Exists("winmm.dll")) && !isAGOGInstallation)
                     {
                         Unzip.UnZippa("GreenScreenFix.zip", true);
                     }
@@ -742,12 +749,6 @@ namespace mgs2_v_s_fix
 
                         #endregion
 
-                        #region HyperMegaUltraWidescreen fixes
-
-
-
-                        #endregion
-
                         #region CHEATS
 
                         PrintToDebugConsole("[ Cheats ] Applying...");
@@ -813,10 +814,29 @@ namespace mgs2_v_s_fix
 
                         // TortureAutoPass
 
-                        string rootGamePath = Application.StartupPath + "\\..";
-                        string fileToPatch = Path.GetFullPath(rootGamePath + "\\cdrom.img\\stage\\w51a\\scenerio.gcx");
+                        string stageFolderPath = Application.StartupPath + "\\..\\cdrom.img\\stage";
 
-                        using (var w51aScenerio = new FileStream(fileToPatch, FileMode.Open, FileAccess.ReadWrite))
+                        // Solidus torture no1
+                        using (var w41aScenerio = new FileStream(Path.GetFullPath(stageFolderPath + "\\w41a\\scenerio.gcx"), FileMode.Open, FileAccess.ReadWrite))
+                        {
+                            w41aScenerio.Position = 0xC4F9;
+
+                            if (Ocelot.InternalConfiguration.Cheats["TortureAutoPass"].Equals("true", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                // Apply the cheat
+                                w41aScenerio.WriteByte(0xC1);
+                            }
+                            else
+                            {
+                                // Restore the default values...
+                                w41aScenerio.WriteByte(0xC5);
+
+                            }
+
+                        }
+
+                        // Solidus torture no2
+                        using (var w51aScenerio = new FileStream(Path.GetFullPath(stageFolderPath + "\\w51a\\scenerio.gcx"), FileMode.Open, FileAccess.ReadWrite))
                         {
                             w51aScenerio.Position = 0x3026;
 
@@ -1295,12 +1315,6 @@ namespace mgs2_v_s_fix
                 // DEPRECATED FROM VERSION 1.7 - Set the compatibility flags
 
                 //SetCompatibilityFlags();
-
-                bool compatibilityFlagExist = Ocelot.CompatibilityFlagsExists();
-                bool isAGOGInstallation = SavegameMustBeMoved() == SAVEGAMEMOVING.IsAGOGInstallation;
-
-                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] compatibilityFlagExist is " + compatibilityFlagExist);
-                Ocelot.PrintToDebugConsole("[removeCompatibilityFlagsEvaluation] isAGOGInstallation is " + isAGOGInstallation);
 
                 if (compatibilityFlagExist && !isAGOGInstallation)
                 {
