@@ -814,10 +814,29 @@ namespace mgs2_v_s_fix
 
                         // TortureAutoPass
 
-                        string rootGamePath = Application.StartupPath + "\\..";
-                        string fileToPatch = Path.GetFullPath(rootGamePath + "\\cdrom.img\\stage\\w51a\\scenerio.gcx");
+                        string stageFolderPath = Application.StartupPath + "\\..\\cdrom.img\\stage";
 
-                        using (var w51aScenerio = new FileStream(fileToPatch, FileMode.Open, FileAccess.ReadWrite))
+                        // Solidus torture no1
+                        using (var w41aScenerio = new FileStream(Path.GetFullPath(stageFolderPath + "\\w41a\\scenerio.gcx"), FileMode.Open, FileAccess.ReadWrite))
+                        {
+                            w41aScenerio.Position = 0xC4F9;
+
+                            if (Ocelot.InternalConfiguration.Cheats["TortureAutoPass"].Equals("true", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                // Apply the cheat
+                                w41aScenerio.WriteByte(0xC1);
+                            }
+                            else
+                            {
+                                // Restore the default values...
+                                w41aScenerio.WriteByte(0xC5);
+
+                            }
+
+                        }
+
+                        // Solidus torture no2
+                        using (var w51aScenerio = new FileStream(Path.GetFullPath(stageFolderPath + "\\w51a\\scenerio.gcx"), FileMode.Open, FileAccess.ReadWrite))
                         {
                             w51aScenerio.Position = 0x3026;
 
